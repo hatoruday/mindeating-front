@@ -75,5 +75,8 @@ export default function GetWeeksOfCurrentMonth(
     }
   }
   //weeks와 colorStatusweeks를 두개 모두 리턴한다.
+  colorStatusWeeks[0][3] = 2;
+  colorStatusWeeks[0][4] = 3;
+  colorStatusWeeks[0][5] = 4;
   return [weeks, colorStatusWeeks, isFadeoutWeeks];
 }
