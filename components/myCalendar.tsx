@@ -112,9 +112,9 @@ export default function MyCalendar() {
   return (
     <div className="flex items-center justify-center py-8 px-4">
       <div className="max-w-sm w-full">
-        <div className="md:p-8 p-5  bg-white rounded-t">
-          <div className="flex items-center justify-between pt-12">
-            <div className="w-full flex-col">
+        <div className="md:p-5 p-2  bg-white rounded-t">
+          <div className="flex items-center justify-between">
+            <div className="w-full">
               <Thead />
               <div className="pt-4 mt-4 flex flex-col w-full h-full">
                 {weeks.map((week, weekindex) => (

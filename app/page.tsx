@@ -4,6 +4,7 @@ import MyCalendar from "../components/myCalendar";
 import LeftChevron from "../components/leftChevron";
 import OutagePeriod from "../components/outagePeriod";
 import RightChevron from "../components/rightChevron";
+import Image from "next/image";
 
 export default function HomePage() {
   const name = "현경";
@@ -14,8 +15,8 @@ export default function HomePage() {
   //set slash to !slash whey clicked
   return (
     <div>
-      <div className="flex flex-1 flex-col justify-center">
-        <header className="sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="flex flex-col">
+        <header className="sm:mx-auto sm:w-full sm:max-w-sm pt-5">
           <h3 className="text-[#9F9FAC] text-[16px] te">
             안녕하세요! 오늘도 파이팅해봐요:{")"}
           </h3>
@@ -24,9 +25,9 @@ export default function HomePage() {
           </h1>
         </header>
         {/* 식욕안정기 3월 14일 / 마음먹기 2주차 < > */}
-        <aside className="mt-10 flex w-full justify-around items-center font-normal">
+        <aside className="mt-10 flex max-md justify-around items-center font-normal">
           <OutagePeriod name="식욕안정기" />
-          <span className="text-[14px]">
+          <span className="text-[14px] text-center ">
             {month}월 {day}일 / 마음먹기 {week} 주차
           </span>
           {/*< > 양쪽 꺽쇠 관련 컴포넌트*/}
@@ -47,6 +48,26 @@ export default function HomePage() {
         </aside>
         {/* 캘린더 */}
         <MyCalendar />
+        {/** split bar */}
+
+        <div className="border-t border-gray-200"></div>
+        <footer className="flex justify-center">
+          <div className="flex items-center content-center justify-items-center mt-5 justify-between px-4 w-[330px] h-[50px] rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">
+            <div className="flex items-center mt">
+              <Image
+                src="/bookIcon.svg"
+                alt="bookIcon"
+                width={18}
+                height={18}
+              />{" "}
+              <span className="px-3 text-sm font-semibold">
+                식욕 올라올 땐? 노하우 콘텐츠!
+              </span>
+            </div>
+
+            <RightChevron />
+          </div>
+        </footer>
       </div>
     </div>
   );
