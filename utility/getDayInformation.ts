@@ -1,12 +1,3 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import MyDay from "./myday";
-import Thead from "./thead";
-import AccordianWeek from "./accordianWeek";
-import MyWeek from "./myWeek";
-import AccordianItems from "./AccordianItems";
-
 function ConvertTime(date: Date): Date {
   date = new Date(date);
   let offset = date.getTimezoneOffset() * 60000; //ms단위라 60000곱해줌
@@ -14,10 +5,10 @@ function ConvertTime(date: Date): Date {
   return dateOffset;
 }
 // 현재 월에 해당하는 주별 날짜 2차원 배열을 가져옴
-function GetWeeksOfCurrentMonth(
+export default function GetWeeksOfCurrentMonth(
   month: number,
   year: number
-): [Date[][], number[][], number[]] {
+): [Date[][], number[][]] {
   const now = new Date();
   const firstDayOfMonth = new Date(year, month - 1, 1);
   const dayOfWeek = firstDayOfMonth.getDay();
@@ -64,7 +55,6 @@ function GetWeeksOfCurrentMonth(
   }
 
   let colorStatusWeeks = [];
-  let isFadeoutWeeks = [];
   let colorStatusWeek = [];
   let colorStatusCurrent = new Date(firstMonday);
   while (colorStatusCurrent <= lastSunday) {
@@ -79,59 +69,12 @@ function GetWeeksOfCurrentMonth(
     colorStatusCurrent.setDate(colorStatusCurrent.getDate() + 1);
     if (colorStatusCurrent.getDay() === 1) {
       colorStatusWeeks.push(colorStatusWeek);
-      isFadeoutWeeks.push(1);
       colorStatusWeek = [];
     }
   }
+  colorStatusWeeks[0][3] = 2;
+  colorStatusWeeks[0][4] = 3;
+  colorStatusWeeks[0][5] = 4;
   //weeks와 colorStatusweeks를 두개 모두 리턴한다.
-  return [weeks, colorStatusWeeks, isFadeoutWeeks];
-}
-
-export default function MyCalendar() {
-  // 현재 월에 해당하는 주별 날짜 2차원 배열을 가져옴
-  // const today = new Date();
-  const [weeks, colorStatusWeeks, isFadeoutWeeks] = GetWeeksOfCurrentMonth(
-    3,
-    2024
-  );
-  const [openIndex, setOpenIndex] = useState<number[]>(isFadeoutWeeks);
-  const toggle = (index: any) => {
-    let newIndex: number[];
-    let summedValue = openIndex.reduce((a, b) => a + b, 0);
-    if (openIndex[index] == 1 && summedValue == 1) {
-      newIndex = openIndex.map((item: number, i: number) => 1);
-    } else {
-      newIndex = openIndex.map((item: number, i: number) =>
-        i === index ? 1 : 0
-      );
-    }
-
-    setOpenIndex(newIndex);
-  };
-
-  return (
-    <div className="flex items-center justify-center py-8 px-4">
-      <div className="max-w-sm w-full">
-        <div className="md:p-8 p-5  bg-white rounded-t">
-          <div className="flex items-center justify-between pt-12">
-            <div className="w-full flex-col">
-              <Thead />
-              <div className="pt-4 mt-4 flex flex-col w-full h-full">
-                {weeks.map((week, weekindex) => (
-                  <AccordianItems
-                    key={weekindex}
-                    open={1 == openIndex[weekindex]}
-                    toggle={() => toggle(weekindex)}
-                    weekindex={weekindex}
-                    week={weeks[weekindex]}
-                    colorStatusWeeks={colorStatusWeeks}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  return [weeks, colorStatusWeeks];
 }
