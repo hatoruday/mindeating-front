@@ -1,7 +1,5 @@
-import GetWeeksOfCurrentMonth from "@/utility/getDayInformation";
 import React from "react";
 import { Collapse } from "react-collapse";
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import MyWeek from "./myWeek";
 interface AccordianItemsProps {
   open: boolean;

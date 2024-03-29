@@ -8,7 +8,7 @@ function ConvertTime(date: Date): Date {
 export default function GetWeeksOfCurrentMonth(
   month: number,
   year: number
-): [Date[][], number[][]] {
+): [Date[][], number[][], number[]] {
   const now = new Date();
   const firstDayOfMonth = new Date(year, month - 1, 1);
   const dayOfWeek = firstDayOfMonth.getDay();
@@ -55,6 +55,7 @@ export default function GetWeeksOfCurrentMonth(
   }
 
   let colorStatusWeeks = [];
+  let isFadeoutWeeks = [];
   let colorStatusWeek = [];
   let colorStatusCurrent = new Date(firstMonday);
   while (colorStatusCurrent <= lastSunday) {
@@ -69,12 +70,10 @@ export default function GetWeeksOfCurrentMonth(
     colorStatusCurrent.setDate(colorStatusCurrent.getDate() + 1);
     if (colorStatusCurrent.getDay() === 1) {
       colorStatusWeeks.push(colorStatusWeek);
+      isFadeoutWeeks.push(1);
       colorStatusWeek = [];
     }
   }
-  colorStatusWeeks[0][3] = 2;
-  colorStatusWeeks[0][4] = 3;
-  colorStatusWeeks[0][5] = 4;
   //weeks와 colorStatusweeks를 두개 모두 리턴한다.
-  return [weeks, colorStatusWeeks];
+  return [weeks, colorStatusWeeks, isFadeoutWeeks];
 }
