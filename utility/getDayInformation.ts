@@ -95,7 +95,18 @@ function GetWeeksOfCurrentMonth(month: number, year: number): MonthData {
 
 type MonthAll = [MonthData, MonthData, MonthData];
 export default function getMonthAll(offset: number): MonthAll {
-  const today = new Date();
+  console.log("getMonth호출됨.", offset);
+
+  let today = new Date();
+
+  console.log("현재 달", today.getMonth() + 1, today.getFullYear());
+  if (offset < 0) {
+    today = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
+  } else if (offset > 0) {
+    today.setMonth(today.getMonth() + 1);
+  }
+
+  console.log("새롭게 바뀐 달", today.getMonth() + 1, today.getFullYear());
   const current = GetWeeksOfCurrentMonth(
     today.getMonth() + 1,
     today.getFullYear()

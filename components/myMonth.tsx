@@ -1,17 +1,21 @@
 "use client";
+interface MonthData {
+  weeks: Date[][];
+  colorStatusWeeks: number[][];
+  isFadeoutWeeks: number[];
+}
+type MonthAll = [MonthData, MonthData, MonthData];
 
-import GetWeeksOfCurrentMonth from "@/utility/getDayInformation";
 import AccordianItems from "./AccordianItems";
 import { useEffect, useRef, useState } from "react";
-import getMonthAll from "@/utility/getDayInformation";
 
-interface MyMonthProps {
-  offset: number;
-}
-
-export default function MyMonthList({ offset }: MyMonthProps) {
+export default function MyMonthList({
+  recentMonths: recentMonths,
+}: {
+  recentMonths: MonthAll;
+}) {
   // 현재 월에 해당하는 주별 날짜 2차원 배열을 가져옴
-  let recentMonths = getMonthAll(offset);
+  // console.log(recentMonths[0].weeks[0][0].getMonth());
   //현재 접혀있지 않는 주차들을 관리한다.
   const [openIndexList, setOpenIndexList] = useState<number[]>(
     recentMonths[1].isFadeoutWeeks
