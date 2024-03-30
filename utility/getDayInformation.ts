@@ -50,7 +50,7 @@ function GetWeeksOfCurrentMonth(month: number, year: number): MonthData {
       week = [];
     }
   }
-  //weeks를 순회하면서 convertTime(day)ㄹ 호출하여 날짜를 변환한 후 출력
+  //weeks를 순회하면서 convertTime(day)를 호출하여 날짜를 변환한 후 출력
   for (let i = 0; i < weeks.length; i++) {
     for (let j = 0; j < weeks[i].length; j++) {
       weeks[i][j] = ConvertTime(weeks[i][j]);
@@ -63,7 +63,7 @@ function GetWeeksOfCurrentMonth(month: number, year: number): MonthData {
   let colorStatusCurrent = new Date(firstMonday);
   while (colorStatusCurrent <= lastSunday) {
     // 이전달이거나 다음달의 날짜일경우 -1 플래그를 주고, 오늘날짜일 경우 1플래그를 준다.
-    if (colorStatusCurrent.getMonth() + 1 != month) {
+    if (colorStatusCurrent.getMonth() != firstDayOfMonth.getMonth()) {
       colorStatusWeek.push(-1);
     } else if (
       colorStatusCurrent.getDate() === now.getDate() &&
@@ -95,27 +95,27 @@ function GetWeeksOfCurrentMonth(month: number, year: number): MonthData {
 
 type MonthAll = [MonthData, MonthData, MonthData];
 export default function getMonthAll(offset: number): MonthAll {
-  console.log("getMonth호출됨.", offset);
+  // console.log("getMonth호출됨.", offset);
 
   let today = new Date();
 
-  console.log("현재 달", today.getMonth() + 1, today.getFullYear());
+  // console.log("현재 달", today.getMonth() + 1, today.getFullYear());
   if (offset < 0) {
     today = new Date(
-      today.getTime() - Math.abs(offset) * 30 * 24 * 60 * 60 * 1000
+      today.getTime() - Math.abs(offset) * 31 * 24 * 60 * 60 * 1000
     );
   } else if (offset > 0) {
     today = new Date(
-      today.getTime() + Math.abs(offset) * 30 * 24 * 60 * 60 * 1000
+      today.getTime() + Math.abs(offset) * 31 * 24 * 60 * 60 * 1000
     );
   }
 
-  console.log("새롭게 바뀐 달", today.getMonth() + 1, today.getFullYear());
+  // console.log("새롭게 바뀐 달", today.getMonth() + 1, today.getFullYear());
+  const past = GetWeeksOfCurrentMonth(today.getMonth(), today.getFullYear());
   const current = GetWeeksOfCurrentMonth(
     today.getMonth() + 1,
     today.getFullYear()
   );
-  const past = GetWeeksOfCurrentMonth(today.getMonth(), today.getFullYear());
   const future = GetWeeksOfCurrentMonth(
     today.getMonth() + 2,
     today.getFullYear()

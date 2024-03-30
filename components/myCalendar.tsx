@@ -64,23 +64,26 @@ export default function MyCalendar() {
     // 예: setCurrentPageY((prev) => prev + 100) 또는 다른 로직
     let currentY = event.clientY || event.changedTouches[0].clientY; // 터치 이벤트 대응
     let endingdiffY = currentY - startY;
-
-    // console.log("dragend", endingdiffY);
+    let deltaY = recentMonth[0].weeks.length == 6 ? 40 : 0;
+    //드래그 한 거리가 50px 이상이면 다음 페이지로 넘어가게 설정
     if (Math.abs(endingdiffY) > 50) {
+      // 위에서 아래로 드래그할 때
       if (endingdiffY > 0) {
         setAnimProps({
+          //다음에 해당하는 위치로 이동한다.
           to: { transform: `translateY(${currentPageY + 200}px)` }, // 최종 위치로 애니메이션
           immediate: false, // 애니메이션 적용
           onRest: () => {
             requestAnimationFrame(() => {
               setAnimProps({
-                to: { transform: `translateY(${currentPageY}px)` }, // 최종 위치로 애니메이션
+                to: { transform: `translateY(${currentPageY - deltaY}px)` }, // 최종 위치로 애니메이션
                 immediate: true, // 애니메이션 적용
               });
             });
             setOffset((prev) => prev - 1);
           },
         });
+        // 아래에서 위로 드래그할 때
       } else {
         setAnimProps({
           to: { transform: `translateY(${currentPageY - 200}px)` }, // 최종 위치로 애니메이션
@@ -121,7 +124,6 @@ export default function MyCalendar() {
 
   useEffect(() => {
     setRecentMonth(getMonthAll(offset));
-    console.log("offset", offset);
   }, [offset]);
 
   return (
@@ -134,7 +136,13 @@ export default function MyCalendar() {
         <div className="md:p-5 p-2  bg-white rounded-t">
           <div className="flex flex-col items-center justify-between">
             <Thead />
-            <div className="w-full overflow-hidden max-h-[200px] relative">
+            <div
+              className={
+                recentMonth[1].weeks.length == 6
+                  ? "w-full overflow-hidden max-h-[240px] relative"
+                  : "w-full overflow-hidden max-h-[200px] relative"
+              }
+            >
               <animated.div
                 onMouseMove={handleDragMove}
                 onTouchMove={handleDragMove}
