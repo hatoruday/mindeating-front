@@ -49,7 +49,6 @@ export default function HomePage() {
         {/* 캘린더 */}
         <MyCalendar />
         {/** split bar */}
-
         <div className="border-t border-gray-200"></div>
         <footer className="flex justify-center">
           <div className="flex items-center content-center justify-items-center mt-5 justify-between px-4 w-[330px] h-[50px] rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">

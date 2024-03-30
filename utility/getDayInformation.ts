@@ -105,7 +105,9 @@ export default function getMonthAll(offset: number): MonthAll {
       today.getTime() - Math.abs(offset) * 30 * 24 * 60 * 60 * 1000
     );
   } else if (offset > 0) {
-    today.setMonth(today.getMonth() + 1);
+    today = new Date(
+      today.getTime() + Math.abs(offset) * 30 * 24 * 60 * 60 * 1000
+    );
   }
 
   console.log("새롭게 바뀐 달", today.getMonth() + 1, today.getFullYear());

@@ -7,7 +7,7 @@ interface MonthData {
 }
 type MonthAll = [MonthData, MonthData, MonthData];
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useSpring, animated } from "react-spring";
 import Thead from "./thead";
 import MyMonthList from "./myMonth";
@@ -72,33 +72,45 @@ export default function MyCalendar() {
           to: { transform: `translateY(${currentPageY + 200}px)` }, // 최종 위치로 애니메이션
           immediate: false, // 애니메이션 적용
           onRest: () => {
+            requestAnimationFrame(() => {
+              setAnimProps({
+                to: { transform: `translateY(${currentPageY}px)` }, // 최종 위치로 애니메이션
+                immediate: true, // 애니메이션 적용
+              });
+            });
             setOffset((prev) => prev - 1);
-            // console.log("setOffset", offset);
           },
         });
-        setCurrentPageY((prev) => prev + 200);
-
-        // console.log("currentPageY", currentPageY);
       } else {
         setAnimProps({
           to: { transform: `translateY(${currentPageY - 200}px)` }, // 최종 위치로 애니메이션
           immediate: false, // 애니메이션 적용
           onRest: () => {
+            requestAnimationFrame(() => {
+              setAnimProps({
+                to: { transform: `translateY(${currentPageY}px)` }, // 최종 위치로 애니메이션
+                immediate: true, // 애니메이션 적용
+              });
+            });
             setOffset((prev) => prev + 1);
-            // console.log("setOffset", offset);
           },
         });
-        setCurrentPageY((prev) => prev - 200);
-
-        // console.log("currentPageY", currentPageY);
       }
     } else {
+      /**
+       * 만약에 드래그가 끝났을 때 어느정도의 픽셀 이상 드래그 하지 않았을 경우에 원래 저장했던 기존 컴포넌트의 위치로
+       * translate 시킨다.
+       */
       setAnimProps({
         to: { transform: `translateY(${currentPageY}px)` }, // 최종 위치로 애니메이션
         immediate: false, // 애니메이션 적용
       });
     }
-
+    // setAnimProps({
+    //   to: { transform: `translateY(${currentPageY}px)` }, // 최종 위치로 애니메이션
+    //   immediate: false, // 애니메이션 적용
+    //   onRest: () => {},
+    // });
     setIsDragging(false);
   };
 
@@ -122,7 +134,7 @@ export default function MyCalendar() {
         <div className="md:p-5 p-2  bg-white rounded-t">
           <div className="flex flex-col items-center justify-between">
             <Thead />
-            <div className="w-full max-h-[200px] relative">
+            <div className="w-full overflow-hidden max-h-[200px] relative">
               <animated.div
                 onMouseMove={handleDragMove}
                 onTouchMove={handleDragMove}

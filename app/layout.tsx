@@ -19,11 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="min-h-full">
       <body
-        className={`${IBMfont.className} h-full bg-white min-h-full px-6 py-12 lg:px-8`}
+        className={`${IBMfont.className} h-full flex justify-center bg-[#c1f1c1] min-h-full  `}
       >
-        {children}
+        <div className="sm:max-w-[640px] w-full bg-white px-6 py-4 h-lvh">
+          {children}
+        </div>
       </body>
     </html>
   );
