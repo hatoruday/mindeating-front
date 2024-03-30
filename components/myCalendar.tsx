@@ -10,29 +10,6 @@ import MyMonth from "./myMonth";
 import MyMonthList from "./myMonth";
 
 export default function MyCalendar() {
-  // 현재 월에 해당하는 주별 날짜 2차원 배열을 가져옴
-  const today = new Date();
-
-  const [weeks, colorStatusWeeks, isFadeoutWeeks] = GetWeeksOfCurrentMonth(
-    today.getMonth() + 1,
-    today.getFullYear()
-  );
-  //현재 접혀있지 않는 주차들을 관리한다.
-  const [openIndex, setOpenIndex] = useState<number[]>(isFadeoutWeeks);
-  const toggle = (index: any, isDragging: boolean) => {
-    if (isDragging) return;
-    let newIndex: number[];
-    let summedValue = openIndex.reduce((a, b) => a + b, 0);
-    if (openIndex[index] == 1 && summedValue == 1) {
-      newIndex = openIndex.map((item: number, i: number) => 1);
-    } else {
-      newIndex = openIndex.map((item: number, i: number) =>
-        i === index ? 1 : 0
-      );
-    }
-
-    setOpenIndex(newIndex);
-  };
   /** 달력 각 월에 대해 스크롤 했을 때 터치하는 것 그대로 따라가되, 어느정도 임계치 이상을 넘기고 손가락을 뗏을때 다음
    * 월로 탄력적으로 이동하게 끔 애니메이션을 구현한다.
    */
@@ -134,7 +111,7 @@ export default function MyCalendar() {
                 style={animProps}
                 className="flex flex-col w-full h-full draggable"
               >
-                <MyMonthList offset={monthOffset} />
+                <MyMonthList offset={0} />
               </animated.div>
             </div>
           </div>

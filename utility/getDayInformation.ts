@@ -4,11 +4,14 @@ function ConvertTime(date: Date): Date {
   let dateOffset = new Date(date.getTime() - offset);
   return dateOffset;
 }
+
+interface MonthData {
+  weeks: Date[][];
+  colorStatusWeeks: number[][];
+  isFadeoutWeeks: number[];
+}
 // 현재 월에 해당하는 주별 날짜 2차원 배열을 가져옴
-export default function GetWeeksOfCurrentMonth(
-  month: number,
-  year: number
-): [Date[][], number[][], number[]] {
+function GetWeeksOfCurrentMonth(month: number, year: number): MonthData {
   const now = new Date();
   const firstDayOfMonth = new Date(year, month - 1, 1);
   const dayOfWeek = firstDayOfMonth.getDay();
@@ -62,7 +65,11 @@ export default function GetWeeksOfCurrentMonth(
     // 이전달이거나 다음달의 날짜일경우 -1 플래그를 주고, 오늘날짜일 경우 1플래그를 준다.
     if (colorStatusCurrent.getMonth() + 1 != month) {
       colorStatusWeek.push(-1);
-    } else if (colorStatusCurrent.getDate() === now.getDate()) {
+    } else if (
+      colorStatusCurrent.getDate() === now.getDate() &&
+      colorStatusCurrent.getMonth() === now.getMonth() &&
+      colorStatusCurrent.getFullYear() === now.getFullYear()
+    ) {
       colorStatusWeek.push(1);
     } else {
       colorStatusWeek.push(0);
@@ -78,5 +85,25 @@ export default function GetWeeksOfCurrentMonth(
   colorStatusWeeks[0][3] = 2;
   colorStatusWeeks[0][4] = 3;
   colorStatusWeeks[0][5] = 4;
-  return [weeks, colorStatusWeeks, isFadeoutWeeks];
+  let monthData = {
+    weeks: weeks,
+    colorStatusWeeks: colorStatusWeeks,
+    isFadeoutWeeks: isFadeoutWeeks,
+  };
+  return monthData;
+}
+
+type MonthAll = [MonthData, MonthData, MonthData];
+export default function getMonthAll(offset: number): MonthAll {
+  const today = new Date();
+  const current = GetWeeksOfCurrentMonth(
+    today.getMonth() + 1,
+    today.getFullYear()
+  );
+  const past = GetWeeksOfCurrentMonth(today.getMonth(), today.getFullYear());
+  const future = GetWeeksOfCurrentMonth(
+    today.getMonth() + 2,
+    today.getFullYear()
+  );
+  return [past, current, future];
 }
