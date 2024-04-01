@@ -29,13 +29,15 @@ const routineExampleList = [
 
 export default function Routine() {
   const [routines, setRoutines] = useState(routineExampleList);
-
+  const selectRoutine = (id: number) => {
+    console.log(id, "is selected");
+  };
   return (
     <div className="flex flex-col ">
       <header className="flex w-full justify-between">
         <div className="flex">
           <Image
-            src="/routineIcon.svg"
+            src="/info/routineIcon.svg"
             width={16}
             height={16}
             alt="routineIcon"

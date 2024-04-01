@@ -23,7 +23,7 @@ export default function RootLayout({
       <body
         className={`${IBMfont.className} h-full flex justify-center bg-[#c1f1c1] min-h-full  `}
       >
-        <div className="sm:max-w-[640px] w-full bg-white px-6 py-4 h-lvh">
+        <div className="sm:max-w-[640px] w-full min-h-screen h-auto bg-white px-6 py-4 ">
           {children}
         </div>
       </body>

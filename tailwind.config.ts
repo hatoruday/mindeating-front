@@ -8,6 +8,26 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        black1: "#2C2C30",
+        black2: "#696972",
+        black3: "#9F9FAC",
+        black4: "#E7E7E7",
+        green2: "#c1f1c1",
+        green3: "#F5FEF5",
+        textYellow: "#E1AE00",
+        faceYellow: "#FFD031",
+        yellow1: "#FFe27F",
+        yellow2: "#FFF9E5",
+        textRed: "#F05757",
+        faceRed: "#FF748E",
+        red1: "#FFC4CF",
+        red2: "#FFE5EA",
+        textBlue: "#009EE1",
+        faceBlue: "#4DDBFA",
+        blue1: "#7BDDF2",
+        blue2: "#D8F5FB",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

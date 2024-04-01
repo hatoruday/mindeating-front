@@ -64,7 +64,7 @@ export default function MyCalendar() {
     // 예: setCurrentPageY((prev) => prev + 100) 또는 다른 로직
     let currentY = event.clientY || event.changedTouches[0].clientY; // 터치 이벤트 대응
     let endingdiffY = currentY - startY;
-    let deltaY = recentMonth[0].weeks.length == 6 ? 40 : 0;
+
     //드래그 한 거리가 50px 이상이면 다음 페이지로 넘어가게 설정
     if (Math.abs(endingdiffY) > 50) {
       // 위에서 아래로 드래그할 때
@@ -76,7 +76,7 @@ export default function MyCalendar() {
           onRest: () => {
             requestAnimationFrame(() => {
               setAnimProps({
-                to: { transform: `translateY(${currentPageY - deltaY}px)` }, // 최종 위치로 애니메이션
+                to: { transform: `translateY(${currentPageY}px)` }, // 최종 위치로 애니메이션
                 immediate: true, // 애니메이션 적용
               });
             });
