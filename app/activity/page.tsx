@@ -3,6 +3,7 @@
 import Satiety from "@/components/record/mind/eatingSatiety";
 import FeedbackNote from "@/components/record/mind/feedbackNote";
 import HungerMeter from "@/components/record/mind/hungerMeter";
+import WhatIsYourTime from "@/components/record/whatIsYourEatingTime";
 import WhatIsYourEatingTime from "@/components/record/whatIsYourEatingTime";
 import Image from "next/image";
 
@@ -196,7 +197,7 @@ export default function MindFullEating() {
           <></>
         )}
       </section>
-      <WhatIsYourEatingTime timeType="활동" />
+      <WhatIsYourTime timeType="활동 시간대를 알려주세요!" />
       <section className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image

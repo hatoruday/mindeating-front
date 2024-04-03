@@ -30,13 +30,22 @@ export default function LoginPage() {
     if (userId === "" || password === "") return;
 
     try {
-      // login({
-      //   variables: {
-      //     userId,
-      //     password,
-      //   },
-      // });
-      // navigate("/");
+      const data = {
+        userId,
+        password,
+      };
+      const JSONdata = JSON.stringify(data);
+      const endpoint = "/api/login";
+
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSONdata,
+      };
+
+      const response = await fetch(endpoint, options);
     } catch (e: any) {
       // if (e instanceof FirebaseError) {
       //   setError(e.message);

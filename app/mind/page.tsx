@@ -8,6 +8,7 @@ import EatingSatiety from "@/components/record/mind/eatingSatiety";
 import FeedbackNote from "@/components/record/mind/feedbackNote";
 import WhatIsYourEatingTime from "@/components/record/whatIsYourEatingTime";
 import Satiety from "@/components/record/mind/eatingSatiety";
+import WhatIsYourTime from "@/components/record/whatIsYourEatingTime";
 
 export default function MindFullEating() {
   const [menu, setMenu] = useState<string[]>([]); //required
@@ -146,7 +147,7 @@ export default function MindFullEating() {
           </div>
         </article>
       </section>
-      <WhatIsYourEatingTime timeType="식사" />
+      <WhatIsYourTime timeType="식사 시간대를 알려주세요!" />
       <section className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />

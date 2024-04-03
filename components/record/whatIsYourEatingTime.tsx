@@ -1,10 +1,6 @@
 import Image from "next/image";
 
-export default function WhatIsYourEatingTime({
-  timeType,
-}: {
-  timeType: string;
-}) {
+export default function WhatIsYourTime({ timeType }: { timeType: string }) {
   return (
     <section className="flex flex-col gap-y-2 py-4">
       <header className="flex px-3 gap-x-3">
@@ -14,9 +10,7 @@ export default function WhatIsYourEatingTime({
           height={19}
           alt="bookIcon"
         />
-        <span className="font-medium text-black2 text-[14px]">
-          {timeType} 시간대를 알려주세요!
-        </span>
+        <span className="font-medium text-black2 text-[14px]">{timeType}</span>
       </header>
       <article className="flex gap-x-3">
         <div className="flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border border-[#e7e7e7]">
