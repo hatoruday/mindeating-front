@@ -1,5 +1,9 @@
 "use client";
 
+import Satiety from "@/components/record/mind/eatingSatiety";
+import FeedbackNote from "@/components/record/mind/feedbackNote";
+import HungerMeter from "@/components/record/mind/hungerMeter";
+import WhatIsYourEatingTime from "@/components/record/whatIsYourEatingTime";
 import Image from "next/image";
 
 import { useState } from "react";
@@ -27,14 +31,9 @@ export default function MindFullEating() {
   const date = new Date();
 
   /**
-
-  
-
-* 어떤 활동을 하셨나요?의 상태를 관리한다.
-
-  
-
-*/
+   * 어떤 활동을 하셨나요?의 상태를 관리한다.
+   * 기타를 클릭한 경우 컴포넌트를 띄우고 데이터를 저장한다.
+   */
 
   const typeList = [
     "휴식",
@@ -99,6 +98,15 @@ export default function MindFullEating() {
       }
     }
   };
+
+  /**
+   * 활동 시간대를 알려주세요!의 상태를 관리한다.
+   */
+
+  /**
+   * 활동 만족도의 상태를 관리한다.
+   */
+  const [satisfactionIndex, setSatisfactionIndex] = useState<number>(1);
 
   return (
     <div className="flex flex-col">
@@ -187,6 +195,99 @@ export default function MindFullEating() {
         ) : (
           <></>
         )}
+      </section>
+      <WhatIsYourEatingTime timeType="활동" />
+      <section className="flex flex-col gap-y-2 py-4">
+        <header className="flex px-3 gap-x-3">
+          <Image
+            src="/mindFullEating/clockPlusIcon.svg"
+            width={17}
+            height={19}
+            alt="bookIcon"
+          />
+          <span className="font-medium text-black2 text-[14px]">
+            활동을 얼마나 했나요?
+          </span>
+        </header>
+        <article className="flex gap-x-3">
+          {["30분 미만", "30분 - 1시간", "1시간 - 2시간", "2시간 초과"].map(
+            (timeAmount, index) => {
+              return (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setTime(timeAmount);
+                  }}
+                  className={`flex  justify-center h-9 items-center px-4 py-2 relative rounded-[56px] border ${
+                    time === timeAmount
+                      ? "border-green2 bg-green3"
+                      : "border-black4"
+                  }`}
+                >
+                  <p className="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-black1">
+                    {timeAmount}
+                  </p>
+                </button>
+              );
+            }
+          )}
+        </article>
+      </section>
+      <article className="flex flex-col gap-y-2 py-4">
+        <header className="flex px-3 gap-x-3">
+          <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
+
+          <span className="font-medium text-black2 text-[14px]">
+            활동 강도는 어땠나요?
+          </span>
+        </header>
+
+        <div className="flex gap-3 w-4/5">
+          <div className="flex flex-shrink-0 items-center">
+            <span className="text-black3 items-center text-[12px]">
+              Too Low
+            </span>
+          </div>
+          <HungerMeter hungerList={[1, 2, 3, 4, 5]} hunger_before_meal={1} />
+          <div className="flex flex-shrink-0 items-center">
+            <span className="text-black3 text-[12px]">Too High</span>
+          </div>
+        </div>
+      </article>
+      <article className="flex flex-col gap-y-2 py-4">
+        <header className="flex px-3 gap-x-3">
+          <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
+
+          <span className="font-medium text-black2 text-[14px]">
+            활동 강도는 어땠나요?
+          </span>
+        </header>
+
+        <Satiety selectedEmoji={satisfactionIndex} />
+      </article>
+      <article className="flex flex-col gap-y-2 py-4">
+        <header className="flex px-3 py-2 gap-x-3">
+          <Image
+            src="/info/feedbackPencile.svg"
+            width={18}
+            height={16}
+            alt="bookIcon"
+          />
+
+          <span className="font-medium text-black2 text-[14px]">
+            피드백 노트
+          </span>
+        </header>
+
+        <FeedbackNote note={note} setNote={setNote} />
+      </article>
+
+      <section className="my-10">
+        <button className="w-[330px] h-[52px] rounded-xl bg-green3">
+          <p className="text-base font-medium text-center text-black3">
+            제출하기
+          </p>
+        </button>
       </section>
     </div>
   );
