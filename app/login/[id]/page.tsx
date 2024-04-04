@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import { useState } from "react";
+interface IParams {
+  params: { id: string };
+}
 
-export default function LoginPage() {
+export default function LoginPage({ params: { id } }: IParams) {
   const [userId, setUserId] = useState("");
   const [slash, setSlash] = useState(false);
   const [password, setPassword] = useState("");
@@ -31,11 +34,12 @@ export default function LoginPage() {
 
     try {
       const data = {
-        userId,
+        id,
+        nickname: userId,
         password,
       };
       const JSONdata = JSON.stringify(data);
-      const endpoint = "/api/login";
+      const endpoint = "http://13.124.182.175:8000/paid-login";
 
       const options = {
         method: "POST",
@@ -46,6 +50,17 @@ export default function LoginPage() {
       };
 
       const response = await fetch(endpoint, options);
+      if (response.ok) {
+        const result = await response.json();
+        if (result.success) {
+          alert("로그인 성공");
+        } else {
+          alert("로그인 실패");
+        }
+      } else {
+        // 에러 처리
+        console.error("로그인 실패");
+      }
     } catch (e: any) {
       // if (e instanceof FirebaseError) {
       //   setError(e.message);
