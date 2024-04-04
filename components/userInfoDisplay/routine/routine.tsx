@@ -217,8 +217,13 @@ export default function Routine() {
         )}
 
         {isDeleting ? (
-          <div className="w-[58px] h-9 rounded-[40px] bg-red2 border border-red1">
-            완료
+          <div className="flex justify-end w-full px-3 py-2">
+            <button
+              onClick={completeDeteteRoutine}
+              className="flex justify-center content-center items-center w-[58px] h-9 rounded-[40px] bg-red2 border border-red1"
+            >
+              <span className="font-medium text-[14px] text-center">완료</span>
+            </button>
           </div>
         ) : (
           <></>
