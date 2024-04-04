@@ -110,7 +110,7 @@ export default function Routine() {
   return (
     <div className="flex flex-col ">
       <header className="flex w-full justify-between">
-        <div className="flex">
+        <div className="flex gap-2">
           <Image
             src="/info/routineIcon.svg"
             width={16}

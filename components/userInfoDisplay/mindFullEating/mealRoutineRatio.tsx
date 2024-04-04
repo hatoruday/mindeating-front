@@ -7,7 +7,7 @@ export default function MealRoutineRatio({
   mealRoutineList: number[];
 }) {
   return (
-    <div className="flex items-center gap-2 px-2  h-[30px] rounded-[40px] border border-[#e7e7e7]">
+    <div className="flex flex-shrink-0 flex-grow-0 items-center gap-2 px-2  h-[30px] rounded-[40px] border border-[#e7e7e7]">
       {mealRoutineList.map((meal, mealIndex) => {
         return (
           <div key={mealIndex}>
