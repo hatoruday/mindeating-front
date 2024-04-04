@@ -48,7 +48,7 @@ export default function Emotion() {
         </header>
         <section className="flex px-2 flex-col gap-y-7 py-4">
           <article className="flex justify-between px-3 items-center">
-            <div className="flex gap-1">
+            <div className="flex flex-shrink-0 flex-grow-0 gap-1">
               <Image
                 src="/info/clockIcon.svg"
                 width={16}
@@ -59,8 +59,8 @@ export default function Emotion() {
                 감정을 느낀 시간
               </p>
             </div>
-            <div className="w-[136px] h-[2px] bg-[#E7E7E7]"></div>
-            <div className="flex justify-center content-center items-center w-[80px] h-[30px] rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">
+            <div className="w-full mx-3 h-[2px] bg-[#E7E7E7]"></div>
+            <div className="flex flex-shrink-0 flex-grow-0 justify-center content-center items-center w-[80px] h-[30px] rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">
               <p className="text-sm font-semibold text-[#2c2c30]">
                 {emotionTime[emotionTimeIndex]}
               </p>
@@ -79,7 +79,7 @@ export default function Emotion() {
                 감정 노트
               </p>
             </header>
-            <div className="flex items-center px-5 w-[291px] h-min-[30px] rounded-[40px] bg-[#f5fef5] border border-[#e7e7e7]">
+            <div className="flex items-center px-5 w-4/5 py-1 rounded-[40px] bg-[#f5fef5] border border-[#e7e7e7]">
               <p className="font-semibold  text-[12px]">{emotionNote}</p>
             </div>
           </article>
