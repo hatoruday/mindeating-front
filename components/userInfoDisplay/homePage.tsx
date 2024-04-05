@@ -8,7 +8,13 @@ import RightChevron from "../rightChevron";
 import LeftChevron from "../leftChevron";
 import UserInfoDisplay from "./userInfoDisplay";
 
-export default function HomePage({ info }: { info: any }) {
+export default function HomePage({
+  info,
+  userId,
+}: {
+  info: any;
+  userId: string;
+}) {
   const name = "현경";
   const month = 3;
   const day = 14;
@@ -55,7 +61,7 @@ export default function HomePage({ info }: { info: any }) {
         {isFadeOut ? (
           <>
             <div className="w-full h-5" />
-            <UserInfoDisplay info={info} />;
+            <UserInfoDisplay info={info} userId={userId} />;
           </>
         ) : (
           <footer className="flex justify-center">

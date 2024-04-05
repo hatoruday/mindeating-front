@@ -72,7 +72,7 @@ export default function MindFullEating({
 
   //식사루틴 달성률 상태변수 : 1이면 채워짐 0이면 안채워짐
   //(int, boolean) dictionary의 boolean이 true인 key의 갯수만큼 1이 앞에서부터 채워진 리스트를 만든다.
-  console.log(eatingList.successed_meal_routine);
+
   eatingList.successed_meal_routine[0].valueOf();
   let mealRoutineList = [];
   let routineCount = 0;

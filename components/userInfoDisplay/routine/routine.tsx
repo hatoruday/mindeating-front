@@ -1,25 +1,93 @@
 "use client";
 
+import PostFetch from "@/api/postFetch";
 import Image from "next/image";
 
 import { useState } from "react";
 
 import { FaRegCircle } from "react-icons/fa";
+import { v4 as uuidv4 } from "uuid";
 
-const routineExampleList = [
-  "아침에 운동다녀오기",
+interface Routine {
+  routine_id: string;
+  text: string;
+  selected_date?: string;
+}
 
-  "커피 마시지 않기",
+export default function Routine({
+  userId,
+  routineList,
+}: {
+  userId: string;
+  routineList: Routine[];
+}) {
+  const createRoutine = async ({ text, id }: { text: string; id: string }) => {
+    const eatingData = {
+      user_id: userId,
+      record: {
+        routine_id: id,
+        text,
+      },
+    };
+    const JSONdata: string = JSON.stringify(eatingData);
 
-  "저녁에 운동다녀오기",
+    await PostFetch(JSONdata, "add-routine");
+  };
 
-  "폭식하지않기",
-];
+  const fetchDeleteRoutine = async ({
+    userId,
+    routineIds,
+  }: {
+    userId: string;
+    routineIds: string[];
+  }) => {
+    const data = {
+      user_id: userId,
+      routine_ids: routineIds,
+    };
+    const JSONdata: string = JSON.stringify(data);
 
-export default function Routine() {
-  const [routines, setRoutines] = useState(routineExampleList);
+    await PostFetch(JSONdata, "delete-routine");
+  };
+  const fetchSelectRoutine = async ({
+    userId,
+    routineId,
+  }: {
+    userId: string;
+    routineId: string;
+  }) => {
+    const data = {
+      user_id: userId,
+      routine_id: routineId,
+    };
+    const JSONdata: string = JSON.stringify(data);
 
-  const [selectedRoutine, setSelectedRoutine] = useState<string[]>([]);
+    await PostFetch(JSONdata, "select-routine");
+  };
+  const fetchUnSelectRoutine = async ({
+    userId,
+    routineId,
+  }: {
+    userId: string;
+    routineId: string;
+  }) => {
+    const data = {
+      user_id: userId,
+      routine_id: routineId,
+    };
+    const JSONdata: string = JSON.stringify(data);
+
+    await PostFetch(JSONdata, "unselect-routine");
+  };
+
+  const [routines, setRoutines] = useState<Routine[]>(routineList);
+
+  //routine의 selectedDate가 undefined이지 않은 Routine[]만 가져온다.
+  const [selectedRoutine, setSelectedRoutine] = useState<string[]>(
+    routineList
+      .filter((routine) => routine.selected_date !== null)
+      .map((routine) => routine.routine_id)
+  );
 
   //추가버튼을 눌렀을 때 활성화되는 상태변수
 
@@ -29,15 +97,17 @@ export default function Routine() {
 
   // 텍스트 필드의 입력을 처리하는 함수
 
-  const completeSelectedRoutine = (routine: string) => {
+  const completeSelectedRoutine = (routineId: string) => {
     let selectedRoutineCopy = [...selectedRoutine];
 
-    if (selectedRoutine.includes(routine)) {
+    if (selectedRoutine.includes(routineId)) {
+      fetchUnSelectRoutine({ userId, routineId: routineId });
       selectedRoutineCopy = selectedRoutineCopy.filter(
-        (selected) => selected !== routine
+        (selected) => selected !== routineId
       );
     } else {
-      selectedRoutineCopy.push(routine);
+      selectedRoutineCopy.push(routineId);
+      fetchSelectRoutine({ userId, routineId: routineId });
     }
 
     setSelectedRoutine(selectedRoutineCopy);
@@ -59,9 +129,11 @@ export default function Routine() {
 
       if (currentInput.trim() !== "") {
         // 새로운 아이템을 menu 배열에 추가
-
-        setRoutines([...routines, currentInput.trim()]);
-
+        const id: string = uuidv4();
+        const text = currentInput.trim();
+        const newRoutine: Routine = { text, routine_id: id };
+        setRoutines([...routines, newRoutine]);
+        createRoutine({ text, id });
         // 입력 필드 초기화
 
         setCurrentInput("");
@@ -79,15 +151,15 @@ export default function Routine() {
     []
   );
 
-  const selectDeleteRoutine = (routine: string) => {
+  const selectDeleteRoutine = (routineId: string) => {
     let selectedRoutineCopy = [...selectedDetingRoutine];
 
-    if (selectedDetingRoutine.includes(routine)) {
+    if (selectedDetingRoutine.includes(routineId)) {
       selectedRoutineCopy = selectedRoutineCopy.filter(
-        (selected) => selected !== routine
+        (selected) => selected !== routineId
       );
     } else {
-      selectedRoutineCopy.push(routine);
+      selectedRoutineCopy.push(routineId);
     }
 
     setselectedDetingRoutine(selectedRoutineCopy);
@@ -96,10 +168,10 @@ export default function Routine() {
   const completeDeteteRoutine = () => {
     let routinesCopy = [...routines];
 
-    selectedDetingRoutine.forEach((routine) => {
-      routinesCopy = routinesCopy.filter((r) => r !== routine);
+    selectedDetingRoutine.forEach((routineId) => {
+      routinesCopy = routinesCopy.filter((r) => r.routine_id !== routineId);
     });
-
+    fetchDeleteRoutine({ userId, routineIds: selectedDetingRoutine });
     setRoutines(routinesCopy);
 
     setselectedDetingRoutine([]);
@@ -154,30 +226,30 @@ export default function Routine() {
               className={`flex h-9 border ${
                 isDeleting
                   ? "border-red1 bg-red2"
-                  : selectedRoutine.includes(routine)
+                  : selectedRoutine.includes(routine.routine_id)
                   ? "border-green2 bg-green3"
                   : "border-black4"
               } w-full rounded-[40px]`}
             >
               <div className="flex justify-between items-center w-full px-6">
-                <span className="font-medium text-[14px]">{routine}</span>
+                <span className="font-medium text-[14px]">{routine.text}</span>
 
                 <button
                   onClick={() => {
                     if (isDeleting) {
-                      selectDeleteRoutine(routine);
+                      selectDeleteRoutine(routine.routine_id);
                     } else {
-                      completeSelectedRoutine(routine);
+                      completeSelectedRoutine(routine.routine_id);
                     }
                   }}
                 >
                   {isDeleting ? (
-                    selectedDetingRoutine.includes(routine) ? (
+                    selectedDetingRoutine.includes(routine.routine_id) ? (
                       <FaRegCircle className="text-textRed bg-faceRed rounded-full" />
                     ) : (
                       <FaRegCircle className="text-textRed" />
                     )
-                  ) : selectedRoutine.includes(routine) ? (
+                  ) : selectedRoutine.includes(routine.routine_id) ? (
                     <Image
                       src="/routineCircle.svg"
                       alt="routineCircle"

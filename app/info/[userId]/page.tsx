@@ -13,7 +13,7 @@ async function getInfo(userId: string) {
     };
 
     const JSONdata = JSON.stringify(fetchingData);
-    const endpoint = "http://13.124.182.175/record/get-records";
+    const endpoint = "http://13.124.182.175:8000/record/get-records";
 
     const options = {
       method: "POST",
@@ -52,7 +52,7 @@ export default async function UserInfo({ params: { userId } }: IParams) {
 
   return (
     <div className="flex flex-col">
-      <HomePage info={info} />
+      <HomePage info={info} userId={userId} />
     </div>
   );
 }
