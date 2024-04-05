@@ -3,22 +3,28 @@
 import Satiety from "@/components/record/mind/eatingSatiety";
 import FeedbackNote from "@/components/record/mind/feedbackNote";
 import HungerMeter from "@/components/record/mind/hungerMeter";
+import RecordSubmit from "@/components/record/recordSubmit";
 import WhatIsYourTime from "@/components/record/whatIsYourEatingTime";
 import WhatIsYourEatingTime from "@/components/record/whatIsYourEatingTime";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 
-export default function MindFullEating() {
+interface IParams {
+  params: { userId: string };
+}
+
+export default function ActivityPage({ params: { userId } }: IParams) {
   /**
 
 * 서버에 보낼 상태를 관리한다.
 
 */
 
-  const [type, setType] = useState<string[]>([]);
-
+  const [names, setNames] = useState<string[]>([]);
+  const [extras, setExtras] = useState<string[]>([]); //not required
   const [when, setWhen] = useState<string>("");
 
   const [time, setTime] = useState<string>(""); //not required
@@ -28,8 +34,6 @@ export default function MindFullEating() {
   const [satisfaction, setSatisfaction] = useState<string>(""); //not required
 
   const [note, setNote] = useState<string>(""); //not required
-
-  const date = new Date();
 
   /**
    * 어떤 활동을 하셨나요?의 상태를 관리한다.
@@ -62,16 +66,10 @@ export default function MindFullEating() {
 
   //typeList의 각 요소의 index에 대해 1: 클릭됨 0: 클릭안됨
 
-  const [selectedType, setSelectedType] = useState<number[]>([
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  ]);
-
   //기타를 클릭했을 때 나오는 입력칸의 상태를 관리한다.
 
-  const [menu, setMenu] = useState<string[]>([]);
-
   const [currentInput, setCurrentInput] = useState("");
-
+  const [selectExtra, setSelectExtra] = useState<boolean>(false);
   // 텍스트 필드의 입력을 처리하는 함수
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,7 +89,7 @@ export default function MindFullEating() {
       if (currentInput.trim() !== "") {
         // 새로운 아이템을 menu 배열에 추가
 
-        setMenu([...menu, currentInput.trim()]);
+        setExtras([...extras, currentInput.trim()]);
 
         // 입력 필드 초기화
 
@@ -100,14 +98,62 @@ export default function MindFullEating() {
     }
   };
 
-  /**
-   * 활동 시간대를 알려주세요!의 상태를 관리한다.
-   */
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
-  /**
-   * 활동 만족도의 상태를 관리한다.
-   */
-  const [satisfactionIndex, setSatisfactionIndex] = useState<number>(1);
+  const submitFunction = async () => {
+    setIsLoading(true);
+    // e.preventDefault();
+
+    // if (loading || userId === "" || password === "") return;
+    const submitNames = [...names, ...extras];
+    try {
+      const eatingData = {
+        user_id: userId,
+        record: {
+          names: submitNames,
+          when,
+          intensity,
+          time,
+          satisfaction,
+          note,
+        },
+      };
+
+      const JSONdata = JSON.stringify(eatingData);
+      const endpoint = "http://13.124.182.175:8000/record/record-activity/";
+
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSONdata,
+      };
+      console.log(options.body);
+      const response = await fetch(endpoint, options);
+      // console.log(response);
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result);
+        if (result.success) {
+          router.push("/info/");
+        } else {
+          alert("전송 실패" + result.message);
+          setIsLoading(false);
+        }
+      } else {
+        // 에러 처리
+        console.error("response not ok 전송 실패");
+        setIsLoading(false);
+      }
+    } catch (e: any) {
+      // if (e instanceof FirebaseError) {
+      //   setError(e.message);
+      // }
+    } finally {
+    }
+  };
 
   return (
     <div className="flex flex-col">
@@ -135,30 +181,36 @@ export default function MindFullEating() {
         </header>
 
         <article className="flex flex-wrap justify-start items-center gap-2">
-          {typeList.map((type, index) => {
+          {typeList.map((name, index) => {
             return (
               <button
                 key={index}
                 onClick={() => {
-                  let newSelectedType = [...selectedType];
-
-                  newSelectedType[index] = 1 - newSelectedType[index];
-
-                  setSelectedType(newSelectedType);
+                  if (name === "기타") setSelectExtra(!selectExtra);
+                  const newNames = [...names];
+                  if (newNames.includes(name)) {
+                    // 이미 선택된 경우 선택 해제
+                    newNames.splice(newNames.indexOf(name), 1);
+                    setNames(newNames);
+                  } else {
+                    // 선택되지 않은 경우 선택
+                    newNames.push(name);
+                    setNames(newNames);
+                  }
                 }}
                 className={`flex justify-center items-center h-9 relative px-4 py-2.5 rounded-[56px] border ${
-                  selectedType[index] == 1
+                  names.includes(name)
                     ? "border-green2 bg-green3"
                     : "border-black4"
                 } text-sm font-medium text-[#2c2c30] min-w-[80px]`}
               >
-                {type}
+                {name}
               </button>
             );
           })}
         </article>
 
-        {selectedType[selectedType.length - 1] == 1 ? (
+        {names.includes("기타") ? (
           <div className="flex flex-col justify-around w-full  px-3 py-2 rounded-[9.3px] bg-green3 border border-green2">
             <p className="text-[14px] text-black1 py-2 font-medium px-3">
               기타
@@ -171,7 +223,7 @@ export default function MindFullEating() {
               placeholder="활동 이름을 알려주세요!"
             />
             <div className="flex flex-wrap gap-1 px-2 my-1.5">
-              {menu.map((item, index) => (
+              {extras.map((item, index) => (
                 <div
                   key={index}
                   className="flex justify-center items-center h-9 relative gap-2 px-3.5 py-2.5 rounded-[56px] border border-black4 bg-white"
@@ -179,13 +231,13 @@ export default function MindFullEating() {
                   <p className="flex flex-grow-0 flex-shrink-0">{item}</p>
                   <RxCross2
                     onClick={() => {
-                      let newMenu: string[] = [];
-                      menu.forEach((element, idx) => {
+                      let newExtras: string[] = [];
+                      extras.forEach((element, idx) => {
                         if (idx !== index) {
-                          newMenu.push(element);
+                          newExtras.push(element);
                         }
                       });
-                      setMenu(newMenu);
+                      setExtras(newExtras);
                     }}
                     className="w-[20px] h-[20px]"
                   />
@@ -242,8 +294,8 @@ export default function MindFullEating() {
           )}
         </article>
       </section>
-      <article className="flex flex-col gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3">
+      <article className="flex flex-col w-full justify-center content-center items-center gap-y-2 py-4">
+        <header className="flex px-3 gap-x-3 w-full">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
 
           <span className="font-medium text-black2 text-[14px]">
@@ -251,7 +303,7 @@ export default function MindFullEating() {
           </span>
         </header>
 
-        <div className="flex gap-3 w-4/5">
+        <div className="flex gap-3 w-4/5 justify-center my-3">
           <div className="flex flex-shrink-0 items-center">
             <span className="text-black3 items-center text-[12px]">
               Too Low
@@ -298,13 +350,17 @@ export default function MindFullEating() {
         <FeedbackNote note={note} setNote={setNote} />
       </article>
 
-      <section className="my-10">
-        <button className="w-[330px] h-[52px] rounded-xl bg-green3">
-          <p className="text-base font-medium text-center text-black3">
-            제출하기
-          </p>
-        </button>
-      </section>
+      <RecordSubmit
+        submitFunction={submitFunction}
+        isLoading={isLoading}
+        isActive={
+          names.length > 0 &&
+          when != "" &&
+          time != "" &&
+          intensity != 0 &&
+          satisfaction != ""
+        }
+      />
     </div>
   );
 }

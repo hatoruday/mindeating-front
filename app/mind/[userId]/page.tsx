@@ -11,6 +11,7 @@ import Satiety from "@/components/record/mind/eatingSatiety";
 import WhatIsYourTime from "@/components/record/whatIsYourEatingTime";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useRouter } from "next/navigation";
+import RecordSubmit from "@/components/record/recordSubmit";
 
 interface SuccessMealRoutine {
   [key: number]: boolean;
@@ -78,20 +79,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
       isDone: false,
     },
   ];
-  /**
-   * 식사 만족도를 관리하는 상태값과 함수
-   */
-  const [satisfactionIndex, setSatisfactionIndex] = useState<number>(1);
 
-  /**
-   * 피드백 노트의 상태값과 함수를 useState를 통해 관리한다.
-   */
-  const handleNoteChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const {
-      target: { value },
-    } = e;
-    setNote(value);
-  };
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
@@ -386,34 +374,19 @@ export default function MindFullEating({ params: { userId } }: IParams) {
         />
         <FeedbackNote note={note} setNote={setNote} />
       </section>
-      <section className="flex w-full justify-center">
-        {menu.length > 0 &&
-        type != "" &&
-        when != "" &&
-        hunger_before_meal != 0 &&
-        hunger_after_meal != 0 &&
-        speed != "" &&
-        satisfaction != "" ? (
-          <button
-            onClick={() => submitFunction()}
-            className="w-4/5 h-[52px] rounded-xl flex justify-center content-center items-center bg-green2"
-          >
-            {isLoading ? (
-              <AiOutlineLoading3Quarters className="animate-spin text-xl font-medium " />
-            ) : (
-              <p className="text-base font-medium text-center text-black1">
-                제출하기
-              </p>
-            )}
-          </button>
-        ) : (
-          <button className="w-4/5 h-[52px] rounded-xl flex justify-center content-center bg-green3">
-            <p className="text-base font-medium text-center text-black3">
-              제출하기
-            </p>
-          </button>
-        )}
-      </section>
+      <RecordSubmit
+        submitFunction={submitFunction}
+        isLoading={isLoading}
+        isActive={
+          menu.length > 0 &&
+          type != "" &&
+          when != "" &&
+          hunger_before_meal != 0 &&
+          hunger_after_meal != 0 &&
+          speed != "" &&
+          satisfaction != ""
+        }
+      />
     </div>
   );
 }
