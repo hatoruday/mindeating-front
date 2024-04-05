@@ -33,7 +33,8 @@ export default function MindFullEating({
   //만족스러운 정도를 0~2단계로 표현한다.
   const satisfiedString = ["불만족스러웠어..", "만족스러웠어!", "적당해요!"];
   //eatingList.satisfaction의 값에 대응되는 satisfiedString의 인덱스를 구한다.
-  const satisfiedExtent = satisfiedString.indexOf(eatingList.satisfaction);
+  const satisfyMapping = ["불만족", "만족", "적당"];
+  const satisfiedExtent = satisfyMapping.indexOf(eatingList.satisfaction);
   const foodCategory = eatingList.type;
 
   //식사시간대 상태변수

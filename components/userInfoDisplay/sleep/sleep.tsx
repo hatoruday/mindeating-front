@@ -3,23 +3,33 @@ import SatisfiedImoticon from "../mindFullEating/satisfiedImoticon";
 import StatusBar from "../mindFullEating/statusBar";
 import { FaRegCircle } from "react-icons/fa";
 import { RxCross2, RxCrossCircled } from "react-icons/rx";
+interface SleepList {
+  when: string;
+  time: string;
+  empty_stomach: boolean;
+  satisfaction: string;
+  note: string;
+  date: string;
+  timestamp: string;
+}
 
-export default function Sleep() {
+export default function Sleep({ sleepList }: { sleepList: SleepList }) {
   /**
    * activity widget에 대한 상태변수를 관리한다.
    */
   //activity header 상태변수
 
-  const satisfiedExtent = 1; //만족스러운 정도를 0~2단계로 표현한다.
   const satisfiedString = ["불만족스러웠어..", "만족스러웠어!", "적당해요!"];
+  const satisfyMapping = ["불만족", "만족", "적당"];
+  const satisfiedExtent = satisfyMapping.indexOf(sleepList.satisfaction);
   //총 취침시간 상태변수
-  const sleepAmount = "6-7시간";
+  const sleepAmount = sleepList.time;
   //취침시간대 상태변수
-  const sleepTimeZone = "12시 이전";
+  const sleepTimeZone = sleepList.when;
   //활동강도 상태변수
-  const maintainEmptyStomach = false;
+  const maintainEmptyStomach = sleepList.empty_stomach;
   //피드백 노트
-  const feedbackContent = "밤에 자꾸 많이 먹어서 그게 아쉬워...";
+  const feedbackContent = sleepList.note;
   return (
     <div className="flex flex-col">
       <header className="flex w-full py-3 justify-between">
@@ -111,22 +121,26 @@ export default function Sleep() {
             )}
           </article>
 
-          <article className="flex flex-col justify-between px-3 items-center">
-            <header className="flex gap-1 w-full pb-6">
-              <Image
-                src="/info/feedbackPencile.svg"
-                width={16}
-                height={16}
-                alt="pencile"
-              />
-              <p className="text-sm font-semibold text-left text-[#696972">
-                피드백노트
-              </p>
-            </header>
-            <div className="flex items-center px-5 w-4/5 py-1 h-[30px] rounded-[40px] bg-[#f5fef5] border border-[#e7e7e7]">
-              <p className="font-semibold  text-[12px]">{feedbackContent}</p>
-            </div>
-          </article>
+          {feedbackContent == "" ? (
+            <></>
+          ) : (
+            <article className="flex flex-col justify-between px-3 items-center">
+              <header className="flex gap-1 w-full py-2">
+                <Image
+                  src="/info/feedbackPencile.svg"
+                  width={16}
+                  height={16}
+                  alt="pencile"
+                />
+                <p className="text-sm font-semibold text-left text-[#696972">
+                  피드백노트
+                </p>
+              </header>
+              <div className="flex items-center px-5 w-4/5 py-1 rounded-[40px] bg-[#f5fef5] border border-[#e7e7e7]">
+                <p className="font-semibold  text-[12px]">{feedbackContent}</p>
+              </div>
+            </article>
+          )}
         </section>
       </section>
     </div>

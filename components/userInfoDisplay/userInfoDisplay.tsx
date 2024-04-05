@@ -33,8 +33,16 @@ export default function UserInfoDisplay({ info }: any) {
       ) : (
         <></>
       )}
+      {info?.day_data.sleep ? (
+        <>
+          {info.day_data.sleep.map((sleep: any, index: number) => {
+            return <Sleep key={index} sleepList={sleep} />;
+          })}
+        </>
+      ) : (
+        <></>
+      )}
 
-      <Sleep />
       <Emotion />
       <button onClick={scrollToTop} className="flex justify-center">
         <FaArrowCircleUp className="text-white bg-black4 rounded-full border border-black4 w-[29px] h-[29px]" />

@@ -23,7 +23,8 @@ export default function Activity({
   const activityNameList = activtiyList.names;
 
   const satisfiedString = ["불만족스러웠어..", "만족스러웠어!", "적당해요!"];
-  const satisfiedExtent = satisfiedString.indexOf(activtiyList.satisfaction);
+  const satisfyMapping = ["불만족", "만족", "적당"];
+  const satisfiedExtent = satisfyMapping.indexOf(activtiyList.satisfaction);
   //활동시간대 상태변수
 
   const activityTimeList = ["아침", "점심", "저녁"];
