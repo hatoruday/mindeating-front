@@ -26,6 +26,7 @@ export default function MyCalendar() {
    */
 
   //애니메이션 상태 관리
+  let hasSixWeeks = false;
   const [offset, setOffset] = useState<number>(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startY, setStartY] = useState<number>(0);
@@ -46,12 +47,21 @@ export default function MyCalendar() {
     if (!isDragging) return;
 
     let currentY = event.clientY || event.touches[0].clientY;
-
+    let endingdiffY = currentY - startY;
     // console.log("dragmove", currentY - startY);
-    setAnimProps({
-      to: { transform: `translateY(${currentY - startY + currentPageY}px)` }, // 드래그하는 동안 실시간으로 이동
-      immediate: true, // 애니메이션 없이 즉시 반영
-    });
+    if (hasSixWeeks) {
+      setAnimProps({
+        to: {
+          transform: `translateY(${currentY - startY + currentPageY - 40}px)`,
+        }, // 드래그하는 동안 실시간으로 이동
+        immediate: true, // 애니메이션 없이 즉시 반영
+      });
+    } else {
+      setAnimProps({
+        to: { transform: `translateY(${currentY - startY + currentPageY}px)` }, // 드래그하는 동안 실시간으로 이동
+        immediate: true, // 애니메이션 없이 즉시 반영
+      });
+    }
   };
 
   const handleDragEnd = (event: any) => {
@@ -98,11 +108,19 @@ export default function MyCalendar() {
           onRest: () => {
             requestAnimationFrame(() => {
               if (getMonthAll(offset - 1)[0].weeks.length == 6) {
+                hasSixWeeks = true;
                 setAnimProps({
-                  to: { transform: `translateY(${currentPageY + 40}px)` }, // 최종 위치로 애니메이션
+                  to: { transform: `translateY(${currentPageY - 40}px)` }, // 최종 위치로 애니메이션
+                  immediate: true, // 애니메이션 적용
+                });
+              } else if (getMonthAll(offset + 1)[0].weeks.length == 6) {
+                hasSixWeeks = true;
+                setAnimProps({
+                  to: { transform: `translateY(${currentPageY - 40}px)` }, // 최종 위치로 애니메이션
                   immediate: true, // 애니메이션 적용
                 });
               } else {
+                hasSixWeeks = false;
                 setAnimProps({
                   to: { transform: `translateY(${currentPageY}px)` }, // 최종 위치로 애니메이션
                   immediate: true,

@@ -20,11 +20,15 @@ export default function MyMonthList({
   const [openIndexList, setOpenIndexList] = useState<number[]>(
     recentMonths[1].isFadeoutWeeks
   );
+  const [firstRender, setFirstRender] = useState(false);
   useEffect(() => {
     setOpenIndexList(recentMonths[1].isFadeoutWeeks);
   }, [recentMonths]);
-  const toggle = (index: any) => {
+
+  const toggle = (index: number) => {
+    console.log("toggle 실행됨.", openIndexList, index);
     let newIndex: number[];
+    //openIndexList의 sum을 구한다.
     let summedValue = openIndexList.reduce((a, b) => a + b, 0);
     if (openIndexList[index] == 1 && summedValue == 1) {
       newIndex = openIndexList.map((item: number, i: number) => 1);
@@ -33,29 +37,54 @@ export default function MyMonthList({
         i === index ? 1 : 0
       );
     }
+    console.log(openIndexList, newIndex);
     setOpenIndexList(newIndex);
   };
-
   return (
     <>
-      {recentMonths.map((month, monthindex) => {
-        return (
-          <div key={monthindex}>
-            {month.weeks.map((week, weekindex) => (
-              <AccordianItems
-                key={weekindex}
-                open={!(1 != openIndexList[weekindex] && monthindex == 1)}
-                toggle={() => {
-                  () => toggle(weekindex);
-                }}
-                weekindex={weekindex}
-                week={month.weeks[weekindex]}
-                colorStatusWeeks={month.colorStatusWeeks}
-              />
-            ))}
-          </div>
-        );
-      })}
+      {openIndexList.reduce((a, b) => a + b, 0) == 1 ? (
+        <>
+          <div className="w-[318px] h-[200px]"></div>
+          {recentMonths[1].weeks.map((week, weekindex) => (
+            <AccordianItems
+              key={weekindex}
+              openIndexList={openIndexList}
+              setOpenIndexList={setOpenIndexList}
+              open={openIndexList[weekindex] == 1}
+              weekindex={weekindex}
+              week={recentMonths[1].weeks[weekindex]}
+              colorStatusWeeks={recentMonths[1].colorStatusWeeks}
+            />
+          ))}
+          <div className="w-[318px] h-[200px]"></div>
+        </>
+      ) : (
+        <>
+          {recentMonths.map((month, monthindex) => {
+            return (
+              <div key={monthindex}>
+                {month.weeks.map((week, weekindex) => (
+                  <button
+                    className="w-full"
+                    key={weekindex}
+                    onClick={() => toggle(weekindex)}
+                  >
+                    <AccordianItems
+                      key={weekindex}
+                      openIndexList={openIndexList}
+                      setOpenIndexList={setOpenIndexList}
+                      open={openIndexList[weekindex] == 1}
+                      weekindex={weekindex}
+                      week={month.weeks[weekindex]}
+                      colorStatusWeeks={month.colorStatusWeeks}
+                    />
+                  </button>
+                ))}
+              </div>
+            );
+          })}
+        </>
+      )}
     </>
   );
 }

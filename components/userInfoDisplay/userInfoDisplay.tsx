@@ -7,10 +7,11 @@ import Sleep from "@/components/userInfoDisplay/sleep/sleep";
 import Image from "next/image";
 import { FaArrowCircleUp } from "react-icons/fa";
 
-export default function UserInfo() {
+export default function UserInfoDisplay({ info }: any) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+  console.log(info);
   return (
     <div className="flex flex-col gap-y-5">
       <Routine />

@@ -1,24 +1,27 @@
+"use client";
+
 import React from "react";
 import { Collapse } from "react-collapse";
 import MyWeek from "./myWeek";
 interface AccordianItemsProps {
   open: boolean;
-  toggle: () => void;
-
   weekindex: number;
   week: Date[];
   colorStatusWeeks: number[][];
+  openIndexList: number[];
+  setOpenIndexList: any;
 }
 const AccordianItems = ({
   open,
-  toggle,
+  openIndexList,
+  setOpenIndexList,
   weekindex,
   week,
   colorStatusWeeks,
 }: AccordianItemsProps) => {
   return (
     <div className="pt-[2px]">
-      <div onClick={toggle}>
+      <div>
         <Collapse isOpened={open}>
           <MyWeek
             key={weekindex}
