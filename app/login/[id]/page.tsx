@@ -131,7 +131,7 @@ export default function LoginPage({ params: { id } }: IParams) {
                     <Image
                       src="/eyeIcon.svg"
                       width={200}
-                      height={200} 
+                      height={200}
                       alt="eyeIcon"
                       className="px-0  w-[28px] h-[56px] bg-opacity-100  text-[#9F9FAC] mr-3"
                     />
@@ -147,7 +147,7 @@ export default function LoginPage({ params: { id } }: IParams) {
                 </button>
               </div>
             </div>
-            
+
             <div>
               {userId === "" || password === "" ? (
                 <button

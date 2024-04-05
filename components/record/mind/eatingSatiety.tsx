@@ -1,11 +1,24 @@
 import Image from "next/image";
 
-export default function Satiety({ selectedEmoji }: { selectedEmoji: number }) {
+export default function Satiety({
+  satisfaction,
+  setSatisfaction,
+}: {
+  satisfaction: string;
+  setSatisfaction: (satisfaction: string) => void;
+}) {
   return (
     <div className="flex justify-around">
-      <div
+      <button
+        onClick={() => {
+          if (satisfaction != "불만족") {
+            setSatisfaction("불만족");
+          } else {
+            setSatisfaction("");
+          }
+        }}
         className={`flex flex-col justify-around content-center items-center w-[94px] h-[94px] rounded-lg border ${
-          selectedEmoji === 0 ? "border-green2" : "border-black4"
+          satisfaction === "불만족" ? "border-green2" : "border-black4"
         }`}
       >
         <Image
@@ -17,16 +30,23 @@ export default function Satiety({ selectedEmoji }: { selectedEmoji: number }) {
 
         <span
           className={`text-[12px] ${
-            selectedEmoji === 0 ? "font-bold text-black1" : "text-black4"
+            satisfaction === "불만족" ? "font-bold text-black1" : "text-black4"
           }`}
         >
           불만족
         </span>
-      </div>
+      </button>
 
-      <div
+      <button
+        onClick={() => {
+          if (satisfaction != "적당함") {
+            setSatisfaction("적당함");
+          } else {
+            setSatisfaction("");
+          }
+        }}
         className={`flex flex-col justify-around content-center items-center w-[94px] h-[94px] rounded-lg border ${
-          selectedEmoji === 1 ? "border-green2" : "border-black4"
+          satisfaction === "적당함" ? "border-green2" : "border-black4"
         }`}
       >
         <Image
@@ -38,16 +58,23 @@ export default function Satiety({ selectedEmoji }: { selectedEmoji: number }) {
 
         <span
           className={`text-[12px] ${
-            selectedEmoji === 1 ? "font-bold text-black1" : "text-black4"
+            satisfaction === "적당함" ? "font-bold text-black1" : "text-black4"
           }`}
         >
           적당함
         </span>
-      </div>
+      </button>
 
-      <div
+      <button
+        onClick={() => {
+          if (satisfaction != "만족") {
+            setSatisfaction("만족");
+          } else {
+            setSatisfaction("");
+          }
+        }}
         className={`flex flex-col justify-around content-center items-center w-[94px] h-[94px] rounded-lg border ${
-          selectedEmoji === 2 ? "border-green2" : "border-black4"
+          satisfaction === "만족" ? "border-green2" : "border-black4"
         }`}
       >
         <Image
@@ -59,12 +86,12 @@ export default function Satiety({ selectedEmoji }: { selectedEmoji: number }) {
 
         <span
           className={`text-[12px] ${
-            selectedEmoji === 2 ? "font-bold text-black1" : "text-black4"
+            satisfaction === "만족" ? "font-bold text-black1" : "text-black4"
           }`}
         >
           만족
         </span>
-      </div>
+      </button>
     </div>
   );
 }

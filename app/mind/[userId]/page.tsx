@@ -2,25 +2,29 @@
 import Image from "next/image";
 import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
-import HungerMeter from "../../components/record/mind/hungerMeter";
+import HungerMeter from "../../../components/record/mind/hungerMeter";
 import { FaRegCircle } from "react-icons/fa";
 import EatingSatiety from "@/components/record/mind/eatingSatiety";
 import FeedbackNote from "@/components/record/mind/feedbackNote";
 import WhatIsYourEatingTime from "@/components/record/whatIsYourEatingTime";
 import Satiety from "@/components/record/mind/eatingSatiety";
 import WhatIsYourTime from "@/components/record/whatIsYourEatingTime";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 interface SuccessMealRoutine {
   [key: number]: boolean;
 }
+interface IParams {
+  params: { userId: string };
+}
 
-export default function MindFullEating() {
+export default function MindFullEating({ params: { userId } }: IParams) {
   const [menu, setMenu] = useState<string[]>([]); //required
   const [type, setType] = useState<string>("");
   const [when, setWhen] = useState<string>("");
-  const [hunger_before_meal, setHunger_before_meal] = useState<number>(1);
+  const [hunger_before_meal, setHunger_before_meal] = useState<number>(0);
   const hungetList = [1, 2, 3, 4, 5, 6, 7, 8];
-  const [hunger_after_meal, setHunger_After_meal] = useState<number>(3);
+  const [hunger_after_meal, setHunger_After_meal] = useState<number>(0);
   const [speed, setSpeed] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
   const [successed_meal_routine, setSuccesssed_meal_routine] =
@@ -87,6 +91,64 @@ export default function MindFullEating() {
     } = e;
     setNote(value);
   };
+  const [isLoading, setIsLoading] = useState(false);
+  const submitFunction = async () => {
+    console.log(userId);
+    setIsLoading(true);
+    // e.preventDefault();
+
+    // if (loading || userId === "" || password === "") return;
+
+    try {
+      const eatingData = {
+        user_id: userId,
+        record: {
+          menu,
+          type,
+          when,
+          hunger_before_meal,
+          hunger_after_meal,
+          speed,
+          amount,
+          successed_meal_routine,
+          satisfaction,
+          note,
+        },
+      };
+
+      const JSONdata = JSON.stringify(eatingData);
+      const endpoint = "http://13.124.182.175:8000/record/record-eating";
+
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSONdata,
+      };
+      console.log(options);
+      const response = await fetch(endpoint, options);
+      // console.log(response);
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result);
+        if (result.success) {
+          alert("전송 성공");
+        } else {
+          alert("전송 실패");
+        }
+      } else {
+        // 에러 처리
+        console.error("전송 실패");
+        setIsLoading(false);
+      }
+    } catch (e: any) {
+      // if (e instanceof FirebaseError) {
+      //   setError(e.message);
+      // }
+    } finally {
+    }
+  };
   return (
     <div className="flex flex-col justify-center content-center">
       <header className="flex relative w-full py-3 justify-center">
@@ -109,7 +171,7 @@ export default function MindFullEating() {
           </span>
         </header>
         <input
-          className="w-full h-[52px] px-3 opacity-20 rounded-[10px] text-[14px] bg-black4 placeholder-black3"
+          className="w-full h-[52px] px-3  rounded-[10px] ring-0 text-black1 text-[14px] bg-black4 placeholder-black3"
           value={currentInput}
           onChange={handleInputChange}
           onKeyUp={handleKeyPress}
@@ -233,16 +295,16 @@ export default function MindFullEating() {
           ))}
         </article>
       </section>
-      <section className="flex flex-col justify-center w-full gap-y-2 py-4">
+      <section className="flex flex-col justify-center content-center w-full gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-medium text-black2 text-[14px]">
             오늘 성공한 식사 루틴을 체크해주세요!
           </span>
         </header>
-        <article className="flex flex-col w-full gap-3">
+        <article className="flex flex-col w-full  gap-3">
           {routineCheckList.map((routine, index) => (
-            <div key={index}>
+            <div key={index} className="flex justify-center">
               <button
                 onClick={() => {
                   const newSuccessedMealRoutine = { ...successed_meal_routine };
@@ -281,14 +343,39 @@ export default function MindFullEating() {
             식사 만족도
           </span>
         </header>
-        <Satiety selectedEmoji={satisfactionIndex} />
+        <Satiety
+          satisfaction={satisfaction}
+          setSatisfaction={setSatisfaction}
+        />
         <FeedbackNote note={note} setNote={setNote} />
       </section>
-      <button className="w-[330px] h-[52px] rounded-xl bg-green3">
-        <p className="text-base font-medium text-center text-black3">
-          제출하기
-        </p>
-      </button>
+
+      {menu.length > 0 &&
+      type != "" &&
+      when != "" &&
+      hunger_before_meal != 0 &&
+      hunger_after_meal != 0 &&
+      speed != "" &&
+      satisfaction != "" ? (
+        <button
+          onClick={() => submitFunction()}
+          className="w-4/5 h-[52px] rounded-xl flex justify-center content-center items-center bg-green2"
+        >
+          {isLoading ? (
+            <AiOutlineLoading3Quarters className="animate-spin text-xl font-medium " />
+          ) : (
+            <p className="text-base font-medium text-center text-black1">
+              제출하기
+            </p>
+          )}
+        </button>
+      ) : (
+        <button className="w-4/5 h-[52px] rounded-xl flex justify-center content-center bg-green3">
+          <p className="text-base font-medium text-center text-black3">
+            제출하기
+          </p>
+        </button>
+      )}
     </div>
   );
 }
