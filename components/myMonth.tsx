@@ -20,6 +20,9 @@ export default function MyMonthList({
   const [openIndexList, setOpenIndexList] = useState<number[]>(
     recentMonths[1].isFadeoutWeeks
   );
+  useEffect(() => {
+    setOpenIndexList(recentMonths[1].isFadeoutWeeks);
+  }, [recentMonths]);
   const toggle = (index: any) => {
     let newIndex: number[];
     let summedValue = openIndexList.reduce((a, b) => a + b, 0);
@@ -32,6 +35,12 @@ export default function MyMonthList({
     }
     setOpenIndexList(newIndex);
   };
+  console.log(
+    recentMonths[1].weeks[2][5].getMonth(),
+    "에 해당하는 월",
+    openIndexList.length,
+    recentMonths[1].isFadeoutWeeks.length
+  );
   return (
     <>
       {recentMonths.map((month, monthindex) => {

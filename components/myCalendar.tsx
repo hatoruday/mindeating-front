@@ -74,11 +74,19 @@ export default function MyCalendar() {
           to: { transform: `translateY(${currentPageY + 200}px)` }, // 최종 위치로 애니메이션
           immediate: false, // 애니메이션 적용
           onRest: () => {
+            console.log(getMonthAll(offset - 1));
             requestAnimationFrame(() => {
-              setAnimProps({
-                to: { transform: `translateY(${currentPageY}px)` }, // 최종 위치로 애니메이션
-                immediate: true, // 애니메이션 적용
-              });
+              if (getMonthAll(offset - 1)[0].weeks.length == 6) {
+                setAnimProps({
+                  to: { transform: `translateY(${currentPageY - 40}px)` }, // 최종 위치로 애니메이션
+                  immediate: true, // 애니메이션 적용
+                });
+              } else {
+                setAnimProps({
+                  to: { transform: `translateY(${currentPageY}px)` }, // 최종 위치로 애니메이션
+                  immediate: true, // 애니메이션 적용
+                });
+              }
             });
             setOffset((prev) => prev - 1);
           },
