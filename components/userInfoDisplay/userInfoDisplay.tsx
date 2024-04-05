@@ -11,11 +11,20 @@ export default function UserInfoDisplay({ info }: any) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-  console.log(info);
+
   return (
     <div className="flex flex-col gap-y-5">
       <Routine />
-      <MindFullEating />
+      {info?.day_data.eating ? (
+        <>
+          {info.day_data.eating.map((eating: any, index: number) => {
+            return <MindFullEating key={index} eatingList={eating} />;
+          })}
+        </>
+      ) : (
+        <></>
+      )}
+
       <Activity />
       <Sleep />
       <Emotion />

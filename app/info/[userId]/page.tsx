@@ -1,9 +1,10 @@
 import HomePage from "@/components/userInfoDisplay/homePage";
-import UserInfoDisplay from "@/components/userInfoDisplay/userInfoDisplay";
 
 async function getInfo(userId: string) {
   if (userId === "github-markdown-css") return;
+
   const date = new Date();
+  date.setHours(date.getUTCHours() + 9);
 
   try {
     const fetchingData = {
@@ -12,7 +13,7 @@ async function getInfo(userId: string) {
     };
 
     const JSONdata = JSON.stringify(fetchingData);
-    const endpoint = "http://13.124.182.175:8000/record/get-records";
+    const endpoint = "http://13.124.182.175/record/get-records";
 
     const options = {
       method: "POST",
