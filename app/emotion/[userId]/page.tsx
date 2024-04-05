@@ -1,67 +1,88 @@
 "use client";
 import FeedbackNote from "@/components/record/mind/feedbackNote";
+import RecordSubmit from "@/components/record/recordSubmit";
 import WhatIsYourTime from "@/components/record/whatIsYourEatingTime";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 
-export default function MindFullEating() {
+interface IParams {
+  params: { userId: string };
+}
+export default function MindFullEating({ params: { userId } }: IParams) {
   const [state, setState] = useState<string>("");
   const [type, setType] = useState<string>("");
-  const [time, setTime] = useState<string>("");
+  const [when, setWhen] = useState<string>("");
   const [note, setNote] = useState<string>("");
 
-  const date = new Date();
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
-  //typeList의 각 요소의 index에 대해 1: 클릭됨 0: 클릭안됨
+  const submitFunction = async () => {
+    setIsLoading(true);
+    // e.preventDefault();
 
-  const [selectedType, setSelectedType] = useState<number[]>([
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-  ]);
+    // if (loading || userId === "" || password === "") return;
 
-  //기타를 클릭했을 때 나오는 입력칸의 상태를 관리한다.
+    try {
+      const eatingData = {
+        user_id: userId,
+        record: {
+          state,
+          when,
+          type,
+          note,
+        },
+      };
 
-  const [menu, setMenu] = useState<string[]>([]);
+      const JSONdata = JSON.stringify(eatingData);
+      const endpoint = "http://13.124.182.175:8000/record/record-emotion/";
 
-  const [currentInput, setCurrentInput] = useState("");
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSONdata,
+      };
+      console.log(options.body);
+      const response = await fetch(endpoint, options);
+      // console.log(response);
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result);
+        if (result.success) {
+          router.push("/info/");
+        } else {
+          alert("전송 실패" + result.message);
+          setIsLoading(false);
+        }
+      } else {
+        // 에러 처리
+        console.error("response not ok 전송 실패");
+        setIsLoading(false);
+      }
+    } catch (e: any) {
+      // if (e instanceof FirebaseError) {
+      //   setError(e.message);
+      // }
+    } finally {
+    }
 
-  // 텍스트 필드의 입력을 처리하는 함수
+    //typeList의 각 요소의 index에 대해 1: 클릭됨 0: 클릭안됨
 
+    //기타를 클릭했을 때 나오는 입력칸의 상태를 관리한다.
+
+    // 텍스트 필드의 입력을 처리하는 함수
+  };
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value },
     } = e;
 
-    setCurrentInput(value);
+    setState(value);
   };
-
-  // 엔터 키를 누를 때 실행될 함수
-
-  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-
-      if (currentInput.trim() !== "") {
-        // 새로운 아이템을 menu 배열에 추가
-
-        setMenu([...menu, currentInput.trim()]);
-
-        // 입력 필드 초기화
-
-        setCurrentInput("");
-      }
-    }
-  };
-
-  /**
-   * 활동 시간대를 알려주세요!의 상태를 관리한다.
-   */
-
-  /**
-   * 활동 만족도의 상태를 관리한다.
-   */
-  const [satisfactionIndex, setSatisfactionIndex] = useState<number>(1);
-
   return (
     <div className="flex flex-col">
       <header className="flex relative w-full py-3 justify-center">
@@ -85,34 +106,28 @@ export default function MindFullEating() {
           </span>
         </header>
         <input
-          className="w-full h-[52px] px-3 opacity-20 rounded-[10px] text-[14px] bg-black4 placeholder-black3"
-          value={currentInput}
+          className="w-full h-[52px] px-3 bg-opacity-20 text-black1 rounded-[10px] text-[14px] bg-black4 placeholder-black3 outline-none ring-0"
+          value={state}
           onChange={handleInputChange}
-          onKeyUp={handleKeyPress}
           placeholder="어떤 감정이 들었나요?"
         />
-        <div className="flex gap-1 px-2">
-          {menu.map((item, index) => (
-            <div
-              key={index}
-              className="flex justify-center items-center h-9 relative gap-2 px-3.5 py-2.5 rounded-[56px] border border-green2 bg-green3"
-            >
-              <p className="flex flex-grow-0 flex-shrink-0">{item}</p>
-              <RxCross2 className="w-[20px] h-[20px]" />
-            </div>
-          ))}
-        </div>
       </section>
 
-      <section className="flex flex-col gap-y-2 py-4">
+      <section className="flex flex-col w-full content-center gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image src="/bookSearch.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-medium text-black2 text-[14px]">
             감정의 종류는 뭔가요?
           </span>
         </header>
-        <div className="flex gap-3">
-          <div
+        <div className="flex justify-center gap-3">
+          <button
+            onClick={() => {
+              if (type == "부정") setType("");
+              else {
+                setType("부정");
+              }
+            }}
             className={`flex flex-col justify-around content-center items-center w-[94px] h-[94px] rounded-lg border ${
               type == "부정" ? "border-green2" : "border-black4"
             }`}
@@ -122,6 +137,7 @@ export default function MindFullEating() {
               width={45}
               height={45}
               alt="nope"
+              className={`${type != "부정" ? "opacity-20" : ""}`}
             />
 
             <span
@@ -131,9 +147,15 @@ export default function MindFullEating() {
             >
               부정
             </span>
-          </div>
+          </button>
 
-          <div
+          <button
+            onClick={() => {
+              if (type == "긍정") setType("");
+              else {
+                setType("긍정");
+              }
+            }}
             className={`flex flex-col justify-around content-center items-center w-[94px] h-[94px] rounded-lg border ${
               type == "긍정" ? "border-green2" : "border-black4"
             }`}
@@ -143,6 +165,7 @@ export default function MindFullEating() {
               width={38}
               height={38}
               alt="neutral"
+              className={`${type != "긍정" ? "opacity-20" : ""}`}
             />
 
             <span
@@ -152,10 +175,17 @@ export default function MindFullEating() {
             >
               긍정
             </span>
-          </div>
+          </button>
         </div>
       </section>
-      <WhatIsYourTime timeType="언제 그런 감정을 느꼈나요?" />
+      <section className="flex w-full justify-center">
+        <WhatIsYourTime
+          timeType="언제 그런 감정을 느꼈나요?"
+          when={when}
+          setWhen={setWhen}
+        />
+      </section>
+
       <article className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 py-2 gap-x-3">
           <Image
@@ -173,13 +203,11 @@ export default function MindFullEating() {
         <FeedbackNote note={note} setNote={setNote} />
       </article>
 
-      <section className="my-10">
-        <button className="w-[330px] h-[52px] rounded-xl bg-green3">
-          <p className="text-base font-medium text-center text-black3">
-            제출하기
-          </p>
-        </button>
-      </section>
+      <RecordSubmit
+        submitFunction={submitFunction}
+        isLoading={isLoading}
+        isActive={state != "" && type != "" && when != "" ? true : false}
+      />
     </div>
   );
 }

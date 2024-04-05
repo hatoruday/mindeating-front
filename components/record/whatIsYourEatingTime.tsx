@@ -10,7 +10,7 @@ export default function WhatIsYourTime({
   setWhen: (whenSpecific: string) => void;
 }) {
   return (
-    <section className="flex flex-col gap-y-2 py-4">
+    <section className="flex w-full flex-col gap-y-2 py-4">
       <header className="flex px-3 gap-x-3">
         <Image
           src="/mindFullEating/clockPlusIcon.svg"
@@ -20,7 +20,7 @@ export default function WhatIsYourTime({
         />
         <span className="font-medium text-black2 text-[14px]">{timeType}</span>
       </header>
-      <article className="flex gap-x-3">
+      <article className="flex w-full justify-center py-2 gap-x-3">
         {["새벽", "아침", "점심", "저녁", "밤"].map((time, index) => (
           <button
             key={index}
