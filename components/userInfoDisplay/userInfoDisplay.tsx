@@ -42,8 +42,16 @@ export default function UserInfoDisplay({ info }: any) {
       ) : (
         <></>
       )}
+      {info?.day_data.emotion ? (
+        <>
+          {info.day_data.emotion.map((emotion: any, index: number) => {
+            return <Emotion key={index} emotionList={emotion} />;
+          })}
+        </>
+      ) : (
+        <></>
+      )}
 
-      <Emotion />
       <button onClick={scrollToTop} className="flex justify-center">
         <FaArrowCircleUp className="text-white bg-black4 rounded-full border border-black4 w-[29px] h-[29px]" />
       </button>

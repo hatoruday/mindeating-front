@@ -1,25 +1,32 @@
 import Image from "next/image";
 import PositiveIcon from "./positive";
 
-export default function Emotion() {
+interface EmotionList {
+  when: string;
+  state: string;
+  type: string;
+  note: string;
+  date: string;
+  timestamp: string;
+}
+export default function Emotion({ emotionList }: { emotionList: EmotionList }) {
   /**
    * activity widget에 대한 상태변수를 관리한다.
    */
   //activity header 상태변수
 
   //현재느끼는 감정의 이름
-  const emotionName = "슬픈 감정";
+  const emotionName = emotionList.state;
   //감정상태 이모지
-  const isPositive = 1; //긍정 : 1 부정 : 0
-  const isPositiveString = ["긍정적이에요!", "부정적이에요!"];
+  const isPositive = ["부정", "긍정"].indexOf(emotionList.type); //긍정 : 1 부정 : 0
+  const isPositiveString = ["부정적이에요!", "긍정적이에요!"];
 
   //총 감정을 느낀 시간 상태변수
   const emotionTime = ["새벽", "아침", "점심", "저녁", "밤"];
-  const emotionTimeIndex = 2;
+  const emotionTimeIndex = emotionTime.indexOf(emotionList.when);
 
   //피드백 노트
-  const emotionNote =
-    "밤에 자꾸 많이 먹어서 그게 아쉬워...\n밤에 자꾸 많이 먹어서 그게 아쉬워...\n밤에 자꾸 많이 먹어서 그게 아쉬워... ";
+  const emotionNote = emotionList.note;
   return (
     <div className="flex flex-col">
       <header className="flex w-full py-3 justify-between">
@@ -67,22 +74,26 @@ export default function Emotion() {
             </div>
           </article>
 
-          <article className="flex flex-col justify-between px-3 items-center">
-            <header className="flex gap-1 w-full pb-6">
-              <Image
-                src="/info/feedbackPencile.svg"
-                width={16}
-                height={16}
-                alt="pencile"
-              />
-              <p className="text-sm font-semibold text-left text-[#696972">
-                감정 노트
-              </p>
-            </header>
-            <div className="flex items-center px-5 w-4/5 py-1 rounded-[40px] bg-[#f5fef5] border border-[#e7e7e7]">
-              <p className="font-semibold  text-[12px]">{emotionNote}</p>
-            </div>
-          </article>
+          {emotionNote == "" ? (
+            <></>
+          ) : (
+            <article className="flex flex-col justify-between px-3 items-center">
+              <header className="flex gap-1 w-full py-2">
+                <Image
+                  src="/info/feedbackPencile.svg"
+                  width={16}
+                  height={16}
+                  alt="pencile"
+                />
+                <p className="text-sm font-semibold text-left text-[#696972">
+                  감정 노트
+                </p>
+              </header>
+              <div className="flex items-center px-5 w-4/5 py-1 rounded-[40px] bg-[#f5fef5] border border-[#e7e7e7]">
+                <p className="font-semibold  text-[12px]">{emotionNote}</p>
+              </div>
+            </article>
+          )}
         </section>
       </section>
     </div>
