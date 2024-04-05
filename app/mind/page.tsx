@@ -88,7 +88,7 @@ export default function MindFullEating() {
     setNote(value);
   };
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col justify-center content-center">
       <header className="flex relative w-full py-3 justify-center">
         <Image
           src="/leftChevron.svg"
@@ -212,52 +212,59 @@ export default function MindFullEating() {
           </span>
         </header>
         <article className="flex gap-x-3">
-          <div className="flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border border-[#e7e7e7]">
-            <p className="flex text-sm font-medium text-left text-[#2c2c30]">
-              빠르게
-            </p>
-          </div>
-          <div className="flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border border-[#e7e7e7]">
-            <p className="flex text-sm font-medium text-left text-[#2c2c30]">
-              적당히
-            </p>
-          </div>
-          <div className="flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border border-[#e7e7e7]">
-            <p className="flex text-sm font-medium text-left text-[#2c2c30]">
-              천천히
-            </p>
-          </div>
+          {["빠르게", "적당히", "천천히"].map((item, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                if (speed == item) {
+                  setSpeed("");
+                } else {
+                  setSpeed(item);
+                }
+              }}
+              className={`flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border ${
+                speed == item ? "border-green2 bg-green3" : "border-black4"
+              }`}
+            >
+              <p className="flex text-sm font-medium text-left text-[#2c2c30]">
+                {item}
+              </p>
+            </button>
+          ))}
         </article>
       </section>
-      <section className="flex flex-col gap-y-2 py-4">
+      <section className="flex flex-col justify-center w-full gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-medium text-black2 text-[14px]">
             오늘 성공한 식사 루틴을 체크해주세요!
           </span>
         </header>
-        <article className="flex flex-col max-w-[400px] gap-3">
+        <article className="flex flex-col w-full gap-3">
           {routineCheckList.map((routine, index) => (
             <div key={index}>
-              <div
-                className={`flex max-w-[330px] justify-between items-center h-9 gap-2.5 px-4 py-2.5 rounded-[56px] border border-[#e7e7e7] ${
-                  routine.isDone ? "bg-green3 border border-green2" : ""
+              <button
+                onClick={() => {
+                  const newSuccessedMealRoutine = { ...successed_meal_routine };
+                  newSuccessedMealRoutine[index] =
+                    !newSuccessedMealRoutine[index];
+                  setSuccesssed_meal_routine(newSuccessedMealRoutine);
+                }}
+                className={`flex w-[95%] justify-between items-center h-9 gap-2.5 px-4 py-2.5 rounded-[56px] border border-[#e7e7e7] ${
+                  successed_meal_routine[index]
+                    ? "bg-green3 border border-green2"
+                    : ""
                 }`}
               >
                 <p className="text-sm font-medium text-center text-[#2c2c30]">
                   {routine.content}
                 </p>
-                {routine.isDone ? (
-                  <Image
-                    src="/routineCircle.svg"
-                    alt="routineCircle"
-                    width={16}
-                    height={16}
-                  />
+                {successed_meal_routine[index] ? (
+                  <FaRegCircle className="bg-green2 text-green2 rounded-full" />
                 ) : (
                   <FaRegCircle />
                 )}
-              </div>
+              </button>
             </div>
           ))}
         </article>
