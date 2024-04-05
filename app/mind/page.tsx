@@ -10,25 +10,30 @@ import WhatIsYourEatingTime from "@/components/record/whatIsYourEatingTime";
 import Satiety from "@/components/record/mind/eatingSatiety";
 import WhatIsYourTime from "@/components/record/whatIsYourEatingTime";
 
+interface SuccessMealRoutine {
+  [key: number]: boolean;
+}
+
 export default function MindFullEating() {
   const [menu, setMenu] = useState<string[]>([]); //required
-  const [type, setType] = useState<string[]>([]);
-  const [time, setTime] = useState<string[]>([]);
+  const [type, setType] = useState<string>("");
+  const [when, setWhen] = useState<string>("");
   const [hunger_before_meal, setHunger_before_meal] = useState<number>(1);
   const hungetList = [1, 2, 3, 4, 5, 6, 7, 8];
-  const [hunger_After_meal, setHunger_After_meal] = useState<number>(3);
+  const [hunger_after_meal, setHunger_After_meal] = useState<number>(3);
   const [speed, setSpeed] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
-  const [successRoutine, setSuccessRoutine] = useState<boolean[]>([
-    false,
-    false,
-    false,
-    false,
-    false,
-  ]);
+  const [successed_meal_routine, setSuccesssed_meal_routine] =
+    useState<SuccessMealRoutine>({
+      0: false,
+      1: false,
+      2: false,
+      3: false,
+      4: false,
+      5: false,
+    });
   const [satisfaction, setSatisfaction] = useState<string>("");
   const [note, setNote] = useState<string>(""); //not required
-  const date = new Date();
 
   /**
    * 식사 메뉴를 추가하는 함수와, input, 그에 대한 상태값을 useState를 통해 관리한다.
@@ -130,24 +135,32 @@ export default function MindFullEating() {
           </span>
         </header>
         <article className="flex gap-x-3">
-          <div className="flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border border-[#e7e7e7]">
-            <p className="flex text-sm font-medium text-left text-[#2c2c30]">
-              식사류
-            </p>
-          </div>
-          <div className="flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border border-[#e7e7e7]">
-            <p className="flex text-sm font-medium text-left text-[#2c2c30]">
-              간식류
-            </p>
-          </div>
-          <div className="flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border border-[#e7e7e7]">
-            <p className="flex text-sm font-medium text-left text-[#2c2c30]">
-              음료류
-            </p>
-          </div>
+          {["식사류", "간식류", "음료류"].map((item, index) => (
+            <button
+              onClick={() => {
+                if (type == item) {
+                  setType("");
+                } else {
+                  setType(item);
+                }
+              }}
+              key={index}
+              className={`flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border ${
+                type == item ? "border-green2 bg-green3" : "border-black4"
+              }`}
+            >
+              <p className="flex text-sm font-medium text-left text-[#2c2c30]">
+                {item}
+              </p>
+            </button>
+          ))}
         </article>
       </section>
-      <WhatIsYourTime timeType="식사 시간대를 알려주세요!" />
+      <WhatIsYourTime
+        when={when}
+        setWhen={setWhen}
+        timeType="식사 시간대를 알려주세요!"
+      />
       <section className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
@@ -174,8 +187,9 @@ export default function MindFullEating() {
           </div>
           <div className="col-span-4 w-full">
             <HungerMeter
+              setHunger_meal={setHunger_before_meal}
               hungerList={hungetList}
-              hunger_before_meal={hunger_before_meal}
+              hunger_meal={hunger_before_meal}
             />
           </div>
           <div className="flex justify-center content-center">
@@ -183,8 +197,9 @@ export default function MindFullEating() {
           </div>
           <div className="col-span-4 ">
             <HungerMeter
+              setHunger_meal={setHunger_After_meal}
               hungerList={hungetList}
-              hunger_before_meal={hunger_After_meal}
+              hunger_meal={hunger_after_meal}
             />
           </div>
         </aside>

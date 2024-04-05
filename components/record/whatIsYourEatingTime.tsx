@@ -1,6 +1,14 @@
 import Image from "next/image";
 
-export default function WhatIsYourTime({ timeType }: { timeType: string }) {
+export default function WhatIsYourTime({
+  timeType,
+  when,
+  setWhen,
+}: {
+  timeType: string;
+  when: string;
+  setWhen: (whenSpecific: string) => void;
+}) {
   return (
     <section className="flex flex-col gap-y-2 py-4">
       <header className="flex px-3 gap-x-3">
@@ -13,31 +21,22 @@ export default function WhatIsYourTime({ timeType }: { timeType: string }) {
         <span className="font-medium text-black2 text-[14px]">{timeType}</span>
       </header>
       <article className="flex gap-x-3">
-        <div className="flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border border-[#e7e7e7]">
-          <p className="flex text-sm font-medium text-left text-[#2c2c30]">
-            새벽
-          </p>
-        </div>
-        <div className="flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border border-[#e7e7e7]">
-          <p className="flex text-sm font-medium text-left text-[#2c2c30]">
-            아침
-          </p>
-        </div>
-        <div className="flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border border-[#e7e7e7]">
-          <p className="flex text-sm font-medium text-left text-[#2c2c30]">
-            점심
-          </p>
-        </div>
-        <div className="flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border border-[#e7e7e7]">
-          <p className="flex text-sm font-medium text-left text-[#2c2c30]">
-            저녁
-          </p>
-        </div>
-        <div className="flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border border-[#e7e7e7]">
-          <p className="flex text-sm font-medium text-left text-[#2c2c30]">
-            밤
-          </p>
-        </div>
+        {["새벽", "아침", "점심", "저녁", "밤"].map((time, index) => (
+          <button
+            key={index}
+            className={`flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border ${
+              when == time ? "border-green2 bg-green3" : "border-black4"
+            }`}
+            onClick={() => {
+              if (when != time) setWhen(time);
+              else setWhen("");
+            }}
+          >
+            <p className="flex text-sm font-medium text-left text-[#2c2c30]">
+              {time}
+            </p>
+          </button>
+        ))}
       </article>
     </section>
   );

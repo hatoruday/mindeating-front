@@ -35,12 +35,7 @@ export default function MyMonthList({
     }
     setOpenIndexList(newIndex);
   };
-  console.log(
-    recentMonths[1].weeks[2][5].getMonth(),
-    "에 해당하는 월",
-    openIndexList.length,
-    recentMonths[1].isFadeoutWeeks.length
-  );
+
   return (
     <>
       {recentMonths.map((month, monthindex) => {
