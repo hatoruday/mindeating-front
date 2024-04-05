@@ -13,7 +13,13 @@ import Thead from "./thead";
 import MyMonthList from "./myMonth";
 import getMonthAll from "@/utility/getDayInformation";
 
-export default function MyCalendar() {
+export default function MyCalendar({
+  isFadeOut,
+  setIsFadeOut,
+}: {
+  isFadeOut: boolean;
+  setIsFadeOut: any;
+}) {
   /** 달력 각 월에 대해 스크롤 했을 때 터치하는 것 그대로 따라가되, 어느정도 임계치 이상을 넘기고 손가락을 뗏을때 다음
    * 월로 탄력적으로 이동하게 끔 애니메이션을 구현한다.
    */
@@ -34,6 +40,7 @@ export default function MyCalendar() {
   const [animProps, setAnimProps] = useSpring(() => ({
     to: { transform: `translateY(${currentPageY}px)` },
   }));
+
   const [recentMonth, setRecentMonth] = useState<MonthAll>(getMonthAll(0));
 
   const handleDragStart = (event: any) => {
@@ -87,7 +94,7 @@ export default function MyCalendar() {
             requestAnimationFrame(() => {
               if (getMonthAll(offset - 1)[0].weeks.length == 6) {
                 setAnimProps({
-                  to: { transform: `translateY(${currentPageY - 40}px)` }, // 최종 위치로 애니메이션
+                  to: { transform: `translateY(${currentPageY - 24}px)` }, // 최종 위치로 애니메이션
                   immediate: true, // 애니메이션 적용
                 });
               } else {
@@ -110,13 +117,13 @@ export default function MyCalendar() {
               if (getMonthAll(offset - 1)[0].weeks.length == 6) {
                 hasSixWeeks = true;
                 setAnimProps({
-                  to: { transform: `translateY(${currentPageY - 40}px)` }, // 최종 위치로 애니메이션
+                  to: { transform: `translateY(${currentPageY - 24}px)` }, // 최종 위치로 애니메이션
                   immediate: true, // 애니메이션 적용
                 });
               } else if (getMonthAll(offset + 1)[0].weeks.length == 6) {
                 hasSixWeeks = true;
                 setAnimProps({
-                  to: { transform: `translateY(${currentPageY - 40}px)` }, // 최종 위치로 애니메이션
+                  to: { transform: `translateY(${currentPageY - 24}px)` }, // 최종 위치로 애니메이션
                   immediate: true, // 애니메이션 적용
                 });
               } else {
@@ -170,7 +177,9 @@ export default function MyCalendar() {
             <Thead />
             <div
               className={
-                recentMonth[1].weeks.length == 6
+                isFadeOut
+                  ? "w-full overflow-hidden max-h-[45px] relative"
+                  : recentMonth[1].weeks.length == 6
                   ? "w-full overflow-hidden max-h-[240px] relative"
                   : "w-full overflow-hidden max-h-[200px] relative"
               }
@@ -183,7 +192,11 @@ export default function MyCalendar() {
                 style={animProps}
                 className="flex flex-col w-full h-full draggable"
               >
-                <MyMonthList recentMonths={recentMonth} />
+                <MyMonthList
+                  isFadeOut={isFadeOut}
+                  setIsfadeOut={setIsFadeOut}
+                  recentMonths={recentMonth}
+                />
               </animated.div>
             </div>
           </div>

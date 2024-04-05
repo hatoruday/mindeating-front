@@ -1,13 +1,14 @@
 "use client";
 
-import MyCalendar from "../components/myCalendar";
-import LeftChevron from "../components/leftChevron";
-import OutagePeriod from "../components/outagePeriod";
-import RightChevron from "../components/rightChevron";
 import Image from "next/image";
 import { useState } from "react";
+import OutagePeriod from "../outagePeriod";
+import MyCalendar from "../myCalendar";
+import RightChevron from "../rightChevron";
+import LeftChevron from "../leftChevron";
+import UserInfoDisplay from "./userInfoDisplay";
 
-export default function HomePage() {
+export default function HomePage({ info }: { info: any }) {
   const name = "현경";
   const month = 3;
   const day = 14;
@@ -52,23 +53,10 @@ export default function HomePage() {
         {/** split bar */}
         <div className="border-t border-gray-200"></div>
         {isFadeOut ? (
-          <footer className="flex justify-center">
-            <div className="flex items-center content-center justify-items-center mt-5 justify-between px-4 w-[330px] h-[50px] rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">
-              <div className="flex items-center mt">
-                <Image
-                  src="/bookIcon.svg"
-                  alt="bookIcon"
-                  width={18}
-                  height={18}
-                />{" "}
-                <span className="px-3 text-sm font-semibold">
-                  식욕 올라올 땐? 노하우 콘텐츠!
-                </span>
-              </div>
-
-              <RightChevron />
-            </div>
-          </footer>
+          <>
+            <div className="w-full h-5" />
+            <UserInfoDisplay info={info} />;
+          </>
         ) : (
           <footer className="flex justify-center">
             <div className="flex items-center content-center justify-items-center mt-5 justify-between px-4 w-[330px] h-[50px] rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">

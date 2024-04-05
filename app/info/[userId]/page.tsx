@@ -1,3 +1,4 @@
+import HomePage from "@/components/userInfoDisplay/homePage";
 import UserInfoDisplay from "@/components/userInfoDisplay/userInfoDisplay";
 
 async function getInfo(userId: string) {
@@ -47,6 +48,10 @@ interface IParams {
 }
 export default async function UserInfo({ params: { userId } }: IParams) {
   const info = await getInfo(userId);
-  console.log(info);
-  return <UserInfoDisplay info={info} />;
+
+  return (
+    <div className="flex flex-col">
+      <HomePage info={info} />
+    </div>
+  );
 }
