@@ -1,6 +1,6 @@
 export default async function PostFetch(data: string, endPointOffset: string) {
   try {
-    const endpoint = `//13.124.182.175:8000/record/${endPointOffset}/`;
+    const endpoint = `https://13.124.182.175:8000/record/${endPointOffset}/`;
 
     const options = {
       method: "POST",
@@ -34,7 +34,7 @@ export default async function PostFetch(data: string, endPointOffset: string) {
 
 export async function PostSpecificFetch(data: string, speficEndPoint: string) {
   try {
-    const endpoint = `//13.124.182.175:8000/${speficEndPoint}`;
+    const endpoint = `https://13.124.182.175:8000/${speficEndPoint}`;
 
     const options = {
       method: "POST",
