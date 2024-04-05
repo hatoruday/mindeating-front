@@ -24,8 +24,16 @@ export default function UserInfoDisplay({ info }: any) {
       ) : (
         <></>
       )}
+      {info?.day_data.activity ? (
+        <>
+          {info.day_data.activity.map((activity: any, index: number) => {
+            return <Activity key={index} activtiyList={activity} />;
+          })}
+        </>
+      ) : (
+        <></>
+      )}
 
-      <Activity />
       <Sleep />
       <Emotion />
       <button onClick={scrollToTop} className="flex justify-center">
