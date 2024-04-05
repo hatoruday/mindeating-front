@@ -10,6 +10,7 @@ import WhatIsYourEatingTime from "@/components/record/whatIsYourEatingTime";
 import Satiety from "@/components/record/mind/eatingSatiety";
 import WhatIsYourTime from "@/components/record/whatIsYourEatingTime";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { useRouter } from "next/navigation";
 
 interface SuccessMealRoutine {
   [key: number]: boolean;
@@ -92,8 +93,9 @@ export default function MindFullEating({ params: { userId } }: IParams) {
     setNote(value);
   };
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
   const submitFunction = async () => {
-    console.log(userId);
     setIsLoading(true);
     // e.preventDefault();
 
@@ -126,20 +128,21 @@ export default function MindFullEating({ params: { userId } }: IParams) {
         },
         body: JSONdata,
       };
-      console.log(options);
+      console.log(options.body);
       const response = await fetch(endpoint, options);
       // console.log(response);
       if (response.ok) {
         const result = await response.json();
         console.log(result);
         if (result.success) {
-          alert("전송 성공");
+          router.push("/info/");
         } else {
-          alert("전송 실패");
+          alert("전송 실패" + result.message);
+          setIsLoading(false);
         }
       } else {
         // 에러 처리
-        console.error("전송 실패");
+        console.error("response not ok 전송 실패");
         setIsLoading(false);
       }
     } catch (e: any) {
@@ -171,7 +174,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
           </span>
         </header>
         <input
-          className="w-full h-[52px] px-3  rounded-[10px] ring-0 text-black1 text-[14px] bg-black4 placeholder-black3"
+          className="w-full h-[52px] px-3  rounded-[10px] ring-0 text-black1 text-[14px] bg-black4 placeholder-black3 outline-none"
           value={currentInput}
           onChange={handleInputChange}
           onKeyUp={handleKeyPress}
@@ -295,6 +298,40 @@ export default function MindFullEating({ params: { userId } }: IParams) {
           ))}
         </article>
       </section>
+      <section className="flex flex-col gap-y-2 py-4">
+        <header className="flex px-3 gap-x-3 py-2">
+          <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
+          <span className="font-medium text-black2 text-[14px]">
+            식사량은 어땠나요?
+          </span>
+        </header>
+        <article className="flex gap-x-3 flex-wrap">
+          {[
+            "적게 먹었어요",
+            "적당했어요",
+            "약간 많았어요",
+            "아주 많았어요",
+          ].map((item, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                if (amount == item) {
+                  setAmount("");
+                } else {
+                  setAmount(item);
+                }
+              }}
+              className={`flex my-2 justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border ${
+                amount == item ? "border-green2 bg-green3" : "border-black4"
+              }`}
+            >
+              <p className="flex text-sm font-medium text-left text-[#2c2c30]">
+                {item}
+              </p>
+            </button>
+          ))}
+        </article>
+      </section>
       <section className="flex flex-col justify-center content-center w-full gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
@@ -331,7 +368,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
           ))}
         </article>
       </section>
-      <section className="flex flex-col gap-y-2 py-4">
+      <section className="flex flex-col w-full gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image
             src="/emoji/satisfiedFace.svg"
@@ -349,33 +386,34 @@ export default function MindFullEating({ params: { userId } }: IParams) {
         />
         <FeedbackNote note={note} setNote={setNote} />
       </section>
-
-      {menu.length > 0 &&
-      type != "" &&
-      when != "" &&
-      hunger_before_meal != 0 &&
-      hunger_after_meal != 0 &&
-      speed != "" &&
-      satisfaction != "" ? (
-        <button
-          onClick={() => submitFunction()}
-          className="w-4/5 h-[52px] rounded-xl flex justify-center content-center items-center bg-green2"
-        >
-          {isLoading ? (
-            <AiOutlineLoading3Quarters className="animate-spin text-xl font-medium " />
-          ) : (
-            <p className="text-base font-medium text-center text-black1">
+      <section className="flex w-full justify-center">
+        {menu.length > 0 &&
+        type != "" &&
+        when != "" &&
+        hunger_before_meal != 0 &&
+        hunger_after_meal != 0 &&
+        speed != "" &&
+        satisfaction != "" ? (
+          <button
+            onClick={() => submitFunction()}
+            className="w-4/5 h-[52px] rounded-xl flex justify-center content-center items-center bg-green2"
+          >
+            {isLoading ? (
+              <AiOutlineLoading3Quarters className="animate-spin text-xl font-medium " />
+            ) : (
+              <p className="text-base font-medium text-center text-black1">
+                제출하기
+              </p>
+            )}
+          </button>
+        ) : (
+          <button className="w-4/5 h-[52px] rounded-xl flex justify-center content-center bg-green3">
+            <p className="text-base font-medium text-center text-black3">
               제출하기
             </p>
-          )}
-        </button>
-      ) : (
-        <button className="w-4/5 h-[52px] rounded-xl flex justify-center content-center bg-green3">
-          <p className="text-base font-medium text-center text-black3">
-            제출하기
-          </p>
-        </button>
-      )}
+          </button>
+        )}
+      </section>
     </div>
   );
 }

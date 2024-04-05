@@ -19,9 +19,9 @@ export default function MindFullEating() {
 
   const [type, setType] = useState<string[]>([]);
 
-  const [time, setTime] = useState<string>("");
+  const [when, setWhen] = useState<string>("");
 
-  const [timeAmount, setTimeAmount] = useState<string>(""); //not required
+  const [time, setTime] = useState<string>(""); //not required
 
   const [intensity, setIntensity] = useState<number>();
 
@@ -197,7 +197,11 @@ export default function MindFullEating() {
           <></>
         )}
       </section>
-      <WhatIsYourTime timeType="활동 시간대를 알려주세요!" />
+      <WhatIsYourTime
+        when={when}
+        setWhen={setWhen}
+        timeType="활동 시간대를 알려주세요!"
+      />
       <section className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image
@@ -210,23 +214,27 @@ export default function MindFullEating() {
             활동을 얼마나 했나요?
           </span>
         </header>
-        <article className="flex gap-x-3">
+        <article className="flex gap-x-3 flex-wrap">
           {["30분 미만", "30분 - 1시간", "1시간 - 2시간", "2시간 초과"].map(
-            (timeAmount, index) => {
+            (tAmount, index) => {
               return (
                 <button
                   key={index}
                   onClick={() => {
-                    setTime(timeAmount);
+                    if (time === tAmount) {
+                      setTime("");
+                    } else {
+                      setTime(tAmount);
+                    }
                   }}
-                  className={`flex  justify-center h-9 items-center px-4 py-2 relative rounded-[56px] border ${
-                    time === timeAmount
+                  className={`flex my-1 flex-shrink-0 flex-grow-0 justify-center h-9 items-center px-4 py-2 relative rounded-[56px] border ${
+                    time === tAmount
                       ? "border-green2 bg-green3"
                       : "border-black4"
                   }`}
                 >
                   <p className="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-black1">
-                    {timeAmount}
+                    {tAmount}
                   </p>
                 </button>
               );
@@ -249,7 +257,11 @@ export default function MindFullEating() {
               Too Low
             </span>
           </div>
-          <HungerMeter hungerList={[1, 2, 3, 4, 5]} hunger_before_meal={1} />
+          <HungerMeter
+            hungerList={[1, 2, 3, 4, 5]}
+            hunger_meal={intensity!}
+            setHunger_meal={setIntensity}
+          />
           <div className="flex flex-shrink-0 items-center">
             <span className="text-black3 text-[12px]">Too High</span>
           </div>
@@ -264,7 +276,10 @@ export default function MindFullEating() {
           </span>
         </header>
 
-        <Satiety selectedEmoji={satisfactionIndex} />
+        <Satiety
+          satisfaction={satisfaction}
+          setSatisfaction={setSatisfaction}
+        />
       </article>
       <article className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 py-2 gap-x-3">

@@ -8,7 +8,7 @@ export default function Satiety({
   setSatisfaction: (satisfaction: string) => void;
 }) {
   return (
-    <div className="flex justify-around">
+    <div className="flex justify-around w-full">
       <button
         onClick={() => {
           if (satisfaction != "불만족") {
