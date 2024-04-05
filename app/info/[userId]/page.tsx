@@ -13,7 +13,7 @@ async function getInfo(userId: string) {
     };
 
     const JSONdata = JSON.stringify(fetchingData);
-    const endpoint = "http://13.124.182.175:8000/record/get-records";
+    const endpoint = "//13.124.182.175:8000/record/get-records";
 
     const options = {
       method: "POST",
