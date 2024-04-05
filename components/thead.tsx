@@ -1,7 +1,7 @@
 export default function Thead() {
   return (
-    <div>
-      <div className="flex my-2 justify-between">
+    <div className="w-full">
+      <div className="flex my-2 w-full justify-between">
         <span>
           <div className="w-[40px] flex justify-center">
             <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100">
