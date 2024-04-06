@@ -20,7 +20,7 @@ const AccordianItems = ({
   colorStatusWeeks,
 }: AccordianItemsProps) => {
   return (
-    <div className="pt-[2px]">
+    <div className="pt-[2px] z-20">
       <div>
         <Collapse isOpened={open}>
           <MyWeek

@@ -16,9 +16,11 @@ import getMonthAll from "@/utility/getDayInformation";
 export default function MyCalendar({
   isFadeOut,
   setIsFadeOut,
+  userData,
 }: {
   isFadeOut: boolean;
   setIsFadeOut: any;
+  userData: any;
 }) {
   /** 달력 각 월에 대해 스크롤 했을 때 터치하는 것 그대로 따라가되, 어느정도 임계치 이상을 넘기고 손가락을 뗏을때 다음
    * 월로 탄력적으로 이동하게 끔 애니메이션을 구현한다.
@@ -171,17 +173,17 @@ export default function MyCalendar({
       onTouchEnd={handleDragEnd}
       onMouseUp={handleDragEnd}
     >
-      <div className="max-w-sm w-full">
+      <div className="max-w-sm w-full z-20">
         <div className="md:p-5 p-2  bg-white rounded-t">
           <div className="flex flex-col items-center justify-between">
-            <Thead />
+            <Thead daySelect={-1} />
             <div
               className={
                 isFadeOut
-                  ? "w-full overflow-hidden max-h-[45px] relative"
+                  ? "w-full overflow-hidden max-h-[45px] z-20 relative"
                   : recentMonth[1].weeks.length == 6
-                  ? "w-full overflow-hidden max-h-[240px] relative"
-                  : "w-full overflow-hidden max-h-[200px] relative"
+                  ? "w-full overflow-hidden max-h-[240px] z-20 relative"
+                  : "w-full overflow-hidden max-h-[200px] z-20 relative"
               }
             >
               <animated.div

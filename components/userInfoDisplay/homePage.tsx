@@ -7,16 +7,18 @@ import MyCalendar from "../myCalendar";
 import RightChevron from "../rightChevron";
 import LeftChevron from "../leftChevron";
 import UserInfoDisplay from "./userInfoDisplay";
-import PostFetch, { PostSpecificFetch } from "@/api/postFetch";
+import PostSpecificFetch from "@/api/postFetch";
 
 export default function HomePage({
   info,
   userId,
+  userData,
 }: {
   info: any;
+  userData: any;
   userId: string;
 }) {
-  const name = "현경";
+  const name = userData?.user_name;
   const month = 3;
   const day = 14;
   const week = 2;
@@ -77,13 +79,17 @@ export default function HomePage({
           </div>
         </aside>
         {/* 캘린더 */}
-        <MyCalendar isFadeOut={isFadeOut} setIsFadeOut={setIsFadeOut} />
+        <MyCalendar
+          isFadeOut={isFadeOut}
+          setIsFadeOut={setIsFadeOut}
+          userData={userData}
+        />
         {/** split bar */}
         <div className="border-t border-gray-200"></div>
         {isFadeOut ? (
           <>
             <div className="w-full h-5" />
-            <UserInfoDisplay info={info} userId={userId} />;
+            <UserInfoDisplay info={info} userId={userId} />
           </>
         ) : (
           <footer className="flex justify-center">

@@ -1,6 +1,7 @@
 "use client";
 
-import PostFetch from "@/api/postFetch";
+import PostSpecificFetch from "@/api/postFetch";
+
 import Image from "next/image";
 
 import { useState } from "react";
@@ -31,7 +32,7 @@ export default function Routine({
     };
     const JSONdata: string = JSON.stringify(eatingData);
 
-    await PostFetch(JSONdata, "add-routine");
+    await PostSpecificFetch(JSONdata, "record/add-routine");
   };
 
   const fetchDeleteRoutine = async ({
@@ -47,7 +48,7 @@ export default function Routine({
     };
     const JSONdata: string = JSON.stringify(data);
 
-    await PostFetch(JSONdata, "delete-routine");
+    await PostSpecificFetch(JSONdata, "record/delete-routine");
   };
   const fetchSelectRoutine = async ({
     userId,
@@ -62,7 +63,7 @@ export default function Routine({
     };
     const JSONdata: string = JSON.stringify(data);
 
-    await PostFetch(JSONdata, "select-routine");
+    await PostSpecificFetch(JSONdata, "record/select-routine");
   };
   const fetchUnSelectRoutine = async ({
     userId,
@@ -77,7 +78,7 @@ export default function Routine({
     };
     const JSONdata: string = JSON.stringify(data);
 
-    await PostFetch(JSONdata, "unselect-routine");
+    await PostSpecificFetch(JSONdata, "record/unselect-routine");
   };
 
   const [routines, setRoutines] = useState<Routine[]>(routineList);
