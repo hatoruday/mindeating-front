@@ -121,7 +121,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
       };
 
       const JSONdata = JSON.stringify(eatingData);
-      const endpoint = "https://13.124.182.175:8000/record/record-activity/";
+      const endpoint = "//13.124.182.175:8000/record/record-activity/";
 
       const options = {
         method: "POST",

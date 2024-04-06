@@ -37,7 +37,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
       };
 
       const JSONdata = JSON.stringify(eatingData);
-      const endpoint = "https://13.124.182.175:8000/record/record-emotion/";
+      const endpoint = "//13.124.182.175:8000/record/record-emotion/";
 
       const options = {
         method: "POST",

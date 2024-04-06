@@ -42,7 +42,7 @@ export default function Sleep({ params: { userId } }: IParams) {
       };
 
       const JSONdata = JSON.stringify(eatingData);
-      const endpoint = "https://13.124.182.175:8000/record/record-sleep/";
+      const endpoint = "//13.124.182.175:8000/record/record-sleep/";
 
       const options = {
         method: "POST",
