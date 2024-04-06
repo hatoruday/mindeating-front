@@ -1,4 +1,11 @@
-export default function Thead({ daySelect }: { daySelect: number }) {
+export default function Thead({
+  daySelect,
+  isFadeOut,
+}: {
+  daySelect: Date;
+  isFadeOut: boolean;
+}) {
+  const day = daySelect.getDay();
   return (
     <div className="w-full">
       <div className="flex relative mt-2 w-full justify-between max-h-[30px]">
@@ -6,61 +13,61 @@ export default function Thead({ daySelect }: { daySelect: number }) {
           <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100 absolute z-20">
             Mo
           </p>
-          {daySelect === 0 && (
+          {day === 1 && isFadeOut && (
             <div className="absolute w-[46px] h-[84px] top-[35px] left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[24.5px] z-10 bg-green3 border border-green-200" />
           )}
         </div>
 
         <div className="w-[40px] flex justify-center">
-          <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100">
+          <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100 z-20">
             Tu
           </p>
-          {daySelect === 1 && (
+          {day === 2 && isFadeOut && (
             <div className="absolute w-[46px] h-[84px] top-[35px] left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[24.5px] z-10 bg-green3 border border-green-200" />
           )}
         </div>
 
         <div className="w-[40px] flex justify-center">
-          <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100">
+          <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100 z-20">
             We
           </p>
-          {daySelect === 2 && (
+          {day === 3 && isFadeOut && (
             <div className="absolute w-[46px] h-[84px] top-[35px] left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[24.5px] z-10 bg-green3 border border-green-200" />
           )}
         </div>
 
         <div className="w-[40px] flex justify-center">
-          <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100">
+          <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100 z-20">
             Th
           </p>
-          {daySelect === 3 && (
+          {day === 4 && isFadeOut && (
             <div className="absolute w-[46px] h-[84px] top-[35px] left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[24.5px] z-10 bg-green3 border border-green-200" />
           )}
         </div>
 
         <div className="w-[40px] flex justify-center">
-          <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100">
+          <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100 z-20">
             Fr
           </p>
-          {daySelect === 4 && (
+          {day === 5 && isFadeOut && (
             <div className="absolute w-[46px] h-[84px] top-[35px] left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[24.5px] z-10 bg-green3 border border-green-200" />
           )}
         </div>
 
         <div className="w-[40px] flex justify-center">
-          <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100">
+          <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100 z-20">
             Sa
           </p>
-          {daySelect === 5 && (
+          {day === 6 && isFadeOut && (
             <div className="absolute w-[46px] h-[84px] top-[35px] left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[24.5px] z-10 bg-green3 border border-green-200" />
           )}
         </div>
 
         <div className="w-[40px] flex justify-center">
-          <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100">
+          <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100 z-20">
             Su
           </p>
-          {daySelect === 6 && (
+          {day === 0 && isFadeOut && (
             <div className="absolute w-[46px] h-[84px] top-[35px] left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-[24.5px] z-10 bg-green3 border border-green-200" />
           )}
         </div>

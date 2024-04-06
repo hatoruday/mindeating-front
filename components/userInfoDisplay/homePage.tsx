@@ -23,6 +23,7 @@ export default function HomePage({
   const day = 14;
   const week = 2;
   const [isFadeOut, setIsFadeOut] = useState<boolean>(false);
+  const [selectDate, setSelectDate] = useState<Date>(new Date());
   //set slash to !slash whey clicked
   const fetchSubmit = async () => {
     const eatingData = {
@@ -83,6 +84,8 @@ export default function HomePage({
           isFadeOut={isFadeOut}
           setIsFadeOut={setIsFadeOut}
           userData={userData}
+          selectDate={selectDate}
+          setSelectDate={setSelectDate}
         />
         {/** split bar */}
         <div className="border-t border-gray-200"></div>

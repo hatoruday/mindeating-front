@@ -13,10 +13,12 @@ export default function MyMonthList({
   recentMonths: recentMonths,
   isFadeOut,
   setIsfadeOut,
+  setSelectDate,
 }: {
   recentMonths: MonthAll;
   isFadeOut: boolean;
   setIsfadeOut: any;
+  setSelectDate: any;
 }) {
   // 현재 월에 해당하는 주별 날짜 2차원 배열을 가져옴
   // console.log(recentMonths[0].weeks[0][0].getMonth());
