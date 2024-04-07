@@ -10,6 +10,7 @@ interface AccordianItemsProps {
   colorStatusWeeks: number[][];
   openIndexList: number[];
   setOpenIndexList: any;
+  setSelectDate: any;
 }
 const AccordianItems = ({
   open,
@@ -18,6 +19,7 @@ const AccordianItems = ({
   weekindex,
   week,
   colorStatusWeeks,
+  setSelectDate,
 }: AccordianItemsProps) => {
   return (
     <div className="pt-[2px] z-20">
@@ -28,6 +30,7 @@ const AccordianItems = ({
             week={week}
             weekindex={weekindex}
             colorStatusWeeks={colorStatusWeeks}
+            setSelectDate={setSelectDate}
           />
         </Collapse>
       </div>

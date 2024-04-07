@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 export default function Thead({
   daySelect,
   isFadeOut,
@@ -5,11 +9,14 @@ export default function Thead({
   daySelect: Date;
   isFadeOut: boolean;
 }) {
-  const day = daySelect.getDay();
+  const [day, setDay] = useState(daySelect.getDay());
+  useEffect(() => {
+    setDay(daySelect.getDay());
+  }, [daySelect]);
   return (
     <div className="w-full">
-      <div className="flex relative mt-2 w-full justify-between max-h-[30px]">
-        <div className="w-[40px] h-[84px] flex relative justify-center">
+      <div className="flex mt-2 w-full justify-between max-h-[30px]">
+        <div className="w-[40px] relative h-[84px] flex justify-center">
           <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100 absolute z-20">
             Mo
           </p>
@@ -18,7 +25,7 @@ export default function Thead({
           )}
         </div>
 
-        <div className="w-[40px] flex justify-center">
+        <div className="w-[40px] relative flex justify-center">
           <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100 z-20">
             Tu
           </p>
@@ -27,7 +34,7 @@ export default function Thead({
           )}
         </div>
 
-        <div className="w-[40px] flex justify-center">
+        <div className="w-[40px] relative flex justify-center">
           <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100 z-20">
             We
           </p>
@@ -36,7 +43,7 @@ export default function Thead({
           )}
         </div>
 
-        <div className="w-[40px] flex justify-center">
+        <div className="w-[40px] relative flex justify-center">
           <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100 z-20">
             Th
           </p>
@@ -45,7 +52,7 @@ export default function Thead({
           )}
         </div>
 
-        <div className="w-[40px] flex justify-center">
+        <div className="w-[40px] relative flex justify-center">
           <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100 z-20">
             Fr
           </p>
@@ -54,7 +61,7 @@ export default function Thead({
           )}
         </div>
 
-        <div className="w-[40px] flex justify-center">
+        <div className="w-[40px] relative flex justify-center">
           <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100 z-20">
             Sa
           </p>
@@ -63,7 +70,7 @@ export default function Thead({
           )}
         </div>
 
-        <div className="w-[40px] flex justify-center">
+        <div className="w-[40px] relative flex justify-center">
           <p className="text-base font-medium text-center text-gray-800 dark:text-gray-100 z-20">
             Su
           </p>

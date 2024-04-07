@@ -55,7 +55,7 @@ export default function MyMonthList({
   };
 
   const toggle = (index: number) => {
-    console.log("toggle 실행됨.", openIndexList, index);
+    // console.log("toggle 실행됨.", openIndexList, index);
     let newIndex: number[];
     //openIndexList의 sum을 구한다.
     let summedValue = openIndexList.reduce((a, b) => a + b, 0);
@@ -66,7 +66,7 @@ export default function MyMonthList({
         i === index ? 1 : 0
       );
     }
-    console.log(openIndexList, newIndex);
+    // console.log(openIndexList, newIndex);
     setOpenIndexList(newIndex);
     setIsfadeOut(!isFadeOut);
   };
@@ -98,7 +98,7 @@ export default function MyMonthList({
         <>
           <div className="w-[318px] h-[200px]"></div>
           {recentMonths[1].weeks.map((week, weekindex) => (
-            <button
+            <div
               key={weekindex}
               onMouseDown={() => handleMouseDown(weekindex)}
               onTouchStart={() => handleTouchStart(weekindex)}
@@ -110,8 +110,9 @@ export default function MyMonthList({
                 weekindex={weekindex}
                 week={recentMonths[1].weeks[weekindex]}
                 colorStatusWeeks={recentMonths[1].colorStatusWeeks}
+                setSelectDate={setSelectDate}
               />
-            </button>
+            </div>
           ))}
         </>
       ) : (
@@ -120,7 +121,7 @@ export default function MyMonthList({
             return (
               <div key={monthindex}>
                 {month.weeks.map((week, weekindex) => (
-                  <button
+                  <div
                     className="w-full"
                     key={weekindex}
                     onMouseDown={() => handleMouseDown(weekindex)}
@@ -134,8 +135,9 @@ export default function MyMonthList({
                       weekindex={weekindex}
                       week={month.weeks[weekindex]}
                       colorStatusWeeks={month.colorStatusWeeks}
+                      setSelectDate={setSelectDate}
                     />
-                  </button>
+                  </div>
                 ))}
               </div>
             );
