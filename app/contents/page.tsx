@@ -45,19 +45,19 @@ export default function Contents() {
     },
   ];
   return (
-    <div className="flex flex-col content-center px-1">
+    <div className="flex flex-col content-center">
       <header className="flex w-full justify-start py-5">
         <span className="font-bold  text-[18px] text-black1">
           마음먹기 학습하기
         </span>
       </header>
 
-      <div className="grid grid-flow-row-dense py-3 grid-cols-5 gap-2 ">
+      <div className="grid grid-flow-row-dense py-3 gap-x-1 gap-y-3 grid-cols-7 ">
         <div></div>
         {contentsBlockList.map((contentsBlock, index) => {
           return (
             <React.Fragment key={index}>
-              <div className="col-span-4 row-span-3 w-ful">
+              <div className="col-span-6 row-span-3 w-ful">
                 <ContentsBox
                   contentsString={contentsBlock.contentString}
                   imgSrc={contentsBlock.imgSrc}
