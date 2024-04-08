@@ -3,7 +3,7 @@ export default async function PostSpecificFetch(
   speficEndPoint: string
 ) {
   try {
-    const endpoint = `//13.124.182.175:8000/${speficEndPoint}`;
+    const endpoint = `https://mindeating-server.shop/${speficEndPoint}`;
 
     const options = {
       method: "POST",
@@ -48,7 +48,7 @@ export async function getInfo(userId: string) {
     };
 
     const JSONdata = JSON.stringify(fetchingData);
-    const endpoint = "//13.124.182.175:8000/record/get-records";
+    const endpoint = "https://mindeating-server.shop/record/get-records";
 
     const options = {
       method: "POST",
@@ -91,7 +91,7 @@ export async function getUserName(userId: string) {
     };
 
     const JSONdata = JSON.stringify(fetchingData);
-    const endpoint = "//13.124.182.175:8000/record/get-user";
+    const endpoint = "https://mindeating-server.shop/record/get-user";
 
     const options = {
       method: "POST",

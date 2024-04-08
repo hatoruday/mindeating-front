@@ -107,7 +107,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
       };
 
       const JSONdata = JSON.stringify(eatingData);
-      const endpoint = "//13.124.182.175:8000/record/record-eating";
+      const endpoint = "https://mindeating-server.shop/record/record-eating";
 
       const options = {
         method: "POST",

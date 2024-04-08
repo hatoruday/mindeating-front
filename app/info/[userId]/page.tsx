@@ -13,7 +13,7 @@ export default async function UserInfo({ params: { userId } }: IParams) {
   // const JSONdata = JSON.stringify(fetchingData);
   // const userInfo = await PostSpecificFetch(JSONdata, "record/get-user");
   const userData = await getUserName(userId);
-
+  console.log(userData);
   return (
     <div className="flex flex-col">
       <HomePage info={info} userId={userId} userData={userData} />

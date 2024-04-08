@@ -39,7 +39,7 @@ export default function LoginPage({ params: { id } }: IParams) {
         password,
       };
       const JSONdata = JSON.stringify(data);
-      const endpoint = "//13.124.182.175:8000/paid-login";
+      const endpoint = "https://mindeating-server.shop/paid-login";
 
       const options = {
         method: "POST",
