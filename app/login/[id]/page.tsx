@@ -50,6 +50,7 @@ export default function LoginPage({ params: { id } }: IParams) {
       };
 
       const response = await fetch(endpoint, options);
+      console.log(response);
       if (response.ok) {
         const result = await response.json();
         if (result.success) {
