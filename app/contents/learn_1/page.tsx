@@ -2,8 +2,9 @@
 
 import { usePathname, useSearchParams } from "next/navigation";
 import { Five, Four, One, Six, Three, Two } from "./oneTopicPages";
+import { Suspense } from "react";
 
-export default function Learn1() {
+function Learn1() {
   const query = useSearchParams();
   const pathname = usePathname();
   const pageNum = query.get("page");
@@ -16,5 +17,12 @@ export default function Learn1() {
       {pageNum === "5" && <Five topic={pathname} pageNum={pageNum} />}
       {pageNum === "6" && <Six topic={"/contents"} />}
     </div>
+  );
+}
+export default function WrapLearn1() {
+  return (
+    <Suspense>
+      <Learn1 />
+    </Suspense>
   );
 }

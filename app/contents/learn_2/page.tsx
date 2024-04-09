@@ -4,8 +4,9 @@ import ContentsScreen from "@/components/contents/contentsScreen";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Eight, Eleven, Five, Four, Fourteen, Nine, One, Seven, Six, Ten, Thirteen, Three, Twelve, Two } from "./twoTopicPages";
+import { Suspense } from "react";
 
-export default function Learn1() {
+function Learn2() {
   const router = useRouter();
   const query = useSearchParams();
   const pathname = usePathname();
@@ -27,5 +28,12 @@ export default function Learn1() {
       {pageNum === "13" && <Thirteen topic={pathname} pageNum={pageNum} />}
       {pageNum === "14" && <Fourteen topic={"/contents"} />}
     </div>
+  );
+}
+export default function WrapLearn2() {
+  return (
+    <Suspense>
+      <Learn2 />
+    </Suspense>
   );
 }
