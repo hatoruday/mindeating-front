@@ -31,15 +31,14 @@ export default function MindFullEating({ params: { userId } }: IParams) {
   const [hunger_after_meal, setHunger_After_meal] = useState<number>(0);
   const [speed, setSpeed] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
-  const [successed_meal_routine, setSuccesssed_meal_routine] =
-    useState<SuccessMealRoutine>({
-      0: false,
-      1: false,
-      2: false,
-      3: false,
-      4: false,
-      5: false,
-    });
+  const [successed_meal_routine, setSuccesssed_meal_routine] = useState<SuccessMealRoutine>({
+    0: false,
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false,
+  });
   const [satisfaction, setSatisfaction] = useState<string>("");
   const [note, setNote] = useState<string>(""); //not required
 
@@ -94,12 +93,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
       console.log(result?.result.name);
       setIsLoading(false);
     } else if (result?.ok) {
-      alert(
-        "실패. client error success:" +
-          result?.success +
-          " name: " +
-          result?.result.name
-      );
+      alert("실패. client error success:" + result?.success + " name: " + result?.result.name);
       setIsLoading(false);
       console.log(result?.result);
     } else {
@@ -111,13 +105,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
   return (
     <div className="flex flex-col justify-center content-center">
       <header className="flex relative w-full py-3 justify-center">
-        <Image
-          src="/leftChevron.svg"
-          width={8}
-          height={17}
-          alt="leftChevron"
-          className="absolute top-1/2 left-4 transform -translate-y-1/2"
-        />
+        <Image src="/leftChevron.svg" width={8} height={17} alt="leftChevron" className="absolute top-1/2 left-4 transform -translate-y-1/2" />
         <div className="flex gap-2">
           <span className="font-semibold text-[16px]">마인드풀이팅</span>
         </div>
@@ -125,9 +113,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
       <section className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
-          <span className="font-medium text-black2 text-[14px]">
-            어떤 음식을 드셨나요
-          </span>
+          <span className="font-medium text-black2 text-[14px]">어떤 음식을 드셨나요</span>
         </header>
         <input
           className="w-full h-[52px] px-3  rounded-[10px] ring-0 text-black1 text-[14px] bg-black4 placeholder-black3 outline-none"
@@ -140,6 +126,9 @@ export default function MindFullEating({ params: { userId } }: IParams) {
           {menu.map((item, index) => (
             <div
               key={index}
+              onClick={() => {
+                setMenu(menu.filter((_, i) => i !== index));
+              }}
               className="flex justify-center items-center h-9 relative gap-2 px-3.5 py-2.5 rounded-[56px] border border-green2 bg-green3"
             >
               <p className="flex flex-grow-0 flex-shrink-0">{item}</p>
@@ -151,9 +140,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
       <section className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image src="/bookSearch.svg" width={17} height={19} alt="bookIcon" />
-          <span className="font-medium text-black2 text-[14px]">
-            음식의 종류는 뭔가요?
-          </span>
+          <span className="font-medium text-black2 text-[14px]">음식의 종류는 뭔가요?</span>
         </header>
         <article className="flex gap-x-3">
           {["식사류", "간식류", "음료류"].map((item, index) => (
@@ -166,28 +153,18 @@ export default function MindFullEating({ params: { userId } }: IParams) {
                 }
               }}
               key={index}
-              className={`flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border ${
-                type == item ? "border-green2 bg-green3" : "border-black4"
-              }`}
+              className={`flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border ${type == item ? "border-green2 bg-green3" : "border-black4"}`}
             >
-              <p className="flex text-sm font-medium text-left text-[#2c2c30]">
-                {item}
-              </p>
+              <p className="flex text-sm font-medium text-left text-[#2c2c30]">{item}</p>
             </button>
           ))}
         </article>
       </section>
-      <WhatIsYourTime
-        when={when}
-        setWhen={setWhen}
-        timeType="식사 시간대를 알려주세요!"
-      />
+      <WhatIsYourTime when={when} setWhen={setWhen} timeType="식사 시간대를 알려주세요!" />
       <section className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
-          <span className="font-medium text-black2 text-[14px]">
-            배고픔 배부름 정도는 어떘나요
-          </span>
+          <span className="font-medium text-black2 text-[14px]">배고픔 배부름 정도는 어떘나요</span>
         </header>
 
         <aside className="grid items-center grid-flow-row-dense grid-cols-5 grid-rows-3 gap-y-1">
@@ -207,30 +184,20 @@ export default function MindFullEating({ params: { userId } }: IParams) {
             <span className="text-center">식전</span>
           </div>
           <div className="col-span-4 w-full">
-            <HungerMeter
-              setHunger_meal={setHunger_before_meal}
-              hungerList={hungetList}
-              hunger_meal={hunger_before_meal}
-            />
+            <HungerMeter setHunger_meal={setHunger_before_meal} hungerList={hungetList} hunger_meal={hunger_before_meal} />
           </div>
           <div className="flex justify-center content-center">
             <span className="text-center">식후</span>
           </div>
           <div className="col-span-4 ">
-            <HungerMeter
-              setHunger_meal={setHunger_After_meal}
-              hungerList={hungetList}
-              hunger_meal={hunger_after_meal}
-            />
+            <HungerMeter setHunger_meal={setHunger_After_meal} hungerList={hungetList} hunger_meal={hunger_after_meal} />
           </div>
         </aside>
       </section>
       <section className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 gap-x-3 py-2">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
-          <span className="font-medium text-black2 text-[14px]">
-            식사 속도를 알려주세요!
-          </span>
+          <span className="font-medium text-black2 text-[14px]">식사 속도를 알려주세요!</span>
         </header>
         <article className="flex gap-x-3">
           {["빠르게", "적당히", "천천히"].map((item, index) => (
@@ -243,13 +210,9 @@ export default function MindFullEating({ params: { userId } }: IParams) {
                   setSpeed(item);
                 }
               }}
-              className={`flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border ${
-                speed == item ? "border-green2 bg-green3" : "border-black4"
-              }`}
+              className={`flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border ${speed == item ? "border-green2 bg-green3" : "border-black4"}`}
             >
-              <p className="flex text-sm font-medium text-left text-[#2c2c30]">
-                {item}
-              </p>
+              <p className="flex text-sm font-medium text-left text-[#2c2c30]">{item}</p>
             </button>
           ))}
         </article>
@@ -257,17 +220,10 @@ export default function MindFullEating({ params: { userId } }: IParams) {
       <section className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 gap-x-3 py-2">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
-          <span className="font-medium text-black2 text-[14px]">
-            식사량은 어땠나요?
-          </span>
+          <span className="font-medium text-black2 text-[14px]">식사량은 어땠나요?</span>
         </header>
         <article className="flex gap-x-3 flex-wrap">
-          {[
-            "적게 먹었어요",
-            "적당했어요",
-            "약간 많았어요",
-            "아주 많았어요",
-          ].map((item, index) => (
+          {["적게 먹었어요", "적당했어요", "약간 많았어요", "아주 많았어요"].map((item, index) => (
             <button
               key={index}
               onClick={() => {
@@ -277,13 +233,9 @@ export default function MindFullEating({ params: { userId } }: IParams) {
                   setAmount(item);
                 }
               }}
-              className={`flex my-2 justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border ${
-                amount == item ? "border-green2 bg-green3" : "border-black4"
-              }`}
+              className={`flex my-2 justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border ${amount == item ? "border-green2 bg-green3" : "border-black4"}`}
             >
-              <p className="flex text-sm font-medium text-left text-[#2c2c30]">
-                {item}
-              </p>
+              <p className="flex text-sm font-medium text-left text-[#2c2c30]">{item}</p>
             </button>
           ))}
         </article>
@@ -291,9 +243,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
       <section className="flex flex-col justify-center content-center w-full gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
-          <span className="font-medium text-black2 text-[14px]">
-            오늘 성공한 식사 루틴을 체크해주세요!
-          </span>
+          <span className="font-medium text-black2 text-[14px]">오늘 성공한 식사 루틴을 체크해주세요!</span>
         </header>
         <article className="flex flex-col w-full  gap-3">
           {routineCheckList.map((routine, index) => (
@@ -301,24 +251,15 @@ export default function MindFullEating({ params: { userId } }: IParams) {
               <button
                 onClick={() => {
                   const newSuccessedMealRoutine = { ...successed_meal_routine };
-                  newSuccessedMealRoutine[index] =
-                    !newSuccessedMealRoutine[index];
+                  newSuccessedMealRoutine[index] = !newSuccessedMealRoutine[index];
                   setSuccesssed_meal_routine(newSuccessedMealRoutine);
                 }}
                 className={`flex w-[95%] justify-between items-center h-9 gap-2.5 px-4 py-2.5 rounded-[56px] border border-[#e7e7e7] ${
-                  successed_meal_routine[index]
-                    ? "bg-green3 border border-green2"
-                    : ""
+                  successed_meal_routine[index] ? "bg-green3 border border-green2" : ""
                 }`}
               >
-                <p className="text-sm font-medium text-center text-[#2c2c30]">
-                  {routine.content}
-                </p>
-                {successed_meal_routine[index] ? (
-                  <FaRegCircle className="bg-green2 text-green2 rounded-full" />
-                ) : (
-                  <FaRegCircle />
-                )}
+                <p className="text-sm font-medium text-center text-[#2c2c30]">{routine.content}</p>
+                {successed_meal_routine[index] ? <FaRegCircle className="bg-green2 text-green2 rounded-full" /> : <FaRegCircle />}
               </button>
             </div>
           ))}
@@ -326,20 +267,10 @@ export default function MindFullEating({ params: { userId } }: IParams) {
       </section>
       <section className="flex flex-col w-full gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
-          <Image
-            src="/emoji/satisfiedFace.svg"
-            width={17}
-            height={19}
-            alt="bookIcon"
-          />
-          <span className="font-medium text-black2 text-[14px]">
-            식사 만족도
-          </span>
+          <Image src="/emoji/satisfiedFace.svg" width={17} height={19} alt="bookIcon" />
+          <span className="font-medium text-black2 text-[14px]">식사 만족도</span>
         </header>
-        <Satiety
-          satisfaction={satisfaction}
-          setSatisfaction={setSatisfaction}
-        />
+        <Satiety satisfaction={satisfaction} setSatisfaction={setSatisfaction} />
         <FeedbackNote note={note} setNote={setNote} />
       </section>
       <RecordSubmit
@@ -360,15 +291,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
           },
         }}
         isLoading={isLoading}
-        isActive={
-          menu.length > 0 &&
-          type != "" &&
-          when != "" &&
-          hunger_before_meal != 0 &&
-          hunger_after_meal != 0 &&
-          speed != "" &&
-          satisfaction != ""
-        }
+        isActive={menu.length > 0 && type != "" && when != "" && hunger_before_meal != 0 && hunger_after_meal != 0 && speed != "" && satisfaction != ""}
       />
     </div>
   );
