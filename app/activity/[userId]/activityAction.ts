@@ -21,7 +21,7 @@ export async function activityAction(activityData: ActivityParams) {
   try {
     const result: FetchResult = await PostSpecificFetch(
       JSONdata,
-      "record/record-activity/"
+      "record/record-activity"
     );
 
     // revalidatePath(`/login/${id}`);

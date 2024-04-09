@@ -44,6 +44,7 @@ const config: Config = {
       },
       fontFamily: {
         gowun: ["var(--gowun-dodum-variable)"],
+        nanum: ["var(--nanum-gothic-variable)"],
       },
     },
   },

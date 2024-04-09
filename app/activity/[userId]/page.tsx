@@ -105,6 +105,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
   const clientActionWrapper = async (activityData: ActivityParams) => {
     setIsLoading(true);
     const result: FetchResult | undefined = await activityAction(activityData);
+    console.log(result);
     if (result?.ok && result?.success) {
       alert("성공");
       // router.push("/info/");

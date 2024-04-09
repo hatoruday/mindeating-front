@@ -1,5 +1,5 @@
 // https://fonts.google.com/variablefonts 여기에서 Fonts를 찾아서 추가합니다.
-import { IBM_Plex_Sans_KR, Gowun_Dodum } from "next/font/google";
+import { IBM_Plex_Sans_KR, Gowun_Dodum, Nanum_Gothic } from "next/font/google";
 
 // Font의 classnames를 합치는 공통 함수
 const sumClass = (...classnames: string[]) => {
@@ -22,5 +22,16 @@ const gowun = Gowun_Dodum({
   display: "swap",
 });
 
+const nanum = Nanum_Gothic({
+  weight: ["400", "700", "800"],
+  variable: "--nanum-gothic-variable",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 // 폰트가 추가되면 여기에 ,(콤마)로 구분하여 추가함 - 외부에서 FontClassNames를 불러와 적용함
-export const FontClassNames = sumClass(noto_sans_kr.className, gowun.variable);
+export const FontClassNames = sumClass(
+  noto_sans_kr.className,
+  gowun.variable,
+  nanum.variable
+);
