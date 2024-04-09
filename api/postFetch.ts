@@ -1,7 +1,12 @@
+export interface FetchResult {
+  ok: boolean;
+  success: boolean;
+  result: any;
+}
 export default async function PostSpecificFetch(
   data: string,
   speficEndPoint: string
-) {
+): Promise<FetchResult> {
   try {
     const endpoint = `https://mindeating-server.shop/${speficEndPoint}`;
 
@@ -17,20 +22,30 @@ export default async function PostSpecificFetch(
     // console.log(response);
     if (response.ok) {
       const result = await response.json();
-      console.log(result);
+
       if (result.success) {
-        return result;
+        return { ok: true, success: true, result } as FetchResult;
       } else {
-        console.log("전송 실패" + result.message);
+        return { ok: true, success: false, result } as FetchResult;
       }
     } else {
       // 에러 처리
+      return {
+        ok: false,
+        success: false,
+        result: "response not ok 전송 실패",
+      } as FetchResult;
       console.error("response not ok 전송 실패");
     }
   } catch (e: any) {
     // if (e instanceof FirebaseError) {
     //   setError(e.message);
     // }
+    return {
+      ok: false,
+      success: false,
+      result: e.message,
+    } as FetchResult;
   } finally {
   }
 }

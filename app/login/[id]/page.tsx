@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import { loginActionHandleSubmit } from "./loginAction";
+import SubmitButton from "@/components/login/loginSubmitButton";
+import { FetchResult } from "@/api/postFetch";
 interface IParams {
   params: { id: string };
 }
@@ -27,7 +29,26 @@ export default function LoginPage({ params: { id } }: IParams) {
       setPassword(value);
     }
   };
-
+  const clientActionWrapper = async (formData: FormData) => {
+    const result: FetchResult | undefined = await loginActionHandleSubmit(
+      formData
+    );
+    if (result?.ok && result?.success) {
+      alert("로그인 성공");
+      console.log(result?.result.name);
+    } else if (result?.ok) {
+      alert(
+        "로그인 실패. client error success:" +
+          result?.success +
+          " name: " +
+          result?.result.name
+      );
+      console.log(result?.result);
+    } else {
+      alert("로그인 실패. server error\n" + result?.result);
+    }
+    // setState(result)
+  };
   return (
     <div className="min-h-full px-6 py-12 lg:px-8">
       <div className="flex flex-1 flex-col justify-center">
@@ -50,7 +71,7 @@ export default function LoginPage({ params: { id } }: IParams) {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action={loginActionHandleSubmit}>
+          <form className="space-y-6" action={clientActionWrapper}>
             <div className="mt-2">
               <input
                 id="userId"
@@ -104,21 +125,7 @@ export default function LoginPage({ params: { id } }: IParams) {
             </div>
 
             <div>
-              {userId === "" || password === "" ? (
-                <button
-                  type="button"
-                  className="flex w-full justify-center rounded-[12px] bg-[#F5FEF5] px-3 py-[15px] text-sm font-medium leading-4 text-[#9F9FAC] shadow-sm "
-                >
-                  제출하기
-                </button>
-              ) : (
-                <button
-                  type="submit"
-                  className="flex w-full justify-center rounded-[12px] bg-[#C1F1C1] px-3 py-[18px] text-sm font-medium leading-4 text-[#2C2C30] shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  제출하기
-                </button>
-              )}
+              <SubmitButton isActive={!(userId === "" || password === "")} />
             </div>
           </form>
         </div>
