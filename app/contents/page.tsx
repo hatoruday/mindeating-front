@@ -6,7 +6,7 @@ import React from "react";
 import { FaCircle } from "react-icons/fa";
 
 export default function Contents() {
-  const contentLevel = 2;
+  const contentLevel = 7;
 
   const contentsBlockList = [
     {
