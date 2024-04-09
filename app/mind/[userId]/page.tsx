@@ -85,64 +85,6 @@ export default function MindFullEating({ params: { userId } }: IParams) {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  const submitFunction = async () => {
-    setIsLoading(true);
-    // e.preventDefault();
-
-    // if (loading || userId === "" || password === "") return;
-
-    try {
-      const eatingData = {
-        user_id: userId,
-        record: {
-          menu,
-          type,
-          when,
-          hunger_before_meal,
-          hunger_after_meal,
-          speed,
-          amount,
-          successed_meal_routine,
-          satisfaction,
-          note,
-        },
-      };
-
-      const JSONdata = JSON.stringify(eatingData);
-      const endpoint = "https://mindeating-server.shop/";
-
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSONdata,
-      };
-      console.log(options.body);
-      const response = await fetch(endpoint, options);
-      // console.log(response);
-      if (response.ok) {
-        const result = await response.json();
-        console.log(result);
-        if (result.success) {
-          router.push("/info/");
-        } else {
-          alert("전송 실패" + result.message);
-          setIsLoading(false);
-        }
-      } else {
-        // 에러 처리
-        console.error("response not ok 전송 실패");
-        setIsLoading(false);
-      }
-    } catch (e: any) {
-      // if (e instanceof FirebaseError) {
-      //   setError(e.message);
-      // }
-    } finally {
-    }
-  };
-
   const clientActionWrapper = async (eatingData: MindParams) => {
     setIsLoading(true);
     const result: FetchResult | undefined = await mindAction(eatingData);

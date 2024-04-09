@@ -11,6 +11,8 @@ import { useRouter } from "next/navigation";
 
 import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
+import { activityAction, ActivityParams } from "./activityAction";
+import { FetchResult } from "@/api/postFetch";
 
 interface IParams {
   params: { userId: string };
@@ -100,59 +102,28 @@ export default function ActivityPage({ params: { userId } }: IParams) {
 
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-
-  const submitFunction = async () => {
+  const clientActionWrapper = async (activityData: ActivityParams) => {
     setIsLoading(true);
-    // e.preventDefault();
-
-    // if (loading || userId === "" || password === "") return;
-    const submitNames = [...names, ...extras];
-    try {
-      const eatingData = {
-        user_id: userId,
-        record: {
-          names: submitNames,
-          when,
-          intensity,
-          time,
-          satisfaction,
-          note,
-        },
-      };
-
-      const JSONdata = JSON.stringify(eatingData);
-      const endpoint = "https://mindeating-server.shop/record/record-activity/";
-
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSONdata,
-      };
-      console.log(options.body);
-      const response = await fetch(endpoint, options);
-      // console.log(response);
-      if (response.ok) {
-        const result = await response.json();
-        console.log(result);
-        if (result.success) {
-          router.push("/info/");
-        } else {
-          alert("전송 실패" + result.message);
-          setIsLoading(false);
-        }
-      } else {
-        // 에러 처리
-        console.error("response not ok 전송 실패");
-        setIsLoading(false);
-      }
-    } catch (e: any) {
-      // if (e instanceof FirebaseError) {
-      //   setError(e.message);
-      // }
-    } finally {
+    const result: FetchResult | undefined = await activityAction(activityData);
+    if (result?.ok && result?.success) {
+      alert("성공");
+      // router.push("/info/");
+      console.log(result?.result.name);
+      setIsLoading(false);
+    } else if (result?.ok) {
+      alert(
+        "실패. client error success:" +
+          result?.success +
+          " name: " +
+          result?.result.name
+      );
+      setIsLoading(false);
+      console.log(result?.result);
+    } else {
+      alert("실패. server error\n" + result?.result);
+      setIsLoading(false);
     }
+    // setState(result)
   };
 
   return (
@@ -351,7 +322,18 @@ export default function ActivityPage({ params: { userId } }: IParams) {
       </article>
 
       <RecordSubmit
-        submitFunction={submitFunction}
+        submitFunction={clientActionWrapper}
+        data={{
+          user_id: userId,
+          record: {
+            names: [...names, ...extras],
+            when,
+            intensity,
+            time,
+            satisfaction,
+            note,
+          },
+        }}
         isLoading={isLoading}
         isActive={
           names.length > 0 &&
