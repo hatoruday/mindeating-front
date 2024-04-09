@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans_KR } from "next/font/google";
-import "./globals.css";
 
-const IBMfont = IBM_Plex_Sans_KR({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal"],
-});
+import "./globals.css";
+import { FontClassNames } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,10 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="min-h-full">
-      <body
-        className={`${IBMfont.className} h-full flex justify-center bg-[#c1f1c1] min-h-full  `}
-      >
-        <div className="sm:max-w-[640px] w-full min-h-screen h-auto bg-white px-6 py-4 ">
+      <body className={" h-full flex justify-center bg-[#c1f1c1] min-h-full  "}>
+        <div
+          className={`${FontClassNames} sm:max-w-[640px] w-full min-h-screen h-auto bg-white px-6 py-4 `}
+        >
           {children}
         </div>
       </body>

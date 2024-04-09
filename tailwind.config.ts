@@ -42,6 +42,9 @@ const config: Config = {
       animation: {
         fadeOutUp: "fadeOutUp 4s forwards",
       },
+      fontFamily: {
+        gowun: ["var(--gowun-dodum-variable)"],
+      },
     },
   },
   plugins: [],

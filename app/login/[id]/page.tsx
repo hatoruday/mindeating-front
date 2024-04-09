@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { loginActionHandleSubmit } from "./loginAction";
 interface IParams {
   params: { id: string };
 }
@@ -20,56 +21,13 @@ export default function LoginPage({ params: { id } }: IParams) {
     const {
       target: { name, value },
     } = e;
-    if (name === "id") {
+    if (name === "userId") {
       setUserId(value);
     } else if (name === "password") {
       setPassword(value);
     }
   };
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setError("");
-    // if (loading || userId === "" || password === "") return;
-    if (userId === "" || password === "") return;
 
-    try {
-      const data = {
-        id,
-        nickname: userId,
-        password,
-      };
-      const JSONdata = JSON.stringify(data);
-      const endpoint = "https://mindeating-server.shop/paid-login";
-
-      const options = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSONdata,
-      };
-
-      const response = await fetch(endpoint, options);
-      console.log(response);
-      if (response.ok) {
-        const result = await response.json();
-        if (result.success) {
-          alert("로그인 성공");
-        } else {
-          alert("로그인 실패");
-        }
-      } else {
-        // 에러 처리
-        console.error("로그인 실패");
-      }
-    } catch (e: any) {
-      // if (e instanceof FirebaseError) {
-      //   setError(e.message);
-      // }
-      setError(e.message);
-    } finally {
-    }
-  };
   return (
     <div className="min-h-full px-6 py-12 lg:px-8">
       <div className="flex flex-1 flex-col justify-center">
@@ -92,16 +50,11 @@ export default function LoginPage({ params: { id } }: IParams) {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form
-            className="space-y-6"
-            onSubmit={onSubmit}
-            action="#"
-            method="POST"
-          >
+          <form className="space-y-6" action={loginActionHandleSubmit}>
             <div className="mt-2">
               <input
-                id="id"
-                name="id"
+                id="userId"
+                name="userId"
                 type="text"
                 onChange={onChange}
                 placeholder="아이디를 입력해주세요"
@@ -123,6 +76,7 @@ export default function LoginPage({ params: { id } }: IParams) {
                   type={slash ? "text" : "password"}
                   className="w-full placeholder-[#9F9FAC] font-semibold  bg-[#E7E7E7] bg-opacity-20 border-0 py-[16px] text-[#2C2C30] text-[14px]  ring-0 focus:ring-2 focus:ring-inset focus:ring-[#C1F1C1] sm:text-sm sm:leading-6"
                 />
+                <input type="hidden" id="id" name="id" value={id} />
                 <button
                   onClick={onSlashClick}
                   type="button"
