@@ -1,8 +1,10 @@
 import ContentsScreen from "@/components/contents/contentsScreen";
 
-export const One = () => {
+export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -22,9 +24,11 @@ export const One = () => {
   );
 };
 
-export const Two = () => {
+export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleHeaderString="직관적 식사 & 마인드풀이팅이란?"
       articleString={
@@ -42,9 +46,11 @@ export const Two = () => {
   );
 };
 
-export const Three = () => {
+export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -57,10 +63,10 @@ export const Three = () => {
     />
   );
 };
-export const Four = () => {
+export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen
+    <ContentsScreen topic = {topic} pageNumber = {pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -75,10 +81,10 @@ export const Four = () => {
   );
 };
 
-export const Five = () => {
+export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen
+    <ContentsScreen topic = {topic} pageNumber = {pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleHeaderString="편안한 포만감에서 멈추는 8가지 방법"
       articleString={
@@ -91,10 +97,10 @@ export const Five = () => {
   );
 };
 
-export const Six = () => {
+export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen
+    <ContentsScreen topic = {topic} pageNumber = {pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       
       articleImgSrc="/contentsImages/2/2-6.png"
@@ -113,9 +119,11 @@ export const Six = () => {
     />
   );
 };
-export const Seven = () => {
+export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleImgSrc="/contentsImages/2/2-7.png"
       greyBlockHeader="식전, 식후 물 한 잔하기"
@@ -137,9 +145,11 @@ export const Seven = () => {
   );
 };
 
-export const Eight = () => {
+export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleImgSrc="/contentsImages/2/2-8.png"
       greyBlockHeader="빵, 요거트 같은 간식류 보다 `밥`먹기"
@@ -173,9 +183,11 @@ export const Eight = () => {
     />
   );
 };
-export const Nine = () => {
+export const Nine = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleImgSrc="/contentsImages/2/2-9.png"
       greyBlockHeader="맛과 식감을 느끼며 온전히 식사에 집중하기"
@@ -201,9 +213,11 @@ export const Nine = () => {
     />
   );
 };
-export const Ten = () => {
+export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleImgSrc="/contentsImages/2/2-10.png"
       greyBlockHeader="한 끼에 너무 다양한 메뉴 섭취하지 않기"
@@ -224,9 +238,11 @@ export const Ten = () => {
   );
 };
 
-export const Eleven = () => {
+export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleImgSrc="/contentsImages/2/2-11.png"
       greyBlockHeader="식사 중간에 멈추고 포만감 체크하기"
@@ -251,9 +267,11 @@ export const Eleven = () => {
     />
   );
 };
-export const Twelve = () => {
+export const Twelve = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleImgSrc="/contentsImages/2/2-12.png"
       greyBlockHeader="“다음에 또 먹을 수 있다” 되뇌이기"
@@ -279,9 +297,11 @@ export const Twelve = () => {
     />
   );
 };
-export const Thirteen = () => {
+export const Thirteen = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleImgSrc="/contentsImages/2/2-13.png"
       greyBlockHeader="식사 후 식사 자리 바로 정리하기(+식후루틴)"
@@ -303,9 +323,10 @@ export const Thirteen = () => {
     />
   );
 };
-export const Fourteen = () => {
+export const Fourteen = ({ topic }: { topic: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">

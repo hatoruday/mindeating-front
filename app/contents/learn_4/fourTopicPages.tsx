@@ -1,8 +1,10 @@
 import ContentsScreen from "@/components/contents/contentsScreen";
 
-export const One = () => {
+export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -17,9 +19,11 @@ export const One = () => {
   );
 };
 
-export const Two = () => {
+export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
       articleHeaderString="식욕 억제 호르몬, 렙틴"
       articleString={
@@ -37,9 +41,11 @@ export const Two = () => {
   );
 };
 
-export const Three = () => {
+export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -56,9 +62,11 @@ export const Three = () => {
     />
   );
 };
-export const Four = () => {
+export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -71,9 +79,11 @@ export const Four = () => {
   );
 };
 
-export const Five = () => {
+export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
       articleHeaderString="스트레스 호르몬, 코르티솔"
       articleString={
@@ -91,10 +101,10 @@ export const Five = () => {
   );
 };
 
-export const Six = () => {
+export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen
+    <ContentsScreen topic = {topic} pageNumber = {pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
       articleString={<pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
         첫째, 운동을 가볍고 꾸준하게, 즐겁게 하기<br/><br/>
@@ -111,9 +121,11 @@ export const Six = () => {
     />
   );
 };
-export const Seven = () => {
+export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -131,9 +143,11 @@ export const Seven = () => {
   );
 };
 
-export const Eight = () => {
+export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -152,9 +166,11 @@ export const Eight = () => {
     />
   );
 };
-export const Nine = () => {
+export const Nine = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
       articleImgSrc="/contentsImages/4/4-9.png"
       articleHeaderString="행복한 호르몬, 옥시토신"
@@ -174,9 +190,11 @@ export const Nine = () => {
   );
 };
 
-export const Ten = () => {
+export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
       articleImgSrc="/contentsImages/4/4-10.png"
       articleString={
@@ -193,103 +211,42 @@ export const Ten = () => {
   );
 };
 
-export const Eleven = () => {
+export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
       articleImgSrc="/contentsImages/2/2-11.png"
-      greyBlockHeader="식사 중간에 멈추고 포만감 체크하기"
-      greyBlockContent={
-        <pre className="font-nanum text-[16px] leading-8 font-black1 whitespace-pre-wrap">
-          식사를 했을 때는 몰랐는데 지나고보니 엄청 배불렀던 적이 있을 거야. <br />
-          <br />
-          그 이유는 뇌가 포만감 호르몬(=식욕억제호르몬)을 분비하기까지 시간이 걸리기 때문이야.
-          <br />
-          <br />
-          그래서 과식, 폭식을 방지하기 위해서는 식사 중간에 포만감을 체크해볼 필요가 있어.
-          <br />
-          <br />
-          체크했을 때 ‘배가 고프지 않은 상태가 되었다’ 싶으면 숟가락을 내려놓는 걸 추천할게!
-          <br />
-          <br />
-          배가 고프지 않은 상태에서 10-20분이 지나면 포만감이 더 크게 느껴질 거거든.
-        </pre>
-      }
-      width={139}
-      height={139}
-    />
-  );
-};
-export const Twelve = () => {
-  return (
-    <ContentsScreen
-      headerString="4. 음식에 집착하던 내가 아니야!"
-      articleImgSrc="/contentsImages/2/2-12.png"
-      greyBlockHeader="“다음에 또 먹을 수 있다” 되뇌이기"
-      greyBlockContent={
-        <pre className="font-nanum text-[16px] leading-8 font-black1 whitespace-pre-wrap">
-          “이번까지만 먹고 다음부터 먹지 않겠다”라고 생각한 적이 많을 것 같아. <br />
-          <br />
-          그러나 사실 이런 마인드가 식사를 멈추기 어렵게 만드는 핵심 요인이야.
-          <br />
-          <br />
-          언제 또 먹을 수 있을지 모르니까 지금 먹어둬야 된다는 생각에 뇌는 식욕 호르몬을 증가시키거든.
-          <br />
-          <br />
-          따라서 뇌가 결핍을 느껴서 식욕을 올리지 않도록 하기 위해서는 뇌에게 “언제든지, 다음에 또 먹을 수 있다”고 얘기를 해줘야 해.
-          <br />
-          <br />
-          그리고 실제로 이제 우리는 배가 고프면 언제든지 또 먹을 수 있어. 그러니 식사 전, 중 ,후로 항상 나에게 말해줘. 다음에 또 먹을 수 있다고
-          <br />
-          <br />
-          그러면 음식에 대한 욕구와 그에 따른 식사량이 줄어들거야.
-        </pre>
-      }
-    />
-  );
-};
-export const Thirteen = () => {
-  return (
-    <ContentsScreen
-      headerString="4. 음식에 집착하던 내가 아니야!"
-      articleImgSrc="/contentsImages/2/2-13.png"
-      greyBlockHeader="식사 후 식사 자리 바로 정리하기(+식후루틴)"
-      greyBlockContent={
-        <pre className="font-nanum text-[16px] leading-8 font-black1 whitespace-pre-wrap">
-          포만감이 느껴질 때 식사를 멈추기 위해서는 환경을 바꾸는 것도 중요해. 배는 부르나 앞에 음식이 있으면 먹게 될 수 밖에 없거든.
-          <br />
-          <br />
-          이때 중요한 건 적당한 배부름일 때 치워야 한다는 것이야. 배가 과하게 부르면 몸이 무거워져서 더더욱 치우기 어렵고 앞에 음식이 있으니까 더 먹게 되고…악순환이 반복되거든.
-          <br />
-          <br />
-          그러니 배가 어느정도 찼다 싶으면 자리를 정리하고 양치를 하거나 산책을 해서 음식으로부터 주의를 돌리는 게 필요해.
-          <br />
-          <br />
-        </pre>
-      }
-      width={193}
-      height={193}
-    />
-  );
-};
-export const Fourteen = () => {
-  return (
-    <ContentsScreen
-      headerString="4. 음식에 집착하던 내가 아니야!"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
-          총 8가지 방법을 모두 살펴보았어.
+          강아지도 좋고 취미생활, 업무도 좋아. 내가 진심으로 사랑하는 것들을 찾아가다보면 식욕을 감소시킬 수 있을거야.
           <br />
-          이 방법들은 당장 외우지 않아도 괜찮아.
           <br />
-          기록일지로 실천하게끔 도와줄거거든.
-          <br />
-          그러니 기록일지를 작성하며 습관화해보자!
+          이외에도 포옹, 기분 좋은 신체 접촉, 긍정적인 사회 활동은 옥시토신 분비를 촉진시키니 집에 혼자 있는 경우가 많다면 얼른 나와서 사람들과 어울려보자~
         </pre>
       }
-      articleImgSrc="/contentsImages/2/2-14.png"
-      width={196}
-      height={196}
+      width={209}
+      height={209}
+    />
+  );
+};
+export const Twelve = ({ topic }: { topic: string }) => {
+  return (
+    <ContentsScreen
+      topic={topic}
+      headerString="4. 음식에 집착하던 내가 아니야!"
+      articleImgSrc="/contentsImages/4/4-12.png"
+      articleString={
+        <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
+          정리하면, 식욕안정화의 속도를 높이기 위해서는 충분한 잠과 적당한 운동, 그리고 내가 사랑하는 것들로 내 일상을 채워야 해.
+          <br />
+          <br />
+          다이어트로 방치해두었던 우리의 일상을 풍요롭게 하다보면 어느새 긍정적으로 달라지고 있는 자신을 발견하게 될 거야.
+        </pre>
+      }
+      width={209}
+      height={209}
     />
   );
 };

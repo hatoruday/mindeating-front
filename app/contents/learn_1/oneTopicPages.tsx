@@ -16,14 +16,24 @@ const ArticleString = () => {
     </div>
   );
 };
-export const One = () => {
-  return <ContentsScreen headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?" articleString={ArticleString()} articleImgSrc="/contentsImages/1/1-1.png" width={220} height={220} />;
-};
-
-export const Two = () => {
-  // prettier-ignore
+export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
+      headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
+      articleString={ArticleString()}
+      articleImgSrc="/contentsImages/1/1-1.png"
+      width={220}
+      height={220}
+    />
+  );
+};
+
+export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+  // prettier-ignore
+  return (
+    <ContentsScreen topic = {topic} pageNumber = {pageNum}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
       articleHeaderString="의지력이 부족해서가 아니야"
       articleString={
@@ -44,10 +54,10 @@ export const Two = () => {
   );
 };
 
-export const Three = () => {
+export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen
+    <ContentsScreen topic = {topic} pageNumber = {pageNum}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
       articleHeaderString="식욕 호르몬을 분비하는 뇌"
       articleString={
@@ -62,10 +72,10 @@ export const Three = () => {
     />
   );
 };
-export const Four = () => {
+export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen
+    <ContentsScreen topic = {topic} pageNumber = {pageNum}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -77,10 +87,10 @@ export const Four = () => {
   );
 };
 
-export const Five = () => {
+export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen
+    <ContentsScreen topic = {topic} pageNumber = {pageNum}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -94,10 +104,10 @@ export const Five = () => {
   );
 };
 
-export const Six = () => {
+export const Six = ({ topic }: { topic: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen
+    <ContentsScreen topic = {topic}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">

@@ -1,8 +1,10 @@
 import ContentsScreen from "@/components/contents/contentsScreen";
 
-export const One = () => {
+export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="3. 일반식을 먹었다가 살이 찌면 어쩌지?"
       articleHeaderString="그건 일시적인 변화일 뿐이야!"
       articleString={
@@ -18,9 +20,11 @@ export const One = () => {
   );
 };
 
-export const Two = () => {
+export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="3. 일반식을 먹었다가 살이 찌면 어쩌지?"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -34,9 +38,11 @@ export const Two = () => {
   );
 };
 
-export const Three = () => {
+export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      topic={topic}
+      pageNumber={pageNum}
       headerString="3. 일반식을 먹었다가 살이 찌면 어쩌지?"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -52,10 +58,10 @@ export const Three = () => {
     />
   );
 };
-export const Four = () => {
+export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen
+    <ContentsScreen topic = {topic} pageNumber = {pageNum}
       headerString="3. 일반식을 먹었다가 살이 찌면 어쩌지?"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -71,10 +77,10 @@ export const Four = () => {
   );
 };
 
-export const Five = () => {
+export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen
+    <ContentsScreen topic = {topic} pageNumber = {pageNum}
       headerString="3. 일반식을 먹었다가 살이 찌면 어쩌지?"
       articleHeaderString="자연체중은 얼마만에 줄어들까?"
       articleString={
@@ -92,10 +98,10 @@ export const Five = () => {
   );
 };
 
-export const Six = () => {
+export const Six = ({ topic }: { topic: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen
+    <ContentsScreen topic = {topic}
       headerString="3. 일반식을 먹었다가 살이 찌면 어쩌지?"
       articleString={<pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
         하지만 그렇다고 다시 다이어트로 돌아가면 결국 악순환은 더 심해질거야.<br/><br/>

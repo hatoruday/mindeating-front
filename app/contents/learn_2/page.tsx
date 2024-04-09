@@ -11,21 +11,21 @@ export default function Learn1() {
   const pathname = usePathname();
   const pageNum = query.get("page");
   return (
-    <div className="flex flex-col">
-      {pageNum === "1" && <One />}
-      {pageNum === "2" && <Two />}
-      {pageNum === "3" && <Three />}
-      {pageNum === "4" && <Four />}
-      {pageNum === "5" && <Five />}
-      {pageNum === "6" && <Six />}
-      {pageNum === "7" && <Seven />}
-      {pageNum === "8" && <Eight />}
-      {pageNum === "9" && <Nine />}
-      {pageNum === "10" && <Ten />}
-      {pageNum === "11" && <Eleven />}
-      {pageNum === "12" && <Twelve />}
-      {pageNum === "13" && <Thirteen />}
-      {pageNum === "14" && <Fourteen />}
+    <div className="flex flex-grow h-full flex-col">
+      {pageNum === "1" && <One topic={pathname} pageNum={pageNum} />}
+      {pageNum === "2" && <Two topic={pathname} pageNum={pageNum} />}
+      {pageNum === "3" && <Three topic={pathname} pageNum={pageNum} />}
+      {pageNum === "4" && <Four topic={pathname} pageNum={pageNum} />}
+      {pageNum === "5" && <Five topic={pathname} pageNum={pageNum} />}
+      {pageNum === "6" && <Six topic={pathname} pageNum={pageNum} />}
+      {pageNum === "7" && <Seven topic={pathname} pageNum={pageNum} />}
+      {pageNum === "8" && <Eight topic={pathname} pageNum={pageNum} />}
+      {pageNum === "9" && <Nine topic={pathname} pageNum={pageNum} />}
+      {pageNum === "10" && <Ten topic={pathname} pageNum={pageNum} />}
+      {pageNum === "11" && <Eleven topic={pathname} pageNum={pageNum} />}
+      {pageNum === "12" && <Twelve topic={pathname} pageNum={pageNum} />}
+      {pageNum === "13" && <Thirteen topic={pathname} pageNum={pageNum} />}
+      {pageNum === "14" && <Fourteen topic={"/contents"} />}
     </div>
   );
 }
