@@ -3,7 +3,8 @@
 import ContentsScreen from "@/components/contents/contentsScreen";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { One, Two } from "./oneTopicPages";
+import { Five, Four, One, Six, Three, Two } from "./oneTopicPages";
+import { Seven } from "../learn_2/twoTopicPages";
 
 export default function Learn1() {
   const router = useRouter();
@@ -14,6 +15,11 @@ export default function Learn1() {
     <div className="flex flex-col">
       {pageNum === "1" && <One />}
       {pageNum === "2" && <Two />}
+      {pageNum === "3" && <Three />}
+      {pageNum === "4" && <Four />}
+      {pageNum === "5" && <Five />}
+      {pageNum === "6" && <Six />}
+      {pageNum === "7" && <Seven />}
     </div>
   );
 }
