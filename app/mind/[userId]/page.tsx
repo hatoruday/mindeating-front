@@ -12,6 +12,8 @@ import WhatIsYourTime from "@/components/record/whatIsYourEatingTime";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import RecordSubmit from "@/components/record/recordSubmit";
+import { FetchResult } from "@/api/postFetch";
+import { mindAction, MindParams } from "./mindAction";
 
 interface SuccessMealRoutine {
   [key: number]: boolean;
@@ -107,7 +109,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
       };
 
       const JSONdata = JSON.stringify(eatingData);
-      const endpoint = "https://mindeating-server.shop/record/record-eating";
+      const endpoint = "https://mindeating-server.shop/";
 
       const options = {
         method: "POST",
@@ -139,6 +141,30 @@ export default function MindFullEating({ params: { userId } }: IParams) {
       // }
     } finally {
     }
+  };
+
+  const clientActionWrapper = async (eatingData: MindParams) => {
+    setIsLoading(true);
+    const result: FetchResult | undefined = await mindAction(eatingData);
+    if (result?.ok && result?.success) {
+      alert("로그인 성공");
+      // router.push("/info/");
+      console.log(result?.result.name);
+      setIsLoading(false);
+    } else if (result?.ok) {
+      alert(
+        "로그인 실패. client error success:" +
+          result?.success +
+          " name: " +
+          result?.result.name
+      );
+      setIsLoading(false);
+      console.log(result?.result);
+    } else {
+      alert("로그인 실패. server error\n" + result?.result);
+      setIsLoading(false);
+    }
+    // setState(result)
   };
   return (
     <div className="flex flex-col justify-center content-center">
