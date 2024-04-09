@@ -147,13 +147,13 @@ export default function MindFullEating({ params: { userId } }: IParams) {
     setIsLoading(true);
     const result: FetchResult | undefined = await mindAction(eatingData);
     if (result?.ok && result?.success) {
-      alert("로그인 성공");
+      alert("성공");
       // router.push("/info/");
       console.log(result?.result.name);
       setIsLoading(false);
     } else if (result?.ok) {
       alert(
-        "로그인 실패. client error success:" +
+        "실패. client error success:" +
           result?.success +
           " name: " +
           result?.result.name
@@ -161,7 +161,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
       setIsLoading(false);
       console.log(result?.result);
     } else {
-      alert("로그인 실패. server error\n" + result?.result);
+      alert("실패. server error\n" + result?.result);
       setIsLoading(false);
     }
     // setState(result)
@@ -401,7 +401,22 @@ export default function MindFullEating({ params: { userId } }: IParams) {
         <FeedbackNote note={note} setNote={setNote} />
       </section>
       <RecordSubmit
-        submitFunction={submitFunction}
+        submitFunction={clientActionWrapper}
+        data={{
+          user_id: userId,
+          record: {
+            menu,
+            type,
+            when,
+            hunger_before_meal,
+            hunger_after_meal,
+            speed,
+            amount,
+            successed_meal_routine,
+            satisfaction,
+            note,
+          },
+        }}
         isLoading={isLoading}
         isActive={
           menu.length > 0 &&
