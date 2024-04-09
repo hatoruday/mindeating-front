@@ -88,10 +88,12 @@ export default function MindFullEating({ params: { userId } }: IParams) {
     setIsLoading(true);
     const result: FetchResult | undefined = await mindAction(eatingData);
     if (result?.ok && result?.success) {
-      alert("성공");
+      // alert("성공");
       // router.push("/info/");
       console.log(result?.result.name);
+      window.location.href = "kakaotalk://inappbrowser/close";
       setIsLoading(false);
+      window.close();
     } else if (result?.ok) {
       alert("실패. client error success:" + result?.success + " name: " + result?.result.name);
       setIsLoading(false);
