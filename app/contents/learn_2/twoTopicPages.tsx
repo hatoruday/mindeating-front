@@ -13,8 +13,7 @@ export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
           평생의 습관을 들일 거야.
           <br />
           <br />
-          이를 도와주는 <br />
-          직관적 식사 & 마인드풀이팅을 알아볼게.
+          이를 도와주는 직관적 식사 & 마인드풀이팅을 알아볼게.
         </pre>
       }
       articleImgSrc="/contentsImages/2/2-1.png"
@@ -54,9 +53,7 @@ export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
-          치킨이 먹고 싶다면 치킨을 먹고, <br />
-          배고픔이 느껴진다면 밤에 먹어도 괜찮아. <br />
-          배고프지 않으면 먹지 않아도 괜찮지.
+          치킨이 먹고 싶다면 치킨을 먹고, 배고픔이 느껴진다면 밤에 먹어도 괜찮아. 배고프지 않으면 먹지 않아도 괜찮지.
         </pre>
       }
       articleImgSrc="/contentsImages/2/2-3.png"

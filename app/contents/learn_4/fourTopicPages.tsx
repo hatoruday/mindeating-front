@@ -28,7 +28,7 @@ export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
       articleHeaderString="식욕 억제 호르몬, 렙틴"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
-          렙틴은 포만감을 유발하고 식욕을 억제하는 호르몬이야. 렙틴의 신호가 뇌에 잘 전달되면, 포만감을 잘 느낄 수 있기에 적정량으로 식사마칠 수 있어.
+          렙틴은 포만감을 유발하고 식욕을 억제하는 호르몬이야. 렙틴의 신호가 뇌에 잘 전달되면, 포만감을 잘 느낄 수 있기에 적정량으로 식사를 마칠 수 있어.
           <br />
           <br />
           렙틴을 분비시키려면 어떻게 해야 할까?
@@ -217,7 +217,7 @@ export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) =
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
-      articleImgSrc="/contentsImages/2/2-11.png"
+      articleImgSrc="/contentsImages/4/4-11.png"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
           강아지도 좋고 취미생활, 업무도 좋아. 내가 진심으로 사랑하는 것들을 찾아가다보면 식욕을 감소시킬 수 있을거야.

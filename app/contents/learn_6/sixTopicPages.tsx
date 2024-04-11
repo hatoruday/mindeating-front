@@ -32,8 +32,7 @@ export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
           저번에 자연체중에 대해 얘기했던 거 기억나? 그것과 비슷한 개념의 또 다른 게 있어.
           <br />
           <br />
-          그건 바로 ‘체중설정값’으로, <br />
-          우리 뇌가 설정한 적정체중 범위나 지점이야.
+          그건 바로 ‘체중설정값’으로, 우리 뇌가 설정한 적정체중 범위나 지점이야.
         </pre>
       }
       articleImgSrc="/contentsImages/6/6-2.png"
@@ -161,8 +160,7 @@ export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
       articleHeaderString="정체기가 체중설정값을 낮춘다고?"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
-          앞서 말했듯이 체중설정값은 <br />
-          뇌가 적정하다고 느껴서 ‘적응’된 체중을 말해.
+          앞서 말했듯이 체중설정값은 뇌가 적정하다고 느껴서 ‘적응’된 체중을 말해.
           <br />
           <br />
           따라서 체중설정값을 낮추기 위해서는 <br />
@@ -207,8 +205,7 @@ export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
           이 감량기와 유지기의 적합한 주기와 <br />
           감량 정도는 사람마다 다 달라. <br />
           <br />
-          특히 체중이 낮아질수록, <br />
-          감량기와 유지기의 주기가 길어질 수도 있지.
+          특히 체중이 낮아질수록, 감량기와 유지기의 주기가 길어질 수도 있지.
           <br />
           <br />
           하지만 무작정 감량만 하기보다 감량과 유지를 반복하며 몸에 적응을 시켜나간다면 요요의 빈도나 정도가 줄어들거야 :)

@@ -53,11 +53,11 @@ export default function ContentsScreen({
           {articleImgSrc && (
             <div>
               {width && height ? (
-                <div className="flex justify-center w-full my-8">
+                <div className="flex justify-center w-full">
                   <Image src={articleImgSrc} width={width} height={height} alt="aritlcleImage" priority={true} />
                 </div>
               ) : (
-                <div className="relative w-full my-8">
+                <div className="relative w-full">
                   <Image src={articleImgSrc} width={0} height={0} sizes="(max-width: 380px) 30vw, (max-width: 768px) 40vw, 20vw" alt="aritlcleImage" className="w-full h-auto" priority={true} />
                 </div>
               )}
