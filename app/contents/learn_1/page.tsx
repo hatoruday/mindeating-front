@@ -1,12 +1,14 @@
+"use client";
+
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Five, Four, One, Six, Three, Two } from "./oneTopicPages";
 import { Suspense } from "react";
 
-interface IParams {
-  params: { pageNum: string };
-}
-
-function Learn1({ pageNum }: { pageNum: string }) {
-  const pathname = "contents/learn_1";
+function Learn1() {
+  const router = useRouter();
+  const query = useSearchParams();
+  const pathname = usePathname();
+  const pageNum = query.get("page");
 
   return (
     <div className="flex flex-grow h-full flex-col">
@@ -19,10 +21,10 @@ function Learn1({ pageNum }: { pageNum: string }) {
     </div>
   );
 }
-export default function WrapLearn1({ params: { pageNum } }: IParams) {
+export default function WrapLearn1() {
   return (
     <Suspense>
-      <Learn1 pageNum={pageNum} />
+      <Learn1 />
     </Suspense>
   );
 }
