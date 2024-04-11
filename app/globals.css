@@ -11,6 +11,16 @@
   }
 }
 
+@layer base {
+  body {
+    -ms-overflow-style: none;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* 
 @font-face {
   font-family: 'Inter';

@@ -213,10 +213,12 @@ export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   );
 };
 
-export const Eleven = ({ topic }: { topic: string }) => {
+export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      isLast={true}
       topic={topic}
+      pageNumber={pageNum}
       headerString="5. 점점 체중이 감량되고 있어"
       articleImgSrc="/contentsImages/5/5-11.png"
       articleString={

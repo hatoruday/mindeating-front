@@ -98,10 +98,12 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
   );
 };
 
-export const Six = ({ topic }: { topic: string }) => {
+export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
     <ContentsScreen topic = {topic}
+      isLast = {true}
+    pageNumber={pageNum}
       headerString="3. 일반식을 먹었다가 살이 찌면 어쩌지?"
       articleString={<pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
         하지만 그렇다고 다시 다이어트로 돌아가면 결국 악순환은 더 심해질거야.<br/><br/>

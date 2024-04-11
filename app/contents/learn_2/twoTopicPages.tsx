@@ -323,9 +323,11 @@ export const Thirteen = ({ topic, pageNum }: { topic: string; pageNum: string })
     />
   );
 };
-export const Fourteen = ({ topic }: { topic: string }) => {
+export const Fourteen = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      isLast={true}
+      pageNumber={pageNum}
       topic={topic}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleString={

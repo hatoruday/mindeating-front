@@ -231,10 +231,12 @@ export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) =
     />
   );
 };
-export const Twelve = ({ topic }: { topic: string }) => {
+export const Twelve = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
+      isLast={true}
       topic={topic}
+      pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
       articleImgSrc="/contentsImages/4/4-12.png"
       articleString={

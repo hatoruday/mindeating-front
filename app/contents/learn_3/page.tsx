@@ -18,7 +18,7 @@ function Learn3() {
       {pageNum === "3" && <Three topic={pathname} pageNum={pageNum} />}
       {pageNum === "4" && <Four topic={pathname} pageNum={pageNum} />}
       {pageNum === "5" && <Five topic={pathname} pageNum={pageNum} />}
-      {pageNum === "6" && <Six topic={"/contents"} />}
+      {pageNum === "6" && <Six topic={pathname} pageNum={pageNum} />}
     </div>
   );
 }

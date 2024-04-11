@@ -100,7 +100,7 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
       topic={topic}
       pageNumber={pageNum}
       headerString="7. 토끼보다 빨랐던 거북이"
-      articleAfterString={
+      articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
           그러니 지금 가지고 있는 조급함을 내려놓으면 좋겠어.
           <br />
@@ -123,7 +123,7 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
       headerString="7. 토끼보다 빨랐던 거북이"
       articleAfterString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
-          어쩌면 아래의 단계를 모두 거치는 데에, 
+          어쩌면 위의 단계를 모두 거치는 데에, 
 다소 시간이 걸릴 수 있어.<br/><br/>
 
 탈다이어트 단계에서 오래 머물 수도 있고,<br/>
@@ -135,22 +135,21 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   );
 };
 
-export const Seven = ({ topic }: { topic: string }) => {
+export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
       topic={topic}
+      pageNumber={pageNum}
+      isLast={true}
       headerString="7. 토끼보다 빨랐던 거북이"
-      articleImgSrc="/contentsImages/7/7-11.png"
+      articleImgSrc="/contentsImages/7/7-7.png"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
           다만 이 프로그램이 이끄는 방향으로 계속 실천하고, 스스로를 꾸준히 다독여준다면 분명 해낼 거야.
           <br />
           <br />
-          폭식증이 심했던 나도 극복했으니까:&rpar;
-          <br />
-          <br />
           힘들 때나 포기하고 싶을 때, 꼭 찾아줘. <br />
-          다이어트가 아닌 인생에서 더 가치있는 것들을 찾아가는 그날까지 함께할게 :&rpar;
+          다이어트가 아닌 인생에서 더 가치있는 것들을 찾아가는 그날까지 함께할게 :)
         </pre>
       }
     />

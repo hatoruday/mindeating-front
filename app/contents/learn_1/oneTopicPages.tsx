@@ -20,6 +20,7 @@ export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
       topic={topic}
+      isLast={false}
       pageNumber={pageNum}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
       articleString={ArticleString()}
@@ -34,6 +35,7 @@ export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
     <ContentsScreen topic = {topic} pageNumber = {pageNum}
+    isLast = {false}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
       articleHeaderString="의지력이 부족해서가 아니야"
       articleString={
@@ -58,6 +60,7 @@ export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
   // prettier-ignore
   return (
     <ContentsScreen topic = {topic} pageNumber = {pageNum}
+    isLast = {false}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
       articleHeaderString="식욕 호르몬을 분비하는 뇌"
       articleString={
@@ -76,6 +79,7 @@ export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
   // prettier-ignore
   return (
     <ContentsScreen topic = {topic} pageNumber = {pageNum}
+    isLast = {false}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -91,6 +95,7 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
   // prettier-ignore
   return (
     <ContentsScreen topic = {topic} pageNumber = {pageNum}
+    isLast = {false}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -104,10 +109,12 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
   );
 };
 
-export const Six = ({ topic }: { topic: string }) => {
+export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
     <ContentsScreen topic = {topic}
+      isLast = {true}
+      pageNumber={pageNum}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">

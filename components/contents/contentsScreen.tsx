@@ -14,6 +14,7 @@ export default function ContentsScreen({
   articleAfterString,
   topic,
   pageNumber,
+  isLast,
 }: {
   headerString: string;
   articleHeaderString?: string;
@@ -25,7 +26,8 @@ export default function ContentsScreen({
   greyBlockHeader?: string;
   greyBlockContent?: JSX.Element;
   topic: string;
-  pageNumber?: string;
+  pageNumber: string;
+  isLast?: boolean;
 }) {
   // const router = useRouter();
   // const handleClick = (e: any) => {
@@ -36,8 +38,8 @@ export default function ContentsScreen({
   // };
   return (
     <div className="flex w-full flex-col relative h-screen flex-grow justify-between content-center">
-      <header className="flex absoulte top-0 left-0 justify-start py-5 gap-x-5">
-        <Link href="/contents" className="flex-shrink-0">
+      <header className="flex items-center content-center absoulte top-0 left-0 justify-start py-5 gap-x-5">
+        <Link href={pageNumber == "1" ? "/contents" : `${topic}?page=${parseInt(pageNumber!) - 1}`} className="flex-shrink-0">
           <Image src="/leftChevron.svg" width={8} height={19} alt="leftChevron" />
         </Link>
 
@@ -47,7 +49,7 @@ export default function ContentsScreen({
       <main className="flex flex-col justify-start overflow-y-auto h-full px-5">
         <div className="flex flex-col">
           <span className="flex-shrink-0 font-bold text-[20px]">{articleHeaderString}</span>
-          {articleString && <div className="my-10">{articleString}</div>}
+          {articleString && <div className="my-1">{articleString}</div>}
           {articleImgSrc && (
             <div>
               {width && height ? (
@@ -61,7 +63,7 @@ export default function ContentsScreen({
               )}
             </div>
           )}
-          {articleAfterString && <div className="my-5">{articleAfterString}</div>}
+          {articleAfterString && <div className="my-1">{articleAfterString}</div>}
           {greyBlockHeader && (
             <div className="flex justify-start gap-x-2 my-2 content-center items-center mb-5">
               <div className="w-[4px] h-[36px] bg-black1" />
@@ -72,13 +74,13 @@ export default function ContentsScreen({
         </div>
       </main>
       <div className="flex content-center my-5">
-        {pageNumber ? (
+        {!isLast ? (
           <Link href={`${topic}?page=${parseInt(pageNumber) + 1}`} className="h-[60px] flex-shrink-0 items-center rounded-[14px] w-full flex justify-center content-center bg-black2">
             <span className="font-nanum text-white text-[16px]">다음</span>
           </Link>
         ) : (
-          <Link href={`${topic}`} className="h-[60px] flex-shrink-0 items-center rounded-[14px] w-full flex justify-center content-center bg-black2">
-            <span className="font-nanum text-white text-[16px]">다음</span>
+          <Link href={`/contents`} className="h-[60px] flex-shrink-0 items-center rounded-[14px] w-full flex justify-center content-center bg-black2">
+            <span className="font-nanum text-white text-[16px]">완료</span>
           </Link>
         )}
       </div>

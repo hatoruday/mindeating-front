@@ -93,7 +93,7 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
       headerString="6. 요요없는 체중감량의 비결은 정체기?"
       articleAfterString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
-          <span className="text-[#2091FB]">
+          <span className="text-[#2091FB] font-bold">
             체중설정값보다 <br />
             체중이 일시적으로 높아지면{" "}
           </span>
@@ -115,7 +115,7 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
       headerString="6. 요요없는 체중감량의 비결은 정체기?"
       articleAfterString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
-          <span className="text-[#FE530B]">
+          <span className="text-[#FE530B] font-bold">
             체중설정값보다 <br />
             체중이 일시적으로 낮아지면{" "}
           </span>
@@ -211,7 +211,7 @@ export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
           감량기와 유지기의 주기가 길어질 수도 있지.
           <br />
           <br />
-          하지만 무작정 감량만 하기보다 감량과 유지를 반복하며 몸에 적응을 시켜나간다면 요요의 빈도나 정도가 줄어들거야:&rpar;
+          하지만 무작정 감량만 하기보다 감량과 유지를 반복하며 몸에 적응을 시켜나간다면 요요의 빈도나 정도가 줄어들거야 :)
         </pre>
       }
       width={183}
@@ -220,10 +220,12 @@ export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   );
 };
 
-export const Eleven = ({ topic }: { topic: string }) => {
+export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreen
       topic={topic}
+      pageNumber={pageNum}
+      isLast={true}
       headerString="6. 요요없는 체중감량의 비결은 정체기?"
       articleImgSrc="/contentsImages/6/6-11.png"
       articleHeaderString="중간에 폭식하면 어떡해?"
