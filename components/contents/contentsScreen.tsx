@@ -35,7 +35,7 @@ export default function ContentsScreen({
   //   router.push(`/${topic}/?page=${pageNumberInt}`);
   // };
   return (
-    <div className="flex w-full flex-col relative h-full flex-grow justify-between content-center">
+    <div className="flex w-full flex-col relative h-screen flex-grow justify-between content-center">
       <header className="flex absoulte top-0 left-0 justify-start py-5 gap-x-5">
         <Link href="/contents" className="flex-shrink-0">
           <Image src="/leftChevron.svg" width={8} height={19} alt="leftChevron" />
@@ -44,7 +44,7 @@ export default function ContentsScreen({
         <span className="text-[16px] text-black1 font-bold">{headerString}</span>
       </header>
       <div className="w-full mb-5 h-[1px] bg-black4" />
-      <main className="flex flex-col justify-between overflow-y-auto h-full px-5">
+      <main className="flex flex-col justify-start overflow-y-auto h-full px-5">
         <div className="flex flex-col">
           <span className="flex-shrink-0 font-bold text-[20px]">{articleHeaderString}</span>
           {articleString && <div className="my-10">{articleString}</div>}
@@ -70,18 +70,18 @@ export default function ContentsScreen({
           )}
           {greyBlockContent && <div className="w-full px-3 py-2 rounded-md bg-[#DBDBDB] bg-opacity-35">{greyBlockContent}</div>}
         </div>
-        <div className="flex content-end my-5">
-          {pageNumber ? (
-            <Link href={`${topic}?page=${parseInt(pageNumber) + 1}`} className="h-[60px] flex-shrink-0 items-center rounded-[14px] w-full flex justify-center content-center bg-black2">
-              <span className="font-nanum text-white text-[16px]">다음</span>
-            </Link>
-          ) : (
-            <Link href={`${topic}`} className="h-[60px] flex-shrink-0 items-center rounded-[14px] w-full flex justify-center content-center bg-black2">
-              <span className="font-nanum text-white text-[16px]">다음</span>
-            </Link>
-          )}
-        </div>
       </main>
+      <div className="flex content-center my-5">
+        {pageNumber ? (
+          <Link href={`${topic}?page=${parseInt(pageNumber) + 1}`} className="h-[60px] flex-shrink-0 items-center rounded-[14px] w-full flex justify-center content-center bg-black2">
+            <span className="font-nanum text-white text-[16px]">다음</span>
+          </Link>
+        ) : (
+          <Link href={`${topic}`} className="h-[60px] flex-shrink-0 items-center rounded-[14px] w-full flex justify-center content-center bg-black2">
+            <span className="font-nanum text-white text-[16px]">다음</span>
+          </Link>
+        )}
+      </div>
     </div>
   );
 }

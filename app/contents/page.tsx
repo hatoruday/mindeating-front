@@ -24,7 +24,7 @@ export default function Contents() {
     {
       contentString: "일반식을 먹었다가 \n살이 찌면 어쩌지?",
       timeRequiring: "1분",
-      imgSrc: "/eating learning/curriculum/learn_3.png",
+      imgSrc: "/eating learning/curriculum/learn_3_not_shadow.png",
       path: "/contents/learn_3?page=1",
     },
     {
