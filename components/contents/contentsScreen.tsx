@@ -73,7 +73,7 @@ export default function ContentsScreen({
       </main>
       <div className="flex content-center my-5">
         {pageNumber ? (
-          <Link href={`${topic}?page=${parseInt(pageNumber) + 1}`} className="h-[60px] flex-shrink-0 items-center rounded-[14px] w-full flex justify-center content-center bg-black2">
+          <Link href={`${parseInt(pageNumber) + 1}`} className="h-[60px] flex-shrink-0 items-center rounded-[14px] w-full flex justify-center content-center bg-black2">
             <span className="font-nanum text-white text-[16px]">다음</span>
           </Link>
         ) : (
