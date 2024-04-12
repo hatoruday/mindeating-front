@@ -70,7 +70,7 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
         ) : (
           <footer className="flex justify-center">
             <Link href="/contents">
-              <div className="flex items-center content-center justify-items-center mt-5 justify-between px-4 w-[330px] h-[50px] rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">
+              <div className="flex items-center content-center justify-items-center mt-5 justify-between px-4 w-[330px] h-[50px] rounded-[40px] bg-green3 hover:bg-green2 border border-[#c1f1c1]">
                 <div className="flex items-center mt">
                   <Image src="/bookIcon.svg" alt="bookIcon" width={18} height={18} /> <span className="px-3 text-sm font-semibold">식욕 올라올 땐? 노하우 콘텐츠!</span>
                 </div>
