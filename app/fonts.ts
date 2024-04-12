@@ -8,7 +8,8 @@ const sumClass = (...classnames: string[]) => {
 
 // noto_sans_kr에 Noto_Sans_KR 적용
 const noto_sans_kr = IBM_Plex_Sans_KR({
-  subsets: ["latin"], // preload에 사용할 subsets 또는 preload: false
+  // subsets: ["latin"], // preload에 사용할 subsets 또는 preload: false
+  preload: false, // preload 사용 여부
   weight: ["100", "400", "700"], // 사용할 wght 설정
   variable: "--ibm_plex_sans_kr", // tailwindcss에서 사용할 수 있도록 CSS 변수 방식 설정
   display: "swap", // font-display 설정
@@ -18,20 +19,18 @@ const noto_sans_kr = IBM_Plex_Sans_KR({
 const gowun = Gowun_Dodum({
   weight: ["400"],
   variable: "--gowun-dodum-variable",
-  subsets: ["latin"],
+  preload: false,
   display: "swap",
 });
 
 const nanum = Nanum_Gothic({
   weight: ["400", "700", "800"],
+
   variable: "--nanum-gothic-variable",
-  subsets: ["latin"],
+  // subsets: ["latin"],
+  preload: false,
   display: "swap",
 });
 
 // 폰트가 추가되면 여기에 ,(콤마)로 구분하여 추가함 - 외부에서 FontClassNames를 불러와 적용함
-export const FontClassNames = sumClass(
-  noto_sans_kr.className,
-  gowun.variable,
-  nanum.variable
-);
+export const FontClassNames = sumClass(noto_sans_kr.className, gowun.variable, nanum.variable);

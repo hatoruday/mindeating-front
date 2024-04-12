@@ -9,7 +9,19 @@ type MonthAll = [MonthData, MonthData, MonthData];
 import AccordianItems from "./AccordianItems";
 import { useEffect, useRef, useState } from "react";
 
-export default function MyMonthList({ recentMonths: recentMonths, isFadeOut, setIsfadeOut, setSelectDate }: { recentMonths: MonthAll; isFadeOut: boolean; setIsfadeOut: any; setSelectDate: any }) {
+export default function MyMonthList({
+  recentMonths: recentMonths,
+  isFadeOut,
+  setIsfadeOut,
+  setSelectDate,
+  setCurrentPageY,
+}: {
+  recentMonths: MonthAll;
+  isFadeOut: boolean;
+  setIsfadeOut: any;
+  setSelectDate: any;
+  setCurrentPageY: any;
+}) {
   // 현재 월에 해당하는 주별 날짜 2차원 배열을 가져옴
   // console.log(recentMonths[0].weeks[0][0].getMonth());
   //현재 접혀있지 않는 주차들을 관리한다.
@@ -55,6 +67,7 @@ export default function MyMonthList({ recentMonths: recentMonths, isFadeOut, set
     // console.log(openIndexList, newIndex);
     setOpenIndexList(newIndex);
     setIsfadeOut(!isFadeOut);
+    setCurrentPageY(0);
   };
 
   const handleTouchStart = (weekindex: number) => {
@@ -80,47 +93,26 @@ export default function MyMonthList({ recentMonths: recentMonths, isFadeOut, set
   };
   return (
     <>
-      {openIndexList.reduce((a, b) => a + b, 0) == 1 ? (
-        <>
-          <div className="w-[318px] h-[240px]"></div>
-          {recentMonths[1].weeks.map((week, weekindex) => (
-            <div key={weekindex} onMouseDown={() => handleMouseDown(weekindex)} onTouchStart={() => handleTouchStart(weekindex)}>
-              <AccordianItems
-                openIndexList={openIndexList}
-                setOpenIndexList={setOpenIndexList}
-                open={openIndexList[weekindex] == 1}
-                weekindex={weekindex}
-                week={recentMonths[1].weeks[weekindex]}
-                colorStatusWeeks={recentMonths[1].colorStatusWeeks}
-                setSelectDate={setSelectDate}
-              />
-            </div>
-          ))}
-        </>
-      ) : (
-        <>
-          {recentMonths.map((month, monthindex) => {
-            return (
-              <div key={monthindex}>
-                {month.weeks.map((week, weekindex) => (
-                  <div className="w-full" key={weekindex} onMouseDown={() => handleMouseDown(weekindex)} onTouchStart={() => handleTouchStart(weekindex)}>
-                    <AccordianItems
-                      key={weekindex}
-                      openIndexList={openIndexList}
-                      setOpenIndexList={setOpenIndexList}
-                      open={openIndexList[weekindex] == 1}
-                      weekindex={weekindex}
-                      week={month.weeks[weekindex]}
-                      colorStatusWeeks={month.colorStatusWeeks}
-                      setSelectDate={setSelectDate}
-                    />
-                  </div>
-                ))}
+      {recentMonths.map((month, monthindex) => {
+        return (
+          <div key={monthindex}>
+            {month.weeks.map((week, weekindex) => (
+              <div className="w-full" key={weekindex} onMouseDown={() => handleMouseDown(weekindex)} onTouchStart={() => handleTouchStart(weekindex)}>
+                <AccordianItems
+                  key={weekindex}
+                  openIndexList={openIndexList}
+                  setOpenIndexList={setOpenIndexList}
+                  open={openIndexList[weekindex] == 1}
+                  weekindex={weekindex}
+                  week={month.weeks[weekindex]}
+                  colorStatusWeeks={month.colorStatusWeeks}
+                  setSelectDate={setSelectDate}
+                />
               </div>
-            );
-          })}
-        </>
-      )}
+            ))}
+          </div>
+        );
+      })}
     </>
   );
 }

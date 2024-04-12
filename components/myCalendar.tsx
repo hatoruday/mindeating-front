@@ -170,7 +170,7 @@ export default function MyCalendar({ isFadeOut, setIsFadeOut, selectDate, setSel
                 isFadeOut
                   ? "w-full overflow-hidden max-h-[65px] z-20 relative"
                   : recentMonth[1].weeks.length == 6
-                  ? "w-full overflow-hidden max-h-[300px] z-20 relative"
+                  ? "w-full overflow-hidden max-h-[288px] z-20 relative"
                   : "w-full overflow-hidden max-h-[240px] z-20 relative"
               }
             >
@@ -182,7 +182,7 @@ export default function MyCalendar({ isFadeOut, setIsFadeOut, selectDate, setSel
                 style={animProps}
                 className="flex flex-col w-full h-full draggable"
               >
-                <MyMonthList isFadeOut={isFadeOut} setIsfadeOut={setIsFadeOut} recentMonths={recentMonth} setSelectDate={setSelectDate} />
+                <MyMonthList setCurrentPageY={setCurrentPageY} isFadeOut={isFadeOut} setIsfadeOut={setIsFadeOut} recentMonths={recentMonth} setSelectDate={setSelectDate} />
               </animated.div>
             </div>
           </div>
