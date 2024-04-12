@@ -13,19 +13,7 @@ import Thead from "./thead";
 import MyMonthList from "./myMonth";
 import getMonthAll from "@/utility/getDayInformation";
 
-export default function MyCalendar({
-  isFadeOut,
-  setIsFadeOut,
-  selectDate,
-  setSelectDate,
-  userData,
-}: {
-  isFadeOut: boolean;
-  setIsFadeOut: any;
-  userData: any;
-  selectDate: Date;
-  setSelectDate: any;
-}) {
+export default function MyCalendar({ isFadeOut, setIsFadeOut, selectDate, setSelectDate, userData }: { isFadeOut: boolean; setIsFadeOut: any; userData: any; selectDate: Date; setSelectDate: any }) {
   /** 달력 각 월에 대해 스크롤 했을 때 터치하는 것 그대로 따라가되, 어느정도 임계치 이상을 넘기고 손가락을 뗏을때 다음
    * 월로 탄력적으로 이동하게 끔 애니메이션을 구현한다.
    */
@@ -42,7 +30,7 @@ export default function MyCalendar({
   const [offset, setOffset] = useState<number>(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startY, setStartY] = useState<number>(0);
-  const [currentPageY, setCurrentPageY] = useState(-200); // 현재 페이지 Y 위치
+  const [currentPageY, setCurrentPageY] = useState(-240); // 현재 페이지 Y 위치
   const [animProps, setAnimProps] = useSpring(() => ({
     to: { transform: `translateY(${currentPageY}px)` },
   }));
@@ -94,7 +82,7 @@ export default function MyCalendar({
       if (endingdiffY > 0) {
         setAnimProps({
           //다음에 해당하는 위치로 이동한다.
-          to: { transform: `translateY(${currentPageY + 200}px)` }, // 최종 위치로 애니메이션
+          to: { transform: `translateY(${currentPageY + 240}px)` }, // 최종 위치로 애니메이션
           immediate: false, // 애니메이션 적용
           onRest: () => {
             requestAnimationFrame(() => {
@@ -116,7 +104,7 @@ export default function MyCalendar({
         // 아래에서 위로 드래그할 때
       } else {
         setAnimProps({
-          to: { transform: `translateY(${currentPageY - 200}px)` }, // 최종 위치로 애니메이션
+          to: { transform: `translateY(${currentPageY - 240}px)` }, // 최종 위치로 애니메이션
           immediate: false, // 애니메이션 적용
           onRest: () => {
             requestAnimationFrame(() => {
@@ -172,11 +160,7 @@ export default function MyCalendar({
   }, [offset]);
 
   return (
-    <div
-      className="flex flex-col items-center justify-start px-4"
-      onTouchEnd={handleDragEnd}
-      onMouseUp={handleDragEnd}
-    >
+    <div className="flex flex-col items-center justify-start px-4" onTouchEnd={handleDragEnd} onMouseUp={handleDragEnd}>
       <div className="max-w-sm w-full z-20">
         <div className="md:p-5 p-2  bg-white rounded-t">
           <div className="flex flex-col items-center justify-between">
@@ -184,10 +168,10 @@ export default function MyCalendar({
             <div
               className={
                 isFadeOut
-                  ? "w-full overflow-hidden max-h-[45px] z-20 relative"
+                  ? "w-full overflow-hidden max-h-[65px] z-20 relative"
                   : recentMonth[1].weeks.length == 6
-                  ? "w-full overflow-hidden max-h-[240px] z-20 relative"
-                  : "w-full overflow-hidden max-h-[200px] z-20 relative"
+                  ? "w-full overflow-hidden max-h-[300px] z-20 relative"
+                  : "w-full overflow-hidden max-h-[240px] z-20 relative"
               }
             >
               <animated.div
@@ -198,12 +182,7 @@ export default function MyCalendar({
                 style={animProps}
                 className="flex flex-col w-full h-full draggable"
               >
-                <MyMonthList
-                  isFadeOut={isFadeOut}
-                  setIsfadeOut={setIsFadeOut}
-                  recentMonths={recentMonth}
-                  setSelectDate={setSelectDate}
-                />
+                <MyMonthList isFadeOut={isFadeOut} setIsfadeOut={setIsFadeOut} recentMonths={recentMonth} setSelectDate={setSelectDate} />
               </animated.div>
             </div>
           </div>

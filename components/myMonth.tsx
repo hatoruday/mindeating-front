@@ -9,23 +9,11 @@ type MonthAll = [MonthData, MonthData, MonthData];
 import AccordianItems from "./AccordianItems";
 import { useEffect, useRef, useState } from "react";
 
-export default function MyMonthList({
-  recentMonths: recentMonths,
-  isFadeOut,
-  setIsfadeOut,
-  setSelectDate,
-}: {
-  recentMonths: MonthAll;
-  isFadeOut: boolean;
-  setIsfadeOut: any;
-  setSelectDate: any;
-}) {
+export default function MyMonthList({ recentMonths: recentMonths, isFadeOut, setIsfadeOut, setSelectDate }: { recentMonths: MonthAll; isFadeOut: boolean; setIsfadeOut: any; setSelectDate: any }) {
   // 현재 월에 해당하는 주별 날짜 2차원 배열을 가져옴
   // console.log(recentMonths[0].weeks[0][0].getMonth());
   //현재 접혀있지 않는 주차들을 관리한다.
-  const [openIndexList, setOpenIndexList] = useState<number[]>(
-    recentMonths[1].isFadeoutWeeks
-  );
+  const [openIndexList, setOpenIndexList] = useState<number[]>(recentMonths[1].isFadeoutWeeks);
   const [firstRender, setFirstRender] = useState(false);
   useEffect(() => {
     setOpenIndexList(recentMonths[1].isFadeoutWeeks);
@@ -62,9 +50,7 @@ export default function MyMonthList({
     if (openIndexList[index] == 1 && summedValue == 1) {
       newIndex = openIndexList.map((item: number, i: number) => 1);
     } else {
-      newIndex = openIndexList.map((item: number, i: number) =>
-        i === index ? 1 : 0
-      );
+      newIndex = openIndexList.map((item: number, i: number) => (i === index ? 1 : 0));
     }
     // console.log(openIndexList, newIndex);
     setOpenIndexList(newIndex);
@@ -96,13 +82,9 @@ export default function MyMonthList({
     <>
       {openIndexList.reduce((a, b) => a + b, 0) == 1 ? (
         <>
-          <div className="w-[318px] h-[200px]"></div>
+          <div className="w-[318px] h-[240px]"></div>
           {recentMonths[1].weeks.map((week, weekindex) => (
-            <div
-              key={weekindex}
-              onMouseDown={() => handleMouseDown(weekindex)}
-              onTouchStart={() => handleTouchStart(weekindex)}
-            >
+            <div key={weekindex} onMouseDown={() => handleMouseDown(weekindex)} onTouchStart={() => handleTouchStart(weekindex)}>
               <AccordianItems
                 openIndexList={openIndexList}
                 setOpenIndexList={setOpenIndexList}
@@ -121,12 +103,7 @@ export default function MyMonthList({
             return (
               <div key={monthindex}>
                 {month.weeks.map((week, weekindex) => (
-                  <div
-                    className="w-full"
-                    key={weekindex}
-                    onMouseDown={() => handleMouseDown(weekindex)}
-                    onTouchStart={() => handleTouchStart(weekindex)}
-                  >
+                  <div className="w-full" key={weekindex} onMouseDown={() => handleMouseDown(weekindex)} onTouchStart={() => handleTouchStart(weekindex)}>
                     <AccordianItems
                       key={weekindex}
                       openIndexList={openIndexList}

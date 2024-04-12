@@ -4,12 +4,7 @@ export default function StatusBar({ statusList }: { statusList: number[] }) {
   return (
     <div className={`flex items-center gap-2 justify-between`}>
       {statusList.map((status, statusIndex) => {
-        return (
-          <div
-            key={statusIndex}
-            className={`w-[29px] mx-auto h-2 rounded-sm ${statusToColor[status]}`}
-          ></div>
-        );
+        return <div key={statusIndex} className={`w-[47px] mx-auto h-2 rounded-sm ${statusToColor[status]}`}></div>;
       })}
     </div>
   );

@@ -55,7 +55,14 @@ export default function MindFullEating({ params: { userId } }: IParams) {
     } = e;
     setCurrentInput(value);
   };
-
+  const handleBlur = () => {
+    if (currentInput.trim() !== "") {
+      // 새로운 아이템을 menu 배열에 추가
+      setMenu([...menu, currentInput.trim()]);
+      // 입력 필드 초기화
+      setCurrentInput("");
+    }
+  };
   // 엔터 키를 누를 때 실행될 함수
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -88,10 +95,10 @@ export default function MindFullEating({ params: { userId } }: IParams) {
     setIsLoading(true);
     const result: FetchResult | undefined = await mindAction(eatingData);
     if (result?.ok && result?.success) {
-      // alert("성공");
+      alert("성공");
       // router.push("/info/");
       console.log(result?.result.name);
-      window.location.href = "kakaotalk://inappbrowser/close";
+      // window.location.href = "kakaotalk://inappbrowser/close";
       setIsLoading(false);
       window.close();
     } else if (result?.ok) {
@@ -122,6 +129,9 @@ export default function MindFullEating({ params: { userId } }: IParams) {
           value={currentInput}
           onChange={handleInputChange}
           onKeyUp={handleKeyPress}
+          onBlur={() => {
+            handleBlur();
+          }}
           placeholder="음식 이름을 입력해주세요"
         />
         <div className="flex gap-1 px-2">
@@ -163,36 +173,35 @@ export default function MindFullEating({ params: { userId } }: IParams) {
         </article>
       </section>
       <WhatIsYourTime when={when} setWhen={setWhen} timeType="식사 시간대를 알려주세요!" />
-      <section className="flex flex-col gap-y-2 py-4">
+      <section className="flex flex-col gap-y-2 py- content-center">
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-medium text-black2 text-[14px]">배고픔 배부름 정도는 어떘나요</span>
         </header>
-
-        <aside className="grid items-center grid-flow-row-dense grid-cols-5 grid-rows-3 gap-y-1">
-          <div />
-          <div className="col-span-4 w-[285px] h-[20px] flex items-end">
-            <div className="flex w-full gap-x-2 items-center">
-              <div className="bg-green2 rounded-full px-1 py-1" />
-              <span className="text-black3 text-[12px]">Too hungry</span>
+        <aside>
+          <div className="flex gap-x-3 justify-center my-3">
+            <div className="flex-shrink-0 items-center justify-center flex ">
+              <span className="font-semibold text-[13px] text-black2">식전</span>
             </div>
-            <div className="flex w-full h-[20px] gap-x-2 items-center justify-end">
+            <div className="flex flex-shrink-0 items-center">
+              <span className="text-black3 items-center text-[12px]">Too hungry</span>
+            </div>
+            <HungerMeter colorList={[1, 2, 3, 4, 5]} hungerList={[1, 2, 3, 4, 5]} hunger_meal={hunger_before_meal} setHunger_meal={setHunger_before_meal} />
+            <div className="flex flex-shrink-0 items-center">
               <span className="text-black3 text-[12px]">Too full</span>
-              <div className="bg-green2 rounded-full px-1 py-1 mr-2" />
             </div>
           </div>
-
-          <div className="flex justify-center content-center">
-            <span className="text-center">식전</span>
-          </div>
-          <div className="col-span-4 w-full">
-            <HungerMeter setHunger_meal={setHunger_before_meal} hungerList={hungetList} hunger_meal={hunger_before_meal} />
-          </div>
-          <div className="flex justify-center content-center">
-            <span className="text-center">식후</span>
-          </div>
-          <div className="col-span-4 ">
-            <HungerMeter setHunger_meal={setHunger_After_meal} hungerList={hungetList} hunger_meal={hunger_after_meal} />
+          <div className="flex gap-x-3 justify-center my-3">
+            <div className="flex-shrink-0 items-center justify-center flex ">
+              <span className="font-semibold text-[13px] text-black2">식후</span>
+            </div>
+            <div className="flex flex-shrink-0 items-center">
+              <span className="text-black3 items-center text-[12px]">Too hungry</span>
+            </div>
+            <HungerMeter colorList={[1, 2, 3, 4, 5]} hungerList={[1, 2, 3, 4, 5]} hunger_meal={hunger_after_meal} setHunger_meal={setHunger_After_meal} />
+            <div className="flex flex-shrink-0 items-center">
+              <span className="text-black3 text-[12px]">Too full</span>
+            </div>
           </div>
         </aside>
       </section>
@@ -260,7 +269,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
                   successed_meal_routine[index] ? "bg-green3 border border-green2" : ""
                 }`}
               >
-                <p className="text-sm font-medium text-center text-[#2c2c30]">{routine.content}</p>
+                <p className="text-sm flex-shrink-0 font-medium text-center text-[#2c2c30]">{routine.content}</p>
                 {successed_meal_routine[index] ? <FaRegCircle className="bg-green2 text-green2 rounded-full" /> : <FaRegCircle />}
               </button>
             </div>

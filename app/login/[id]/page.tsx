@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { loginActionHandleSubmit } from "./loginAction";
 import SubmitButton from "@/components/login/loginSubmitButton";
 import { FetchResult } from "@/api/postFetch";
+
 interface IParams {
   params: { id: string };
 }
@@ -30,19 +31,12 @@ export default function LoginPage({ params: { id } }: IParams) {
     }
   };
   const clientActionWrapper = async (formData: FormData) => {
-    const result: FetchResult | undefined = await loginActionHandleSubmit(
-      formData
-    );
+    const result: FetchResult | undefined = await loginActionHandleSubmit(formData);
     if (result?.ok && result?.success) {
       alert("로그인 성공");
       console.log(result?.result.name);
     } else if (result?.ok) {
-      alert(
-        "로그인 실패. client error success:" +
-          result?.success +
-          " name: " +
-          result?.result.name
-      );
+      alert("로그인 실패. client error success:" + result?.success + " name: " + result?.result.name);
       console.log(result?.result);
     } else {
       alert("로그인 실패. server error\n" + result?.result);
@@ -53,20 +47,10 @@ export default function LoginPage({ params: { id } }: IParams) {
     <div className="min-h-full px-6 py-12 lg:px-8">
       <div className="flex flex-1 flex-col justify-center">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h3 className="text-[#9F9FAC] text-[16px] te">
-            마음먹기에 오신 걸 환영해요
-          </h3>
-          <h1 className="text-black font-semibold text-[26px]">
-            마음먹기를 시작해볼까요?
-          </h1>
+          <h3 className="text-[#9F9FAC] text-[16px] te">마음먹기에 오신 걸 환영해요</h3>
+          <h1 className="text-black font-semibold text-[26px]">마음먹기를 시작해볼까요?</h1>
           <div className="flex justify-end">
-            <Image
-              src="/CheerIcon.svg"
-              alt="Your Company"
-              width={200}
-              height={200}
-              className="ml-20 h-[121px] w-auto"
-            />
+            <Image src="/CheerIcon.svg" alt="Your Company" width={200} height={200} className="ml-20 h-[121px] w-auto" />
           </div>
         </div>
 
@@ -80,7 +64,7 @@ export default function LoginPage({ params: { id } }: IParams) {
                 onChange={onChange}
                 placeholder="아이디를 입력해주세요"
                 required
-                className="block w-full  placeholder-[#9F9FAC]  font-bold bg-[#E7E7E7] bg-opacity-20 rounded-[9.3px] border-0 py-[16px] text-[#2C2C30]  text-opacity-1 text-[14px] shadow-sm ring-0  focus:ring-2 focus:ring-inset focus:ring-[#C1F1C1] sm:text-sm sm:leading-6"
+                className="block w-full placeholder-[#9F9FAC]  font-bold bg-[#E7E7E7] bg-opacity-20 rounded-[9.3px] border-0 py-[16px] text-[#2C2C30]  text-opacity-1 text-[14px] shadow-sm ring-0  focus:ring-2 focus:ring-inset focus:ring-[#C1F1C1] sm:text-sm sm:leading-6"
               />
             </div>
 
@@ -98,27 +82,11 @@ export default function LoginPage({ params: { id } }: IParams) {
                   className="w-full placeholder-[#9F9FAC] font-semibold  bg-[#E7E7E7] bg-opacity-20 border-0 py-[16px] text-[#2C2C30] text-[14px]  ring-0 focus:ring-2 focus:ring-inset focus:ring-[#C1F1C1] sm:text-sm sm:leading-6"
                 />
                 <input type="hidden" id="id" name="id" value={id} />
-                <button
-                  onClick={onSlashClick}
-                  type="button"
-                  className="flex items-center bg-[#E7E7E7] bg-opacity-20  h-full"
-                >
+                <button onClick={onSlashClick} type="button" className="flex items-center bg-[#E7E7E7] bg-opacity-20  h-full">
                   {slash ? (
-                    <Image
-                      src="/eyeIcon.svg"
-                      width={200}
-                      height={200}
-                      alt="eyeIcon"
-                      className="px-0  w-[28px] h-[56px] bg-opacity-100  text-[#9F9FAC] mr-3"
-                    />
+                    <Image src="/eyeIcon.svg" width={200} height={200} alt="eyeIcon" className="px-0  w-[28px] h-[56px] bg-opacity-100  text-[#9F9FAC] mr-3" />
                   ) : (
-                    <Image
-                      src="/eyeslash.svg"
-                      alt="eyeSlashIcon"
-                      width={200}
-                      height={200}
-                      className="px-0  w-[28px] h-[56px] bg-opacity-100  text-[#9F9FAC] mr-3"
-                    />
+                    <Image src="/eyeslash.svg" alt="eyeSlashIcon" width={200} height={200} className="px-0  w-[28px] h-[56px] bg-opacity-100  text-[#9F9FAC] mr-3" />
                   )}
                 </button>
               </div>

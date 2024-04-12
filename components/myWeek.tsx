@@ -8,12 +8,7 @@ interface MyWeekProps {
   setSelectDate: any;
 }
 
-export default function MyWeek({
-  week,
-  weekindex,
-  colorStatusWeeks,
-  setSelectDate,
-}: MyWeekProps) {
+export default function MyWeek({ week, weekindex, colorStatusWeeks, setSelectDate }: MyWeekProps) {
   const dragStartRef = useRef(false); // 드래그 시작을 확인하기 위한 ref
   const handleMouseDown = (day: Date) => {
     dragStartRef.current = false; // 드래그 시작 상태 초기화
@@ -63,17 +58,9 @@ export default function MyWeek({
     document.addEventListener("touchend", () => handleTouchEnd(day));
   };
   return (
-    <div
-      key={weekindex}
-      className={"flex justify-between items-center cursor-pointer"}
-    >
+    <div key={weekindex} className={"flex justify-between items-center cursor-pointer"}>
       {week.map((day: Date, dayindex: number) => (
-        <button
-          onMouseDown={() => handleMouseDown(day)}
-          onTouchStart={() => handleTouchStart(day)}
-          key={dayindex}
-          className="flex"
-        >
+        <button onMouseDown={() => handleMouseDown(day)} onTouchStart={() => handleTouchStart(day)} key={dayindex} className="flex my-1">
           <MyDay status={colorStatusWeeks[weekindex][dayindex]} day={day} />
         </button>
       ))}
