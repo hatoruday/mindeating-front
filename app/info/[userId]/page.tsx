@@ -5,7 +5,6 @@ interface IParams {
   params: { userId: string };
 }
 export default async function UserInfo({ params: { userId } }: IParams) {
-  const info = await getInfo(userId);
   // const fetchingData = {
   //   user_id: userId,
   // };
@@ -16,7 +15,7 @@ export default async function UserInfo({ params: { userId } }: IParams) {
   console.log(userData);
   return (
     <div className="flex flex-col">
-      <HomePage info={info} userId={userId} userData={userData} />
+      <HomePage userId={userId} userData={userData} />
     </div>
   );
 }

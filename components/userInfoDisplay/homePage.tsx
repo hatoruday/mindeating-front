@@ -10,7 +10,7 @@ import UserInfoDisplay from "./userInfoDisplay";
 import PostSpecificFetch from "@/api/postFetch";
 import Link from "next/link";
 
-export default function HomePage({ info, userId, userData }: { info: any; userData: any; userId: string }) {
+export default function HomePage({ userId, userData }: { userData: any; userId: string }) {
   const name = userData?.user_name;
   const month = 3;
   const day = 14;
@@ -27,7 +27,7 @@ export default function HomePage({ info, userId, userData }: { info: any; userDa
     await PostSpecificFetch(JSONdata, "feedback");
   };
   const [enableSubmit, setEnableSubmit] = useState<boolean>(true);
-  console.log("유저데이터", userData);
+
   return (
     <div>
       <div className="flex flex-col">
@@ -65,7 +65,7 @@ export default function HomePage({ info, userId, userData }: { info: any; userDa
         {isFadeOut ? (
           <>
             <div className="w-full h-5" />
-            <UserInfoDisplay info={info} userId={userId} />
+            <UserInfoDisplay userId={userId} selectDate={selectDate} />
           </>
         ) : (
           <footer className="flex justify-center">

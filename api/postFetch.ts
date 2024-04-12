@@ -119,11 +119,9 @@ export async function getUserName(userId: string) {
 
     const response = await fetch(endpoint, options);
 
-    console.log("getUserName실행됨.");
-
     if (response.ok) {
       const result = await response.json();
-      console.log(result);
+
       if (result.success) {
         return result;
       } else {
