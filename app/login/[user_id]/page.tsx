@@ -23,10 +23,10 @@ export default function LoginPage({ params: { user_id } }: IParams) {
       console.log(result?.result.name);
     } else if (result?.ok) {
       // alert("로그인 실패. client error success:" + result?.success + " name: " + result?.result.name);
-      setError(result?.result?.name || result?.result?.message || result?.result?.toString());
+      setError("서버 연결 실패. 결제 번호가 맞는지 다시 확인해주세요.");
     } else {
       alert("로그인 실패. server error\n" + result?.result);
-      setError(result?.success);
+      setError("서버 오류");
     }
     // setState(result)
   };
