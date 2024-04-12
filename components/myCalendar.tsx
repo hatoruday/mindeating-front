@@ -30,7 +30,8 @@ export default function MyCalendar({ isFadeOut, setIsFadeOut, selectDate, setSel
   const [offset, setOffset] = useState<number>(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startY, setStartY] = useState<number>(0);
-  const [currentPageY, setCurrentPageY] = useState(-240); // 현재 페이지 Y 위치
+  const hasSixWeek = getMonthAll(offset - 1)[0].weeks.length == 6;
+  const [currentPageY, setCurrentPageY] = useState(hasSixWeek ? -288 : -240); // 현재 페이지 Y 위치
   const [animProps, setAnimProps] = useSpring(() => ({
     to: { transform: `translateY(${currentPageY}px)` },
   }));
@@ -88,16 +89,26 @@ export default function MyCalendar({ isFadeOut, setIsFadeOut, selectDate, setSel
             requestAnimationFrame(() => {
               if (getMonthAll(offset - 1)[0].weeks.length == 6) {
                 setAnimProps({
-                  to: { transform: `translateY(${currentPageY - 24}px)` }, // 최종 위치로 애니메이션
+                  to: { transform: `translateY(${currentPageY - 48}px)` }, // 최종 위치로 애니메이션
                   immediate: true, // 애니메이션 적용
                 });
+                setCurrentPageY(currentPageY - 48);
               } else {
-                setAnimProps({
-                  to: { transform: `translateY(${currentPageY}px)` }, // 최종 위치로 애니메이션
-                  immediate: true, // 애니메이션 적용
-                });
+                if (currentPageY == -288) {
+                  setAnimProps({
+                    to: { transform: `translateY(${currentPageY + 48}px)` }, // 최종 위치로 애니메이션
+                    immediate: true, // 애니메이션 적용
+                  });
+                  setCurrentPageY(currentPageY + 48);
+                } else {
+                  setAnimProps({
+                    to: { transform: `translateY(${currentPageY}px)` }, // 최종 위치로 애니메이션
+                    immediate: true, // 애니메이션 적용
+                  });
+                }
               }
             });
+            console.log("offset", offset);
             setOffset((prev) => prev - 1);
           },
         });
@@ -108,24 +119,29 @@ export default function MyCalendar({ isFadeOut, setIsFadeOut, selectDate, setSel
           immediate: false, // 애니메이션 적용
           onRest: () => {
             requestAnimationFrame(() => {
-              if (getMonthAll(offset - 1)[0].weeks.length == 6) {
-                hasSixWeeks = true;
+              if (getMonthAll(offset + 1)[0].weeks.length == 6) {
+                console.log(offset);
+                console.log("두번쨰");
                 setAnimProps({
-                  to: { transform: `translateY(${currentPageY - 24}px)` }, // 최종 위치로 애니메이션
-                  immediate: true, // 애니메이션 적용
-                });
-              } else if (getMonthAll(offset + 1)[0].weeks.length == 6) {
-                hasSixWeeks = true;
-                setAnimProps({
-                  to: { transform: `translateY(${currentPageY - 24}px)` }, // 최종 위치로 애니메이션
+                  to: { transform: `translateY(${currentPageY - 48}px)` }, // 최종 위치로 애니메이션
                   immediate: true, // 애니메이션 적용
                 });
               } else {
-                hasSixWeeks = false;
-                setAnimProps({
-                  to: { transform: `translateY(${currentPageY}px)` }, // 최종 위치로 애니메이션
-                  immediate: true,
-                });
+                if (currentPageY == -288) {
+                  console.log("아래로 내림, -288에서");
+                  setAnimProps({
+                    to: { transform: `translateY(${currentPageY - 48}px)` }, // 최종 위치로 애니메이션
+                    immediate: true, // 애니메이션 적용
+                  });
+                  setCurrentPageY(currentPageY + 48);
+                } else {
+                  console.log("4번째.");
+                  console.log("offset", offset);
+                  setAnimProps({
+                    to: { transform: `translateY(${currentPageY}px)` }, // 최종 위치로 애니메이션
+                    immediate: true, // 애니메이션 적용
+                  });
+                }
               }
               setOffset((prev) => prev + 1);
             });
@@ -157,7 +173,7 @@ export default function MyCalendar({ isFadeOut, setIsFadeOut, selectDate, setSel
 
   useEffect(() => {
     setRecentMonth(getMonthAll(offset));
-  }, [offset]);
+  }, [offset, currentPageY]);
 
   return (
     <div className="flex flex-col items-center justify-start px-4" onTouchEnd={handleDragEnd} onMouseUp={handleDragEnd}>
@@ -168,7 +184,7 @@ export default function MyCalendar({ isFadeOut, setIsFadeOut, selectDate, setSel
             <div
               className={
                 isFadeOut
-                  ? "w-full overflow-hidden max-h-[65px] z-20 relative"
+                  ? "w-full overflow-hidden max-h-[60px] z-20 relative"
                   : recentMonth[1].weeks.length == 6
                   ? "w-full overflow-hidden max-h-[288px] z-20 relative"
                   : "w-full overflow-hidden max-h-[240px] z-20 relative"

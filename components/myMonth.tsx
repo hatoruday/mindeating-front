@@ -25,10 +25,10 @@ export default function MyMonthList({
   // 현재 월에 해당하는 주별 날짜 2차원 배열을 가져옴
   // console.log(recentMonths[0].weeks[0][0].getMonth());
   //현재 접혀있지 않는 주차들을 관리한다.
-  const [openIndexList, setOpenIndexList] = useState<number[]>(recentMonths[1].isFadeoutWeeks);
+  const [openIndexList, setOpenIndexList] = useState<number[][]>([recentMonths[0].isFadeoutWeeks, recentMonths[1].isFadeoutWeeks, recentMonths[2].isFadeoutWeeks]);
   const [firstRender, setFirstRender] = useState(false);
   useEffect(() => {
-    setOpenIndexList(recentMonths[1].isFadeoutWeeks);
+    setOpenIndexList([recentMonths[0].isFadeoutWeeks, recentMonths[1].isFadeoutWeeks, recentMonths[2].isFadeoutWeeks]);
   }, [recentMonths]);
 
   const dragStartRef = useRef(false); // 드래그 시작을 확인하기 위한 ref
@@ -58,16 +58,15 @@ export default function MyMonthList({
     // console.log("toggle 실행됨.", openIndexList, index);
     let newIndex: number[];
     //openIndexList의 sum을 구한다.
-    let summedValue = openIndexList.reduce((a, b) => a + b, 0);
-    if (openIndexList[index] == 1 && summedValue == 1) {
-      newIndex = openIndexList.map((item: number, i: number) => 1);
+    let summedValue = openIndexList[1].reduce((a, b) => a + b, 0);
+    if (openIndexList[1][index] == 1 && summedValue == 1) {
+      newIndex = openIndexList[1].map((item: number, i: number) => 1);
     } else {
-      newIndex = openIndexList.map((item: number, i: number) => (i === index ? 1 : 0));
+      newIndex = openIndexList[1].map((item: number, i: number) => (i === index ? 1 : 0));
     }
     // console.log(openIndexList, newIndex);
-    setOpenIndexList(newIndex);
+    setOpenIndexList([openIndexList[0], newIndex, openIndexList[2]]);
     setIsfadeOut(!isFadeOut);
-    setCurrentPageY(0);
   };
 
   const handleTouchStart = (weekindex: number) => {
@@ -100,9 +99,9 @@ export default function MyMonthList({
               <div className="w-full" key={weekindex} onMouseDown={() => handleMouseDown(weekindex)} onTouchStart={() => handleTouchStart(weekindex)}>
                 <AccordianItems
                   key={weekindex}
-                  openIndexList={openIndexList}
+                  openIndexList={openIndexList[1]}
                   setOpenIndexList={setOpenIndexList}
-                  open={openIndexList[weekindex] == 1}
+                  open={openIndexList[1][weekindex] == 1 || monthindex != 1}
                   weekindex={weekindex}
                   week={month.weeks[weekindex]}
                   colorStatusWeeks={month.colorStatusWeeks}
