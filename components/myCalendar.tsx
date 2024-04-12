@@ -13,7 +13,21 @@ import Thead from "./thead";
 import MyMonthList from "./myMonth";
 import getMonthAll from "@/utility/getDayInformation";
 
-export default function MyCalendar({ isFadeOut, setIsFadeOut, selectDate, setSelectDate, userData }: { isFadeOut: boolean; setIsFadeOut: any; userData: any; selectDate: Date; setSelectDate: any }) {
+export default function MyCalendar({
+  loadNew,
+  isFadeOut,
+  setIsFadeOut,
+  selectDate,
+  setSelectDate,
+  userData,
+}: {
+  loadNew: any;
+  isFadeOut: boolean;
+  setIsFadeOut: any;
+  userData: any;
+  selectDate: Date;
+  setSelectDate: any;
+}) {
   /** 달력 각 월에 대해 스크롤 했을 때 터치하는 것 그대로 따라가되, 어느정도 임계치 이상을 넘기고 손가락을 뗏을때 다음
    * 월로 탄력적으로 이동하게 끔 애니메이션을 구현한다.
    */
@@ -173,7 +187,7 @@ export default function MyCalendar({ isFadeOut, setIsFadeOut, selectDate, setSel
 
   useEffect(() => {
     setRecentMonth(getMonthAll(offset, date_info));
-  }, [offset, currentPageY, date_info]);
+  }, [offset]);
 
   return (
     <div className="flex flex-col items-center justify-start px-4" onTouchEnd={handleDragEnd} onMouseUp={handleDragEnd}>
@@ -198,7 +212,7 @@ export default function MyCalendar({ isFadeOut, setIsFadeOut, selectDate, setSel
                 style={animProps}
                 className="flex flex-col w-full h-full draggable"
               >
-                <MyMonthList setCurrentPageY={setCurrentPageY} isFadeOut={isFadeOut} setIsfadeOut={setIsFadeOut} recentMonths={recentMonth} setSelectDate={setSelectDate} />
+                <MyMonthList loadNew={loadNew} setCurrentPageY={setCurrentPageY} isFadeOut={isFadeOut} setIsfadeOut={setIsFadeOut} recentMonths={recentMonth} setSelectDate={setSelectDate} />
               </animated.div>
             </div>
           </div>

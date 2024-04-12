@@ -55,7 +55,7 @@ export default function Sleep({ params: { userId } }: IParams) {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col px-6">
       <header className="flex relative w-full py-3 justify-center">
         <Image src="/leftChevron.svg" width={8} height={17} alt="leftChevron" className="absolute top-1/2 left-4 transform -translate-y-1/2" />
 

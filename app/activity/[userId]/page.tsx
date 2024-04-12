@@ -42,29 +42,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
    * 기타를 클릭한 경우 컴포넌트를 띄우고 데이터를 저장한다.
    */
 
-  const typeList = [
-    "휴식",
-
-    "걷기",
-
-    "달리기",
-
-    "계단 오르기",
-
-    "필라테스 & 요가",
-
-    "웨이트 근력",
-
-    "홈트레이닝",
-
-    "수영",
-
-    "구기종목",
-
-    "등산",
-
-    "기타",
-  ];
+  const typeList = ["휴식", "걷기", "달리기", "계단 오르기", "필라테스 & 요가", "웨이트 근력", "홈트레이닝", "수영", "구기종목", "등산", "기타"];
 
   //typeList의 각 요소의 index에 대해 1: 클릭됨 0: 클릭안됨
 
@@ -112,12 +90,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
       console.log(result?.result.name);
       setIsLoading(false);
     } else if (result?.ok) {
-      alert(
-        "실패. client error success:" +
-          result?.success +
-          " name: " +
-          result?.result.name
-      );
+      alert("실패. client error success:" + result?.success + " name: " + result?.result.name);
       setIsLoading(false);
       console.log(result?.result);
     } else {
@@ -128,15 +101,9 @@ export default function ActivityPage({ params: { userId } }: IParams) {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col px-6">
       <header className="flex relative w-full py-3 justify-center">
-        <Image
-          src="/leftChevron.svg"
-          width={8}
-          height={17}
-          alt="leftChevron"
-          className="absolute top-1/2 left-4 transform -translate-y-1/2"
-        />
+        <Image src="/leftChevron.svg" width={8} height={17} alt="leftChevron" className="absolute top-1/2 left-4 transform -translate-y-1/2" />
 
         <div className="flex gap-2">
           <span className="font-semibold text-[16px]">활동</span>
@@ -147,9 +114,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
 
-          <span className="font-medium text-black2 text-[14px]">
-            어떤 활동을 하셨나요?
-          </span>
+          <span className="font-medium text-black2 text-[14px]">어떤 활동을 하셨나요?</span>
         </header>
 
         <article className="flex flex-wrap justify-start items-center gap-2">
@@ -171,9 +136,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
                   }
                 }}
                 className={`flex justify-center items-center h-9 relative px-4 py-2.5 rounded-[56px] border ${
-                  names.includes(name)
-                    ? "border-green2 bg-green3"
-                    : "border-black4"
+                  names.includes(name) ? "border-green2 bg-green3" : "border-black4"
                 } text-sm font-medium text-[#2c2c30] min-w-[80px]`}
               >
                 {name}
@@ -184,9 +147,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
 
         {names.includes("기타") ? (
           <div className="flex flex-col justify-around w-full  px-3 py-2 rounded-[9.3px] bg-green3 border border-green2">
-            <p className="text-[14px] text-black1 py-2 font-medium px-3">
-              기타
-            </p>
+            <p className="text-[14px] text-black1 py-2 font-medium px-3">기타</p>
             <input
               className="w-full h-[52px] px-5  rounded-[10px] text-[14px] bg-white border border-black4 placeholder-black3"
               value={currentInput}
@@ -196,10 +157,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
             />
             <div className="flex flex-wrap gap-1 px-2 my-1.5">
               {extras.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex justify-center items-center h-9 relative gap-2 px-3.5 py-2.5 rounded-[56px] border border-black4 bg-white"
-                >
+                <div key={index} className="flex justify-center items-center h-9 relative gap-2 px-3.5 py-2.5 rounded-[56px] border border-black4 bg-white">
                   <p className="flex flex-grow-0 flex-shrink-0">{item}</p>
                   <RxCross2
                     onClick={() => {
@@ -221,71 +179,46 @@ export default function ActivityPage({ params: { userId } }: IParams) {
           <></>
         )}
       </section>
-      <WhatIsYourTime
-        when={when}
-        setWhen={setWhen}
-        timeType="활동 시간대를 알려주세요!"
-      />
+      <WhatIsYourTime when={when} setWhen={setWhen} timeType="활동 시간대를 알려주세요!" />
       <section className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
-          <Image
-            src="/mindFullEating/clockPlusIcon.svg"
-            width={17}
-            height={19}
-            alt="bookIcon"
-          />
-          <span className="font-medium text-black2 text-[14px]">
-            활동을 얼마나 했나요?
-          </span>
+          <Image src="/mindFullEating/clockPlusIcon.svg" width={17} height={19} alt="bookIcon" />
+          <span className="font-medium text-black2 text-[14px]">활동을 얼마나 했나요?</span>
         </header>
         <article className="flex gap-x-3 flex-wrap">
-          {["30분 미만", "30분 - 1시간", "1시간 - 2시간", "2시간 초과"].map(
-            (tAmount, index) => {
-              return (
-                <button
-                  key={index}
-                  onClick={() => {
-                    if (time === tAmount) {
-                      setTime("");
-                    } else {
-                      setTime(tAmount);
-                    }
-                  }}
-                  className={`flex my-1 flex-shrink-0 flex-grow-0 justify-center h-9 items-center px-4 py-2 relative rounded-[56px] border ${
-                    time === tAmount
-                      ? "border-green2 bg-green3"
-                      : "border-black4"
-                  }`}
-                >
-                  <p className="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-black1">
-                    {tAmount}
-                  </p>
-                </button>
-              );
-            }
-          )}
+          {["30분 미만", "30분 - 1시간", "1시간 - 2시간", "2시간 초과"].map((tAmount, index) => {
+            return (
+              <button
+                key={index}
+                onClick={() => {
+                  if (time === tAmount) {
+                    setTime("");
+                  } else {
+                    setTime(tAmount);
+                  }
+                }}
+                className={`flex my-1 flex-shrink-0 flex-grow-0 justify-center h-9 items-center px-4 py-2 relative rounded-[56px] border ${
+                  time === tAmount ? "border-green2 bg-green3" : "border-black4"
+                }`}
+              >
+                <p className="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-black1">{tAmount}</p>
+              </button>
+            );
+          })}
         </article>
       </section>
       <article className="flex flex-col w-full justify-center content-center items-center gap-y-2 py-4">
         <header className="flex px-3 gap-x-3 w-full">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
 
-          <span className="font-medium text-black2 text-[14px]">
-            활동 강도는 어땠나요?
-          </span>
+          <span className="font-medium text-black2 text-[14px]">활동 강도는 어땠나요?</span>
         </header>
 
         <div className="flex gap-3 w-4/5 justify-center my-3">
           <div className="flex flex-shrink-0 items-center">
-            <span className="text-black3 items-center text-[12px]">
-              Too Low
-            </span>
+            <span className="text-black3 items-center text-[12px]">Too Low</span>
           </div>
-          <HungerMeter
-            hungerList={[1, 2, 3, 4, 5]}
-            hunger_meal={intensity!}
-            setHunger_meal={setIntensity}
-          />
+          <HungerMeter hungerList={[1, 2, 3, 4, 5]} hunger_meal={intensity!} setHunger_meal={setIntensity} />
           <div className="flex flex-shrink-0 items-center">
             <span className="text-black3 text-[12px]">Too High</span>
           </div>
@@ -295,28 +228,16 @@ export default function ActivityPage({ params: { userId } }: IParams) {
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
 
-          <span className="font-medium text-black2 text-[14px]">
-            활동 강도는 어땠나요?
-          </span>
+          <span className="font-medium text-black2 text-[14px]">활동 강도는 어땠나요?</span>
         </header>
 
-        <Satiety
-          satisfaction={satisfaction}
-          setSatisfaction={setSatisfaction}
-        />
+        <Satiety satisfaction={satisfaction} setSatisfaction={setSatisfaction} />
       </article>
       <article className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 py-2 gap-x-3">
-          <Image
-            src="/info/feedbackPencile.svg"
-            width={18}
-            height={16}
-            alt="bookIcon"
-          />
+          <Image src="/info/feedbackPencile.svg" width={18} height={16} alt="bookIcon" />
 
-          <span className="font-medium text-black2 text-[14px]">
-            피드백 노트
-          </span>
+          <span className="font-medium text-black2 text-[14px]">피드백 노트</span>
         </header>
 
         <FeedbackNote note={note} setNote={setNote} />
@@ -336,13 +257,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
           },
         }}
         isLoading={isLoading}
-        isActive={
-          names.length > 0 &&
-          when != "" &&
-          time != "" &&
-          intensity != 0 &&
-          satisfaction != ""
-        }
+        isActive={names.length > 0 && when != "" && time != "" && intensity != 0 && satisfaction != ""}
       />
     </div>
   );

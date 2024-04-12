@@ -1,8 +1,8 @@
-import ContentsScreen from "@/components/contents/contentsScreen";
+import ContentsScreenQR from "@/components/contents/contentsScreenQR";
 
 export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
@@ -21,7 +21,7 @@ export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
 
 export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
@@ -43,7 +43,7 @@ export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
 
 export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
@@ -64,7 +64,7 @@ export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
 };
 export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
@@ -81,7 +81,7 @@ export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
 
 export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
@@ -104,7 +104,7 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
 export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen topic = {topic} pageNumber = {pageNum}
+    <ContentsScreenQR topic = {topic} pageNumber = {pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
       articleString={<pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
         첫째, 운동을 가볍고 꾸준하게, 즐겁게 하기<br/><br/>
@@ -123,7 +123,7 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
 };
 export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
@@ -145,7 +145,7 @@ export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
 
 export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
@@ -168,7 +168,7 @@ export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
 };
 export const Nine = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
@@ -192,7 +192,7 @@ export const Nine = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
 
 export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
@@ -213,7 +213,7 @@ export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
 
 export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
@@ -233,7 +233,7 @@ export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) =
 };
 export const Twelve = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       isLast={true}
       topic={topic}
       pageNumber={pageNum}

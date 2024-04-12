@@ -7,8 +7,8 @@ export interface InfoParams {
   date: Date;
 }
 
-export async function infoAction(activityData: InfoParams) {
-  const JSONdata = JSON.stringify(activityData);
+export async function infoAction(infoData: InfoParams) {
+  const JSONdata = JSON.stringify(infoData);
 
   try {
     const result: FetchResult = await PostSpecificFetch(JSONdata, "record/get-records");

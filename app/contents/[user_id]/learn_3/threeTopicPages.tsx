@@ -1,8 +1,9 @@
-import ContentsScreen from "@/components/contents/contentsScreen";
+import ContentsScreen from "@/components/contents/contentsScreenUser";
 
-export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const One = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="3. 일반식을 먹었다가 살이 찌면 어쩌지?"
@@ -20,9 +21,10 @@ export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   );
 };
 
-export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Two = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="3. 일반식을 먹었다가 살이 찌면 어쩌지?"
@@ -38,9 +40,10 @@ export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   );
 };
 
-export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Three = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="3. 일반식을 먹었다가 살이 찌면 어쩌지?"
@@ -58,10 +61,11 @@ export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
     />
   );
 };
-export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Four = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   // prettier-ignore
   return (
-    <ContentsScreen topic = {topic} pageNumber = {pageNum}
+    <ContentsScreen
+    wrapper={wrapper} topic = {topic} pageNumber = {pageNum}
       headerString="3. 일반식을 먹었다가 살이 찌면 어쩌지?"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -77,10 +81,11 @@ export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
   );
 };
 
-export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Five = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   // prettier-ignore
   return (
-    <ContentsScreen topic = {topic} pageNumber = {pageNum}
+    <ContentsScreen
+    wrapper={wrapper} topic = {topic} pageNumber = {pageNum}
       headerString="3. 일반식을 먹었다가 살이 찌면 어쩌지?"
       articleHeaderString="자연체중은 얼마만에 줄어들까?"
       articleString={
@@ -98,10 +103,11 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
   );
 };
 
-export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Six = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   // prettier-ignore
   return (
-    <ContentsScreen topic = {topic}
+    <ContentsScreen
+    wrapper={wrapper} topic = {topic}
       isLast = {true}
     pageNumber={pageNum}
       headerString="3. 일반식을 먹었다가 살이 찌면 어쩌지?"

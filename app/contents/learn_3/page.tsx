@@ -1,6 +1,6 @@
 "use client";
 
-import ContentsScreen from "@/components/contents/contentsScreen";
+import ContentsScreen from "@/components/contents/contentsScreenUser";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Five, Four, One, Six, Three, Two } from "./threeTopicPages";

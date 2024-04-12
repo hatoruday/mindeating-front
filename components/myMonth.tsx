@@ -14,6 +14,7 @@ export default function MyMonthList({
   isFadeOut,
   setIsfadeOut,
   setSelectDate,
+  loadNew,
   setCurrentPageY,
 }: {
   recentMonths: MonthAll;
@@ -21,6 +22,7 @@ export default function MyMonthList({
   setIsfadeOut: any;
   setSelectDate: any;
   setCurrentPageY: any;
+  loadNew: any;
 }) {
   // 현재 월에 해당하는 주별 날짜 2차원 배열을 가져옴
   // console.log(recentMonths[0].weeks[0][0].getMonth());
@@ -55,7 +57,7 @@ export default function MyMonthList({
   };
 
   const toggle = (index: number) => {
-    // console.log("toggle 실행됨.", openIndexList, index);
+    console.log("toggle 실행됨.", openIndexList, index);
     let newIndex: number[];
     //openIndexList의 sum을 구한다.
     let summedValue = openIndexList[1].reduce((a, b) => a + b, 0);
@@ -66,6 +68,7 @@ export default function MyMonthList({
     }
     // console.log(openIndexList, newIndex);
     setOpenIndexList([openIndexList[0], newIndex, openIndexList[2]]);
+    loadNew();
     setIsfadeOut(!isFadeOut);
   };
 

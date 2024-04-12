@@ -112,7 +112,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
     // setState(result)
   };
   return (
-    <div className="flex flex-col justify-center content-center">
+    <div className="flex px-6 flex-col justify-center content-center">
       <header className="flex relative w-full py-3 justify-center">
         <Image src="/leftChevron.svg" width={8} height={17} alt="leftChevron" className="absolute top-1/2 left-4 transform -translate-y-1/2" />
         <div className="flex gap-2">

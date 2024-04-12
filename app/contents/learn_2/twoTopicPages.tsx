@@ -1,8 +1,8 @@
-import ContentsScreen from "@/components/contents/contentsScreen";
+import ContentsScreenQR from "@/components/contents/contentsScreenQR";
 
 export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
@@ -25,7 +25,7 @@ export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
 
 export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
@@ -47,7 +47,7 @@ export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
 
 export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
@@ -63,7 +63,7 @@ export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
 export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen topic = {topic} pageNumber = {pageNum}
+    <ContentsScreenQR topic = {topic} pageNumber = {pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -81,7 +81,7 @@ export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
 export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen topic = {topic} pageNumber = {pageNum}
+    <ContentsScreenQR topic = {topic} pageNumber = {pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       articleHeaderString="편안한 포만감에서 멈추는 8가지 방법"
       articleString={
@@ -97,7 +97,7 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
 export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen topic = {topic} pageNumber = {pageNum}
+    <ContentsScreenQR topic = {topic} pageNumber = {pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       
       articleImgSrc="/contentsImages/2/2-6.png"
@@ -118,7 +118,7 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
 };
 export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
@@ -144,7 +144,7 @@ export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
 
 export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
@@ -182,7 +182,7 @@ export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
 };
 export const Nine = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
@@ -212,7 +212,7 @@ export const Nine = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
 };
 export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
@@ -237,7 +237,7 @@ export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
 
 export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
@@ -266,7 +266,7 @@ export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) =
 };
 export const Twelve = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
@@ -296,7 +296,7 @@ export const Twelve = ({ topic, pageNum }: { topic: string; pageNum: string }) =
 };
 export const Thirteen = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
@@ -322,7 +322,7 @@ export const Thirteen = ({ topic, pageNum }: { topic: string; pageNum: string })
 };
 export const Fourteen = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       isLast={true}
       pageNumber={pageNum}
       topic={topic}

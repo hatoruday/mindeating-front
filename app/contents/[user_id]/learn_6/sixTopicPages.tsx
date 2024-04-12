@@ -1,8 +1,9 @@
-import ContentsScreen from "@/components/contents/contentsScreen";
+import ContentsScreen from "@/components/contents/contentsScreenUser";
 
-export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const One = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="6. 요요없는 체중감량의 비결은 정체기?"
@@ -20,9 +21,10 @@ export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   );
 };
 
-export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Two = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="6. 요요없는 체중감량의 비결은 정체기?"
@@ -40,9 +42,10 @@ export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   );
 };
 
-export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Three = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="6. 요요없는 체중감량의 비결은 정체기?"
@@ -60,9 +63,10 @@ export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
     />
   );
 };
-export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Four = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="6. 요요없는 체중감량의 비결은 정체기?"
@@ -84,9 +88,10 @@ export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
   );
 };
 
-export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Five = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="6. 요요없는 체중감량의 비결은 정체기?"
@@ -107,10 +112,11 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
   );
 };
 
-export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Six = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   // prettier-ignore
   return (
-    <ContentsScreen topic = {topic} pageNumber = {pageNum}
+    <ContentsScreen
+    wrapper={wrapper} topic = {topic} pageNumber = {pageNum}
       headerString="6. 요요없는 체중감량의 비결은 정체기?"
       articleAfterString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -128,9 +134,10 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
     />
   );
 };
-export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Seven = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="6. 요요없는 체중감량의 비결은 정체기?"
@@ -151,9 +158,10 @@ export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
   );
 };
 
-export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Eight = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="6. 요요없는 체중감량의 비결은 정체기?"
@@ -174,9 +182,10 @@ export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
     />
   );
 };
-export const Nine = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Nine = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="6. 요요없는 체중감량의 비결은 정체기?"
@@ -193,9 +202,10 @@ export const Nine = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
   );
 };
 
-export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Ten = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="6. 요요없는 체중감량의 비결은 정체기?"
@@ -217,9 +227,10 @@ export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   );
 };
 
-export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Eleven = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       isLast={true}

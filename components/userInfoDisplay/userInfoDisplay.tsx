@@ -10,30 +10,10 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaArrowCircleUp } from "react-icons/fa";
 
-export default function UserInfoDisplay({ userId, selectDate }: { userId: string; selectDate: Date }) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [infoData, setInfoData] = useState<any>([]);
-  const clientActionWrapper = async (infoParam: InfoParams) => {
-    setIsLoading(true);
-    const result: FetchResult | undefined = await infoAction(infoParam);
-
-    if (result?.ok && result?.success) {
-      // router.push("/info/");
-      setInfoData(result?.result);
-      setIsLoading(false);
-    } else if (result?.ok) {
-      // alert("실패. client error success:" + result?.success + " name: " + result?.result.name);
-      setIsLoading(false);
-      // console.log(result?.result);
-    } else {
-      // alert("실패. server error\n" + result?.result);
-      setIsLoading(false);
-    }
-    // setState(result)
-  };
+export default function UserInfoDisplay({ userId, selectDate, infoData }: { userId: string; selectDate: Date; infoData: any }) {
   useEffect(() => {
-    clientActionWrapper({ user_id: userId, date: selectDate });
-  }, [selectDate, userId]);
+    console.log("유저정보디스플레이", infoData);
+  }, [infoData]);
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };

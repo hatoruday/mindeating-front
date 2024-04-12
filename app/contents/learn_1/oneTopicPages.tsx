@@ -1,5 +1,6 @@
 // prettier-ignore
-import ContentsScreen from "@/components/contents/contentsScreen";
+import ContentsScreenQR from "@/components/contents/contentsScreenQR";
+
 const ArticleString = () => {
   return (
     <div className="flex font-gowun flex-col gap-y-10">
@@ -18,7 +19,7 @@ const ArticleString = () => {
 };
 export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
-    <ContentsScreen
+    <ContentsScreenQR
       topic={topic}
       isLast={false}
       pageNumber={pageNum}
@@ -34,7 +35,7 @@ export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
 export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen topic = {topic} pageNumber = {pageNum}
+    <ContentsScreenQR topic = {topic} pageNumber = {pageNum}
     isLast = {false}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
       articleHeaderString="의지력이 부족해서가 아니야"
@@ -59,7 +60,7 @@ export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
 export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen topic = {topic} pageNumber = {pageNum}
+    <ContentsScreenQR topic = {topic} pageNumber = {pageNum}
     isLast = {false}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
       articleHeaderString="식욕 호르몬을 분비하는 뇌"
@@ -78,7 +79,7 @@ export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
 export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen topic = {topic} pageNumber = {pageNum}
+    <ContentsScreenQR topic = {topic} pageNumber = {pageNum}
     isLast = {false}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
       articleString={
@@ -94,7 +95,7 @@ export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
 export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen topic = {topic} pageNumber = {pageNum}
+    <ContentsScreenQR topic = {topic} pageNumber = {pageNum}
     isLast = {false}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
       articleString={
@@ -112,7 +113,7 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
 export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
-    <ContentsScreen topic = {topic}
+    <ContentsScreenQR topic = {topic}
       isLast = {true}
       pageNumber={pageNum}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"

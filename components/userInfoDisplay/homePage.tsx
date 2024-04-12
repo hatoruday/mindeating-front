@@ -1,14 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { use, useState } from "react";
+import { use, useEffect, useState } from "react";
 import OutagePeriod from "../outagePeriod";
 import MyCalendar from "../myCalendar";
 import RightChevron from "../rightChevron";
 import LeftChevron from "../leftChevron";
 import UserInfoDisplay from "./userInfoDisplay";
-import PostSpecificFetch from "@/api/postFetch";
+import PostSpecificFetch, { FetchResult } from "@/api/postFetch";
 import Link from "next/link";
+import { infoAction, InfoParams } from "@/app/info/[userId]/infoAction";
 
 export default function HomePage({ userId, userData }: { userData: any; userId: string }) {
   const name = userData?.user_name;
@@ -16,7 +17,9 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
   const day = 14;
   const week = 2;
   const [isFadeOut, setIsFadeOut] = useState<boolean>(false);
-  const [selectDate, setSelectDate] = useState<Date>(new Date());
+  //4월 13일을 표시하는 Date객체를 만든다.
+  const date = new Date(2022, 3, 13);
+  const [selectDate, setSelectDate] = useState<Date>(date);
   //set slash to !slash whey clicked
   const fetchSubmit = async () => {
     const eatingData = {
@@ -27,6 +30,42 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
     await PostSpecificFetch(JSONdata, "feedback");
   };
   const [enableSubmit, setEnableSubmit] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [infoData, setInfoData] = useState<string>("");
+  const clientActionWrapper = async (infoParam: InfoParams) => {
+    setIsLoading(true);
+    const result: FetchResult | undefined = await infoAction(infoParam);
+
+    if (result?.ok && result?.success) {
+      setIsLoading(false);
+      return result?.result;
+    } else if (result?.ok) {
+      // alert("실패. client error success:" + result?.success + " name: " + result?.result.name);
+      // setIsLoading(false);
+      // console.log(result?.result);
+    } else {
+      // alert("실패. server error\n" + result?.result);
+      // setIsLoading(false);
+    }
+    // setState(result)
+  };
+  let infodata: any;
+  const loadNewData = () => {
+    if (!isLoading) return;
+    setIsLoading(false);
+    console.log("해당 selectDate로 데이터를 불러옵니다.", selectDate);
+    clientActionWrapper({ user_id: userId, date: selectDate }).then((result) => {
+      setInfoData(result);
+
+      console.log("loadNewData", infodata);
+      setIsLoading(true);
+    });
+  };
+
+  useEffect(() => {
+    // setInfoData(infodata);
+    // console.log("useEffect", infodata);
+  }, [infoData]);
 
   return (
     <div>
@@ -59,13 +98,13 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
           </div>
         </aside>
         {/* 캘린더 */}
-        <MyCalendar isFadeOut={isFadeOut} setIsFadeOut={setIsFadeOut} userData={userData} selectDate={selectDate} setSelectDate={setSelectDate} />
+        <MyCalendar isFadeOut={isFadeOut} loadNew={loadNewData} setIsFadeOut={setIsFadeOut} userData={userData} selectDate={selectDate} setSelectDate={setSelectDate} />
         {/** split bar */}
         <div className="border-t border-gray-200"></div>
         {isFadeOut ? (
           <>
             <div className="w-full h-5" />
-            <UserInfoDisplay userId={userId} selectDate={selectDate} />
+            <UserInfoDisplay infoData={infoData} userId={userId} selectDate={selectDate} />
           </>
         ) : (
           <footer className="flex justify-center">

@@ -13,6 +13,7 @@ export default async function PostSpecificFetch(data: string, speficEndPoint: st
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "cache-control": "no-cache",
       },
       body: data,
     };

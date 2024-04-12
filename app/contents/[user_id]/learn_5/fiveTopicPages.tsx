@@ -1,8 +1,9 @@
-import ContentsScreen from "@/components/contents/contentsScreen";
+import ContentsScreen from "@/components/contents/contentsScreenUser";
 
-export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const One = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="5. 점점 체중이 감량되고 있어"
@@ -24,9 +25,10 @@ export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   );
 };
 
-export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Two = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="5. 점점 체중이 감량되고 있어"
@@ -49,9 +51,10 @@ export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   );
 };
 
-export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Three = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="5. 점점 체중이 감량되고 있어"
@@ -69,9 +72,10 @@ export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
     />
   );
 };
-export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Four = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="5. 점점 체중이 감량되고 있어"
@@ -90,9 +94,10 @@ export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
   );
 };
 
-export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Five = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="5. 점점 체중이 감량되고 있어"
@@ -111,10 +116,11 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
   );
 };
 
-export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Six = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   // prettier-ignore
   return (
-    <ContentsScreen topic = {topic} pageNumber = {pageNum}
+    <ContentsScreen
+    wrapper={wrapper} topic = {topic} pageNumber = {pageNum}
       headerString="5. 점점 체중이 감량되고 있어"
       articleString={<pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
         따라서 그동안은 즉각적인 칼로리 연소에만 초점을 맞춰 유산소 운동만 했다면 이제는 근력운동에 집중해보는 걸 추천할게! <br/><br/>
@@ -130,9 +136,10 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
     />
   );
 };
-export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Seven = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="5. 점점 체중이 감량되고 있어"
@@ -155,9 +162,10 @@ export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
   );
 };
 
-export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Eight = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="5. 점점 체중이 감량되고 있어"
@@ -175,9 +183,10 @@ export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
     />
   );
 };
-export const Nine = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Nine = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="5. 점점 체중이 감량되고 있어"
@@ -195,9 +204,10 @@ export const Nine = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
   );
 };
 
-export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Ten = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="5. 점점 체중이 감량되고 있어"
@@ -213,9 +223,10 @@ export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   );
 };
 
-export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Eleven = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
+      wrapper={wrapper}
       isLast={true}
       topic={topic}
       pageNumber={pageNum}

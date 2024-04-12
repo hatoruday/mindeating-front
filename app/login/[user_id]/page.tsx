@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { loginActionHandleSubmit } from "./loginAction";
 import SubmitButton from "@/components/login/loginSubmitButton";
 import { FetchResult } from "@/api/postFetch";
@@ -31,7 +31,7 @@ export default function LoginPage({ params: { user_id } }: IParams) {
     // setState(result)
   };
   return (
-    <div className="min-h-full px-6 py-12 lg:px-8">
+    <div className="min-h-full px-12 py-12 lg:px-14">
       <div className="flex flex-1 flex-col justify-center">
         <Verification submitFn={clientActionWrapper} error={error} />
       </div>

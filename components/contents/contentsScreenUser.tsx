@@ -1,3 +1,5 @@
+import { FetchResult } from "@/api/postFetch";
+import { ReadCompletionHandle } from "@/app/contents/readAction";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -15,6 +17,7 @@ export default function ContentsScreen({
   topic,
   pageNumber,
   isLast,
+  wrapper,
 }: {
   headerString: string;
   articleHeaderString?: string;
@@ -28,14 +31,8 @@ export default function ContentsScreen({
   topic: string;
   pageNumber: string;
   isLast?: boolean;
+  wrapper: (topic: string) => Promise<void>;
 }) {
-  // const router = useRouter();
-  // const handleClick = (e: any) => {
-  //   e.preventDefault();
-  //   let pageNumberInt = parseInt(pageNumber) + 1;
-
-  //   router.push(`/${topic}/?page=${pageNumberInt}`);
-  // };
   return (
     <div className="flex w-full flex-col relative h-screen flex-grow justify-between content-center">
       <header className="flex items-center content-center absoulte top-0 left-0 justify-start py-5 gap-x-5">
@@ -46,7 +43,7 @@ export default function ContentsScreen({
         <span className="text-[16px] text-black1 font-bold">{headerString}</span>
       </header>
       <div className="w-full mb-5 h-[1px] bg-black4" />
-      <main className="flex flex-col justify-start overflow-y-auto h-full px-5">
+      <main className="flex flex-col justify-start overflow-y-auto h-full px-7">
         <div className="flex flex-col h-full justify-start">
           <span className="flex-shrink-0 font-bold text-[20px]">{articleHeaderString}</span>
           {articleString && <div className="my-1">{articleString}</div>}
@@ -73,13 +70,17 @@ export default function ContentsScreen({
           {greyBlockContent && <div className="w-full px-3 py-2 rounded-md bg-[#DBDBDB] bg-opacity-35">{greyBlockContent}</div>}
         </div>
       </main>
-      <div className="flex content-center my-5">
+      <div className="flex content-center px-5 my-5">
         {!isLast ? (
           <Link href={`${topic}?page=${parseInt(pageNumber) + 1}`} className="h-[60px] flex-shrink-0 items-center rounded-[14px] w-full flex justify-center content-center bg-black2">
             <span className="font-nanum text-white text-[16px]">다음</span>
           </Link>
         ) : (
-          <Link href={`/contents/${topic.split("/")[2]}`} className="h-[60px] flex-shrink-0 items-center rounded-[14px] w-full flex justify-center content-center bg-black2">
+          <Link
+            href={`/contents/${topic.split("/")[2]}`}
+            onClick={() => wrapper(topic)}
+            className="h-[60px] flex-shrink-0 items-center rounded-[14px] w-full flex justify-center content-center bg-black2"
+          >
             <span className="font-nanum text-white text-[16px]">완료</span>
           </Link>
         )}

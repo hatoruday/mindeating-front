@@ -68,7 +68,7 @@ export default async function Contents() {
     },
   ];
   return (
-    <div className="flex flex-col content-center">
+    <div className="flex bg-[#f3f4f8] px-3 flex-col content-center">
       <header className="flex w-full justify-start py-5">
         <span className="font-bold  text-[18px] text-black1">마음먹기 학습하기</span>
       </header>

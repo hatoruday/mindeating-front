@@ -12,7 +12,7 @@ interface AccordianItemsProps {
   setOpenIndexList: any;
   setSelectDate: any;
 }
-const AccordianItems = ({ open, openIndexList, setOpenIndexList, weekindex, week, colorStatusWeeks, setSelectDate }: AccordianItemsProps) => {
+const AccordianItems = ({ open, weekindex, week, colorStatusWeeks, setSelectDate }: AccordianItemsProps) => {
   return (
     <div className="pt-[2px] z-20">
       <div>

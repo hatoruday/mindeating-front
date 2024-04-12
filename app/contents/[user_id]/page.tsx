@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { FaCircle } from "react-icons/fa";
 import PostSpecificFetch, { FetchResult } from "@/api/postFetch";
+export const revalidate = 0;
 export default async function Contents({ params: { user_id } }: { params: { user_id: string } }) {
   let contentLevel = 0;
 
@@ -15,7 +16,7 @@ export default async function Contents({ params: { user_id } }: { params: { user
 
   try {
     const result: FetchResult = await PostSpecificFetch(JSONdata, "contents/num");
-
+    console.log(result);
     // revalidatePath(`/login/${user_id}`);
     contentLevel = result.result.num - 1;
   } catch (e) {
@@ -68,7 +69,7 @@ export default async function Contents({ params: { user_id } }: { params: { user
     },
   ];
   return (
-    <div className="flex flex-col content-center">
+    <div className="flex bg-[#f3f4f8] px-3 flex-col content-center">
       <header className="flex w-full justify-start py-5">
         <span className="font-bold  text-[18px] text-black1">마음먹기 학습하기</span>
       </header>
