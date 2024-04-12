@@ -4,10 +4,25 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaCircle } from "react-icons/fa";
+import PostSpecificFetch, { FetchResult } from "@/api/postFetch";
+export default async function Contents({ params: { user_id } }: { params: { user_id: string } }) {
+  let contentLevel = 0;
 
-export default function Contents() {
-  const contentLevel = 7;
+  const data = {
+    user_id,
+  };
+  const JSONdata = JSON.stringify(data);
 
+  try {
+    const result: FetchResult = await PostSpecificFetch(JSONdata, "contents/num");
+
+    // revalidatePath(`/login/${user_id}`);
+    contentLevel = result.result.num - 1;
+  } catch (e) {
+    console.error(e);
+    console.log({ ok: false, success: false, result: e });
+  } finally {
+  }
   const contentsBlockList = [
     {
       contentString: "다이어트 실패 원인은 \n의지력이 아닌 뇌에 있다?",
