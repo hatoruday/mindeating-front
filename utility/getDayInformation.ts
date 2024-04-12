@@ -11,7 +11,7 @@ interface MonthData {
   isFadeoutWeeks: number[];
 }
 // 현재 월에 해당하는 주별 날짜 2차원 배열을 가져옴
-function GetWeeksOfCurrentMonth(month: number, year: number): MonthData {
+function GetWeeksOfCurrentMonth(month: number, year: number, date_info?: any): MonthData {
   const now = new Date();
   const firstDayOfMonth = new Date(year, month - 1, 1);
   const dayOfWeek = firstDayOfMonth.getDay();
@@ -61,19 +61,35 @@ function GetWeeksOfCurrentMonth(month: number, year: number): MonthData {
   let isFadeoutWeeks = [];
   let colorStatusWeek = [];
   let colorStatusCurrent = new Date(firstMonday);
+
   while (colorStatusCurrent <= lastSunday) {
     // 이전달이거나 다음달의 날짜일경우 -1 플래그를 주고, 오늘날짜일 경우 1플래그를 준다.
-    if (colorStatusCurrent.getMonth() != firstDayOfMonth.getMonth()) {
-      colorStatusWeek.push(-1);
-    } else if (
-      colorStatusCurrent.getDate() === now.getDate() &&
-      colorStatusCurrent.getMonth() === now.getMonth() &&
-      colorStatusCurrent.getFullYear() === now.getFullYear()
-    ) {
-      colorStatusWeek.push(1);
+    const colorStatusCurrentDayAfter = new Date(colorStatusCurrent.getTime() + 24 * 60 * 60 * 1000);
+
+    const dateString = colorStatusCurrentDayAfter.toISOString().split("T")[0] + "T00:00:00";
+
+    if (date_info) {
+      const value = date_info[dateString];
+
+      if (colorStatusCurrent.getMonth() != firstDayOfMonth.getMonth()) {
+        colorStatusWeek.push(-1);
+      } else if (colorStatusCurrent.getDate() === now.getDate() && colorStatusCurrent.getMonth() === now.getMonth() && colorStatusCurrent.getFullYear() === now.getFullYear()) {
+        colorStatusWeek.push(1);
+      } else if (value === undefined) {
+        colorStatusWeek.push(0);
+      } else {
+        colorStatusWeek.push(value);
+      }
     } else {
-      colorStatusWeek.push(0);
+      if (colorStatusCurrent.getMonth() != firstDayOfMonth.getMonth()) {
+        colorStatusWeek.push(-1);
+      } else if (colorStatusCurrent.getDate() === now.getDate() && colorStatusCurrent.getMonth() === now.getMonth() && colorStatusCurrent.getFullYear() === now.getFullYear()) {
+        colorStatusWeek.push(1);
+      } else {
+        colorStatusWeek.push(0);
+      }
     }
+
     colorStatusCurrent.setDate(colorStatusCurrent.getDate() + 1);
     if (colorStatusCurrent.getDay() === 1) {
       colorStatusWeeks.push(colorStatusWeek);
@@ -82,9 +98,9 @@ function GetWeeksOfCurrentMonth(month: number, year: number): MonthData {
     }
   }
   //weeks와 colorStatusweeks를 두개 모두 리턴한다.
-  colorStatusWeeks[0][3] = 2;
-  colorStatusWeeks[0][4] = 3;
-  colorStatusWeeks[0][5] = 4;
+  // colorStatusWeeks[0][3] = 2;
+  // colorStatusWeeks[0][4] = 3;
+  // colorStatusWeeks[0][5] = 4;
   let monthData = {
     weeks: weeks,
     colorStatusWeeks: colorStatusWeeks,
@@ -94,31 +110,21 @@ function GetWeeksOfCurrentMonth(month: number, year: number): MonthData {
 }
 
 type MonthAll = [MonthData, MonthData, MonthData];
-export default function getMonthAll(offset: number): MonthAll {
+export default function getMonthAll(offset: number, date_info?: any): MonthAll {
   // console.log("getMonth호출됨.", offset);
 
   let today = new Date();
 
   // console.log("현재 달", today.getMonth() + 1, today.getFullYear());
   if (offset < 0) {
-    today = new Date(
-      today.getTime() - Math.abs(offset) * 31 * 24 * 60 * 60 * 1000
-    );
+    today = new Date(today.getTime() - Math.abs(offset) * 31 * 24 * 60 * 60 * 1000);
   } else if (offset > 0) {
-    today = new Date(
-      today.getTime() + Math.abs(offset) * 31 * 24 * 60 * 60 * 1000
-    );
+    today = new Date(today.getTime() + Math.abs(offset) * 31 * 24 * 60 * 60 * 1000);
   }
 
   // console.log("새롭게 바뀐 달", today.getMonth() + 1, today.getFullYear());
   const past = GetWeeksOfCurrentMonth(today.getMonth(), today.getFullYear());
-  const current = GetWeeksOfCurrentMonth(
-    today.getMonth() + 1,
-    today.getFullYear()
-  );
-  const future = GetWeeksOfCurrentMonth(
-    today.getMonth() + 2,
-    today.getFullYear()
-  );
+  const current = GetWeeksOfCurrentMonth(today.getMonth() + 1, today.getFullYear(), date_info);
+  const future = GetWeeksOfCurrentMonth(today.getMonth() + 2, today.getFullYear());
   return [past, current, future];
 }

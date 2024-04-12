@@ -35,8 +35,8 @@ export default function MyCalendar({ isFadeOut, setIsFadeOut, selectDate, setSel
   const [animProps, setAnimProps] = useSpring(() => ({
     to: { transform: `translateY(${currentPageY}px)` },
   }));
-
-  const [recentMonth, setRecentMonth] = useState<MonthAll>(getMonthAll(0));
+  const date_info = userData ? userData.date_info : null;
+  const [recentMonth, setRecentMonth] = useState<MonthAll>(getMonthAll(0, date_info));
 
   const handleDragStart = (event: any) => {
     setIsDragging(true);
@@ -172,8 +172,8 @@ export default function MyCalendar({ isFadeOut, setIsFadeOut, selectDate, setSel
    */
 
   useEffect(() => {
-    setRecentMonth(getMonthAll(offset));
-  }, [offset, currentPageY]);
+    setRecentMonth(getMonthAll(offset, date_info));
+  }, [offset, currentPageY, date_info]);
 
   return (
     <div className="flex flex-col items-center justify-start px-4" onTouchEnd={handleDragEnd} onMouseUp={handleDragEnd}>

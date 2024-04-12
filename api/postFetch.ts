@@ -1,12 +1,11 @@
+import { cache } from "react";
+
 export interface FetchResult {
   ok: boolean;
   success: boolean;
   result: any;
 }
-export default async function PostSpecificFetch(
-  data: string,
-  speficEndPoint: string
-): Promise<FetchResult> {
+export default async function PostSpecificFetch(data: string, speficEndPoint: string): Promise<FetchResult> {
   try {
     const endpoint = `https://mindeating-server.shop/${speficEndPoint}`;
 
@@ -69,6 +68,7 @@ export async function getInfo(userId: string) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "cache-control": "no-cache",
       },
       body: JSONdata,
     };
@@ -112,6 +112,7 @@ export async function getUserName(userId: string) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "cache-control": "no-cache",
       },
       body: JSONdata,
     };

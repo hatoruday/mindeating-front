@@ -26,7 +26,7 @@ export default function MyMonthList({
   // console.log(recentMonths[0].weeks[0][0].getMonth());
   //현재 접혀있지 않는 주차들을 관리한다.
   const [openIndexList, setOpenIndexList] = useState<number[][]>([recentMonths[0].isFadeoutWeeks, recentMonths[1].isFadeoutWeeks, recentMonths[2].isFadeoutWeeks]);
-  const [firstRender, setFirstRender] = useState(false);
+
   useEffect(() => {
     setOpenIndexList([recentMonths[0].isFadeoutWeeks, recentMonths[1].isFadeoutWeeks, recentMonths[2].isFadeoutWeeks]);
   }, [recentMonths]);
