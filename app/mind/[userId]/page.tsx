@@ -79,7 +79,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
   const routineCheckList = [
     { content: "식전 물 한 컵 마시며 차분한 마음 장착하기", isDone: false },
     { content: "영양가 있는 음식 섭취하기", isDone: false },
-    { content: "식사에만 온전히 집중해서 맛과 식감 느끼기", isDone: true },
+
     { content: "식사에만 온전히 집중해서 맛과 식감 느끼기", isDone: false },
     { content: `\"다음에 또 먹을 수 있다\" 상기시키기`, isDone: false },
     {
