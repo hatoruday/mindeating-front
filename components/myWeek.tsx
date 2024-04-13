@@ -20,6 +20,7 @@ export default function MyWeek({ week, weekindex, colorStatusWeeks, setSelectDat
 
     const handleMouseUp = (day: Date) => {
       if (!dragStartRef.current) {
+        console.log("toggle 실행");
         selectToggle(day); // 드래그가 시작되지 않았다면 toggle 실행
       }
       // 이벤트 리스너 제거
@@ -34,6 +35,7 @@ export default function MyWeek({ week, weekindex, colorStatusWeeks, setSelectDat
     document.addEventListener("mouseup", () => handleMouseUp(day));
   };
   const selectToggle = (day: Date) => {
+    console.log("setSelecttoggle 실행", day);
     setSelectDate(day);
   };
   const handleTouchStart = (day: Date) => {
@@ -44,18 +46,18 @@ export default function MyWeek({ week, weekindex, colorStatusWeeks, setSelectDat
       document.removeEventListener("touchmove", handleTouchMove);
     };
 
-    const handleTouchEnd = (day: Date) => {
+    const handleTouchEnd = () => {
       if (!dragStartRef.current) {
         selectToggle(day); // 드래그가 시작되지 않았다면 toggle 실행
       }
       // 이벤트 리스너 제거
-      document.removeEventListener("touchend", () => handleTouchEnd);
+      document.removeEventListener("touchend", handleTouchEnd);
       document.removeEventListener("touchmove", handleTouchMove);
     };
 
     // 이벤트 리스너 추가
     document.addEventListener("touchmove", handleTouchMove);
-    document.addEventListener("touchend", () => handleTouchEnd(day));
+    document.addEventListener("touchend", handleTouchEnd);
   };
   return (
     <div key={weekindex} className={"flex justify-between items-center cursor-pointer"}>

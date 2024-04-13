@@ -50,6 +50,9 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
     // setState(result)
   };
   let infodata: any;
+  useEffect(() => {
+    loadNewData();
+  }, [selectDate]);
   const loadNewData = () => {
     if (isLoading) return;
     setIsLoading(true);

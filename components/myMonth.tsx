@@ -68,7 +68,7 @@ export default function MyMonthList({
     }
     // console.log(openIndexList, newIndex);
     setOpenIndexList([openIndexList[0], newIndex, openIndexList[2]]);
-    loadNew();
+    // loadNew();
     setIsfadeOut(!isFadeOut);
   };
 
