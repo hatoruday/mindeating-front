@@ -39,9 +39,8 @@ export default function Sleep({ params: { userId } }: IParams) {
     const result: FetchResult | undefined = await sleepAction(sleepData);
     console.log(result);
     if (result?.ok && result?.success) {
-      alert("성공");
-      // router.push("/info/");
-      console.log(result?.result.name);
+      const now = new Date();
+      router.push(`/info/${userId}/${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`);
       setIsLoading(false);
     } else if (result?.ok) {
       alert("실패. client error success:" + result?.success + " name: " + result?.result.name);

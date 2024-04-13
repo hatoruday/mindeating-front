@@ -11,10 +11,11 @@ import PostSpecificFetch, { FetchResult } from "@/api/postFetch";
 import Link from "next/link";
 import { infoAction, InfoParams } from "@/app/info/[userId]/infoAction";
 import SubmitPopUpScreen from "../record/submitPopup";
+import { useRouter } from "next/navigation";
 export const revalidate = 0;
 export default function HomePage({ userId, userData, specificDay }: { userData: any; userId: string; specificDay?: string }) {
   const name = userData?.user_name;
-
+  const router = useRouter();
   const month = 3;
   const day = 14;
   const week = 2;
@@ -30,6 +31,8 @@ export default function HomePage({ userId, userData, specificDay }: { userData: 
     };
     const JSONdata: string = JSON.stringify(eatingData);
     setEnableSubmit(false);
+    const now = new Date();
+    router.push(`/info/${userId}/${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`);
     await PostSpecificFetch(JSONdata, "feedback");
   };
   const [enableSubmit, setEnableSubmit] = useState<boolean>(false);

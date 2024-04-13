@@ -41,10 +41,11 @@ export default function MindFullEating({ params: { userId } }: IParams) {
     const result: FetchResult | undefined = await emotionAction(emotionData);
     console.log(result);
     if (result?.ok && result?.success) {
-      alert("성공");
       // router.push("/info/");
-      console.log(result?.result.name);
+
       setIsLoading(false);
+      const now = new Date();
+      router.push(`/info/${userId}/${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`);
     } else if (result?.ok) {
       alert("실패. client error success:" + result?.success + " name: " + result?.result.name);
       setIsLoading(false);
