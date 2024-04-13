@@ -32,7 +32,7 @@ export default function HomePage({ userId, userData, specificDay }: { userData: 
     const JSONdata: string = JSON.stringify(eatingData);
     setEnableSubmit(false);
     const now = new Date();
-    router.push(`/info/${userId}/${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`);
+    router.push(`/info/${userId}/${now.getFullYear()}-${now.getMonth() + 1 < 10 ? "0" + (now.getMonth() + 1) : "0" + now.getMonth()}-${now.getDate()}`);
     await PostSpecificFetch(JSONdata, "feedback");
   };
   const [enableSubmit, setEnableSubmit] = useState<boolean>(false);
