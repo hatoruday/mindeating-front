@@ -12,7 +12,7 @@ import Link from "next/link";
 import { infoAction, InfoParams } from "@/app/info/[userId]/infoAction";
 import SubmitPopUpScreen from "../record/submitPopup";
 export const revalidate = 0;
-export default function HomePage({ userId, userData }: { userData: any; userId: string }) {
+export default function HomePage({ userId, userData, specificDay }: { userData: any; userId: string; specificDay?: string }) {
   const name = userData?.user_name;
 
   const month = 3;
@@ -120,10 +120,10 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
           </div>
         </aside>
         {/* 캘린더 */}
-        <MyCalendar isFadeOut={isFadeOut} loadNew={loadNewData} setIsFadeOut={setIsFadeOut} userData={userData} selectDate={selectDate} setSelectDate={setSelectDate} />
+        <MyCalendar isFadeOut={isFadeOut} loadNew={loadNewData} specificDay={specificDay} setIsFadeOut={setIsFadeOut} userData={userData} selectDate={selectDate} setSelectDate={setSelectDate} />
         {/** split bar */}
         <div className="border-t border-gray-200"></div>
-        {enablePopUp && <SubmitPopUpScreen />}
+        {/* {enablePopUp && <SubmitPopUpScreen />} */}
         {isFadeOut && !isLoading ? (
           <>
             <div className="w-full h-5" />

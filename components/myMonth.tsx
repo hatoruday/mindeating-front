@@ -14,6 +14,7 @@ export default function MyMonthList({
   isFadeOut,
   setIsfadeOut,
   setSelectDate,
+  specificDay,
   loadNew,
   setCurrentPageY,
 }: {
@@ -23,15 +24,36 @@ export default function MyMonthList({
   setSelectDate: any;
   setCurrentPageY: any;
   loadNew: any;
+  specificDay?: string;
 }) {
   // 현재 월에 해당하는 주별 날짜 2차원 배열을 가져옴
   // console.log(recentMonths[0].weeks[0][0].getMonth());
   //현재 접혀있지 않는 주차들을 관리한다.
   const [openIndexList, setOpenIndexList] = useState<number[][]>([recentMonths[0].isFadeoutWeeks, recentMonths[1].isFadeoutWeeks, recentMonths[2].isFadeoutWeeks]);
-
+  const [hasToggled, setHasToggled] = useState(false);
   useEffect(() => {
-    setOpenIndexList([recentMonths[0].isFadeoutWeeks, recentMonths[1].isFadeoutWeeks, recentMonths[2].isFadeoutWeeks]);
-  }, [recentMonths]);
+    if (!hasToggled && specificDay) {
+      // 여기에서 specificDay를 기반으로 특정 week를 찾는 로직을 구현합니다.
+      // 예시에서는 단순화를 위해 defaultWeekIndex를 사용합니다.
+      let specificWeekIndex = 0;
+      recentMonths[1].weeks.forEach((week, weekIndex) => {
+        //specificDay가 해당 주에 포함되어 있다면
+        if (week.some((day) => day.toDateString() === new Date(specificDay).toDateString())) {
+          specificWeekIndex = weekIndex;
+        }
+      });
+      console.log("specificDay 실행됨.");
+      toggle(specificWeekIndex);
+      setHasToggled(true); // toggle이 실행되었음을 표시
+
+      // specificDay에 해당하는 날짜를 선택 상태로 설정
+      const specificDate = new Date(specificDay);
+      setSelectDate(specificDate);
+    }
+  }, [specificDay]);
+  // useEffect(() => {
+  //   setOpenIndexList([recentMonths[0].isFadeoutWeeks, recentMonths[1].isFadeoutWeeks, recentMonths[2].isFadeoutWeeks]);
+  // }, [recentMonths]);
 
   const dragStartRef = useRef(false); // 드래그 시작을 확인하기 위한 ref
   const handleMouseDown = (weekindex: number) => {
@@ -93,6 +115,7 @@ export default function MyMonthList({
     document.addEventListener("touchmove", handleTouchMove);
     document.addEventListener("touchend", handleTouchEnd);
   };
+
   return (
     <>
       {recentMonths.map((month, monthindex) => {

@@ -1,7 +1,6 @@
 "use server";
 
 import PostSpecificFetch, { FetchResult } from "@/api/postFetch";
-import { revalidatePath } from "next/cache";
 
 export async function loginActionHandleSubmit({ code, user_id }: { code: string; user_id: string }) {
   if (user_id === "") return { ok: false, success: false, result: "적절하지 않은 유저 식별번호입니다." };

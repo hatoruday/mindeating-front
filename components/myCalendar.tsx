@@ -20,6 +20,7 @@ export default function MyCalendar({
   selectDate,
   setSelectDate,
   userData,
+  specificDay,
 }: {
   loadNew: any;
   isFadeOut: boolean;
@@ -27,6 +28,7 @@ export default function MyCalendar({
   userData: any;
   selectDate: Date;
   setSelectDate: any;
+  specificDay?: string;
 }) {
   /** 달력 각 월에 대해 스크롤 했을 때 터치하는 것 그대로 따라가되, 어느정도 임계치 이상을 넘기고 손가락을 뗏을때 다음
    * 월로 탄력적으로 이동하게 끔 애니메이션을 구현한다.
@@ -212,7 +214,15 @@ export default function MyCalendar({
                 style={animProps}
                 className="flex flex-col w-full h-full draggable"
               >
-                <MyMonthList loadNew={loadNew} setCurrentPageY={setCurrentPageY} isFadeOut={isFadeOut} setIsfadeOut={setIsFadeOut} recentMonths={recentMonth} setSelectDate={setSelectDate} />
+                <MyMonthList
+                  loadNew={loadNew}
+                  specificDay={specificDay}
+                  setCurrentPageY={setCurrentPageY}
+                  isFadeOut={isFadeOut}
+                  setIsfadeOut={setIsFadeOut}
+                  recentMonths={recentMonth}
+                  setSelectDate={setSelectDate}
+                />
               </animated.div>
             </div>
           </div>
