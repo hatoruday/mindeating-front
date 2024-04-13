@@ -11,9 +11,9 @@ import { useEffect, useState } from "react";
 import { FaArrowCircleUp } from "react-icons/fa";
 
 export default function UserInfoDisplay({ userId, selectDate, infoData }: { userId: string; selectDate: Date; infoData: any }) {
-  useEffect(() => {
-    console.log("유저정보디스플레이", infoData);
-  }, [infoData]);
+  // useEffect(() => {
+  //   // console.log("유저정보디스플레이", infoData);
+  // }, [infoData]);
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };

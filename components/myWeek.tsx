@@ -20,7 +20,7 @@ export default function MyWeek({ week, weekindex, colorStatusWeeks, setSelectDat
 
     const handleMouseUp = (day: Date) => {
       if (!dragStartRef.current) {
-        toggle(day); // 드래그가 시작되지 않았다면 toggle 실행
+        selectToggle(day); // 드래그가 시작되지 않았다면 toggle 실행
       }
       // 이벤트 리스너 제거
       document.removeEventListener("mouseup", () => {
@@ -33,7 +33,7 @@ export default function MyWeek({ week, weekindex, colorStatusWeeks, setSelectDat
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", () => handleMouseUp(day));
   };
-  const toggle = (day: Date) => {
+  const selectToggle = (day: Date) => {
     setSelectDate(day);
   };
   const handleTouchStart = (day: Date) => {
@@ -46,7 +46,7 @@ export default function MyWeek({ week, weekindex, colorStatusWeeks, setSelectDat
 
     const handleTouchEnd = (day: Date) => {
       if (!dragStartRef.current) {
-        toggle(day); // 드래그가 시작되지 않았다면 toggle 실행
+        selectToggle(day); // 드래그가 시작되지 않았다면 toggle 실행
       }
       // 이벤트 리스너 제거
       document.removeEventListener("touchend", () => handleTouchEnd);

@@ -125,7 +125,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
 
       <article className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 py-2 gap-x-3">
-          <Image src="/info/feedbackPencile.svg" width={18} height={16} alt="bookIcon" />
+          <Image src="/info/feedbackPencile.svg" className="w-[18px] h-[16px]" width={18} height={16} alt="bookIcon" />
 
           <span className="font-medium text-black2 text-[14px]">피드백 노트</span>
         </header>

@@ -86,7 +86,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
     <div className="flex flex-col ">
       <header className="flex w-full py-3 justify-between">
         <div className="flex gap-2">
-          <Image src="/info/mindFullEatingIcon.svg" width={16} height={16} alt="fullEatingIcon" />
+          <Image src="/info/mindFullEatingIcon.svg" width={16} height={16} className="w-[16px] h-[16px]" alt="fullEatingIcon" />
           <span className="font-semibold">마인드풀이팅</span>
         </div>
       </header>
@@ -95,7 +95,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
         <section className="flex px-2 flex-col gap-y-2 py-4">
           <article className="flex justify-between px-3 items-center">
             <div className="flex gap-1 flex-shrink-0 flex-grow-0">
-              <Image src="/info/mindFolderIcon.svg" width={16} height={16} alt="folder" />
+              <Image src="/info/mindFolderIcon.svg" width={16} height={16} className="w-[16px] h-[16px]" alt="folder" />
               <p className="text-sm flex-shrink-0 flex-grow-0 font-semibold text-left text-[#696972">음식의 종류</p>
             </div>
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
@@ -107,7 +107,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
           </article>
           <article className="flex justify-between px-3 items-center">
             <div className="flex gap-1 flex-shrink-0 flex-grow-0">
-              <Image src="/info/clockIcon.svg" width={16} height={16} alt="folder" />
+              <Image src="/info/clockIcon.svg" width={16} height={16} className="w-[16px] h-[16px]" alt="folder" />
               <p className="text-sm font-semibold text-left text-[#696972">식사시간대</p>
             </div>
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
@@ -117,7 +117,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
           </article>
           <article className="flex flex-col content-center justify-between px-3 items-center">
             <header className="flex gap-1 w-full py-3">
-              <Image src="/info/fi-rr-head-side-thinking.svg" width={16} height={16} alt="포만감" />
+              <Image src="/info/fi-rr-head-side-thinking.svg" width={16} height={16} className="w-[16px] h-[16px]" alt="포만감" />
               <p className="text-sm font-semibold text-left text-[#696972">포만감</p>
             </header>
             <div className="flex  gap-3 py-1 justify-center">
@@ -131,7 +131,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
           </article>
           <article className="flex justify-between px-3 items-center">
             <div className="flex flex-shrink-0 flex-grow-0 gap-1">
-              <Image src="/info/fi-rr-room-service.svg" width={16} height={16} alt="folder" />
+              <Image src="/info/fi-rr-room-service.svg" className="w-[16px] h-[16px]" width={16} height={16} alt="folder" />
               <p className="text-sm font-semibold text-left text-[#696972">식사량</p>
             </div>
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
@@ -141,7 +141,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
           </article>
           <article className="flex justify-between px-3 items-center">
             <div className="flex flex-shrink-0 flex-grow-0 gap-1">
-              <Image src="/info/fi-rr-time-quarter-past.svg" width={16} height={16} alt="folder" />
+              <Image src="/info/fi-rr-time-quarter-past.svg" width={16} height={16} className="w-[16px] h-[16px]" alt="folder" />
               <p className="text-sm font-semibold text-left text-[#696972">식사속도</p>
             </div>
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
@@ -151,7 +151,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
           </article>
           <article className="flex justify-between px-3 items-center">
             <div className="flex flex-shrink-0 flex-grow-0 gap-1">
-              <Image src="/info/mealRoutingAchievementRatio.svg" width={16} height={16} alt="folder" />
+              <Image src="/info/mealRoutingAchievementRatio.svg" className="w-[16px] h-[16px]" width={16} height={16} alt="folder" />
               <p className="text-sm font-semibold text-left text-[#696972">식사루틴 달성률</p>
             </div>
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
@@ -162,7 +162,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
           ) : (
             <article className="flex flex-col justify-between px-3 items-center">
               <header className="flex gap-1 w-full py-2">
-                <Image src="/info/feedbackPencile.svg" width={16} height={16} alt="pencile" />
+                <Image src="/info/feedbackPencile.svg" className="w-[16px] h-[16px]" width={16} height={16} alt="pencile" />
                 <p className="text-sm font-semibold text-left text-[#696972">피드백노트</p>
               </header>
               <div className="flex items-center px-5 w-4/5 py-1 rounded-[40px] bg-[#f5fef5] border border-[#e7e7e7]">

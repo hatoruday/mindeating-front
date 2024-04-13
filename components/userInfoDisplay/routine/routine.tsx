@@ -156,7 +156,7 @@ export default function Routine({ userId, routineList }: { userId: string; routi
     <div className="flex flex-col ">
       <header className="flex w-full justify-between">
         <div className="flex gap-2">
-          <Image src="/info/routineIcon.svg" width={16} height={16} alt="routineIcon" />
+          <Image src="/info/routineIcon.svg" width={16} height={16} className=" w-[16px] h-[16px]" alt="routineIcon" />
 
           <span className="font-semibold">오늘의 루틴</span>
         </div>

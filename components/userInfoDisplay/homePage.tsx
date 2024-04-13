@@ -18,7 +18,7 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
   const week = 2;
   const [isFadeOut, setIsFadeOut] = useState<boolean>(false);
   //4월 13일을 표시하는 Date객체를 만든다.
-  const date = new Date(2022, 3, 13);
+  const date = new Date(2024, 3, 12, 9, 0, 0, 0);
   const [selectDate, setSelectDate] = useState<Date>(date);
   //set slash to !slash whey clicked
   const fetchSubmit = async () => {
@@ -30,7 +30,7 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
     await PostSpecificFetch(JSONdata, "feedback");
   };
   const [enableSubmit, setEnableSubmit] = useState<boolean>(true);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [infoData, setInfoData] = useState<string>("");
   const clientActionWrapper = async (infoParam: InfoParams) => {
     setIsLoading(true);
@@ -51,21 +51,21 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
   };
   let infodata: any;
   const loadNewData = () => {
-    if (!isLoading) return;
-    setIsLoading(false);
+    if (isLoading) return;
+    setIsLoading(true);
     console.log("해당 selectDate로 데이터를 불러옵니다.", selectDate);
     clientActionWrapper({ user_id: userId, date: selectDate }).then((result) => {
       setInfoData(result);
 
-      console.log("loadNewData", infodata);
-      setIsLoading(true);
+      console.log("loadNewData", result);
     });
   };
 
   useEffect(() => {
     // setInfoData(infodata);
     // console.log("useEffect", infodata);
-  }, [infoData]);
+    setIsLoading(false);
+  }, [infodata]);
 
   return (
     <div>
@@ -101,7 +101,7 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
         <MyCalendar isFadeOut={isFadeOut} loadNew={loadNewData} setIsFadeOut={setIsFadeOut} userData={userData} selectDate={selectDate} setSelectDate={setSelectDate} />
         {/** split bar */}
         <div className="border-t border-gray-200"></div>
-        {isFadeOut ? (
+        {isFadeOut && !isLoading ? (
           <>
             <div className="w-full h-5" />
             <UserInfoDisplay infoData={infoData} userId={userId} selectDate={selectDate} />

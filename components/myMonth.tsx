@@ -57,7 +57,7 @@ export default function MyMonthList({
   };
 
   const toggle = (index: number) => {
-    console.log("toggle 실행됨.", openIndexList, index);
+    // console.log("toggle 실행됨.", openIndexList, index);
     let newIndex: number[];
     //openIndexList의 sum을 구한다.
     let summedValue = openIndexList[1].reduce((a, b) => a + b, 0);
