@@ -39,7 +39,7 @@ export default function Verification({ submitFn, error }: { submitFn: any; error
               <input
                 key={index}
                 ref={(element) => setInputRef(element!, index)}
-                type="text"
+                type="number"
                 maxLength={1}
                 minLength={1}
                 min="1"

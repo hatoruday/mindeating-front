@@ -93,7 +93,12 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
                 <span className="font-bold text-[16px] text-black1">제출</span>
               </button>
             ) : (
-              <button className={`${enableSubmit ? "bg-green3 border border-green2" : "border border-black3 bg-black4 "} rounded-[12px] w-[69px] h-[40px] border-2 `}>
+              <button
+                className={`${enableSubmit ? "bg-green3 border border-green2" : "border border-black3 bg-black4 "} rounded-[12px] w-[69px] h-[40px] border-2 `}
+                onClick={() => {
+                  setEnablePopUp(!enablePopUp);
+                }}
+              >
                 <span className="font-bold text-[16px] text-black1">제출</span>
               </button>
             ))}
