@@ -32,7 +32,7 @@ export default function HomePage({ userId, userData, specificDay }: { userData: 
     const JSONdata: string = JSON.stringify(eatingData);
     setEnableSubmit(false);
     const now = new Date();
-    router.push(`/info/${userId}/${now.getFullYear()}-${now.getMonth() + 1 < 10 ? "0" + (now.getMonth() + 1) : "0" + now.getMonth()}-${now.getDate()}`);
+    // router.push(`/info/${userId}/${now.getFullYear()}-${now.getMonth() + 1 < 10 ? "0" + (now.getMonth() + 1) : "0" + now.getMonth()}-${now.getDate()}`);
     await PostSpecificFetch(JSONdata, "feedback");
   };
   const [enableSubmit, setEnableSubmit] = useState<boolean>(false);
@@ -92,16 +92,16 @@ export default function HomePage({ userId, userData, specificDay }: { userData: 
           </div>
           {isFadeOut &&
             (enableSubmit ? (
-              <button className={`${enableSubmit ? "bg-green3 border border-green2" : "border border-black3 bg-black4 "} rounded-[12px] w-[69px] h-[40px] border-2 `} onClick={fetchSubmit}>
-                <span className="font-bold text-[16px] text-black1">제출</span>
-              </button>
-            ) : (
               <button
                 className={`${enableSubmit ? "bg-green3 border border-green2" : "border border-black3 bg-black4 "} rounded-[12px] w-[69px] h-[40px] border-2 `}
                 onClick={() => {
                   setEnablePopUp(!enablePopUp);
                 }}
               >
+                <span className="font-bold text-[16px] text-black1">제출</span>
+              </button>
+            ) : (
+              <button className={`${enableSubmit ? "bg-green3 border border-green2" : "border border-black3 bg-black4 "} rounded-[12px] w-[69px] h-[40px] border-2 `}>
                 <span className="font-bold text-[16px] text-black1">제출</span>
               </button>
             ))}
@@ -128,9 +128,11 @@ export default function HomePage({ userId, userData, specificDay }: { userData: 
         <div className="border-t border-gray-200"></div>
         {enablePopUp && (
           <SubmitPopUpScreen
-            onInsertToggle={() => {
-              console.log("onInsertToggle");
+            fetchSubmit={fetchSubmit}
+            setOpen={() => {
+              setEnablePopUp(!enablePopUp);
             }}
+            isOpen={enablePopUp}
           />
         )}
         {isFadeOut && !isLoading ? (
