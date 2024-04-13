@@ -10,14 +10,16 @@ import UserInfoDisplay from "./userInfoDisplay";
 import PostSpecificFetch, { FetchResult } from "@/api/postFetch";
 import Link from "next/link";
 import { infoAction, InfoParams } from "@/app/info/[userId]/infoAction";
+import SubmitPopUpScreen from "../record/submitPopup";
 export const revalidate = 0;
 export default function HomePage({ userId, userData }: { userData: any; userId: string }) {
   const name = userData?.user_name;
+  console.log("ddd", userData?.user_name);
   const month = 3;
   const day = 14;
   const week = 2;
   const [isFadeOut, setIsFadeOut] = useState<boolean>(false);
-  const [popUpEnable, setPopUpEnable] = useState<boolean>(false);
+  const [enablePopUp, setEnablePopUp] = useState<boolean>(false);
   //4월 13일을 표시하는 Date객체를 만든다.
   const date = new Date(2024, 3, 12, 9, 0, 0, 0);
   const [selectDate, setSelectDate] = useState<Date>(date);
@@ -111,6 +113,7 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
         <MyCalendar isFadeOut={isFadeOut} loadNew={loadNewData} setIsFadeOut={setIsFadeOut} userData={userData} selectDate={selectDate} setSelectDate={setSelectDate} />
         {/** split bar */}
         <div className="border-t border-gray-200"></div>
+        {enablePopUp && <SubmitPopUpScreen />}
         {isFadeOut && !isLoading ? (
           <>
             <div className="w-full h-5" />
