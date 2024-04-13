@@ -50,7 +50,7 @@ export default function MyMonthList({
       const specificDate = new Date(specificDay);
       setSelectDate(specificDate);
     }
-  }, [specificDay]);
+  }, [specificDay, openIndexList]);
   // useEffect(() => {
   //   setOpenIndexList([recentMonths[0].isFadeoutWeeks, recentMonths[1].isFadeoutWeeks, recentMonths[2].isFadeoutWeeks]);
   // }, [recentMonths]);
@@ -127,7 +127,7 @@ export default function MyMonthList({
                   key={weekindex}
                   openIndexList={openIndexList[1]}
                   setOpenIndexList={setOpenIndexList}
-                  open={openIndexList[1][weekindex] == 1 || monthindex != 1}
+                  open={openIndexList[1][weekindex] == 1 || monthindex != 1 || weekindex == 5}
                   weekindex={weekindex}
                   week={month.weeks[weekindex]}
                   colorStatusWeeks={month.colorStatusWeeks}
