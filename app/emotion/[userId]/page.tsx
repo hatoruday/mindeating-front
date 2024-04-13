@@ -45,7 +45,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
 
       setIsLoading(false);
       const now = new Date();
-      router.push(`/info/${userId}/${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`);
+      router.push(`/info/${userId}/${now.getFullYear()}-${now.getMonth() + 1 < 10 ? "0" + (now.getMonth() + 1) : "0" + now.getMonth()}-${now.getDate()}`);
     } else if (result?.ok) {
       alert("실패. client error success:" + result?.success + " name: " + result?.result.name);
       setIsLoading(false);

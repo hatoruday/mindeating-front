@@ -126,7 +126,13 @@ export default function HomePage({ userId, userData, specificDay }: { userData: 
         <MyCalendar isFadeOut={isFadeOut} loadNew={loadNewData} specificDay={specificDay} setIsFadeOut={setIsFadeOut} userData={userData} selectDate={selectDate} setSelectDate={setSelectDate} />
         {/** split bar */}
         <div className="border-t border-gray-200"></div>
-        {/* {enablePopUp && <SubmitPopUpScreen />} */}
+        {enablePopUp && (
+          <SubmitPopUpScreen
+            onInsertToggle={() => {
+              console.log("onInsertToggle");
+            }}
+          />
+        )}
         {isFadeOut && !isLoading ? (
           <>
             <div className="w-full h-5" />
