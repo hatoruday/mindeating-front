@@ -14,7 +14,7 @@ import SubmitPopUpScreen from "../record/submitPopup";
 export const revalidate = 0;
 export default function HomePage({ userId, userData }: { userData: any; userId: string }) {
   const name = userData?.user_name;
-  console.log("ddd", userData?.user_name);
+
   const month = 3;
   const day = 14;
   const week = 2;
@@ -31,6 +31,7 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
     const JSONdata: string = JSON.stringify(eatingData);
 
     await PostSpecificFetch(JSONdata, "feedback");
+    setEnableSubmit(false);
   };
   const [enableSubmit, setEnableSubmit] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -87,11 +88,16 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
               <span className="font-semibold">{name}님</span>의 마음 냉장고
             </h1>
           </div>
-          {isFadeOut && (
-            <button className={`${enableSubmit ? "bg-green3 border border-green2" : "border border-black3 bg-black4 "} rounded-[12px] w-[69px] h-[40px] border-2 `} onClick={fetchSubmit}>
-              <span className="font-bold text-[16px] text-black1">제출</span>
-            </button>
-          )}
+          {isFadeOut &&
+            (enableSubmit ? (
+              <button className={`${enableSubmit ? "bg-green3 border border-green2" : "border border-black3 bg-black4 "} rounded-[12px] w-[69px] h-[40px] border-2 `} onClick={fetchSubmit}>
+                <span className="font-bold text-[16px] text-black1">제출</span>
+              </button>
+            ) : (
+              <button className={`${enableSubmit ? "bg-green3 border border-green2" : "border border-black3 bg-black4 "} rounded-[12px] w-[69px] h-[40px] border-2 `}>
+                <span className="font-bold text-[16px] text-black1">제출</span>
+              </button>
+            ))}
         </header>
         {/* 식욕안정기 3월 14일 / 마음먹기 2주차 < > */}
         <aside className="mt-10 flex max-md justify-around items-center font-normal">
