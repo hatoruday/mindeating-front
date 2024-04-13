@@ -29,9 +29,8 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
       user_id: userId,
     };
     const JSONdata: string = JSON.stringify(eatingData);
-
-    await PostSpecificFetch(JSONdata, "feedback");
     setEnableSubmit(false);
+    await PostSpecificFetch(JSONdata, "feedback");
   };
   const [enableSubmit, setEnableSubmit] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
