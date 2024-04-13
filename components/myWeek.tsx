@@ -35,7 +35,7 @@ export default function MyWeek({ week, weekindex, colorStatusWeeks, setSelectDat
     document.addEventListener("mouseup", () => handleMouseUp(day));
   };
   const selectToggle = (day: Date) => {
-    console.log("setSelecttoggle 실행", day);
+    // console.log("setSelecttoggle 실행", day);
     setSelectDate(day);
   };
   const handleTouchStart = (day: Date) => {

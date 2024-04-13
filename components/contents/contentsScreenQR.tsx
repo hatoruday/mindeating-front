@@ -46,7 +46,7 @@ export default function ContentsScreenQR({
         <span className="text-[16px] text-black1 font-bold">{headerString}</span>
       </header>
       <div className="w-full mb-5 h-[1px] bg-black4" />
-      <main className="flex flex-col justify-start overflow-y-auto h-full px-5">
+      <main className="flex flex-col justify-start overflow-y-auto h-full px-7">
         <div className="flex flex-col h-full justify-start">
           <span className="flex-shrink-0 font-bold text-[20px]">{articleHeaderString}</span>
           {articleString && <div className="my-1">{articleString}</div>}
@@ -73,7 +73,7 @@ export default function ContentsScreenQR({
           {greyBlockContent && <div className="w-full px-3 py-2 rounded-md bg-[#DBDBDB] bg-opacity-35">{greyBlockContent}</div>}
         </div>
       </main>
-      <div className="flex content-center my-5">
+      <div className="flex content-center px-5 my-5">
         {!isLast ? (
           <Link href={`${topic}?page=${parseInt(pageNumber) + 1}`} className="h-[60px] flex-shrink-0 items-center rounded-[14px] w-full flex justify-center content-center bg-black2">
             <span className="font-nanum text-white text-[16px]">다음</span>

@@ -9,7 +9,7 @@ export interface InfoParams {
 
 export async function infoAction(infoData: InfoParams) {
   const JSONdata = JSON.stringify(infoData);
-
+  console.log(JSONdata);
   try {
     const result: FetchResult = await PostSpecificFetch(JSONdata, "record/get-records");
 

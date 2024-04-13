@@ -10,13 +10,14 @@ import UserInfoDisplay from "./userInfoDisplay";
 import PostSpecificFetch, { FetchResult } from "@/api/postFetch";
 import Link from "next/link";
 import { infoAction, InfoParams } from "@/app/info/[userId]/infoAction";
-
+export const revalidate = 0;
 export default function HomePage({ userId, userData }: { userData: any; userId: string }) {
   const name = userData?.user_name;
   const month = 3;
   const day = 14;
   const week = 2;
   const [isFadeOut, setIsFadeOut] = useState<boolean>(false);
+  const [popUpEnable, setPopUpEnable] = useState<boolean>(false);
   //4월 13일을 표시하는 Date객체를 만든다.
   const date = new Date(2024, 3, 12, 9, 0, 0, 0);
   const [selectDate, setSelectDate] = useState<Date>(date);
@@ -29,7 +30,7 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
 
     await PostSpecificFetch(JSONdata, "feedback");
   };
-  const [enableSubmit, setEnableSubmit] = useState<boolean>(true);
+  const [enableSubmit, setEnableSubmit] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
   const [infoData, setInfoData] = useState<string>("");
   const clientActionWrapper = async (infoParam: InfoParams) => {
@@ -40,6 +41,8 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
       setIsLoading(false);
       return result?.result;
     } else if (result?.ok) {
+      setIsLoading(false);
+      return result?.result;
       // alert("실패. client error success:" + result?.success + " name: " + result?.result.name);
       // setIsLoading(false);
       // console.log(result?.result);
@@ -56,11 +59,13 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
   const loadNewData = () => {
     if (isLoading) return;
     setIsLoading(true);
-    console.log("해당 selectDate로 데이터를 불러옵니다.", selectDate);
+    // console.log("해당 selectDate로 데이터를 불러옵니다.", selectDate);
     clientActionWrapper({ user_id: userId, date: selectDate }).then((result) => {
       setInfoData(result);
+      setEnableSubmit(result.submit_activated);
+      // console.log("loadNewData", result.submit_activated);
 
-      console.log("loadNewData", result);
+      // console.log("loadNewData", result);
     });
   };
 
@@ -72,7 +77,7 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
 
   return (
     <div>
-      <div className="flex flex-col">
+      <div className="flex h-full flex-col">
         <header className="flex w-full justify-between content-center items-center sm:mx-auto sm:w-full sm:max-w-sm pt-5">
           <div className="flex flex-col">
             <h3 className="text-[#9F9FAC] text-[16px] te">안녕하세요! 오늘도 파이팅해봐요:{")"}</h3>
@@ -80,9 +85,11 @@ export default function HomePage({ userId, userData }: { userData: any; userId: 
               <span className="font-semibold">{name}님</span>의 마음 냉장고
             </h1>
           </div>
-          <button className={`${enableSubmit ? "bg-green3 border border-green2" : "border border-black3 bg-black4 "} rounded-[12px] w-[69px] h-[40px] border-2 `} onClick={fetchSubmit}>
-            <span className="font-bold text-[16px] text-black1">제출</span>
-          </button>
+          {isFadeOut && (
+            <button className={`${enableSubmit ? "bg-green3 border border-green2" : "border border-black3 bg-black4 "} rounded-[12px] w-[69px] h-[40px] border-2 `} onClick={fetchSubmit}>
+              <span className="font-bold text-[16px] text-black1">제출</span>
+            </button>
+          )}
         </header>
         {/* 식욕안정기 3월 14일 / 마음먹기 2주차 < > */}
         <aside className="mt-10 flex max-md justify-around items-center font-normal">
