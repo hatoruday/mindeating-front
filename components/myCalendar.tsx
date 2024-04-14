@@ -192,9 +192,9 @@ export default function MyCalendar({
   }, [offset]);
 
   return (
-    <div className="flex flex-col items-center justify-start px-4" onTouchEnd={handleDragEnd} onMouseUp={handleDragEnd}>
-      <div className="max-w-sm w-full z-20">
-        <div className="md:p-5 p-2  bg-white rounded-t">
+    <div className="flex flex-col items-center justify-start px-3" onTouchEnd={handleDragEnd} onMouseUp={handleDragEnd}>
+      <div className="max-w-[390px] w-full z-20">
+        <div className="md:p-5 p-1  bg-white rounded-t">
           <div className="flex flex-col items-center justify-between">
             <Thead daySelect={selectDate} isFadeOut={isFadeOut} />
             <div
