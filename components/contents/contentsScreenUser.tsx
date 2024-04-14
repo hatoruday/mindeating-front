@@ -34,7 +34,7 @@ export default function ContentsScreen({
   wrapper: (topic: string) => Promise<void>;
 }) {
   return (
-    <div className="flex w-full flex-col relative h-screen flex-grow justify-between content-center">
+    <div className="flex w-full flex-col relative h-screen justify-between content-center">
       <header className="flex items-center content-center absoulte top-0 left-0 justify-start py-5 gap-x-5">
         <Link href={pageNumber == "1" ? "/contents/" + topic.split("/")[2] : `${topic}?page=${parseInt(pageNumber!) - 1}`} className="flex-shrink-0">
           <Image src="/leftChevron.svg" width={8} height={19} alt="leftChevron" />
