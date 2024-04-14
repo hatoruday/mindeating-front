@@ -173,7 +173,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
         </article>
       </section>
       <WhatIsYourTime when={when} setWhen={setWhen} timeType="식사 시간대를 알려주세요!" />
-      <section className="flex flex-col gap-y-2 py- content-center">
+      <section className="flex flex-col py-4 content-center">
         <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-[600] text-black2 text-[14px]">배고픔 배부름 정도는 어땠나요</span>
@@ -191,7 +191,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
               <span className="text-black3 text-[12px]">Too full</span>
             </div>
           </div>
-          <div className="flex gap-x-3 justify-center my-3">
+          <div className="flex gap-x-3 justify-center">
             <div className="flex-shrink-0 items-center justify-center flex ">
               <span className="font-semibold text-[13px] text-black2">식후</span>
             </div>
@@ -210,7 +210,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-[600] text-black2 text-[14px]">식사 속도를 알려주세요!</span>
         </header>
-        <article className="flex gap-x-3">
+        <article className="flex gap-x-3 px-3">
           {["빠르게", "적당히", "천천히"].map((item, index) => (
             <button
               key={index}
@@ -233,7 +233,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-[600] text-black2 text-[14px]">식사량은 어땠나요?</span>
         </header>
-        <article className="flex gap-x-3 flex-wrap">
+        <article className="flex gap-x-3 flex-wrap px-3">
           {["적게 먹었어요", "적당했어요", "약간 많았어요", "아주 많았어요"].map((item, index) => (
             <button
               key={index}
