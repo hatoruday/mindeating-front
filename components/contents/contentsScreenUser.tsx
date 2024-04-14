@@ -36,8 +36,8 @@ export default function ContentsScreen({
   return (
     <div className="flex w-full flex-col relative h-screen justify-between content-center">
       <header className="flex items-center content-center absoulte top-0 left-0 justify-start py-5 gap-x-5">
-        <Link href={pageNumber == "1" ? "/contents/" + topic.split("/")[2] : `${topic}?page=${parseInt(pageNumber!) - 1}`} className="flex-shrink-0">
-          <Image src="/leftChevron.svg" width={8} height={19} alt="leftChevron" />
+        <Link href={pageNumber == "1" ? "/contents/" + topic.split("/")[2] : `${topic}?page=${parseInt(pageNumber!) - 1}`} className="flex-shrink-0 pl-3">
+          <Image src="/headerStringChevron.svg" width={8} height={19} alt="leftChevron" />
         </Link>
 
         <span className="text-[16px] text-black1 font-bold">{headerString}</span>
@@ -46,7 +46,7 @@ export default function ContentsScreen({
       <main className="flex flex-col justify-start overflow-y-auto h-full px-7">
         <div className="flex flex-col h-full justify-start">
           <span className="flex-shrink-0 font-bold text-[20px]">{articleHeaderString}</span>
-          {articleString && <div className="my-1">{articleString}</div>}
+          {articleString && <div className="my-5">{articleString}</div>}
           {articleImgSrc && (
             <div className="h-full flex flex-col justify-center">
               {width && height ? (
@@ -60,9 +60,9 @@ export default function ContentsScreen({
               )}
             </div>
           )}
-          {articleAfterString && <div className="my-1">{articleAfterString}</div>}
+          {articleAfterString && <div className="my-3">{articleAfterString}</div>}
           {greyBlockHeader && (
-            <div className="flex justify-start gap-x-2 my-2 content-center items-center mb-5">
+            <div className="flex justify-start gap-x-2 my-5 content-center items-center mb-5">
               <div className="w-[4px] h-[36px] bg-black1" />
               <span className="text-[18px] font-bold">{greyBlockHeader}</span>
             </div>
