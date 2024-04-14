@@ -110,7 +110,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
       </header>
 
       <section className="flex flex-col gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3">
+        <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
 
           <span className="font-[600] text-black2 text-[14px]">어떤 활동을 하셨나요?</span>
@@ -136,7 +136,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
                 }}
                 className={`flex justify-center items-center h-9 relative px-4 py-2.5 rounded-[56px] border ${
                   names.includes(name) ? "border-green2 bg-green3" : "border-black4"
-                } text-sm font-[600] text-[#2c2c30] min-w-[80px]`}
+                } text-sm font-[600] text-[#2c2c30] min-w-[60px]`}
               >
                 {name}
               </button>
@@ -157,7 +157,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
             <div className="flex flex-wrap gap-1 px-2 my-1.5">
               {extras.map((item, index) => (
                 <div key={index} className="flex justify-center items-center h-9 relative gap-2 px-3.5 py-2.5 rounded-[56px] border border-black4 bg-white">
-                  <p className="flex flex-grow-0 flex-shrink-0">{item}</p>
+                  <p className="flex flex-grow-0 flex-shrink-0 text-[14px] font-medium">{item}</p>
                   <RxCross2
                     onClick={() => {
                       let newExtras: string[] = [];
@@ -180,11 +180,11 @@ export default function ActivityPage({ params: { userId } }: IParams) {
       </section>
       <WhatIsYourTime when={when} setWhen={setWhen} timeType="활동 시간대를 알려주세요!" />
       <section className="flex flex-col gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3">
+        <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/mindFullEating/clockPlusIcon.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-medium text-black2 text-[14px]">활동을 얼마나 했나요?</span>
         </header>
-        <article className="flex gap-x-3 flex-wrap">
+        <article className="flex gap-x-3 px-3 flex-wrap">
           {["30분 미만", "30분 - 1시간", "1시간 - 2시간", "2시간 초과"].map((tAmount, index) => {
             return (
               <button
@@ -207,13 +207,13 @@ export default function ActivityPage({ params: { userId } }: IParams) {
         </article>
       </section>
       <article className="flex flex-col w-full justify-center content-center items-center gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3 w-full">
+        <header className="flex px-3 gap-x-3 py-2 content-center justify-start w-full">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
 
           <span className="font-[600] text-black2 text-[14px]">활동 강도는 어땠나요?</span>
         </header>
 
-        <div className="flex gap-3 w-4/5 justify-center my-3">
+        <div className="flex gap-3 w-4/5 justify-center">
           <div className="flex flex-shrink-0 items-center">
             <span className="text-black3 items-center font-[600] text-[12px]">Too Low</span>
           </div>
@@ -224,10 +224,10 @@ export default function ActivityPage({ params: { userId } }: IParams) {
         </div>
       </article>
       <article className="flex flex-col gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3">
+        <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
 
-          <span className="font-[600] text-black2 text-[14px]">활동 강도는 어땠나요?</span>
+          <span className="font-[600] text-black2 text-[14px]">활동 만족도</span>
         </header>
 
         <Satiety satisfaction={satisfaction} setSatisfaction={setSatisfaction} />

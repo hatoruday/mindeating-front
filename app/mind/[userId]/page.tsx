@@ -150,11 +150,11 @@ export default function MindFullEating({ params: { userId } }: IParams) {
         </div>
       </section>
       <section className="flex flex-col gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3 pb-3">
+        <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/bookSearch.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-[600] text-black2 text-[14px]">음식의 종류는 뭔가요?</span>
         </header>
-        <article className="flex gap-x-3">
+        <article className="flex justify-start px-3 gap-x-2">
           {["식사류", "간식류", "음료류"].map((item, index) => (
             <button
               onClick={() => {
@@ -174,7 +174,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
       </section>
       <WhatIsYourTime when={when} setWhen={setWhen} timeType="식사 시간대를 알려주세요!" />
       <section className="flex flex-col gap-y-2 py- content-center">
-        <header className="flex px-3 gap-x-3">
+        <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-[600] text-black2 text-[14px]">배고픔 배부름 정도는 어땠나요</span>
         </header>
@@ -206,7 +206,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
         </aside>
       </section>
       <section className="flex flex-col gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3 py-2">
+        <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-[600] text-black2 text-[14px]">식사 속도를 알려주세요!</span>
         </header>
@@ -221,7 +221,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
                   setSpeed(item);
                 }
               }}
-              className={`flex  justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border ${speed == item ? "border-green2 bg-green3" : "border-black4"}`}
+              className={`flex  justify-center items-center h-9 relative gap-2.5 px-3 py-2.5 rounded-[56px] border ${speed == item ? "border-green2 bg-green3" : "border-black4"}`}
             >
               <p className="flex text-sm font-medium text-left text-[#2c2c30]">{item}</p>
             </button>
@@ -229,7 +229,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
         </article>
       </section>
       <section className="flex flex-col gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3 py-2">
+        <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-[600] text-black2 text-[14px]">식사량은 어땠나요?</span>
         </header>
@@ -244,7 +244,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
                   setAmount(item);
                 }
               }}
-              className={`flex my-2 justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border ${amount == item ? "border-green2 bg-green3" : "border-black4"}`}
+              className={`flex mb-2 justify-center items-center h-9 relative gap-2.5 px-4 py-2.5 rounded-[56px] border ${amount == item ? "border-green2 bg-green3" : "border-black4"}`}
             >
               <p className="flex text-sm font-medium text-left text-[#2c2c30]">{item}</p>
             </button>
@@ -252,7 +252,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
         </article>
       </section>
       <section className="flex flex-col justify-center content-center w-full gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3 pb-3">
+        <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-[600] text-black2 text-[14px]">오늘 성공한 식사 루틴을 체크해주세요!</span>
         </header>
@@ -277,14 +277,14 @@ export default function MindFullEating({ params: { userId } }: IParams) {
         </article>
       </section>
       <section className="flex flex-col w-full gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3">
+        <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/emoji/satisfiedFace.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-[600] text-black2 text-[14px]">식사 만족도</span>
         </header>
         <Satiety satisfaction={satisfaction} setSatisfaction={setSatisfaction} />
       </section>
       <section className="flex flex-col w-full gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3 pb-3">
+        <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/info/feedbackPencile.svg" width={19} height={19} alt="bookIcon" />
           <span className="font-[600] text-black2 text-[14px]">피드백 노트</span>
         </header>

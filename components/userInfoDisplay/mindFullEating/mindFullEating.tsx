@@ -29,8 +29,10 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
   //만족스러운 정도를 0~2단계로 표현한다.
   const satisfiedString = ["불만족스러웠어..", "만족스러웠어!", "적당해요!"];
   //eatingList.satisfaction의 값에 대응되는 satisfiedString의 인덱스를 구한다.
-  const satisfyMapping = ["불만족", "만족", "적당"];
+  const satisfyMapping = ["불만족", "적당함", "만족"];
+
   const satisfiedExtent = satisfyMapping.indexOf(eatingList.satisfaction);
+  console.log(satisfiedExtent);
   const foodCategory = eatingList.type;
 
   //식사시간대 상태변수
@@ -85,7 +87,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
   return (
     <div className="flex flex-col ">
       <header className="flex w-full py-3 justify-between">
-        <div className="flex gap-2">
+        <div className="flex gap-2 content-center items-center">
           <Image src="/info/mindFullEatingIcon.svg" width={16} height={16} className="w-[16px] h-[16px]" alt="fullEatingIcon" />
           <span className="font-semibold">마인드풀이팅</span>
         </div>
@@ -94,9 +96,9 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
         <ClosingHeader itemList={food} satisfiedString={satisfiedString} satisfiedExtent={satisfiedExtent} />
         <section className="flex px-2 flex-col gap-y-2 py-4">
           <article className="flex justify-between px-3 items-center">
-            <div className="flex gap-1 flex-shrink-0 flex-grow-0">
+            <div className="flex gap-x-2 flex-shrink-0 flex-grow-0">
               <Image src="/info/mindFolderIcon.svg" width={16} height={16} className="w-[16px] h-[16px]" alt="folder" />
-              <p className="text-sm flex-shrink-0 flex-grow-0 font-semibold text-left text-[#696972">음식의 종류</p>
+              <p className="text-sm flex-shrink-0 flex-grow-0 font-semibold text-left text-black2">음식의 종류</p>
             </div>
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
             <div className="flex gap-2 flex-shrink-0 flex-grow-0">
@@ -106,9 +108,9 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
             </div>
           </article>
           <article className="flex justify-between px-3 items-center">
-            <div className="flex gap-1 flex-shrink-0 flex-grow-0">
+            <div className="flex gap-x-2 flex-shrink-0 flex-grow-0">
               <Image src="/info/clockIcon.svg" width={16} height={16} className="w-[16px] h-[16px]" alt="folder" />
-              <p className="text-sm font-semibold text-left text-[#696972">식사시간대</p>
+              <p className="text-sm font-semibold text-left text-black2">식사시간대</p>
             </div>
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
             <div className="flex flex-grow-0 flex-shrink-0 justify-center content-center items-center px-2 py-1.5 rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">
@@ -116,9 +118,9 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
             </div>
           </article>
           <article className="flex flex-col content-center justify-between px-3 items-center">
-            <header className="flex gap-1 w-full py-3">
+            <header className="flex gap-x-2 w-full py-3">
               <Image src="/info/fi-rr-head-side-thinking.svg" width={16} height={16} className="w-[16px] h-[16px]" alt="포만감" />
-              <p className="text-sm font-semibold text-left text-[#696972">포만감</p>
+              <p className="text-sm font-semibold text-left text-black2">포만감</p>
             </header>
             <div className="flex  gap-3 py-1 justify-center">
               <p className="flex-shrink-0 flex-grow-0 text-xs font-medium text-left text-[#696972]">식전</p>
@@ -130,9 +132,9 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
             </div>
           </article>
           <article className="flex justify-between px-3 items-center">
-            <div className="flex flex-shrink-0 flex-grow-0 gap-1">
+            <div className="flex flex-shrink-0 flex-grow-0 gap-x-2">
               <Image src="/info/fi-rr-room-service.svg" className="w-[16px] h-[16px]" width={16} height={16} alt="folder" />
-              <p className="text-sm font-semibold text-left text-[#696972">식사량</p>
+              <p className="text-sm font-semibold text-left text-black2">식사량</p>
             </div>
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
             <div className="flex flex-shrink-0 flex-grow-0 justify-center content-center items-center px-2 py-1.5 rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">
@@ -140,9 +142,9 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
             </div>
           </article>
           <article className="flex justify-between px-3 items-center">
-            <div className="flex flex-shrink-0 flex-grow-0 gap-1">
+            <div className="flex flex-shrink-0 flex-grow-0 gap-x-2">
               <Image src="/info/fi-rr-time-quarter-past.svg" width={16} height={16} className="w-[16px] h-[16px]" alt="folder" />
-              <p className="text-sm font-semibold text-left text-[#696972">식사속도</p>
+              <p className="text-sm font-semibold text-left text-black2">식사속도</p>
             </div>
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
             <div className="flex flex-shrink-0 flex-grow-0 justify-center content-center items-center px-2 py-1.5 rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">
@@ -150,9 +152,9 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
             </div>
           </article>
           <article className="flex justify-between px-3 items-center">
-            <div className="flex flex-shrink-0 flex-grow-0 gap-1">
+            <div className="flex flex-shrink-0 flex-grow-0 gap-x-2">
               <Image src="/info/mealRoutingAchievementRatio.svg" className="w-[16px] h-[16px]" width={16} height={16} alt="folder" />
-              <p className="text-sm font-semibold text-left text-[#696972">식사루틴 달성률</p>
+              <p className="text-sm font-semibold text-left text-black2">식사루틴 달성률</p>
             </div>
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
             <MealRoutineRatio mealRoutineList={mealRoutineList} />
@@ -165,7 +167,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
                 <Image src="/info/feedbackPencile.svg" className="w-[16px] h-[16px]" width={16} height={16} alt="pencile" />
                 <p className="text-sm font-semibold text-left text-[#696972">피드백노트</p>
               </header>
-              <div className="flex items-center px-5 w-4/5 py-1 rounded-[40px] bg-[#f5fef5] border border-[#e7e7e7]">
+              <div className="flex items-center px-5 w-full py-1 rounded-[40px] bg-[#f5fef5] border border-[#e7e7e7]">
                 <p className="font-semibold  text-[12px]">{feedbackContent}</p>
               </div>
             </article>

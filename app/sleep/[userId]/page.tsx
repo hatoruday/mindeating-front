@@ -63,11 +63,11 @@ export default function Sleep({ params: { userId } }: IParams) {
         </div>
       </header>
       <section className="flex flex-col gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3">
+        <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-[600] text-black2 text-[14px]">총 취침시간을 알려주세요</span>
         </header>
-        <article className="flex gap-x-3">
+        <article className="flex px-3 gap-x-3">
           {["6시간 미만", "6-8시간", "8시간 초과"].map((totalSleepTIme, index) => {
             return (
               <button
@@ -87,11 +87,11 @@ export default function Sleep({ params: { userId } }: IParams) {
         </article>
       </section>
       <section className="flex flex-col gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3">
+        <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/mindFullEating/clockPlusIcon.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-[600] text-black2 text-[14px]">취침 시간대를 알려주세요!</span>
         </header>
-        <article className="flex gap-x-3">
+        <article className="flex gap-x-3 px-3">
           {["12시 이전", "12시-2시 사이", "2시 이후"].map((sleepTimeZone, index) => {
             return (
               <button
@@ -109,7 +109,7 @@ export default function Sleep({ params: { userId } }: IParams) {
         </article>
       </section>
       <section className="flex w-full justify-center flex-col gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3">
+        <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
           <span className="font-[600] text-black2 text-[14px]">취침 전 4시간 공복 유지 하셨나요?</span>
         </header>
@@ -140,7 +140,7 @@ export default function Sleep({ params: { userId } }: IParams) {
         </div>
       </section>
       <section className="flex flex-col gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3">
+        <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
 
           <span className="font-[600] text-black2 text-[14px]">수면만족도</span>

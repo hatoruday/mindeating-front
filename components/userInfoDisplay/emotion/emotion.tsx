@@ -31,7 +31,7 @@ export default function Emotion({ emotionList }: { emotionList: EmotionList }) {
     <div className="flex flex-col">
       <header className="flex w-full py-3 justify-between">
         <div className="flex gap-2">
-          <Image src="/info/fi-rr-bed.svg" width={16} height={16} alt="fullEatingIcon" />
+          <Image src="/info/fi-rr-laugh.svg" width={16} height={16} alt="fullEatingIcon" />
           <span className="font-semibold">감정</span>
         </div>
       </header>
@@ -50,9 +50,9 @@ export default function Emotion({ emotionList }: { emotionList: EmotionList }) {
         </header>
         <section className="flex px-2 flex-col gap-y-7 py-4">
           <article className="flex justify-between px-3 items-center">
-            <div className="flex flex-shrink-0 flex-grow-0 gap-1">
+            <div className="flex flex-shrink-0 flex-grow-0 gap-x-2">
               <Image src="/info/clockIcon.svg" width={16} height={16} className="w-[16px] h-[16px]" alt="folder" />
-              <p className="text-sm font-semibold text-left text-[#696972">감정을 느낀 시간</p>
+              <p className="text-sm font-semibold text-left text-black2">감정을 느낀 시간</p>
             </div>
             <div className="w-full mx-3 h-[2px] bg-[#E7E7E7]"></div>
             <div className="flex flex-shrink-0 flex-grow-0 justify-center content-center items-center w-[80px] h-[30px] rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">

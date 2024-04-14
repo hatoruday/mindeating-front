@@ -64,16 +64,16 @@ export default function MindFullEating({ params: { userId } }: IParams) {
   // 텍스트 필드의 입력을 처리하는 함수
 
   return (
-    <div className="flex flex-col px-5">
+    <div className="flex flex-col px-6">
       <header className="flex relative w-full py-3 justify-center">
         <Image src="/leftChevron.svg" width={8} height={17} alt="leftChevron" className="absolute top-1/2 left-4 transform -translate-y-1/2" />
 
         <div className="flex gap-2">
-          <span className="font-semibold text-[16px]">수면</span>
+          <span className="font-semibold text-[16px]">감정</span>
         </div>
       </header>
       <section className="flex flex-col gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3">
+        <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
           <span className="font-[600] text-black2 text-[14px]">감정 상태를 알려주세요!</span>
         </header>
@@ -86,9 +86,9 @@ export default function MindFullEating({ params: { userId } }: IParams) {
       </section>
 
       <section className="flex flex-col w-full content-center gap-y-2 py-4">
-        <header className="flex px-3 gap-x-3">
+        <header className="flex px-3 gap-x-3 py-2 content-center">
           <Image src="/bookSearch.svg" width={17} height={19} alt="bookIcon" />
-          <span className="font-medium text-black2 text-[14px]">감정의 종류는 뭔가요?</span>
+          <span className="font-[600] text-black2 text-[14px]">감정의 종류는 뭔가요?</span>
         </header>
         <div className="flex justify-center gap-3">
           <button
@@ -100,7 +100,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
             }}
             className={`flex flex-col justify-around content-center items-center w-[94px] h-[94px] rounded-lg border ${type == "부정" ? "border-green2" : "border-black4"}`}
           >
-            <Image src="/emoji/Crying face.svg" width={45} height={45} alt="nope" className={`${type != "부정" ? "opacity-20" : ""}`} />
+            <Image src="/emoji/Crying face.svg" width={45} height={45} alt="nope" className={`${type != "부정" ? "opacity-20" : ""} pt-2`} />
 
             <span className={`text-[12px] ${type == "부정" ? "font-bold text-black1" : "text-black4"}`}>부정</span>
           </button>
@@ -114,7 +114,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
             }}
             className={`flex flex-col justify-around content-center items-center w-[94px] h-[94px] rounded-lg border ${type == "긍정" ? "border-green2" : "border-black4"}`}
           >
-            <Image src="/emoji/Smiling face with 3 hearts.svg" width={38} height={38} alt="neutral" className={`${type != "긍정" ? "opacity-20" : ""}`} />
+            <Image src="/emoji/Smiling face with 3 hearts.svg" width={38} height={38} alt="neutral" className={`${type != "긍정" ? "opacity-20" : ""} pt-2`} />
 
             <span className={`text-[12px] ${type == "긍정" ? "font-bold text-black1" : "text-black4"}`}>긍정</span>
           </button>
@@ -128,10 +128,10 @@ export default function MindFullEating({ params: { userId } }: IParams) {
         <header className="flex px-3 py-2 gap-x-3">
           <Image src="/info/feedbackPencile.svg" className="w-[18px] h-[16px]" width={18} height={16} alt="bookIcon" />
 
-          <span className="font-medium text-black2 text-[14px]">피드백 노트</span>
+          <span className="font-[600] text-black2 text-[14px]">감정 노트</span>
         </header>
 
-        <FeedbackNote note={note} setNote={setNote} />
+        <FeedbackNote note={note} setNote={setNote} specificPlaceholder={`감정과 감정을 느끼게 된 사건,\n생각을 적어요`} />
       </article>
 
       <RecordSubmit submitFunction={clientActionWrapper} data={emotionData} isLoading={isLoading} isActive={custumState != "" && type != "" && when != "" ? true : false} />

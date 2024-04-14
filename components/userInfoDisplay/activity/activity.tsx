@@ -51,9 +51,9 @@ export default function Activity({ activtiyList }: { activtiyList: ActivityList 
         <ClosingHeader itemList={activityNameList} satisfiedString={satisfiedString} satisfiedExtent={satisfiedExtent} />
         <section className="flex px-2 flex-col gap-y-7 py-4">
           <article className="flex justify-between px-3 items-center">
-            <div className="flex flex-shrink-0 flex-grow-0 gap-1">
+            <div className="flex flex-shrink-0 flex-grow-0 gap-x-2">
               <Image src="/info/clockIcon.svg" width={16} height={16} className="w-[16px] h-[16px]" alt="folder" />
-              <p className="text-sm font-semibold text-left text-[#696972">활동시간대</p>
+              <p className="text-sm font-semibold text-left text-black2">활동시간대</p>
             </div>
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
             <div className="flex flex-shrink-0 flex-grow-0 justify-center content-center items-center px-3 py-1.5 rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">
@@ -62,9 +62,9 @@ export default function Activity({ activtiyList }: { activtiyList: ActivityList 
           </article>
 
           <article className="flex justify-between px-3 items-center">
-            <div className="flex flex-shrink-0 flex-grow-0 gap-1">
+            <div className="flex flex-shrink-0 flex-grow-0 gap-x-2">
               <Image src="/info/fi-rr-tennis.svg" width={16} height={16} alt="tennis" />
-              <p className="text-sm font-semibold text-left text-[#696972">활동량</p>
+              <p className="text-sm font-semibold text-left text-black2">활동량</p>
             </div>
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
             <div className="flex flex-shrink-0 flex-grow-0 justify-center content-center items-center px-2 py-1.5 rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">
@@ -72,13 +72,13 @@ export default function Activity({ activtiyList }: { activtiyList: ActivityList 
             </div>
           </article>
           <article className="flex justify-between px-3 items-center">
-            <div className="flex flex-shrink-0 flex-grow-0 gap-1">
+            <div className="flex flex-shrink-0 flex-grow-0 gap-x-2">
               <Image src="/info/fi-rr-tennis.svg" width={16} height={16} alt="tennis" />
-              <p className="text-sm font-semibold text-left text-[#696972">활동강도</p>
+              <p className="text-sm font-semibold text-left text-black2">활동강도</p>
             </div>
 
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
-            <StatusBar statusList={activityStrength} />
+            <StatusBar statusList={activityStrength} specificWidth={29} />
           </article>
 
           {feedbackContent == "" ? (
@@ -87,9 +87,9 @@ export default function Activity({ activtiyList }: { activtiyList: ActivityList 
             <article className="flex flex-col justify-between px-3 items-center">
               <header className="flex gap-1 w-full py-2">
                 <Image src="/info/feedbackPencile.svg" width={16} className="w-[18px] h-[16px]" height={16} alt="pencile" />
-                <p className="text-sm font-semibold text-left text-[#696972">피드백노트</p>
+                <p className="text-sm font-semibold text-left text-black2">피드백노트</p>
               </header>
-              <div className="flex items-center px-5 w-4/5 py-1 rounded-[40px] bg-[#f5fef5] border border-[#e7e7e7]">
+              <div className="flex items-center px-5 w-full py-1 rounded-[40px] bg-[#f5fef5] border border-[#e7e7e7]">
                 <p className="font-semibold  text-[12px]">{feedbackContent}</p>
               </div>
             </article>
