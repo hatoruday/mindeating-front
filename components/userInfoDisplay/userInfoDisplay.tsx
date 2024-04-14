@@ -16,14 +16,14 @@ export default function UserInfoDisplay({ userId, selectDate, infoData }: { user
   };
 
   return (
-    <div className="flex flex-col h-full justify-center gap-y-5">
+    <div className="flex flex-col h-full justify-center">
       {infoData?.day_data?.eating == undefined ? (
-        <div className="w-full flex flex-col justify-center content-center items-center">
+        <div className="w-full h-full flex flex-grow flex-col justify-center content-center items-center">
           <Image src="/phoneMaumi.svg" width={113} height={122} alt="notLogIcon" priority={false} />
           <span>오늘의 기록을 입력해주세요!</span>
         </div>
       ) : (
-        <>
+        <div className="overflow-scroll py-10 gap-y-5">
           <Routine userId={userId} routineList={infoData.routines} />
           {infoData?.day_data?.eating ? (
             <>
@@ -61,11 +61,12 @@ export default function UserInfoDisplay({ userId, selectDate, infoData }: { user
           ) : (
             <></>
           )}
-
-          <button onClick={scrollToTop} className="flex justify-center">
-            <FaArrowCircleUp className="text-white bg-black4 rounded-full border border-black4 w-[29px] h-[29px]" />
-          </button>
-        </>
+          <div className="flex justify-center mt-5 mb-3">
+            <button onClick={scrollToTop} className="flex justify-center">
+              <FaArrowCircleUp className="text-white bg-black4 rounded-full border border-black4 w-[29px] h-[29px]" />
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );

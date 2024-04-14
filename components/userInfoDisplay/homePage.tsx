@@ -81,7 +81,7 @@ export default function HomePage({ userId, userData, specificDay }: { userData: 
   }, [infodata]);
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <div className="flex h-full flex-col">
         <header className="flex w-full justify-between content-center items-center sm:mx-auto sm:w-full sm:max-w-sm pt-5 pb-7">
           <div className="flex flex-col">
