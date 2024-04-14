@@ -46,7 +46,7 @@ export default function ContentsScreen({
       <main className="flex flex-col justify-start overflow-y-auto h-full px-7">
         <div className="flex flex-col h-full justify-start">
           <span className="flex-shrink-0 font-bold text-[20px]">{articleHeaderString}</span>
-          {articleString && <div className="my-5">{articleString}</div>}
+          {articleString ? <div className="my-5 mb-10">{articleString}</div> : <div className="py-5" />}
           {articleImgSrc && (
             <div className="h-full flex flex-col justify-center">
               {width && height ? (
@@ -62,7 +62,7 @@ export default function ContentsScreen({
           )}
           {articleAfterString && <div className="my-3">{articleAfterString}</div>}
           {greyBlockHeader && (
-            <div className="flex justify-start gap-x-2 my-5 content-center items-center mb-5">
+            <div className="flex justify-start gap-x-2 my-7 pt-7 content-center items-center mb-5">
               <div className="w-[4px] h-[36px] bg-black1" />
               <span className="text-[18px] font-bold">{greyBlockHeader}</span>
             </div>

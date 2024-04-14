@@ -74,6 +74,8 @@ export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
           피해줘.
         </pre>
       }
+      width={254}
+      height={293}
       articleImgSrc="/contentsImages/4/4-4.png"
     />
   );
@@ -107,7 +109,7 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
     <ContentsScreenQR topic = {topic} pageNumber = {pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
       articleString={<pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
-        첫째, 운동을 가볍고 꾸준하게, 즐겁게 하기<br/><br/>
+        <span className="font-bold">첫째, 운동을 가볍고 꾸준하게, 즐겁게 하기</span><br/><br/>
 
 아마 그동안의 운동은 칼로리 소모를 목적으로 과도하게 해왔을 것 같아. 그러나 이런 과도한 운동은 오히려 신체적, 정신적 스트레스를 야기해서 식욕을 높이기도 하지. <br/><br/>
 
@@ -151,7 +153,7 @@ export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
       headerString="4. 음식에 집착하던 내가 아니야!"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
-          둘째, 주변 환경 항상 정돈하기
+          <span className="font-bold">둘째, 주변 환경 항상 정돈하기</span>
           <br />
           <br />
           우리는 환경으로부터 영향을 많이 받아. 이때 우리 주변이 지저분하면 우리 뇌는 무의식 중에 스트레스를 받게 되지. 이로 인해 코르티솔이 분비되고 식욕호르몬이 증가되면서 폭식할 가능성이 높아져.
@@ -199,9 +201,7 @@ export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
       articleImgSrc="/contentsImages/4/4-10.png"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
-          우리가 사랑을 할 때 분비되는 옥시토신은 <br />
-          식욕을 유발하는 ‘스트레스’와 ‘불안’을 <br />
-          사라지게 하고 심리적 허기를 채워줘.
+          우리가 사랑을 할 때 분비되는 옥시토신은 식욕을 유발하는 ‘스트레스’와 ‘불안’을 사라지게 하고 심리적 허기를 채워줘.
           <br />
           <br />
           <br />이 때문에 배고프지 않아도 계속 음식을 찾게 되는 ‘감정적 폭식’을 하지 않을 수 있지.

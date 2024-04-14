@@ -26,7 +26,7 @@ export default function Verification({ submitFn, error }: { submitFn: any; error
   return (
     <div className="bg-white">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <div className="flex justify-end">
+        <div className="flex pt-10 justify-end">
           <Image src="/CheerIcon.svg" alt="Your Company" width={200} height={200} className="ml-20 h-[121px] w-auto" priority={true} />
         </div>
         <h3 className="text-[#9F9FAC] text-[16px] te">마음먹기에 오신 걸 환영해요</h3>

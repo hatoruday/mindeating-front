@@ -13,7 +13,6 @@ export const One = ({ topic, pageNum, wrapper }: { topic: string; pageNum: strin
           자연체중이란 게 있어.
           <br />
           <br />
-          <br />
           이는 다이어트나 운동 등 등 인위적인 조절을 하지 않았을 때 자연스럽게 유지되는 체중을 말하지.
         </pre>
       }

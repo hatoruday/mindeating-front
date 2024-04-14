@@ -102,7 +102,7 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
       
       articleImgSrc="/contentsImages/2/2-6.png"
       greyBlockHeader="적당한 배고픔 상태에서 식사 시작하기"
-      greyBlockContent={<pre className="font-nanum text-[16px] leading-8 font-black1 whitespace-pre-wrap">
+      greyBlockContent={<pre className="font-nanum text-[15px] leading-8 font-black1 whitespace-pre-wrap">
         극심한 배고픔일 때 식사를 시작하면 조급한 마음에 급하게 먹게 돼. 식사를 급하게 하면 식사량과 포만감을 인지하기 쉽지 않지.<br/><br/>
 
 반대로 배가 고프지 않은 상태에서 식사를 시작하면 과식, 폭식으로 이어질 가능성이 높아져. 체중 감량에 방해가 되지.<br/><br/>
@@ -112,7 +112,8 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
 만약 식사 시간이 정해져 있는 직장인, 학생이고 식사 전에 극심한 배고픔이 느껴진다면 가벼운 간식이나 물을 섭취하는 걸 추천할게.<br/><br/>
       </pre>}
         
-      
+        width={291}
+        height={108}  
     />
   );
 };
@@ -125,7 +126,7 @@ export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
       articleImgSrc="/contentsImages/2/2-7.png"
       greyBlockHeader="식전, 식후 물 한 잔하기"
       greyBlockContent={
-        <pre className="font-nanum text-[16px] leading-8 font-black1 whitespace-pre-wrap">
+        <pre className="font-nanum text-[15px] leading-8 font-black1 whitespace-pre-wrap">
           식전 물 한 컵은 배고픔을 누그려뜨리고 식사에 대해 차분한 마음을 가지도록 도와줘. 천천히 식사할 수 있게 되지. <br />
           <br />
           식후 물 한 컵은 뇌에 식사 끝을 인지시켜주면서 포만감을 극대화 시켜주기에 과식, 폭식을 방지할 수 있어.
@@ -151,7 +152,7 @@ export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
       articleImgSrc="/contentsImages/2/2-8.png"
       greyBlockHeader="빵, 요거트 같은 간식류 보다 `밥`먹기"
       greyBlockContent={
-        <pre className="font-nanum text-[16px] leading-8 font-black1 whitespace-pre-wrap">
+        <pre className="font-nanum text-[15px] leading-8 font-black1 whitespace-pre-wrap">
           다이어트 사고방식에서 벗어나지 못한 이들은 보통 살찔까봐 밥을 섭취하는 것에 거부감을 가지는 것 같아.
           <br />
           <br />
@@ -189,7 +190,7 @@ export const Nine = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
       articleImgSrc="/contentsImages/2/2-9.png"
       greyBlockHeader="맛과 식감을 느끼며 온전히 식사에 집중하기"
       greyBlockContent={
-        <pre className="font-nanum text-[16px] leading-8 font-black1 whitespace-pre-wrap">
+        <pre className="font-nanum text-[15px] leading-8 font-black1 whitespace-pre-wrap">
           영상을 보거나 업무를 하면서 식사를 하면 포만감을 인지하기 쉽지 않기 때문에 무의식중에 식사량이 늘어나.
           <br />
           <br />
@@ -219,7 +220,7 @@ export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
       articleImgSrc="/contentsImages/2/2-10.png"
       greyBlockHeader="한 끼에 너무 다양한 메뉴 섭취하지 않기"
       greyBlockContent={
-        <pre className="font-nanum text-[16px] leading-8 font-black1 whitespace-pre-wrap">
+        <pre className="font-nanum text-[15px] leading-8 font-black1 whitespace-pre-wrap">
           한 번 먹을 때 너무 다양한 메뉴를 먹게 되면 뇌는 계속 새로운 자극을 느끼게 돼.
           <br />
           <br />
@@ -244,7 +245,7 @@ export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) =
       articleImgSrc="/contentsImages/2/2-11.png"
       greyBlockHeader="식사 중간에 멈추고 포만감 체크하기"
       greyBlockContent={
-        <pre className="font-nanum text-[16px] leading-8 font-black1 whitespace-pre-wrap">
+        <pre className="font-nanum text-[15px] leading-8 font-black1 whitespace-pre-wrap">
           식사를 했을 때는 몰랐는데 지나고보니 엄청 배불렀던 적이 있을 거야. <br />
           <br />
           그 이유는 뇌가 포만감 호르몬(=식욕억제호르몬)을 분비하기까지 시간이 걸리기 때문이야.
@@ -273,7 +274,7 @@ export const Twelve = ({ topic, pageNum }: { topic: string; pageNum: string }) =
       articleImgSrc="/contentsImages/2/2-12.png"
       greyBlockHeader="“다음에 또 먹을 수 있다” 되뇌이기"
       greyBlockContent={
-        <pre className="font-nanum text-[16px] leading-8 font-black1 whitespace-pre-wrap">
+        <pre className="font-nanum text-[15px] leading-8 font-black1 whitespace-pre-wrap">
           “이번까지만 먹고 다음부터 먹지 않겠다”라고 생각한 적이 많을 것 같아. <br />
           <br />
           그러나 사실 이런 마인드가 식사를 멈추기 어렵게 만드는 핵심 요인이야.
@@ -303,7 +304,7 @@ export const Thirteen = ({ topic, pageNum }: { topic: string; pageNum: string })
       articleImgSrc="/contentsImages/2/2-13.png"
       greyBlockHeader="식사 후 식사 자리 바로 정리하기(+식후루틴)"
       greyBlockContent={
-        <pre className="font-nanum text-[16px] leading-8 font-black1 whitespace-pre-wrap">
+        <pre className="font-nanum text-[15px] leading-8 font-black1 whitespace-pre-wrap">
           포만감이 느껴질 때 식사를 멈추기 위해서는 환경을 바꾸는 것도 중요해. 배는 부르나 앞에 음식이 있으면 먹게 될 수 밖에 없거든.
           <br />
           <br />

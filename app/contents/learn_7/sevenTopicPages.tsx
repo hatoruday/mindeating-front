@@ -51,12 +51,7 @@ export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
           이유는 바로, 지속성이야.
           <br />
           <br />
-          토끼와 거북이의 방식을 살펴보면,
-          <br />
-          토끼는 빠르게 가다가 지쳐서
-          <br />
-          오랫동안 쉬었고 거북이는 자신의 속도로 <br />
-          꾸준하고 일정하게 나아갔어.
+          토끼와 거북이의 방식을 살펴보면, 토끼는 빠르게 가다가 지쳐서 오랫동안 쉬었고 거북이는 자신의 속도로 꾸준하고 일정하게 나아갔어.
           <br />
           <br />
           토끼의 방식은 지속적이지 못했고
@@ -117,17 +112,14 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
 };
 
 export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
-  // prettier-ignore
   return (
-    <ContentsScreenQR topic = {topic} pageNumber = {pageNum}
+    <ContentsScreenQR
+      topic={topic}
+      pageNumber={pageNum}
       headerString="7. 토끼보다 빨랐던 거북이"
       articleAfterString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
-          어쩌면 위의 단계를 모두 거치는 데에, 
-다소 시간이 걸릴 수 있어.<br/><br/>
-
-탈다이어트 단계에서 오래 머물 수도 있고,<br/>
-식욕안정화 단계에서 오래 머물 수도 있지.
+          어쩌면 위의 단계를 모두 거치는 데에, 다소 시간이 걸릴 수 있어. 탈다이어트 단계에서 오래 머물 수도 있고, 식욕안정화 단계에서 오래 머물 수도 있지.
         </pre>
       }
       articleImgSrc="/contentsImages/7/7-6.png"
