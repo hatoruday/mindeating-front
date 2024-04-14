@@ -10,7 +10,7 @@ const sumClass = (...classnames: string[]) => {
 const noto_sans_kr = IBM_Plex_Sans_KR({
   // subsets: ["latin"], // preload에 사용할 subsets 또는 preload: false
   preload: false, // preload 사용 여부
-  weight: ["100", "400", "700"], // 사용할 wght 설정
+  weight: ["100", "200", "300", "400", "500", "600", "700"], // 사용할 wght 설정
   variable: "--ibm_plex_sans_kr", // tailwindcss에서 사용할 수 있도록 CSS 변수 방식 설정
   display: "swap", // font-display 설정
 });

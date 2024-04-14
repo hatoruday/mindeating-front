@@ -113,7 +113,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
 
-          <span className="font-medium text-black2 text-[14px]">어떤 활동을 하셨나요?</span>
+          <span className="font-[600] text-black2 text-[14px]">어떤 활동을 하셨나요?</span>
         </header>
 
         <article className="flex flex-wrap justify-start items-center gap-2">
@@ -136,7 +136,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
                 }}
                 className={`flex justify-center items-center h-9 relative px-4 py-2.5 rounded-[56px] border ${
                   names.includes(name) ? "border-green2 bg-green3" : "border-black4"
-                } text-sm font-medium text-[#2c2c30] min-w-[80px]`}
+                } text-sm font-[600] text-[#2c2c30] min-w-[80px]`}
               >
                 {name}
               </button>
@@ -146,7 +146,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
 
         {names.includes("기타") ? (
           <div className="flex flex-col justify-around w-full  px-3 py-2 rounded-[9.3px] bg-green3 border border-green2">
-            <p className="text-[14px] text-black1 py-2 font-medium px-3">기타</p>
+            <p className="text-[14px] text-black1 py-2 font-[600] px-3">기타</p>
             <input
               className="w-full h-[52px] px-5  rounded-[10px] text-[14px] bg-white border border-black4 placeholder-black3"
               value={currentInput}
@@ -200,7 +200,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
                   time === tAmount ? "border-green2 bg-green3" : "border-black4"
                 }`}
               >
-                <p className="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-black1">{tAmount}</p>
+                <p className="flex-grow-0 flex-shrink-0 text-sm font-[600] text-left text-black1">{tAmount}</p>
               </button>
             );
           })}
@@ -210,16 +210,16 @@ export default function ActivityPage({ params: { userId } }: IParams) {
         <header className="flex px-3 gap-x-3 w-full">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
 
-          <span className="font-medium text-black2 text-[14px]">활동 강도는 어땠나요?</span>
+          <span className="font-[600] text-black2 text-[14px]">활동 강도는 어땠나요?</span>
         </header>
 
         <div className="flex gap-3 w-4/5 justify-center my-3">
           <div className="flex flex-shrink-0 items-center">
-            <span className="text-black3 items-center text-[12px]">Too Low</span>
+            <span className="text-black3 items-center font-[600] text-[12px]">Too Low</span>
           </div>
           <HungerMeter hungerList={[1, 2, 3, 4, 5]} hunger_meal={intensity!} setHunger_meal={setIntensity} />
           <div className="flex flex-shrink-0 items-center">
-            <span className="text-black3 text-[12px]">Too High</span>
+            <span className="text-black3 text-[12px] font-[600]">Too High</span>
           </div>
         </div>
       </article>
@@ -227,7 +227,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
 
-          <span className="font-medium text-black2 text-[14px]">활동 강도는 어땠나요?</span>
+          <span className="font-[600] text-black2 text-[14px]">활동 강도는 어땠나요?</span>
         </header>
 
         <Satiety satisfaction={satisfaction} setSatisfaction={setSatisfaction} />
@@ -239,7 +239,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
           <span className="font-medium text-black2 text-[14px]">피드백 노트</span>
         </header>
 
-        <FeedbackNote note={note} setNote={setNote} />
+        <FeedbackNote note={note} setNote={setNote} specificPlaceholder={`활동을 돌이켜보고 \n잘한 점과 아쉬운 점을 적어요 (선택)`} />
       </article>
 
       <RecordSubmit

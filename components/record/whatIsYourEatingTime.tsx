@@ -5,7 +5,7 @@ export default function WhatIsYourTime({ timeType, when, setWhen }: { timeType: 
     <section className="flex w-full flex-col gap-y-2 py-4">
       <header className="flex px-3 gap-x-3">
         <Image src="/mindFullEating/clockPlusIcon.svg" width={17} height={19} alt="bookIcon" />
-        <span className="font-medium text-black2 text-[14px]">{timeType}</span>
+        <span className="font-[600] text-black2 text-[14px]">{timeType}</span>
       </header>
       <article className="flex w-full justify-center py-2 gap-x-3">
         {["새벽", "아침", "점심", "저녁", "밤"].map((time, index) => (
@@ -17,7 +17,7 @@ export default function WhatIsYourTime({ timeType, when, setWhen }: { timeType: 
               else setWhen("");
             }}
           >
-            <p className="flex text-sm font-medium text-left text-[#2c2c30]">{time}</p>
+            <p className="flex text-sm font-[600] text-left text-[#2c2c30]">{time}</p>
           </button>
         ))}
       </article>

@@ -65,7 +65,7 @@ export default function Sleep({ params: { userId } }: IParams) {
       <section className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
-          <span className="font-medium text-black2 text-[14px]">총 취침시간을 알려주세요</span>
+          <span className="font-[600] text-black2 text-[14px]">총 취침시간을 알려주세요</span>
         </header>
         <article className="flex gap-x-3">
           {["6시간 미만", "6-8시간", "8시간 초과"].map((totalSleepTIme, index) => {
@@ -80,7 +80,7 @@ export default function Sleep({ params: { userId } }: IParams) {
                 }}
                 className={`flex  justify-center h-9 items-center px-4 py-2 relative rounded-[56px] border ${totalSleepTIme === time ? "border-green2 bg-green3" : "border-black4"}`}
               >
-                <p className="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-black1">{totalSleepTIme}</p>
+                <p className="flex-grow-0 flex-shrink-0 text-sm font-[600] text-left text-black1">{totalSleepTIme}</p>
               </button>
             );
           })}
@@ -89,7 +89,7 @@ export default function Sleep({ params: { userId } }: IParams) {
       <section className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image src="/mindFullEating/clockPlusIcon.svg" width={17} height={19} alt="bookIcon" />
-          <span className="font-medium text-black2 text-[14px]">취침 시간대를 알려주세요!</span>
+          <span className="font-[600] text-black2 text-[14px]">취침 시간대를 알려주세요!</span>
         </header>
         <article className="flex gap-x-3">
           {["12시 이전", "12시-2시 사이", "2시 이후"].map((sleepTimeZone, index) => {
@@ -102,7 +102,7 @@ export default function Sleep({ params: { userId } }: IParams) {
                 }}
                 className={`flex  justify-center h-9 items-center px-4 py-2 relative rounded-[56px] border ${when === sleepTimeZone ? "border-green2 bg-green3" : "border-black4"}`}
               >
-                <p className="flex-grow-0 flex-shrink-0 text-sm font-medium text-left text-black1">{sleepTimeZone}</p>
+                <p className="flex-grow-0 flex-shrink-0 text-sm font-[600] text-left text-black1">{sleepTimeZone}</p>
               </button>
             );
           })}
@@ -111,7 +111,7 @@ export default function Sleep({ params: { userId } }: IParams) {
       <section className="flex w-full justify-center flex-col gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={17} height={19} alt="bookIcon" />
-          <span className="font-medium text-black2 text-[14px]">취침 전 4시간 공복 유지 하셨나요?</span>
+          <span className="font-[600] text-black2 text-[14px]">취침 전 4시간 공복 유지 하셨나요?</span>
         </header>
         <div className="flex w-full justify-center gap-3">
           <button
@@ -143,7 +143,7 @@ export default function Sleep({ params: { userId } }: IParams) {
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
 
-          <span className="font-medium text-black2 text-[14px]">수면만족도</span>
+          <span className="font-[600] text-black2 text-[14px]">수면만족도</span>
         </header>
         <Satiety satisfaction={satisfaction} setSatisfaction={setSatisfaction} />
       </section>
@@ -151,10 +151,10 @@ export default function Sleep({ params: { userId } }: IParams) {
         <header className="flex px-3 py-2 gap-x-3">
           <Image src="/info/feedbackPencile.svg" className="w-[18px] h-[16px]" width={18} height={16} alt="bookIcon" />
 
-          <span className="font-medium text-black2 text-[14px]">피드백 노트</span>
+          <span className="font-[600] text-black2 text-[14px]">피드백 노트</span>
         </header>
 
-        <FeedbackNote note={note} setNote={setNote} />
+        <FeedbackNote note={note} setNote={setNote} specificPlaceholder={`수면을 돌이켜보고\n잘한 점과 아쉬운 점을 적어요 (선택)`} />
       </article>
 
       <RecordSubmit submitFunction={clientActionWrapper} data={sleepData} isLoading={isLoading} isActive={time != "" && when != "" && empty_stomach != undefined && satisfaction != ""} />

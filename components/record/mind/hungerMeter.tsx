@@ -44,7 +44,7 @@ export default function HungerMeter({
                 key={index}
                 className="flex w-[30px] h-[30px] rounded-[40px] items-center justify-center content-center"
               >
-                <p className="text-center text-[14px]">{item}</p>
+                <p className="text-center text-black3 text-[14px]">{item}</p>
               </button>
             )}
           </div>

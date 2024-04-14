@@ -64,7 +64,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
   // 텍스트 필드의 입력을 처리하는 함수
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col px-5">
       <header className="flex relative w-full py-3 justify-center">
         <Image src="/leftChevron.svg" width={8} height={17} alt="leftChevron" className="absolute top-1/2 left-4 transform -translate-y-1/2" />
 
@@ -75,10 +75,10 @@ export default function MindFullEating({ params: { userId } }: IParams) {
       <section className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 gap-x-3">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
-          <span className="font-medium text-black2 text-[14px]">감정 상태를 알려주세요!</span>
+          <span className="font-[600] text-black2 text-[14px]">감정 상태를 알려주세요!</span>
         </header>
         <input
-          className="w-full h-[52px] px-3 bg-opacity-20 text-black1 rounded-[10px] text-[14px] bg-black4 placeholder-black3 outline-none ring-0"
+          className="w-full h-[52px] px-5 bg-opacity-20 text-black1 rounded-[10px] text-[14px] bg-black4 placeholder-black3 outline-none ring-0"
           value={custumState}
           onChange={handleInputChange}
           placeholder="어떤 감정이 들었나요?"
