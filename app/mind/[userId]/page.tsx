@@ -37,7 +37,6 @@ export default function MindFullEating({ params: { userId } }: IParams) {
     2: false,
     3: false,
     4: false,
-    5: false,
   });
   const [satisfaction, setSatisfaction] = useState<string>("");
   const [note, setNote] = useState<string>(""); //not required
