@@ -125,7 +125,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
             </header>
             <div className="flex  gap-3 py-1 justify-center">
               <p className="flex-shrink-0 flex-grow-0 text-xs font-medium text-left text-[#696972]">식전</p>
-              <StatusBar statusList={beforeEatingSatiety} specificWidth={"47px"} />
+              <StatusBar statusList={beforeEatingSatiety} />
             </div>
             <div className="flex w-full gap-3 py-1 justify-center">
               <p className="flex-shrink-0 flex-grow-0  text-xs font-medium text-left text-[#696972]">식후</p>
