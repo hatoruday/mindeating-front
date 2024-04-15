@@ -84,6 +84,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
 
   //렌더링 상태변수 관리
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  console.log(beforeEatingSatiety, afterEatingSatiety);
   return (
     <div className="flex flex-col ">
       <header className="flex w-full py-3 justify-between">
@@ -124,7 +125,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
             </header>
             <div className="flex  gap-3 py-1 justify-center">
               <p className="flex-shrink-0 flex-grow-0 text-xs font-medium text-left text-[#696972]">식전</p>
-              <StatusBar statusList={beforeEatingSatiety} />
+              <StatusBar statusList={beforeEatingSatiety} specificWidth={47} />
             </div>
             <div className="flex w-full gap-3 py-1 justify-center">
               <p className="flex-shrink-0 flex-grow-0  text-xs font-medium text-left text-[#696972]">식후</p>
