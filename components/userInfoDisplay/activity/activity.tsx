@@ -78,7 +78,7 @@ export default function Activity({ activtiyList }: { activtiyList: ActivityList 
             </div>
 
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
-            <StatusBar statusList={activityStrength} specificWidth={29} />
+            <StatusBar statusList={activityStrength} specificWidth={"29px"} />
           </article>
 
           {feedbackContent == "" ? (
