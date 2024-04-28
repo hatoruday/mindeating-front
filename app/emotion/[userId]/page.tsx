@@ -12,10 +12,27 @@ import { emotionAction, EmotionParams } from "./emotionAction";
 interface IParams {
   params: { userId: string };
 }
-export default function MindFullEating({ params: { userId } }: IParams) {
+export default function EmotionPage({ params: { userId } }: IParams) {
   const [custumState, setCustumState] = useState<string>("");
   const [type, setType] = useState<string>("");
+  const typeTranslate: {
+    [key: string]: string;
+  } = {
+    긍정: "positive",
+    부정: "negative",
+  };
+
   const [when, setWhen] = useState<string>("");
+  // ['dawn', 'morning', 'lunch', 'dinner', 'night']
+  const whenTranslate: {
+    [key: string]: string;
+  } = {
+    새벽: "dawn",
+    아침: "morning",
+    점심: "lunch",
+    저녁: "dinner",
+    밤: "night",
+  };
   const [note, setNote] = useState<string>("");
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -30,8 +47,8 @@ export default function MindFullEating({ params: { userId } }: IParams) {
     user_id: userId,
     record: {
       state: custumState,
-      when,
-      type,
+      when: whenTranslate[when],
+      type: typeTranslate[type],
       note,
     },
   };

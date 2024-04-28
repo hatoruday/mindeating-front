@@ -25,12 +25,40 @@ interface IParams {
 export default function MindFullEating({ params: { userId } }: IParams) {
   const [menu, setMenu] = useState<string[]>([]); //required
   const [type, setType] = useState<string>("");
+  const typeTranslate: { [key: string]: string } = {
+    식사류: "meals",
+    간식류: "snacks",
+    음료류: "beverages",
+  };
   const [when, setWhen] = useState<string>("");
+  //
+  //['dawn', 'morning', 'lunch', 'dinner', 'night']
+  const whenTranslate: { [key: string]: string } = {
+    새벽: "dawn",
+    아침: "morning", // "morning
+    점심: "lunch",
+    저녁: "dinner",
+    밤: "night",
+  };
   const [hunger_before_meal, setHunger_before_meal] = useState<number>(0);
   const hungetList = [1, 2, 3, 4, 5, 6, 7, 8];
   const [hunger_after_meal, setHunger_After_meal] = useState<number>(0);
   const [speed, setSpeed] = useState<string>("");
+  //'fast', 'moderate', 'slow
+  const speedTranslate: { [key: string]: string } = {
+    빠르게: "fast",
+    적당히: "moderate",
+    천천히: "slow",
+  };
   const [amount, setAmount] = useState<string>("");
+  //['little', 'moderate', 'bit much', 'a lot']
+  //["적게 먹었어요", "적당했어요", "약간 많았어요", "아주 많았어요"]
+  const amountTranslate: { [key: string]: string } = {
+    "적게 먹었어요": "little",
+    적당했어요: "moderate",
+    "약간 많았어요": "bit much",
+    "아주 많았어요": "a lot",
+  };
   const [successed_meal_routine, setSuccesssed_meal_routine] = useState<SuccessMealRoutine>({
     0: false,
     1: false,
@@ -39,6 +67,12 @@ export default function MindFullEating({ params: { userId } }: IParams) {
     4: false,
   });
   const [satisfaction, setSatisfaction] = useState<string>("");
+  //['unsatisfied', 'moderate', 'satisfied']
+  const satisfactionTranslate: { [key: string]: string } = {
+    불만족: "unsatisfied",
+    적당함: "moderate",
+    만족: "satisfied",
+  };
   const [note, setNote] = useState<string>(""); //not required
 
   /**
@@ -296,14 +330,14 @@ export default function MindFullEating({ params: { userId } }: IParams) {
           user_id: userId,
           record: {
             menu,
-            type,
-            when,
+            type: typeTranslate[type],
+            when: whenTranslate[when],
             hunger_before_meal,
             hunger_after_meal,
-            speed,
-            amount,
+            speed: speedTranslate[speed],
+            amount: amountTranslate[amount],
             successed_meal_routine,
-            satisfaction,
+            satisfaction: satisfactionTranslate[satisfaction],
             note,
           },
         }}

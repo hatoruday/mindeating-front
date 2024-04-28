@@ -15,9 +15,28 @@ interface IParams {
 
 export default function Sleep({ params: { userId } }: IParams) {
   const [time, setTimeAmount] = useState<string>(""); //not required
+  //['less_than_6h', '6h-8h', 'more_than_8h']
+
+  const timeTranslate: { [key: string]: string } = {
+    "6시간 미만": "less_than_6h",
+    "6-8시간": "6h-8h",
+    "8시간 초과": "more_than_8h",
+  };
+
   const [when, setWhen] = useState<string>("");
+  //["before_12AM'", '12AM-2AM', 'after_2AM']
+  const whenTranslate: { [key: string]: string } = {
+    "12시 이전": "before_12AM",
+    "12시-2시 사이": "12AM-2AM",
+    "2시 이후": "after_2AM",
+  };
   const [empty_stomach, setHead_empty_stomach] = useState<boolean | undefined>();
   const [satisfaction, setSatisfaction] = useState<string>(""); //not required
+  const satisfactionTranslate: { [key: string]: string } = {
+    불만족: "unsatisfied",
+    적당함: "moderate",
+    만족: "satisfied",
+  };
   const [note, setNote] = useState<string>(""); //not required
 
   const [isLoading, setIsLoading] = useState(false);
@@ -26,10 +45,10 @@ export default function Sleep({ params: { userId } }: IParams) {
   const sleepData = {
     user_id: userId,
     record: {
-      time,
-      when,
+      time: timeTranslate[time],
+      when: whenTranslate[when],
       empty_stomach,
-      satisfaction,
+      satisfaction: satisfactionTranslate[satisfaction],
       note,
     },
   };

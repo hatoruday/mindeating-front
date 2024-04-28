@@ -28,13 +28,31 @@ export default function ActivityPage({ params: { userId } }: IParams) {
   const [names, setNames] = useState<string[]>([]);
   const [extras, setExtras] = useState<string[]>([]); //not required
   const [when, setWhen] = useState<string>("");
+  const whenTranslate: { [key: string]: string } = {
+    새벽: "dawn",
+    아침: "morning", // "morning
+    점심: "lunch",
+    저녁: "dinner",
+    밤: "night",
+  };
 
   const [time, setTime] = useState<string>(""); //not required
-
+  //'enum': ['less_than_30m', '30m-1h', '1h-2h', 'more_than_2h']
+  //"30분 미만", "30분 - 1시간", "1시간 - 2시간", "2시간 초과"
+  const timeTranslate: { [key: string]: string } = {
+    "30분 미만": "less_than_30m",
+    "30분 - 1시간": "30m-1h", // "morning
+    "1시간 - 2시간": "1h-2h",
+    "2시간 초과": "more_than_2h",
+  };
   const [intensity, setIntensity] = useState<number>();
 
   const [satisfaction, setSatisfaction] = useState<string>(""); //not required
-
+  const satisfactionTranslate: { [key: string]: string } = {
+    불만족: "unsatisfied",
+    적당함: "moderate",
+    만족: "satisfied",
+  };
   const [note, setNote] = useState<string>(""); //not required
 
   /**
@@ -248,10 +266,10 @@ export default function ActivityPage({ params: { userId } }: IParams) {
           user_id: userId,
           record: {
             names: [...names, ...extras],
-            when,
+            when: whenTranslate[when],
             intensity,
-            time,
-            satisfaction,
+            time: timeTranslate[time],
+            satisfaction: satisfactionTranslate[satisfaction],
             note,
           },
         }}

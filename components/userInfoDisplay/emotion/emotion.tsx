@@ -10,6 +10,21 @@ interface EmotionList {
   timestamp: string;
 }
 export default function Emotion({ emotionList }: { emotionList: EmotionList }) {
+  const typeTranslate: {
+    [key: string]: string;
+  } = {
+    긍정: "positive",
+    부정: "negative",
+  };
+  const whenTranslate: {
+    [key: string]: string;
+  } = {
+    새벽: "dawn",
+    아침: "morning",
+    점심: "lunch",
+    저녁: "dinner",
+    밤: "night",
+  };
   /**
    * activity widget에 대한 상태변수를 관리한다.
    */
@@ -18,12 +33,12 @@ export default function Emotion({ emotionList }: { emotionList: EmotionList }) {
   //현재느끼는 감정의 이름
   const emotionName = emotionList.state;
   //감정상태 이모지
-  const isPositive = ["부정", "긍정"].indexOf(emotionList.type); //긍정 : 1 부정 : 0
+  const isPositive = ["부정", "긍정"].indexOf(Object.keys(typeTranslate).find((key) => typeTranslate[key] === emotionList.type) ?? ""); //긍정 : 1 부정 : 0
   const isPositiveString = ["부정적이에요!", "긍정적이에요!"];
 
   //총 감정을 느낀 시간 상태변수
   const emotionTime = ["새벽", "아침", "점심", "저녁", "밤"];
-  const emotionTimeIndex = emotionTime.indexOf(emotionList.when);
+  const emotionTimeIndex = emotionTime.indexOf(Object.keys(whenTranslate).find((key) => whenTranslate[key] === emotionList.when) ?? "");
 
   //피드백 노트
   const emotionNote = emotionList.note;

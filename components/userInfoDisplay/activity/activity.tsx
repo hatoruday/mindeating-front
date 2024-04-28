@@ -12,6 +12,24 @@ interface ActivityList {
   timestamp: string;
 }
 export default function Activity({ activtiyList }: { activtiyList: ActivityList }) {
+  const whenTranslate: { [key: string]: string } = {
+    새벽: "dawn",
+    아침: "morning", // "morning
+    점심: "lunch",
+    저녁: "dinner",
+    밤: "night",
+  };
+  const timeTranslate: { [key: string]: string } = {
+    "30분 미만": "less_than_30m",
+    "30분 - 1시간": "30m-1h", // "morning
+    "1시간 - 2시간": "1h-2h",
+    "2시간 초과": "more_than_2h",
+  };
+  const satisfactionTranslate: { [key: string]: string } = {
+    불만족: "unsatisfied",
+    적당함: "moderate",
+    만족: "satisfied",
+  };
   /**
    * activity widget에 대한 상태변수를 관리한다.
    */
@@ -19,16 +37,16 @@ export default function Activity({ activtiyList }: { activtiyList: ActivityList 
   const activityNameList = activtiyList.names;
 
   const satisfiedString = ["불만족스러웠어..", "만족스러웠어!", "적당해요!"];
-  const satisfyMapping = ["불만족", "만족", "적당"];
-  const satisfiedExtent = satisfyMapping.indexOf(activtiyList.satisfaction);
+  const satisfyMapping = ["불만족", "만족", "적당함"];
+  const satisfiedExtent = satisfyMapping.indexOf(Object.keys(satisfactionTranslate).find((key) => satisfactionTranslate[key] === activtiyList.satisfaction) ?? "");
   //활동시간대 상태변수
 
-  const activityTimeList = ["아침", "점심", "저녁"];
-  const activityTimeIndex = activityTimeList.indexOf(activtiyList.when);
+  const activityTimeList = ["새벽", "아침", "점심", "저녁", "밤"];
+  const activityTimeIndex = activityTimeList.indexOf(Object.keys(whenTranslate).find((key) => whenTranslate[key] === activtiyList.when) ?? "");
   //활동량 상태변수
 
   const activityAmountList = ["30분 미만", "30분 - 1시간", "1시간 - 2시간", "2시간 초과"];
-  const activityAmountExtent = activityAmountList.indexOf(activtiyList.time);
+  const activityAmountExtent = activityAmountList.indexOf(Object.keys(timeTranslate).find((key) => timeTranslate[key] === activtiyList.time) ?? "");
   //활동강도 상태변수
   let activityStrength = [2, 2, 2, 2, 2];
 

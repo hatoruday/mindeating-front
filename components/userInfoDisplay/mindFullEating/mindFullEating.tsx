@@ -21,6 +21,34 @@ interface EatingList {
 }
 
 export default function MindFullEating({ eatingList }: { eatingList: EatingList }) {
+  const typeTranslate: { [key: string]: string } = {
+    식사류: "meals",
+    간식류: "snacks",
+    음료류: "beverages",
+  };
+  const whenTranslate: { [key: string]: string } = {
+    새벽: "dawn",
+    아침: "morning", // "morning
+    점심: "lunch",
+    저녁: "dinner",
+    밤: "night",
+  };
+  const speedTranslate: { [key: string]: string } = {
+    빠르게: "fast",
+    적당히: "moderate",
+    천천히: "slow",
+  };
+  const amountTranslate: { [key: string]: string } = {
+    "적게 먹었어요": "little",
+    적당했어요: "moderate",
+    "약간 많았어요": "bit much",
+    "아주 많았어요": "a lot",
+  };
+  const satisfactionTranslate: { [key: string]: string } = {
+    불만족: "unsatisfied",
+    적당함: "moderate",
+    만족: "satisfied",
+  };
   const food = eatingList.menu;
   /**
    * 마인드풀이팅 상태관리
@@ -31,8 +59,8 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
   //eatingList.satisfaction의 값에 대응되는 satisfiedString의 인덱스를 구한다.
   const satisfyMapping = ["불만족", "적당함", "만족"];
 
-  const satisfiedExtent = satisfyMapping.indexOf(eatingList.satisfaction);
-  console.log(satisfiedExtent);
+  const satisfiedExtent = satisfyMapping.indexOf(Object.keys(satisfactionTranslate).find((key) => satisfactionTranslate[key] === eatingList.satisfaction) ?? "");
+
   const foodCategory = eatingList.type;
 
   //식사시간대 상태변수
@@ -104,7 +132,12 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
             <div className="flex gap-2 flex-shrink-0 flex-grow-0">
               <div className="flex justify-center content-center items-center px-2 py-1.5 rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">
-                <p className="text-sm font-semibold text-[#2c2c30]">{foodCategory}</p>
+                <p className="text-sm font-semibold text-[#2c2c30]">
+                  {
+                    //key of typeTranslate which corresponds to value of foodCategory
+                    Object.keys(typeTranslate).find((key) => typeTranslate[key] === foodCategory)
+                  }
+                </p>
               </div>
             </div>
           </article>
@@ -115,7 +148,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
             </div>
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
             <div className="flex flex-grow-0 flex-shrink-0 justify-center content-center items-center px-2 py-1.5 rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">
-              <p className="text-sm font-semibold text-[#2c2c30]">{eatingTime}</p>
+              <p className="text-sm font-semibold text-[#2c2c30]">{Object.keys(whenTranslate).find((key) => whenTranslate[key] === eatingTime)}</p>
             </div>
           </article>
           <article className="flex flex-col content-center justify-between px-3 items-center">
@@ -139,7 +172,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
             </div>
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
             <div className="flex flex-shrink-0 flex-grow-0 justify-center content-center items-center px-2 py-1.5 rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">
-              <p className="text-sm font-semibold text-[#2c2c30]">{mealSize}</p>
+              <p className="text-sm font-semibold text-[#2c2c30]">{Object.keys(amountTranslate).find((key) => amountTranslate[key] === mealSize)}</p>
             </div>
           </article>
           <article className="flex justify-between px-3 items-center">
@@ -149,7 +182,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
             </div>
             <div className="w-full mx-4 rounded-md h-[2px] bg-black4"></div>
             <div className="flex flex-shrink-0 flex-grow-0 justify-center content-center items-center px-2 py-1.5 rounded-[40px] bg-[#f5fef5] border border-[#c1f1c1]">
-              <p className="text-sm font-semibold text-[#2c2c30]">{mealVelocity}</p>
+              <p className="text-sm font-semibold text-[#2c2c30]">{Object.keys(speedTranslate).find((key) => speedTranslate[key] === mealVelocity)}</p>
             </div>
           </article>
           <article className="flex justify-between px-3 items-center">
