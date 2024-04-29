@@ -1,15 +1,15 @@
 import ContentsScreenQR from "@/components/contents/contentsScreenQR";
-import CImage5_5_1 from "/contentsImages/5/5-1.png";
-import CImage5_5_2 from "/contentsImages/5/5-2.png";
-import CImage5_5_3 from "/contentsImages/5/5-3.png";
-import CImage5_5_4 from "/contentsImages/5/5-4.png";
-import CImage5_5_5 from "/contentsImages/5/5-5.png";
-import CImage5_5_6 from "/contentsImages/5/5-6.png";
-import CImage5_5_7 from "/contentsImages/5/5-7.png";
-import CImage5_5_8 from "/contentsImages/5/5-8.png";
-import CImage5_5_9 from "/contentsImages/5/5-9.png";
-import CImage5_5_10 from "/contentsImages/5/5-10.png";
-import CImage5_5_11 from "/contentsImages/5/5-11.png";
+import CImage5_5_1 from "@/publiccontentsImages/5/5-1.png";
+import CImage5_5_2 from "@/publiccontentsImages/5/5-2.png";
+import CImage5_5_3 from "@/publiccontentsImages/5/5-3.png";
+import CImage5_5_4 from "@/publiccontentsImages/5/5-4.png";
+import CImage5_5_5 from "@/publiccontentsImages/5/5-5.png";
+import CImage5_5_6 from "@/publiccontentsImages/5/5-6.png";
+import CImage5_5_7 from "@/publiccontentsImages/5/5-7.png";
+import CImage5_5_8 from "@/publiccontentsImages/5/5-8.png";
+import CImage5_5_9 from "@/publiccontentsImages/5/5-9.png";
+import CImage5_5_10 from "@/public/contentsImages/5/5-10.png";
+import CImage5_5_11 from "@/public/contentsImages/5/5-11.png";
 export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
