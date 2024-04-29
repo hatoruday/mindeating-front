@@ -3,8 +3,18 @@ import FilledStick from "@/components/contents/filledStick";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaCircle } from "react-icons/fa";
 import PostSpecificFetch, { FetchResult } from "@/api/postFetch";
+import learn_check from "@/public/eating learning/curriculum/learn_check.svg";
+import currentLevelCircle from "@/public/eating learning/curriculum/currentLevelCircle.svg";
+import locker from "@/public/eating learning/curriculum/locker.svg";
+import learn1 from "@/public/eating learning/curriculum/learn_1.png";
+import learn2 from "@/public/eating learning/curriculum/learn_2.png";
+import learn3 from "@/public/eating learning/curriculum/learn_3_not_shadow.png";
+import learn4 from "@/public/eating learning/curriculum/learn_4.png";
+import learn5 from "@/public/eating learning/curriculum/learn_5.png";
+import learn6 from "@/public/eating learning/curriculum/learn_6.png";
+import learn7 from "@/public/eating learning/curriculum/learn_7.png";
+
 export const revalidate = 0;
 export default async function Contents({ params: { user_id } }: { params: { user_id: string } }) {
   let contentLevel = 0;
@@ -28,43 +38,43 @@ export default async function Contents({ params: { user_id } }: { params: { user
     {
       contentString: "다이어트 실패 원인은 \n의지력이 아닌 뇌에 있다?",
       timeRequiring: "1분",
-      imgSrc: "/eating learning/curriculum/learn_1.png",
+      imgSrc: learn1,
       path: `/contents/${user_id}/learn_1?page=1`,
     },
     {
       contentString: "금지를 금지한다. \n내 몸의 소리에 집중할래!",
       timeRequiring: "4분",
-      imgSrc: "/eating learning/curriculum/learn_2.png",
+      imgSrc: learn2,
       path: `/contents/${user_id}/learn_2?page=1`,
     },
     {
       contentString: "일반식을 먹었다가 \n살이 찌면 어쩌지?",
       timeRequiring: "1분",
-      imgSrc: "/eating learning/curriculum/learn_3_not_shadow.png",
+      imgSrc: learn3,
       path: `/contents/${user_id}/learn_3?page=1`,
     },
     {
       contentString: "음식에 집착하던 \n내가 아니야.",
       timeRequiring: "2분",
-      imgSrc: "/eating learning/curriculum/learn_4.png",
+      imgSrc: learn4,
       path: `/contents/${user_id}/learn_4?page=1`,
     },
     {
       contentString: "점점 체중이 \n감량되고 있어!",
       timeRequiring: "1분",
-      imgSrc: "/eating learning/curriculum/learn_5.png",
+      imgSrc: learn5,
       path: `/contents/${user_id}/learn_5?page=1`,
     },
     {
       contentString: "요요없는 체중감량의 \n비결은 정체기?",
       timeRequiring: "2분",
-      imgSrc: "/eating learning/curriculum/learn_6.png",
+      imgSrc: learn6,
       path: `/contents/${user_id}/learn_6?page=1`,
     },
     {
       contentString: "토끼보다 빨랐던 \n거북이",
       timeRequiring: "1분",
-      imgSrc: "/eating learning/curriculum/learn_7.png",
+      imgSrc: learn7,
       path: `/contents/${user_id}/learn_7?page=1`,
     },
   ];
@@ -80,7 +90,7 @@ export default async function Contents({ params: { user_id } }: { params: { user
           return (
             <React.Fragment key={index}>
               {contentLevel >= index ? (
-                <Link className="col-span-6 row-span-3 w-ful" href={`${contentsBlock.path}`}>
+                <Link className="col-span-6 row-span-3 w-ful" prefetch={true} href={`${contentsBlock.path}`}>
                   <ContentsBox contentsString={contentsBlock.contentString} imgSrc={contentsBlock.imgSrc} timeRequiring={contentsBlock.timeRequiring} />
                 </Link>
               ) : (
@@ -90,18 +100,7 @@ export default async function Contents({ params: { user_id } }: { params: { user
               )}
 
               <div className="flex justify-center">
-                <Image
-                  src={`${
-                    contentLevel > index
-                      ? "/eating learning/curriculum/learn_check.svg"
-                      : contentLevel == index
-                      ? "/eating learning/curriculum/currentLevelCircle.svg"
-                      : "/eating learning/curriculum/locker.svg"
-                  }`}
-                  alt="check"
-                  width={20}
-                  height={20}
-                />
+                <Image src={contentLevel > index ? learn_check : contentLevel == index ? currentLevelCircle : locker} alt="check" width={20} height={20} />
               </div>
               <div className="row-span-2 h-full flex justify-center">{index == contentsBlockList.length - 1 ? <div /> : <FilledStick isFilled={index < contentLevel} />}</div>
             </React.Fragment>

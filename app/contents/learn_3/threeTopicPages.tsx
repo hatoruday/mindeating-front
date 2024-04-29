@@ -1,5 +1,9 @@
 import ContentsScreenQR from "@/components/contents/contentsScreenQR";
-
+import CImage3_3_2 from "@/public/contentsImages/3/3-2.png";
+import CImage3_3_3 from "@/public/contentsImages/3/3-3.png";
+import CImage3_3_4 from "@/public/contentsImages/3/3-4.png";
+import CImage3_3_5 from "@/public/contentsImages/3/3-5.png";
+import CImage3_3_6 from "@/public/contentsImages/3/3-6.png";
 export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
@@ -30,7 +34,7 @@ export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
           만약 현재 체중이 다이어트나 운동으로 인해 자연체중보다 낮은 상태라면 일반식을 먹을 때 자연체중으로 돌아오면서 살이 찔 수 있어.
         </pre>
       }
-      articleImgSrc="/contentsImages/3/3-2.png"
+      articleImgSrc={CImage3_3_2}
       width={239}
       height={239}
     />
@@ -51,7 +55,7 @@ export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
           자연체중은 변하는 것이라, 식욕이 안정화 되어서 식사량을 조절하는 습관이 만들어지면 알아서 자연체중도 줄어들거든.
         </pre>
       }
-      articleImgSrc="/contentsImages/3/3-3.png"
+      articleImgSrc={CImage3_3_3}
       width={203}
       height={203}
     />
@@ -69,7 +73,7 @@ export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
 (식욕이 너무 불안정한 사람이라면 체중계를 버리는 걸 추천할게)
         </pre>
       }
-      articleImgSrc="/contentsImages/3/3-4.png"
+      articleImgSrc={CImage3_3_4}
       width={289}
       height={289}
     />
@@ -90,7 +94,7 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
 
 강박이 높고 식욕이 불안정한 사람이라면 식욕을 안정화시키는 데 시간이 걸리기에 체중감량까지 시간이 걸릴 수 있거든.</pre>
       }
-      articleImgSrc="/contentsImages/3/3-5.png"
+      articleImgSrc={CImage3_3_5}
       width={120}
       height={120}
     />
@@ -109,7 +113,7 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
 
 그러니 조급한 마음을 내려두고 식욕을 빠르게 안정화시키는 쪽으로 내 라이프 스타일을 바꿔보자!
       </pre>}
-      articleImgSrc="/contentsImages/3/3-6.png"
+      articleImgSrc={CImage3_3_6}
       
         
       

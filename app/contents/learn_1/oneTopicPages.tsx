@@ -1,6 +1,11 @@
 // prettier-ignore
 import ContentsScreenQR from "@/components/contents/contentsScreenQR";
-
+import CImage1_1_1 from "@/public/contentsImages/1/1-1.png";
+import CImage1_1_2 from "@/public/contentsImages/1/1-2.png";
+import CImage1_1_3 from "@/public/contentsImages/1/1-3.png";
+import CImage1_1_4 from "@/public/contentsImages/1/1-4.png";
+import CImage1_1_5 from "@/public/contentsImages/1/1-5.png";
+import CImage1_1_6 from "@/public/contentsImages/1/1-6.png";
 const ArticleString = () => {
   return (
     <div className="flex font-gowun flex-col gap-y-10">
@@ -25,7 +30,7 @@ export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
       pageNumber={pageNum}
       headerString="1. 다이어트 실패는 의지력이 아닌 뇌에 있다?"
       articleString={ArticleString()}
-      articleImgSrc="/contentsImages/1/1-1.png"
+      articleImgSrc={CImage1_1_1}
       width={220}
       height={220}
     />
@@ -50,7 +55,7 @@ export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
           
         
       }
-      articleImgSrc="/contentsImages/1/1-2.png"
+      articleImgSrc= {CImage1_1_2}
       width={244}
       height={241}
     />
@@ -72,7 +77,7 @@ export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
 무의식적으로 ‘먹는’ 행위를 떠올리게 되지.
         </pre>
       }
-      articleImgSrc="/contentsImages/1/1-3.png"
+      articleImgSrc= {CImage1_1_3}
     />
   );
 };
@@ -87,7 +92,7 @@ export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
           이때 머릿속은 먹는 생각으로 가득찼는데, 몸은 먹질 못하면 뇌는 결핍을 느끼고 식욕 호르몬을 분비시켜. 식욕이 불안정해지고 폭식의 가능성이 높아지지.
         </pre>
       }
-      articleImgSrc="/contentsImages/1/1-4.png"
+      articleImgSrc= {CImage1_1_4}
     />
   );
 };
@@ -103,7 +108,7 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
           결국 다이어트 실패는 의지력 부족이 아니라
          다이어트 사고방식에 따른 뇌의 불가피한 반응이었던 거야.</pre>
       }
-      articleImgSrc="/contentsImages/1/1-5.png"
+      articleImgSrc= {CImage1_1_5}
       width={252}
       height={252}
     />
@@ -125,7 +130,7 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
           다이어트 사고방식에서 벗어나야 돼.
         </pre>
       }
-      articleImgSrc="/contentsImages/1/1-6.png"
+      articleImgSrc= {CImage1_1_6}
     />
   );
 };

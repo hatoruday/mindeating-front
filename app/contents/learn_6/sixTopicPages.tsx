@@ -1,5 +1,15 @@
 import ContentsScreenQR from "@/components/contents/contentsScreenQR";
-
+import CImage6_6_1 from "@/public/contentsImages/6/6-1.png";
+import CImage6_6_2 from "@/public/contentsImages/6/6-2.png";
+import CImage6_6_3 from "@/public/contentsImages/6/6-3.png";
+import CImage6_6_4 from "@/public/contentsImages/6/6-4.png";
+import CImage6_6_5 from "@/public/contentsImages/6/6-5.png";
+import CImage6_6_6 from "@/public/contentsImages/6/6-6.png";
+import CImage6_6_7 from "@/public/contentsImages/6/6-7.png";
+import CImage6_6_8 from "@/public/contentsImages/6/6-8.png";
+import CImage6_6_9 from "@/public/contentsImages/6/6-9.png";
+import CImage6_6_10 from "@/public/contentsImages/6/6-10.png";
+import CImage6_6_11 from "@/public/contentsImages/6/6-11.png";
 export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
@@ -13,7 +23,7 @@ export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
           하지만 ‘이 개념’을 알면 요요없는 체중감량을 위해서는 인위적인 정체기가 필요하다는 걸 깨닫게 될 거야.
         </pre>
       }
-      articleImgSrc="/contentsImages/6/6-1.png"
+      articleImgSrc={CImage6_6_1}
       width={184}
       height={184}
     />
@@ -35,7 +45,7 @@ export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
           그건 바로 ‘체중설정값’으로, 우리 뇌가 설정한 적정체중 범위나 지점이야.
         </pre>
       }
-      articleImgSrc="/contentsImages/6/6-2.png"
+      articleImgSrc={CImage6_6_2}
     />
   );
 };
@@ -54,7 +64,7 @@ export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
           (어렵다면 이해하지 않아도 괜찮아)
         </pre>
       }
-      articleImgSrc="/contentsImages/6/6-3.png"
+      articleImgSrc={CImage6_6_3}
       width={226}
       height={226}
     />
@@ -77,7 +87,7 @@ export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
           예를 들어볼게.
         </pre>
       }
-      articleImgSrc="/contentsImages/6/6-4.png"
+      articleImgSrc={CImage6_6_4}
       width={185}
       height={185}
     />
@@ -102,7 +112,7 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
           기초대사량을 높여서 원래의 체중설정값으로 체중을 돌려 놓으려 하고
         </pre>
       }
-      articleImgSrc="/contentsImages/6/6-5.png"
+      articleImgSrc={CImage6_6_5}
     />
   );
 };
@@ -124,7 +134,7 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
 기초대사량을 낮춰서 원래의 체중설정값으로 체중을 돌려놓으려 하지.
         </pre>
       }
-      articleImgSrc="/contentsImages/6/6-6.png"
+      articleImgSrc={CImage6_6_6}
     />
   );
 };
@@ -144,7 +154,7 @@ export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
           정답은 바로, 정체기야.
         </pre>
       }
-      articleImgSrc="/contentsImages/6/6-7.png"
+      articleImgSrc={CImage6_6_7}
       width={191}
       height={191}
     />
@@ -168,7 +178,7 @@ export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
           시간을 줄 필요가 있지.
         </pre>
       }
-      articleImgSrc="/contentsImages/6/6-8.png"
+      articleImgSrc={CImage6_6_8}
       width={187}
       height={187}
     />
@@ -180,7 +190,7 @@ export const Nine = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
       topic={topic}
       pageNumber={pageNum}
       headerString="6. 요요없는 체중감량의 비결은 정체기?"
-      articleImgSrc="/contentsImages/6/6-9.png"
+      articleImgSrc={CImage6_6_9}
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
           이것이 바로 인위적인 정체기로, <br />
@@ -199,7 +209,7 @@ export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
       topic={topic}
       pageNumber={pageNum}
       headerString="6. 요요없는 체중감량의 비결은 정체기?"
-      articleImgSrc="/contentsImages/6/6-10.png"
+      articleImgSrc={CImage6_6_10}
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
           이 감량기와 유지기의 적합한 주기와 <br />
@@ -224,7 +234,7 @@ export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) =
       pageNumber={pageNum}
       isLast={true}
       headerString="6. 요요없는 체중감량의 비결은 정체기?"
-      articleImgSrc="/contentsImages/6/6-11.png"
+      articleImgSrc={CImage6_6_11}
       articleHeaderString="중간에 폭식하면 어떡해?"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
