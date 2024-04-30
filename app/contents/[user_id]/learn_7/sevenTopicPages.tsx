@@ -1,5 +1,11 @@
 import ContentsScreen from "@/components/contents/contentsScreenUser";
-
+import CImage1 from "@/public/contentsImages/7/7-1.png";
+import CImage2 from "@/public/contentsImages/7/7-2.png";
+import CImage3 from "@/public/contentsImages/7/7-3.png";
+import CImage4 from "@/public/contentsImages/7/7-4.png";
+import CImage5 from "@/public/contentsImages/7/7-5.png";
+import CImage6 from "@/public/contentsImages/7/7-6.png";
+import CImage7 from "@/public/contentsImages/7/7-7.png";
 export const One = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
@@ -14,7 +20,7 @@ export const One = ({ topic, pageNum, wrapper }: { topic: string; pageNum: strin
           이런 걱정을 하는 이들을 위해 준비했어.
         </pre>
       }
-      articleImgSrc="/contentsImages/7/7-1.png"
+      articleImgSrc={CImage1}
     />
   );
 };
@@ -37,7 +43,7 @@ export const Two = ({ topic, pageNum, wrapper }: { topic: string; pageNum: strin
           <br />왜 토끼가 지고 거북이가 이겼을까?
         </pre>
       }
-      articleImgSrc="/contentsImages/7/7-2.png"
+      articleImgSrc={CImage2}
     />
   );
 };
@@ -62,7 +68,7 @@ export const Three = ({ topic, pageNum, wrapper }: { topic: string; pageNum: str
           거북이의 방식은 지속 가능했지.
         </pre>
       }
-      articleImgSrc="/contentsImages/7/7-3.png"
+      articleImgSrc={CImage3}
       width={226}
       height={226}
     />
@@ -86,7 +92,7 @@ export const Four = ({ topic, pageNum, wrapper }: { topic: string; pageNum: stri
           반대로 거북이처럼 지속가능한 방식으로 일정하게 나아가다 보면, 식욕 고장 없이 한 번에 체중 감량할 수 있어. 장기적으로 봤을 땐 체중감량 기간이 토끼보다 짧지.
         </pre>
       }
-      articleImgSrc="/contentsImages/7/7-4.png"
+      articleImgSrc={CImage4}
       width={139}
       height={139}
     />
@@ -111,7 +117,7 @@ export const Five = ({ topic, pageNum, wrapper }: { topic: string; pageNum: stri
           살이 찌지 않는 평생의 시스템을 만들어가는 것이라고 할 수 있어.
         </pre>
       }
-      articleImgSrc="/contentsImages/7/7-5.png"
+      articleImgSrc={CImage5}
     />
   );
 };
@@ -128,7 +134,7 @@ export const Six = ({ topic, pageNum, wrapper }: { topic: string; pageNum: strin
           어쩌면 위의 단계를 모두 거치는 데에, 다소 시간이 걸릴 수 있어. 탈다이어트 단계에서 오래 머물 수도 있고, 식욕안정화 단계에서 오래 머물 수도 있지.
         </pre>
       }
-      articleImgSrc="/contentsImages/7/7-6.png"
+      articleImgSrc={CImage6}
     />
   );
 };
@@ -141,7 +147,7 @@ export const Seven = ({ topic, pageNum, wrapper }: { topic: string; pageNum: str
       pageNumber={pageNum}
       isLast={true}
       headerString="7. 토끼보다 빨랐던 거북이"
-      articleImgSrc="/contentsImages/7/7-7.png"
+      articleImgSrc={CImage7}
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
           다만 이 프로그램이 이끄는 방향으로 계속 실천하고, 스스로를 꾸준히 다독여준다면 분명 해낼 거야.

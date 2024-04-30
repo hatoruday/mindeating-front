@@ -16,10 +16,10 @@ import learn6 from "@/public/eating learning/curriculum/learn_6.png";
 import learn7 from "@/public/eating learning/curriculum/learn_7.png";
 import useImagePreloader from "@/utility/preloadImage";
 
-const preloadSrcList = ["/contentsImages/1/1-1.png", "/contentsImages/1/1-2.png", "/contentsImages/1/1-3.png", "/contentsImages/1/1-4.png", "/contentsImages/1/1-5.png", "/contentsImages/1/1-6.png"];
+// const preloadSrcList = ["/contentsImages/1/1-1.png", "/contentsImages/1/1-2.png", "/contentsImages/1/1-3.png", "/contentsImages/1/1-4.png", "/contentsImages/1/1-5.png", "/contentsImages/1/1-6.png"];
 
 export default function Contents() {
-  const { imagesPreloaded } = useImagePreloader(preloadSrcList);
+  // const { imagesPreloaded } = useImagePreloader(preloadSrcList);
   let contentLevel = 7;
 
   const contentsBlockList = [

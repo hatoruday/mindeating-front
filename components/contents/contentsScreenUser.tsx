@@ -1,6 +1,6 @@
 import { FetchResult } from "@/api/postFetch";
 import { ReadCompletionHandle } from "@/app/contents/readAction";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -23,7 +23,7 @@ export default function ContentsScreen({
   articleHeaderString?: string;
   articleString?: JSX.Element;
   articleAfterString?: JSX.Element;
-  articleImgSrc?: string;
+  articleImgSrc?: StaticImageData;
   width?: number;
   height?: number;
   greyBlockHeader?: string;
@@ -55,11 +55,20 @@ export default function ContentsScreen({
             <div className="h-full flex flex-col justify-center">
               {width && height ? (
                 <div className="flex justify-center content-center items-center h-full w-full">
-                  <Image src={articleImgSrc} width={width} height={height} alt="aritlcleImage" priority={true} />
+                  <Image placeholder="blur" src={articleImgSrc} width={width} height={height} alt="aritlcleImage" priority={true} />
                 </div>
               ) : (
                 <div className="relative content-center items-center h-full w-full">
-                  <Image src={articleImgSrc} width={0} height={0} sizes="(max-width: 380px) 30vw, (max-width: 768px) 40vw, 20vw" alt="aritlcleImage" className="w-full h-auto" priority={true} />
+                  <Image
+                    placeholder="blur"
+                    src={articleImgSrc}
+                    width={0}
+                    height={0}
+                    sizes="(max-width: 380px) 30vw, (max-width: 768px) 40vw, 20vw"
+                    alt="aritlcleImage"
+                    className="w-full h-auto"
+                    priority={true}
+                  />
                 </div>
               )}
             </div>

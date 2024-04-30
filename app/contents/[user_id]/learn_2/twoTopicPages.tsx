@@ -1,5 +1,18 @@
 import ContentsScreen from "@/components/contents/contentsScreenUser";
-
+import CImage1 from "@/public/contentsImages/2/2-1.png";
+import CImage2 from "@/public/contentsImages/2/2-2.png";
+import CImage3 from "@/public/contentsImages/2/2-3.png";
+import CImage4 from "@/public/contentsImages/2/2-4.png";
+import CImage5 from "@/public/contentsImages/2/2-5.png";
+import CImage6 from "@/public/contentsImages/2/2-6.png";
+import CImage7 from "@/public/contentsImages/2/2-7.png";
+import CImage8 from "@/public/contentsImages/2/2-8.png";
+import CImage9 from "@/public/contentsImages/2/2-9.png";
+import CImage10 from "@/public/contentsImages/2/2-10.png";
+import CImage11 from "@/public/contentsImages/2/2-11.png";
+import CImage12 from "@/public/contentsImages/2/2-12.png";
+import CImage13 from "@/public/contentsImages/2/2-13.png";
+import CImage14 from "@/public/contentsImages/2/2-14.png";
 export const One = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
@@ -17,7 +30,7 @@ export const One = ({ topic, pageNum, wrapper }: { topic: string; pageNum: strin
           이를 도와주는 직관적 식사 & 마인드풀이팅을 알아볼게.
         </pre>
       }
-      articleImgSrc="/contentsImages/2/2-1.png"
+      articleImgSrc={CImage1}
       width={220}
       height={220}
     />
@@ -40,7 +53,7 @@ export const Two = ({ topic, pageNum, wrapper }: { topic: string; pageNum: strin
           어떤 음식을, 몇 시에, 얼만큼 먹을 건지 미리 정하고 제한하는 다이어트와 다르지.
         </pre>
       }
-      articleImgSrc="/contentsImages/2/2-2.png"
+      articleImgSrc={CImage2}
       width={185}
       height={185}
     />
@@ -59,7 +72,7 @@ export const Three = ({ topic, pageNum, wrapper }: { topic: string; pageNum: str
           치킨이 먹고 싶다면 치킨을 먹고, 배고픔이 느껴진다면 밤에 먹어도 괜찮아. 배고프지 않으면 먹지 않아도 괜찮지.
         </pre>
       }
-      articleImgSrc="/contentsImages/2/2-3.png"
+      articleImgSrc={CImage3}
     />
   );
 };
@@ -77,7 +90,7 @@ export const Four = ({ topic, pageNum, wrapper }: { topic: string; pageNum: stri
 여기서 배부름이란, 배가 고프지 않는 상태를 말해. 불편하게 꽉 찼다는 느낌이 아니라 적당하고 편안한 포만감이 느껴질 때를 뜻하지.
         </pre>
       }
-      articleImgSrc="/contentsImages/2/2-4.png"
+      articleImgSrc={CImage4}
     />
   );
 };
@@ -93,7 +106,7 @@ export const Five = ({ topic, pageNum, wrapper }: { topic: string; pageNum: stri
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
           아마 지금은 불안정한 식욕으로 편안한 포만감일 때 멈추기 어려울 거야. 편안한 포만감에서 멈추는 8가지 방법을 알려줄게!</pre>
       }
-      articleImgSrc="/contentsImages/2/2-5.png"
+      articleImgSrc={CImage5}
       
     />
   );
@@ -106,7 +119,7 @@ export const Six = ({ topic, pageNum, wrapper }: { topic: string; pageNum: strin
     wrapper = {wrapper} topic = {topic} pageNumber = {pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
       
-      articleImgSrc="/contentsImages/2/2-6.png"
+      articleImgSrc={CImage6}
       greyBlockHeader="적당한 배고픔 상태에서 식사 시작하기"
       greyBlockContent={<pre className="font-nanum text-[15px] leading-8 font-black1 whitespace-pre-wrap">
         극심한 배고픔일 때 식사를 시작하면 조급한 마음에 급하게 먹게 돼. 식사를 급하게 하면 식사량과 포만감을 인지하기 쉽지 않지.<br/><br/>
@@ -130,7 +143,7 @@ export const Seven = ({ topic, pageNum, wrapper }: { topic: string; pageNum: str
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
-      articleImgSrc="/contentsImages/2/2-7.png"
+      articleImgSrc={CImage7}
       greyBlockHeader="식전, 식후 물 한 잔하기"
       greyBlockContent={
         <pre className="font-nanum text-[15px] leading-8 font-black1 whitespace-pre-wrap">
@@ -157,7 +170,7 @@ export const Eight = ({ topic, pageNum, wrapper }: { topic: string; pageNum: str
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
-      articleImgSrc="/contentsImages/2/2-8.png"
+      articleImgSrc={CImage8}
       greyBlockHeader="빵, 요거트 같은 간식류 보다 `밥`먹기"
       greyBlockContent={
         <pre className="font-nanum text-[15px] leading-8 font-black1 whitespace-pre-wrap">
@@ -196,7 +209,7 @@ export const Nine = ({ topic, pageNum, wrapper }: { topic: string; pageNum: stri
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
-      articleImgSrc="/contentsImages/2/2-9.png"
+      articleImgSrc={CImage9}
       greyBlockHeader="맛과 식감을 느끼며 온전히 식사에 집중하기"
       greyBlockContent={
         <pre className="font-nanum text-[15px] leading-8 font-black1 whitespace-pre-wrap">
@@ -227,7 +240,7 @@ export const Ten = ({ topic, pageNum, wrapper }: { topic: string; pageNum: strin
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
-      articleImgSrc="/contentsImages/2/2-10.png"
+      articleImgSrc={CImage10}
       greyBlockHeader="한 끼에 너무 다양한 메뉴 섭취하지 않기"
       greyBlockContent={
         <pre className="font-nanum text-[15px] leading-8 font-black1 whitespace-pre-wrap">
@@ -253,7 +266,7 @@ export const Eleven = ({ topic, pageNum, wrapper }: { topic: string; pageNum: st
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
-      articleImgSrc="/contentsImages/2/2-11.png"
+      articleImgSrc={CImage11}
       greyBlockHeader="식사 중간에 멈추고 포만감 체크하기"
       greyBlockContent={
         <pre className="font-nanum text-[15px] leading-8 font-black1 whitespace-pre-wrap">
@@ -283,7 +296,7 @@ export const Twelve = ({ topic, pageNum, wrapper }: { topic: string; pageNum: st
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
-      articleImgSrc="/contentsImages/2/2-12.png"
+      articleImgSrc={CImage12}
       greyBlockHeader="“다음에 또 먹을 수 있다” 되뇌이기"
       greyBlockContent={
         <pre className="font-nanum text-[15px] leading-8 font-black1 whitespace-pre-wrap">
@@ -314,7 +327,7 @@ export const Thirteen = ({ topic, pageNum, wrapper }: { topic: string; pageNum: 
       topic={topic}
       pageNumber={pageNum}
       headerString="2. 금지를 금지한다. 내 몸의 소리에 집중할래"
-      articleImgSrc="/contentsImages/2/2-13.png"
+      articleImgSrc={CImage13}
       greyBlockHeader="식사 후 식사 자리 바로 정리하기(+식후루틴)"
       greyBlockContent={
         <pre className="font-nanum text-[15px] leading-8 font-black1 whitespace-pre-wrap">
@@ -353,7 +366,7 @@ export const Fourteen = ({ topic, pageNum, wrapper }: { topic: string; pageNum: 
           그러니 기록일지를 작성하며 습관화해보자!
         </pre>
       }
-      articleImgSrc="/contentsImages/2/2-14.png"
+      articleImgSrc={CImage14}
       width={196}
       height={196}
     />
