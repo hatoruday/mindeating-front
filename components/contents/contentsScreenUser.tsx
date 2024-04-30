@@ -55,7 +55,7 @@ export default function ContentsScreen({
             <div className="h-full flex flex-col justify-center">
               {width && height ? (
                 <div className="flex justify-center content-center items-center h-full w-full">
-                  <Image src={articleImgSrc} width={width} height={height} alt="aritlcleImage" />
+                  <Image src={articleImgSrc} width={width} height={height} alt="aritlcleImage" priority={true} />
                 </div>
               ) : (
                 <div className="relative content-center items-center h-full w-full">

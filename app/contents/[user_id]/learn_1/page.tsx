@@ -7,9 +7,7 @@ import { FetchResult } from "@/api/postFetch";
 import { ReadCompletionHandle } from "../../readAction";
 import useImagePreloader from "@/utility/preloadImage";
 
-const preloadSrcList = ["/contentsImages/1/1-1.png", "/contentsImages/1/1-2.png", "/contentsImages/1/1-3.png", "/contentsImages/1/1-4.png", "/contentsImages/1/1-5.png", "/contentsImages/1/1-6.png"];
 function Learn1() {
-  const { imagesPreloaded } = useImagePreloader(preloadSrcList);
   const readActionWrapper = async (topic: string) => {
     const original_num = topic.split("/")[3].split("_")[1];
     const num_plus = parseInt(original_num);
