@@ -1,3 +1,4 @@
+"use client";
 import ContentsBox from "@/components/contents/contentsBox";
 import FilledStick from "@/components/contents/filledStick";
 import Image from "next/image";
@@ -13,7 +14,12 @@ import learn4 from "@/public/eating learning/curriculum/learn_4.png";
 import learn5 from "@/public/eating learning/curriculum/learn_5.png";
 import learn6 from "@/public/eating learning/curriculum/learn_6.png";
 import learn7 from "@/public/eating learning/curriculum/learn_7.png";
-export default async function Contents() {
+import useImagePreloader from "@/utility/preloadImage";
+
+const preloadSrcList = ["/contentsImages/1/1-1.png", "/contentsImages/1/1-2.png", "/contentsImages/1/1-3.png", "/contentsImages/1/1-4.png", "/contentsImages/1/1-5.png", "/contentsImages/1/1-6.png"];
+
+export default function Contents() {
+  const { imagesPreloaded } = useImagePreloader(preloadSrcList);
   let contentLevel = 7;
 
   const contentsBlockList = [

@@ -8,9 +8,27 @@ import { Suspense } from "react";
 import { FetchResult } from "@/api/postFetch";
 import { ReadCompletionHandle } from "../../readAction";
 import { revalidatePath } from "next/cache";
-
+import useImagePreloader from "@/utility/preloadImage";
 // revalidate at most every hour
+const preloadSrcList = [
+  "/contentsImages/2/2-1.png",
+  "/contentsImages/2/2-2.png",
+  "/contentsImages/2/2-3.png",
+  "/contentsImages/2/2-4.png",
+  "/contentsImages/2/2-5.png",
+  "/contentsImages/2/2-6.png",
+  "/contentsImages/2/2-7.png",
+  "/contentsImages/2/2-8.png",
+  "/contentsImages/2/2-9.png",
+  "/contentsImages/2/2-10.png",
+  "/contentsImages/2/2-11.png",
+  "/contentsImages/2/2-12.png",
+  "/contentsImages/2/2-13.png",
+  "/contentsImages/2/2-14.png",
+];
+
 function Learn2() {
+  const { imagesPreloaded } = useImagePreloader(preloadSrcList);
   const readActionWrapper = async (topic: string) => {
     const original_num = topic.split("/")[3].split("_")[1];
     const num_plus = parseInt(original_num);
