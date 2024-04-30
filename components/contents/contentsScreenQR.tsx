@@ -57,22 +57,13 @@ export default function ContentsScreenQR({
             <div className="h-full flex flex-col justify-center">
               {width && height ? (
                 <div className="flex justify-center content-center items-center h-full w-full">
-                  <Image
-                    blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBAB  bWyZJf74GZgAAAABJRU5ErkJggg=="
-                    src={articleImgSrc}
-                    width={width}
-                    height={height}
-                    alt="aritlcleImage"
-                    placeholder="blur"
-                    priority={true}
-                  />
+                  <Image src={articleImgSrc} width={width} height={height} alt="aritlcleImage" placeholder="blur" priority={true} />
                 </div>
               ) : (
                 <div className="relative content-center items-center h-full w-full">
                   <Image
                     src={articleImgSrc}
                     placeholder="blur"
-                    blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFklEQVR42mN8//HLfwYiAOOoQvoqBAB  bWyZJf74GZgAAAABJRU5ErkJggg=="
                     width={0}
                     height={0}
                     sizes="(max-width: 380px) 30vw, (max-width: 768px) 40vw, 20vw"
