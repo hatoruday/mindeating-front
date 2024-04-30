@@ -27,6 +27,7 @@ export default function RootLayout({
     <html lang="en" className="min-h-full">
       <body className={" h-full flex justify-center bg-[#c1f1c1] min-h-full  "}>
         <div className={`${FontClassNames} min-[500px]:max-w-[420px] w-full min-h-screen h-auto bg-white`}>{children}</div>
+        <SpeedInsights />
       </body>
     </html>
   );
