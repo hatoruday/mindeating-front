@@ -41,7 +41,7 @@ export default function ContentsScreenQR({
       <header className="flex flex-col justify-start">
         <div className="flex items-center content-center absoulte top-0 left-0 justify-start py-5 gap-x-5">
           <Link href={pageNumber == "1" ? "/contents" : `${topic}?page=${parseInt(pageNumber!) - 1}`} className="flex-shrink-0">
-            <Image src="/headerStringChevron.svg" width={8} height={19} alt="leftChevron" />
+            <Image src="/headerStringChevron.svg" width={8} height={19} alt="leftChevron" priority />
           </Link>
 
           <span className="text-[16px] text-black1 font-bold">{headerString}</span>
@@ -55,24 +55,24 @@ export default function ContentsScreenQR({
           {articleString && <div className="my-1">{articleString}</div>}
           {articleImgSrc && (
             <div className="h-full flex flex-col justify-center">
-              {width && height ? (
-                <div className="flex justify-center content-center items-center h-full w-full">
-                  <Image src={articleImgSrc} width={width} height={height} alt="aritlcleImage" placeholder="blur" priority={true} />
-                </div>
-              ) : (
-                <div className="relative content-center items-center h-full w-full">
-                  <Image
-                    src={articleImgSrc}
-                    placeholder="blur"
-                    width={0}
-                    height={0}
-                    sizes="(max-width: 380px) 30vw, (max-width: 768px) 40vw, 20vw"
-                    alt="aritlcleImage"
-                    className="w-full h-auto"
-                    priority={true}
-                  />
-                </div>
-              )}
+              {/* {width && height ? ( */}
+              <div className="flex justify-center content-center items-center h-full w-full">
+                <Image src={articleImgSrc} width={width} height={height} alt="aritlcleImage" placeholder="blur" priority />
+              </div>
+              {/* ) : ( */}
+              {/* <div className="relative content-center items-center h-full w-full">
+                <Image
+                  src={articleImgSrc}
+                  placeholder="blur"
+                  width={0}
+                  height={0}
+                  sizes="(max-width: 380px) 30vw, (max-width: 768px) 40vw, 20vw"
+                  alt="aritlcleImage"
+                  className="w-full h-auto"
+                  priority
+                />
+              </div> */}
+              {/* )} */}
             </div>
           )}
           {articleAfterString && <div className="my-1">{articleAfterString}</div>}

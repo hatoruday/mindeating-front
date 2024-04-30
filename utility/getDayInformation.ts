@@ -65,8 +65,12 @@ function GetWeeksOfCurrentMonth(month: number, year: number, date_info?: any): M
   while (colorStatusCurrent <= lastSunday) {
     // 이전달이거나 다음달의 날짜일경우 -1 플래그를 주고, 오늘날짜일 경우 1플래그를 준다.
     const colorStatusCurrentDayAfter = new Date(colorStatusCurrent.getTime() + 24 * 60 * 60 * 1000);
-
-    const dateString = colorStatusCurrentDayAfter.toISOString().split("T")[0] + "T00:00:00";
+    var ccYear = colorStatusCurrentDayAfter.getFullYear();
+    var ccMonth = colorStatusCurrentDayAfter.getMonth() + 1;
+    var ccDate = colorStatusCurrentDayAfter.getDate();
+    var ccfixedMonth = ccMonth < 10 ? `0${month}` : month;
+    var ccfixedDate = ccDate < 10 ? `0${ccDate}` : ccDate;
+    const dateString = ccYear + "-" + ccfixedMonth + "-" + ccfixedDate;
 
     if (date_info) {
       const value = date_info[dateString];
