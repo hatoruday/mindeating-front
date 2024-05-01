@@ -101,7 +101,7 @@ export default function ActivityPage({ params: { userId } }: IParams) {
   const clientActionWrapper = async (activityData: ActivityParams) => {
     setIsLoading(true);
     const result: FetchResult | undefined = await activityAction(activityData);
-    console.log(result);
+
     if (result?.ok && result?.success) {
       const now = new Date();
       router.push(`/info/${userId}/${now.getFullYear()}-${now.getMonth() + 1 < 10 ? "0" + (now.getMonth() + 1) : "0" + now.getMonth()}-${now.getDate()}`);

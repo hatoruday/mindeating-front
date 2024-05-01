@@ -123,9 +123,9 @@ export default function MyCalendar({
                   });
                 }
               }
+
+              setOffset((prev) => prev - 1);
             });
-            console.log("offset", offset);
-            setOffset((prev) => prev - 1);
           },
         });
         // 아래에서 위로 드래그할 때
@@ -136,23 +136,18 @@ export default function MyCalendar({
           onRest: () => {
             requestAnimationFrame(() => {
               if (getMonthAll(offset + 1)[0].weeks.length == 6) {
-                console.log(offset);
-                console.log("두번쨰");
                 setAnimProps({
                   to: { transform: `translateY(${currentPageY - 48}px)` }, // 최종 위치로 애니메이션
                   immediate: true, // 애니메이션 적용
                 });
               } else {
                 if (currentPageY == -288) {
-                  console.log("아래로 내림, -288에서");
                   setAnimProps({
                     to: { transform: `translateY(${currentPageY - 48}px)` }, // 최종 위치로 애니메이션
                     immediate: true, // 애니메이션 적용
                   });
                   setCurrentPageY(currentPageY + 48);
                 } else {
-                  console.log("4번째.");
-                  console.log("offset", offset);
                   setAnimProps({
                     to: { transform: `translateY(${currentPageY}px)` }, // 최종 위치로 애니메이션
                     immediate: true, // 애니메이션 적용

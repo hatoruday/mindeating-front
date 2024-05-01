@@ -26,7 +26,7 @@ export default async function Contents({ params: { user_id } }: { params: { user
 
   try {
     const result: FetchResult = await PostSpecificFetch(JSONdata, "contents/num");
-    console.log(result);
+
     // revalidatePath(`/login/${user_id}`);
     contentLevel = result.result.num - 1;
   } catch (e) {

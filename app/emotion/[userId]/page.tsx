@@ -56,7 +56,7 @@ export default function EmotionPage({ params: { userId } }: IParams) {
   const clientActionWrapper = async (emotionData: EmotionParams) => {
     setIsLoading(true);
     const result: FetchResult | undefined = await emotionAction(emotionData);
-    console.log(result);
+
     if (result?.ok && result?.success) {
       // router.push("/info/");
 

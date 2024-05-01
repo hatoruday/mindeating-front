@@ -16,8 +16,6 @@ function Learn1() {
     const result: FetchResult | undefined = await ReadCompletionHandle({ user_id, num });
     if (result?.ok && result?.success) {
       // window.location.href = "kakaotalk://inappbrowser/close";
-      // alert("로그인 성공");
-      // console.log(result?.result.name);
     } else if (result?.ok) {
       // alert("로그인 실패. client error success:" + result?.success + " name: " + result?.result.name);
       alert("서버 연결 실패. 결제 번호가 맞는지 다시 확인해주세요.");

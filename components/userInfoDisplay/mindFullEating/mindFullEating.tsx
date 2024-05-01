@@ -112,7 +112,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
 
   //렌더링 상태변수 관리
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  console.log(beforeEatingSatiety, afterEatingSatiety);
+
   return (
     <div className="flex flex-col ">
       <header className="flex w-full py-3 justify-between">

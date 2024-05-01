@@ -56,7 +56,7 @@ export default function Sleep({ params: { userId } }: IParams) {
   const clientActionWrapper = async (sleepData: SleepParams) => {
     setIsLoading(true);
     const result: FetchResult | undefined = await sleepAction(sleepData);
-    console.log(result);
+
     if (result?.ok && result?.success) {
       const now = new Date();
       router.push(`/info/${userId}/${now.getFullYear()}-${now.getMonth() + 1 < 10 ? "0" + (now.getMonth() + 1) : "0" + now.getMonth()}-${now.getDate()}`);

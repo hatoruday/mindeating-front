@@ -64,10 +64,10 @@ function GetWeeksOfCurrentMonth(month: number, year: number, date_info?: any): M
 
   while (colorStatusCurrent <= lastSunday) {
     // 이전달이거나 다음달의 날짜일경우 -1 플래그를 주고, 오늘날짜일 경우 1플래그를 준다.
-    const colorStatusCurrentDayAfter = new Date(colorStatusCurrent.getTime());
-    var ccYear = colorStatusCurrentDayAfter.getFullYear();
-    var ccMonth = colorStatusCurrentDayAfter.getMonth() + 1;
-    var ccDate = colorStatusCurrentDayAfter.getDate();
+
+    var ccYear = colorStatusCurrent.getFullYear();
+    var ccMonth = colorStatusCurrent.getMonth() + 1;
+    var ccDate = colorStatusCurrent.getDate();
     var ccfixedMonth = ccMonth < 10 ? `0${month}` : month;
     var ccfixedDate = ccDate < 10 ? `0${ccDate}` : ccDate;
     const dateString = ccYear + "-" + ccfixedMonth + "-" + ccfixedDate;
@@ -119,15 +119,19 @@ function GetWeeksOfCurrentMonth(month: number, year: number, date_info?: any): M
 
 type MonthAll = [MonthData, MonthData, MonthData];
 export default function getMonthAll(offset: number, date_info?: any): MonthAll {
-  // console.log("getMonth호출됨.", offset);
-
   let today = new Date();
 
   // console.log("현재 달", today.getMonth() + 1, today.getFullYear());
+  // if (offset < 0) {
+  //   today = new Date(today.getTime() - Math.abs(offset) * 31 * 24 * 60 * 60 * 1000);
+  // } else if (offset > 0) {
+  //   today = new Date(today.getTime() + Math.abs(offset) * 31 * 24 * 60 * 60 * 1000);
+  // }
+
   if (offset < 0) {
-    today = new Date(today.getTime() - Math.abs(offset) * 31 * 24 * 60 * 60 * 1000);
+    today = new Date(today.getFullYear(), today.getMonth() - Math.abs(offset), 1);
   } else if (offset > 0) {
-    today = new Date(today.getTime() + Math.abs(offset) * 31 * 24 * 60 * 60 * 1000);
+    today = new Date(today.getFullYear(), today.getMonth() + Math.abs(offset), 1);
   }
 
   // console.log("새롭게 바뀐 달", today.getMonth() + 1, today.getFullYear());
