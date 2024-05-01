@@ -130,7 +130,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
     if (result?.ok && result?.success) {
       // alert("성공");
       const now = new Date();
-      router.push(`/info/${userId}/${now.getFullYear()}-${now.getMonth() + 1 < 10 ? "0" + (now.getMonth() + 1) : "0" + now.getMonth()}-${now.getDate()}`);
+      router.push(`/info/${userId}/${now.getFullYear()}-${now.getMonth() + 1 < 10 ? "0" + (now.getMonth() + 1) : "0" + now.getMonth()}-${now.getDate() < 10 ? "0" + now.getDate() : now.getDate()}`);
       // console.log(result?.result.name);
       // window.location.href = "kakaotalk://inappbrowser/close";
       setIsLoading(false);
