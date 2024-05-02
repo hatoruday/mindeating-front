@@ -33,4 +33,4 @@ const nanum = Nanum_Gothic({
 });
 
 // 폰트가 추가되면 여기에 ,(콤마)로 구분하여 추가함 - 외부에서 FontClassNames를 불러와 적용함
-export const FontClassNames = sumClass(noto_sans_kr.className, gowun.variable, nanum.variable);
+export const FontClassNames = sumClass(noto_sans_kr.className, noto_sans_kr.variable, gowun.variable, nanum.variable);

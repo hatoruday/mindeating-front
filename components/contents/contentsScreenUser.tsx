@@ -42,6 +42,7 @@ export default function ContentsScreen({
   const [enablePopUp, setEnablePopUp] = useState<boolean>(false);
   const [enableCompletionPopUp, setEnableCompletionPopUp] = useState<boolean>(false);
   const completionHandle = () => {
+    wrapper(topic);
     window.location.href = "kakaotalk://inappbrowser/close";
   };
   const fetchSubmit = async () => {
