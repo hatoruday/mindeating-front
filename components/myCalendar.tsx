@@ -47,7 +47,6 @@ export default function MyCalendar({
 
   //애니메이션 상태 관리
   let hasSixWeeks = false;
-  console.log("userData", userData);
 
   const [isDragging, setIsDragging] = useState(false);
   const [startY, setStartY] = useState<number>(0);

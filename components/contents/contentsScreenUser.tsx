@@ -1,8 +1,13 @@
+"use client";
+
 import { FetchResult } from "@/api/postFetch";
 import { ReadCompletionHandle } from "@/app/contents/readAction";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import ContentPopUpScreen from "./contentPopupScreen";
+import ContentsCompletionPopup from "./contentCompletionPopup";
 
 export default function ContentsScreen({
   headerString,
@@ -33,6 +38,16 @@ export default function ContentsScreen({
   isLast?: boolean;
   wrapper: (topic: string) => Promise<void>;
 }) {
+  const router = useRouter();
+  const [enablePopUp, setEnablePopUp] = useState<boolean>(false);
+  const [enableCompletionPopUp, setEnableCompletionPopUp] = useState<boolean>(false);
+  const completionHandle = () => {
+    window.location.href = "kakaotalk://inappbrowser/close";
+  };
+  const fetchSubmit = async () => {
+    wrapper(topic);
+    router.push(`/contents/${topic.split("/")[2]}`);
+  };
   return (
     <div className="flex w-full flex-col relative h-screen justify-between content-center">
       <header className="flex flex-col justify-start">
@@ -48,6 +63,24 @@ export default function ContentsScreen({
       </header>
 
       <main className="flex flex-col justify-start overflow-y-auto h-full px-7">
+        {enablePopUp && (
+          <ContentPopUpScreen
+            fetchSubmit={fetchSubmit}
+            setOpen={() => {
+              setEnablePopUp(!enablePopUp);
+            }}
+            isOpen={enablePopUp}
+          />
+        )}
+        {enableCompletionPopUp && (
+          <ContentsCompletionPopup
+            fetchSubmit={completionHandle}
+            setOpen={() => {
+              setEnableCompletionPopUp(!enableCompletionPopUp);
+            }}
+            isOpen={enableCompletionPopUp}
+          />
+        )}
         <div className="flex flex-col h-full justify-start">
           <span className="flex-shrink-0 font-bold text-[20px]">{articleHeaderString}</span>
           {articleString ? <div className="my-5 mb-10">{articleString}</div> : <div className="py-5" />}
@@ -89,13 +122,26 @@ export default function ContentsScreen({
             <span className="font-nanum text-white text-[16px]">다음</span>
           </Link>
         ) : (
-          <Link
-            href={`/contents/${topic.split("/")[2]}`}
-            onClick={() => wrapper(topic)}
+          <button
+            onClick={() => {
+              if (topic.split("/")[3] == "learn_7") {
+                setEnableCompletionPopUp(true);
+              } else {
+                console.log("topic", topic.split("/")[3]);
+                if (enablePopUp) return;
+                setEnablePopUp(true);
+                //2초간 기다린다.
+
+                setTimeout(() => {
+                  setEnablePopUp(false);
+                  fetchSubmit();
+                }, 1000);
+              }
+            }}
             className="h-[60px] flex-shrink-0 items-center rounded-[14px] w-full flex justify-center content-center bg-black2"
           >
             <span className="font-nanum text-white text-[16px]">완료</span>
-          </Link>
+          </button>
         )}
       </div>
     </div>
