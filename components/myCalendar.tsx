@@ -14,6 +14,8 @@ import MyMonthList from "./myMonth";
 import getMonthAll from "@/utility/getDayInformation";
 
 export default function MyCalendar({
+  offset,
+  setOffset,
   loadNew,
   isFadeOut,
   setIsFadeOut,
@@ -22,6 +24,8 @@ export default function MyCalendar({
   userData,
   specificDay,
 }: {
+  offset: number;
+  setOffset: any;
   loadNew: any;
   isFadeOut: boolean;
   setIsFadeOut: any;
@@ -44,7 +48,7 @@ export default function MyCalendar({
   //애니메이션 상태 관리
   let hasSixWeeks = false;
   console.log("userData", userData);
-  const [offset, setOffset] = useState<number>(0);
+
   const [isDragging, setIsDragging] = useState(false);
   const [startY, setStartY] = useState<number>(0);
   const hasSixWeek = getMonthAll(offset - 1)[0].weeks.length == 6;
@@ -125,7 +129,7 @@ export default function MyCalendar({
                 }
               }
 
-              setOffset((prev) => prev - 1);
+              setOffset((prev: number) => prev - 1);
             });
           },
         });
@@ -155,7 +159,7 @@ export default function MyCalendar({
                   });
                 }
               }
-              setOffset((prev) => prev + 1);
+              setOffset((prev: number) => prev + 1);
             });
           },
         });
