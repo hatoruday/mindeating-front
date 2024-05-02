@@ -1,3 +1,5 @@
+import { FontClassNames } from "@/app/fonts";
+
 export default function contentsLayout({
   children,
 }: Readonly<{
@@ -5,7 +7,7 @@ export default function contentsLayout({
 }>) {
   return (
     <>
-      <main className="px-3">{children}</main>
+      <main className={`${FontClassNames} font-noto px-3`}>{children}</main>
     </>
   );
 }
