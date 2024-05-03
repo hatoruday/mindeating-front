@@ -25,7 +25,7 @@ export default function UserInfoDisplay({ userId, selectDate, infoData }: { user
       ) : (
         <div className="overflow-scroll py-10 gap-y-5">
           <Routine userId={userId} routineList={infoData.routines} />
-          {infoData?.day_data?.eating ? (
+          {infoData?.day_data?.eating.length != 0 ? (
             <>
               <header className="flex w-full justify-between">
                 <div className="flex gap-2 content-center items-center">
