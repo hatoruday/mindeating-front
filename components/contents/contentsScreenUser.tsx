@@ -28,7 +28,7 @@ export default function ContentsScreen({
   articleHeaderString?: string;
   articleString?: JSX.Element;
   articleAfterString?: JSX.Element;
-  articleImgSrc?: StaticImageData;
+  articleImgSrc?: StaticImageData | string;
   width?: number;
   height?: number;
   greyBlockHeader?: string;
@@ -89,20 +89,11 @@ export default function ContentsScreen({
             <div className="h-full flex flex-col justify-center">
               {width && height ? (
                 <div className="flex justify-center content-center items-center h-full w-full">
-                  <Image placeholder="blur" src={articleImgSrc} width={width} height={height} alt="aritlcleImage" priority={true} />
+                  <Image src={articleImgSrc} width={width} height={height} alt="aritlcleImage" priority={true} />
                 </div>
               ) : (
                 <div className="relative content-center items-center h-full w-full">
-                  <Image
-                    placeholder="blur"
-                    src={articleImgSrc}
-                    width={0}
-                    height={0}
-                    sizes="(max-width: 380px) 30vw, (max-width: 768px) 40vw, 20vw"
-                    alt="aritlcleImage"
-                    className="w-full h-auto"
-                    priority={true}
-                  />
+                  <Image src={articleImgSrc} width={0} height={0} sizes="(max-width: 380px) 30vw, (max-width: 768px) 40vw, 20vw" alt="aritlcleImage" className="w-full h-auto" priority={true} />
                 </div>
               )}
             </div>

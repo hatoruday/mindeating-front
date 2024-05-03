@@ -7,7 +7,10 @@ import { FetchResult } from "@/api/postFetch";
 import { ReadCompletionHandle } from "../../readAction";
 import useImagePreloader from "@/utility/preloadImage";
 
+const preloadSrcList = ["/contentsImages/1/1-1.png", "/contentsImages/1/1-2.png", "/contentsImages/1/1-3.png", "/contentsImages/1/1-4.png", "/contentsImages/1/1-5.png", "/contentsImages/1/1-6.png"];
+
 function Learn1() {
+  const { imagesPreloaded, preloadedImageUrls } = useImagePreloader(preloadSrcList);
   const readActionWrapper = async (topic: string) => {
     const original_num = topic.split("/")[3].split("_")[1];
     const num_plus = parseInt(original_num);
@@ -32,12 +35,12 @@ function Learn1() {
 
   return (
     <div className="flex flex-grow h-full flex-col">
-      {pageNum === "1" && <One wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "2" && <Two wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "3" && <Three wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "4" && <Four wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "5" && <Five wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "6" && <Six wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "1" && <One preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "2" && <Two preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "3" && <Three preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "4" && <Four preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "5" && <Five preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "6" && <Six preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
     </div>
   );
 }

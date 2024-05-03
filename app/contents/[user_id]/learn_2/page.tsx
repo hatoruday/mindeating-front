@@ -28,7 +28,7 @@ const preloadSrcList = [
 ];
 
 function Learn2() {
-  const { imagesPreloaded } = useImagePreloader(preloadSrcList);
+  const { imagesPreloaded, preloadedImageUrls } = useImagePreloader(preloadSrcList);
   const readActionWrapper = async (topic: string) => {
     const original_num = topic.split("/")[3].split("_")[1];
     const num_plus = parseInt(original_num);
@@ -54,20 +54,20 @@ function Learn2() {
   const pageNum = query.get("page");
   return (
     <div className="flex flex-grow h-full flex-col">
-      {pageNum === "1" && <One wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "2" && <Two wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "3" && <Three wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "4" && <Four wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "5" && <Five wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "6" && <Six wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "7" && <Seven wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "8" && <Eight wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "9" && <Nine wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "10" && <Ten wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "11" && <Eleven wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "12" && <Twelve wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "13" && <Thirteen wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "14" && <Fourteen wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "1" && <One preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "2" && <Two preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "3" && <Three preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "4" && <Four preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "5" && <Five preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "6" && <Six preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "7" && <Seven preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "8" && <Eight preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "9" && <Nine preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "10" && <Ten preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "11" && <Eleven preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "12" && <Twelve preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "13" && <Thirteen preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "14" && <Fourteen preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
     </div>
   );
 }
