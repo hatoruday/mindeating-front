@@ -1,16 +1,6 @@
 import ContentsScreenQR from "@/components/contents/contentsScreenQR";
-import CImage5_5_1 from "@/public/contentsImages/5/5-1.png";
-import CImage5_5_2 from "@/public/contentsImages/5/5-2.png";
-import CImage5_5_3 from "@/public/contentsImages/5/5-3.png";
-import CImage5_5_4 from "@/public/contentsImages/5/5-4.png";
-import CImage5_5_5 from "@/public/contentsImages/5/5-5.png";
-import CImage5_5_6 from "@/public/contentsImages/5/5-6.png";
-import CImage5_5_7 from "@/public/contentsImages/5/5-7.png";
-import CImage5_5_8 from "@/public/contentsImages/5/5-8.png";
-import CImage5_5_9 from "@/public/contentsImages/5/5-9.png";
-import CImage5_5_10 from "@/public/contentsImages/5/5-10.png";
-import CImage5_5_11 from "@/public/contentsImages/5/5-11.png";
-export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+
+export const One = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
@@ -27,14 +17,14 @@ export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
           이렇게 입맛이 리셋되고 식사량이 조절되기 시작하는 순간은, 체중을 감량하기 적합한 시기라고 할 수 있어.
         </pre>
       }
-      articleImgSrc={CImage5_5_1}
+      articleImgSrc={preloadedImageURL[0]}
       width={211}
       height={211}
     />
   );
 };
 
-export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Two = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
@@ -54,12 +44,12 @@ export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
           비결은 바로, 근육세포와 인슐린에 있어.
         </pre>
       }
-      articleImgSrc={CImage5_5_2}
+      articleImgSrc={preloadedImageURL[1]}
     />
   );
 };
 
-export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Three = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
@@ -75,11 +65,11 @@ export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
           이때 살이 안 찌는 경우는 높은 기초대사량으로 가만히만 있어도 에너지가 소모되기 때문이야.
         </pre>
       }
-      articleImgSrc={CImage5_5_3}
+      articleImgSrc={preloadedImageURL[2]}
     />
   );
 };
-export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Four = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
@@ -93,14 +83,14 @@ export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
           어떻게 높일 수 있을까?
         </pre>
       }
-      articleImgSrc={CImage5_5_4}
+      articleImgSrc={preloadedImageURL[3]}
       width={185}
       height={185}
     />
   );
 };
 
-export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Five = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
@@ -114,14 +104,14 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
           근육세포에 있는 단백질은, 과잉 섭취된 에너지가 지방으로 바뀌기 전에 열에너지로 쉽게 전환해서 소모시키기 때문이지.
         </pre>
       }
-      articleImgSrc={CImage5_5_5}
+      articleImgSrc={preloadedImageURL[4]}
       width={186}
       height={186}
     />
   );
 };
 
-export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Six = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
     <ContentsScreenQR topic = {topic} pageNumber = {pageNum}
@@ -132,7 +122,7 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
 다만 주의사항이 있어.<br/>
 이미 근력 운동을 하고 있는데 식사량 조절이 안되는 상황이라면, 운동 강박이 식욕 증가에 영향을 미치고 있을 수 있어. 그래서 이때는 운동을 아예 쉬고 일상 활동을 늘려주면서 온전히 식사량을 줄이는데만 집중하는 게 좋아.
       </pre>}
-      articleImgSrc={CImage5_5_6}
+      articleImgSrc={preloadedImageURL[5]}
       width={141}
       height={141}
         
@@ -140,7 +130,7 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
     />
   );
 };
-export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Seven = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
@@ -158,14 +148,14 @@ export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
           그러나 당이 높은 음식을 자주 먹게 되면 인슐린은 고장이 나기 시작해.
         </pre>
       }
-      articleImgSrc={CImage5_5_7}
+      articleImgSrc={preloadedImageURL[6]}
       width={158}
       height={158}
     />
   );
 };
 
-export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Eight = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
@@ -179,19 +169,19 @@ export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
           특히 인슐린 저항성은 그 자체로 식욕을 높이기에 당폭식을 야기할 수 있어.
         </pre>
       }
-      articleImgSrc={CImage5_5_8}
+      articleImgSrc={preloadedImageURL[7]}
       width={194}
       height={194}
     />
   );
 };
-export const Nine = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Nine = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="5. 점점 체중이 감량되고 있어"
-      articleImgSrc={CImage5_5_9}
+      articleImgSrc={preloadedImageURL[8]}
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
           따라서, 체중 & 식욕 증가를 막기 위해서는 설탕, 밀, 옥수수, 과당 등이 들어간 인슐린 농도가 높은 음식들을 자연식품으로 대체해서 먹는 것을 습관화해야 해.
@@ -205,13 +195,13 @@ export const Nine = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
   );
 };
 
-export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Ten = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="5. 점점 체중이 감량되고 있어"
-      articleImgSrc={CImage5_5_10}
+      articleImgSrc={preloadedImageURL[9]}
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
           식욕이 안정화되어 먹고 싶은 음식이 딱히 없다면, 자연식으로 식사하는 비중을 늘리고 <br />
@@ -223,14 +213,14 @@ export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   );
 };
 
-export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Eleven = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       isLast={true}
       topic={topic}
       pageNumber={pageNum}
       headerString="5. 점점 체중이 감량되고 있어"
-      articleImgSrc={CImage5_5_11}
+      articleImgSrc={preloadedImageURL[10]}
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
           정리하면, 음식에 대한 욕구를 통제하지 않아도 알아서 살이 빠지는 시스템을 만들기 위해선 근력운동으로 기초대사량을 높이고 식욕을 높이지 않는 자연식품을 섭취하는 비중을 늘려야 돼.

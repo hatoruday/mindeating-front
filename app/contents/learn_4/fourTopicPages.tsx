@@ -1,17 +1,6 @@
 import ContentsScreenQR from "@/components/contents/contentsScreenQR";
-import CImage4_4_1 from "@/public/contentsImages/4/4-1.png";
-import CImage4_4_2 from "@/public/contentsImages/4/4-2.png";
-import CImage4_4_3 from "@/public/contentsImages/4/4-3.png";
-import CImage4_4_4 from "@/public/contentsImages/4/4-4.png";
-import CImage4_4_5 from "@/public/contentsImages/4/4-5.png";
-import CImage4_4_6 from "@/public/contentsImages/4/4-6.png";
-import CImage4_4_7 from "@/public/contentsImages/4/4-7.png";
-import CImage4_4_8 from "@/public/contentsImages/4/4-8.png";
-import CImage4_4_9 from "@/public/contentsImages/4/4-9.png";
-import CImage4_4_10 from "@/public/contentsImages/4/4-10.png";
-import CImage4_4_11 from "@/public/contentsImages/4/4-11.png";
-import CImage4_4_12 from "@/public/contentsImages/4/4-12.png";
-export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+
+export const One = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
@@ -25,12 +14,12 @@ export const One = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
           바로 렙틴, 코르티솔, 옥시토신이야.
         </pre>
       }
-      articleImgSrc={CImage4_4_1}
+      articleImgSrc={preloadedImageURL[0]}
     />
   );
 };
 
-export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Two = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
@@ -45,14 +34,14 @@ export const Two = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
           렙틴을 분비시키려면 어떻게 해야 할까?
         </pre>
       }
-      articleImgSrc={CImage4_4_2}
+      articleImgSrc={preloadedImageURL[1]}
       width={165}
       height={165}
     />
   );
 };
 
-export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Three = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
@@ -67,13 +56,13 @@ export const Three = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
           특히나 몽롱한 상태에서의 식사는 식사량을 잘 인지하지 못하게 만들기에 무의식적으로 식사량이 늘어나. 따라서 식욕을 감소시키기 위해서는 6-7시간 이상의 수면이 필요해.
         </pre>
       }
-      articleImgSrc={CImage4_4_3}
+      articleImgSrc={preloadedImageURL[2]}
       width={182}
       height={182}
     />
   );
 };
-export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Four = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
@@ -87,12 +76,12 @@ export const Four = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
       }
       width={254}
       height={293}
-      articleImgSrc={CImage4_4_4}
+      articleImgSrc={preloadedImageURL[3]}
     />
   );
 };
 
-export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Five = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
@@ -107,14 +96,14 @@ export const Five = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
           어떻게 하면 코르티솔의 분비를 막을 수 있을까?
         </pre>
       }
-      articleImgSrc={CImage4_4_5}
+      articleImgSrc={preloadedImageURL[4]}
       width={162}
       height={162}
     />
   );
 };
 
-export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Six = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   // prettier-ignore
   return (
     <ContentsScreenQR topic = {topic} pageNumber = {pageNum}
@@ -126,7 +115,7 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
 
 반대로 아예 몸을 움직이지 않는 경우도 있어. 이런 경우에는 스트레스가 해소되지 못하고 몸에 누적되기 때문에 이 역시 식욕이 증가해.
       </pre>}
-      articleImgSrc={CImage4_4_6}
+      articleImgSrc={preloadedImageURL[5]}
       width={167}
       height={167}
         
@@ -134,7 +123,7 @@ export const Six = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
     />
   );
 };
-export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Seven = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
@@ -149,14 +138,14 @@ export const Seven = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
           운동루틴을 찾아보자!
         </pre>
       }
-      articleImgSrc={CImage4_4_7}
+      articleImgSrc={preloadedImageURL[6]}
       width={149}
       height={149}
     />
   );
 };
 
-export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Eight = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
@@ -173,19 +162,19 @@ export const Eight = ({ topic, pageNum }: { topic: string; pageNum: string }) =>
           따라서 항상 주변 환경을 정돈해야 폭식의 위험으로부터 멀어질 수 있어.
         </pre>
       }
-      articleImgSrc={CImage4_4_8}
+      articleImgSrc={preloadedImageURL[7]}
       width={151}
       height={151}
     />
   );
 };
-export const Nine = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Nine = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
-      articleImgSrc={CImage4_4_9}
+      articleImgSrc={preloadedImageURL[8]}
       articleHeaderString="행복한 호르몬, 옥시토신"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -203,13 +192,13 @@ export const Nine = ({ topic, pageNum }: { topic: string; pageNum: string }) => 
   );
 };
 
-export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Ten = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
-      articleImgSrc={CImage4_4_10}
+      articleImgSrc={preloadedImageURL[9]}
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
           우리가 사랑을 할 때 분비되는 옥시토신은 식욕을 유발하는 ‘스트레스’와 ‘불안’을 사라지게 하고 심리적 허기를 채워줘.
@@ -222,13 +211,13 @@ export const Ten = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
   );
 };
 
-export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Eleven = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
-      articleImgSrc={CImage4_4_11}
+      articleImgSrc={preloadedImageURL[10]}
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
           강아지도 좋고 취미생활, 업무도 좋아. 내가 진심으로 사랑하는 것들을 찾아가다보면 식욕을 감소시킬 수 있을거야.
@@ -242,14 +231,14 @@ export const Eleven = ({ topic, pageNum }: { topic: string; pageNum: string }) =
     />
   );
 };
-export const Twelve = ({ topic, pageNum }: { topic: string; pageNum: string }) => {
+export const Twelve = ({ topic, pageNum, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string }) => {
   return (
     <ContentsScreenQR
       isLast={true}
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
-      articleImgSrc={CImage4_4_12}
+      articleImgSrc={preloadedImageURL[11]}
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
           정리하면, 식욕안정화의 속도를 높이기 위해서는 충분한 잠과 적당한 운동, 그리고 내가 사랑하는 것들로 내 일상을 채워야 해.
