@@ -7,8 +7,18 @@ import { Five, Four, One, Seven, Six, Three, Two } from "./sevenTopicPages";
 import { Suspense } from "react";
 import { ReadCompletionHandle } from "../../readAction";
 import { FetchResult } from "@/api/postFetch";
-
+import useImagePreloader from "@/utility/preloadImage";
+const preloadSrcList = [
+  "/contentsImages/7/7-1.png",
+  "/contentsImages/7/7-2.png",
+  "/contentsImages/7/7-3.png",
+  "/contentsImages/7/7-4.png",
+  "/contentsImages/7/7-5.png",
+  "/contentsImages/7/7-6.png",
+  "/contentsImages/7/7-7.png",
+];
 function Learn7() {
+  const { imagesPreloaded, preloadedImageUrls } = useImagePreloader(preloadSrcList);
   const readActionWrapper = async (topic: string) => {
     const original_num = topic.split("/")[3].split("_")[1];
     const num_plus = parseInt(original_num);
@@ -34,13 +44,13 @@ function Learn7() {
   const pageNum = query.get("page");
   return (
     <div className="flex flex-grow h-full flex-col ">
-      {pageNum === "1" && <One wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "2" && <Two wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "3" && <Three wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "4" && <Four wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "5" && <Five wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "6" && <Six wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
-      {pageNum === "7" && <Seven wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "1" && <One preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "2" && <Two preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "3" && <Three preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "4" && <Four preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "5" && <Five preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "6" && <Six preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
+      {pageNum === "7" && <Seven preloadedImageURL={preloadedImageUrls} wrapper={readActionWrapper} topic={pathname} pageNum={pageNum} />}
     </div>
   );
 }

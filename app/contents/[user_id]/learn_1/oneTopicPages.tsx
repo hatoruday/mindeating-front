@@ -1,12 +1,7 @@
 // prettier-ignore
 
 import ContentsScreen from "@/components/contents/contentsScreenUser";
-import CImage1 from "@/public/contentsImages/1/1-1.png";
-import CImage2 from "@/public/contentsImages/1/1-2.png";
-import CImage3 from "@/public/contentsImages/1/1-3.png";
-import CImage4 from "@/public/contentsImages/1/1-4.png";
-import CImage5 from "@/public/contentsImages/1/1-5.png";
-import CImage6 from "@/public/contentsImages/1/1-6.png";
+
 const ArticleString = () => {
   return (
     <div className="flex font-gowun flex-col gap-y-10">

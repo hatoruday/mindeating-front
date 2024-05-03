@@ -1,17 +1,6 @@
 import ContentsScreen from "@/components/contents/contentsScreenUser";
-import CImage1 from "@/public/contentsImages/4/4-1.png";
-import CImage2 from "@/public/contentsImages/4/4-2.png";
-import CImage3 from "@/public/contentsImages/4/4-3.png";
-import CImage4 from "@/public/contentsImages/4/4-4.png";
-import CImage5 from "@/public/contentsImages/4/4-5.png";
-import CImage6 from "@/public/contentsImages/4/4-6.png";
-import CImage7 from "@/public/contentsImages/4/4-7.png";
-import CImage8 from "@/public/contentsImages/4/4-8.png";
-import CImage9 from "@/public/contentsImages/4/4-9.png";
-import CImage10 from "@/public/contentsImages/4/4-10.png";
-import CImage11 from "@/public/contentsImages/4/4-11.png";
-import CImage12 from "@/public/contentsImages/4/4-12.png";
-export const One = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
+
+export const One = ({ topic, pageNum, wrapper, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
       wrapper={wrapper}
@@ -26,12 +15,12 @@ export const One = ({ topic, pageNum, wrapper }: { topic: string; pageNum: strin
           바로 렙틴, 코르티솔, 옥시토신이야.
         </pre>
       }
-      articleImgSrc={CImage1}
+      articleImgSrc={preloadedImageURL[0]}
     />
   );
 };
 
-export const Two = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
+export const Two = ({ topic, pageNum, wrapper, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
       wrapper={wrapper}
@@ -47,14 +36,14 @@ export const Two = ({ topic, pageNum, wrapper }: { topic: string; pageNum: strin
           렙틴을 분비시키려면 어떻게 해야 할까?
         </pre>
       }
-      articleImgSrc={CImage2}
+      articleImgSrc={preloadedImageURL[1]}
       width={165}
       height={165}
     />
   );
 };
 
-export const Three = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
+export const Three = ({ topic, pageNum, wrapper, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
       wrapper={wrapper}
@@ -70,13 +59,13 @@ export const Three = ({ topic, pageNum, wrapper }: { topic: string; pageNum: str
           특히나 몽롱한 상태에서의 식사는 식사량을 잘 인지하지 못하게 만들기에 무의식적으로 식사량이 늘어나. 따라서 식욕을 감소시키기 위해서는 6-7시간 이상의 수면이 필요해.
         </pre>
       }
-      articleImgSrc={CImage3}
+      articleImgSrc={preloadedImageURL[2]}
       width={182}
       height={182}
     />
   );
 };
-export const Four = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
+export const Four = ({ topic, pageNum, wrapper, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
       wrapper={wrapper}
@@ -89,14 +78,14 @@ export const Four = ({ topic, pageNum, wrapper }: { topic: string; pageNum: stri
           피해줘.
         </pre>
       }
-      articleImgSrc={CImage4}
+      articleImgSrc={preloadedImageURL[3]}
       width={254}
       height={293}
     />
   );
 };
 
-export const Five = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
+export const Five = ({ topic, pageNum, wrapper, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
       wrapper={wrapper}
@@ -112,14 +101,14 @@ export const Five = ({ topic, pageNum, wrapper }: { topic: string; pageNum: stri
           어떻게 하면 코르티솔의 분비를 막을 수 있을까?
         </pre>
       }
-      articleImgSrc={CImage5}
+      articleImgSrc={preloadedImageURL[4]}
       width={162}
       height={162}
     />
   );
 };
 
-export const Six = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
+export const Six = ({ topic, pageNum, wrapper, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   // prettier-ignore
   return (
     <ContentsScreen
@@ -132,7 +121,7 @@ export const Six = ({ topic, pageNum, wrapper }: { topic: string; pageNum: strin
 
 반대로 아예 몸을 움직이지 않는 경우도 있어. 이런 경우에는 스트레스가 해소되지 못하고 몸에 누적되기 때문에 이 역시 식욕이 증가해.
       </pre>}
-      articleImgSrc={CImage6}
+      articleImgSrc={preloadedImageURL[5]}
       width={167}
       height={167}
         
@@ -140,7 +129,7 @@ export const Six = ({ topic, pageNum, wrapper }: { topic: string; pageNum: strin
     />
   );
 };
-export const Seven = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
+export const Seven = ({ topic, pageNum, wrapper, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
       wrapper={wrapper}
@@ -156,14 +145,14 @@ export const Seven = ({ topic, pageNum, wrapper }: { topic: string; pageNum: str
           운동루틴을 찾아보자!
         </pre>
       }
-      articleImgSrc={CImage7}
+      articleImgSrc={preloadedImageURL[6]}
       width={149}
       height={149}
     />
   );
 };
 
-export const Eight = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
+export const Eight = ({ topic, pageNum, wrapper, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
       wrapper={wrapper}
@@ -181,20 +170,20 @@ export const Eight = ({ topic, pageNum, wrapper }: { topic: string; pageNum: str
           따라서 항상 주변 환경을 정돈해야 폭식의 위험으로부터 멀어질 수 있어.
         </pre>
       }
-      articleImgSrc={CImage8}
+      articleImgSrc={preloadedImageURL[7]}
       width={151}
       height={151}
     />
   );
 };
-export const Nine = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
+export const Nine = ({ topic, pageNum, wrapper, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
       wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
-      articleImgSrc={CImage9}
+      articleImgSrc={preloadedImageURL[8]}
       articleHeaderString="행복한 호르몬, 옥시토신"
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
@@ -212,14 +201,14 @@ export const Nine = ({ topic, pageNum, wrapper }: { topic: string; pageNum: stri
   );
 };
 
-export const Ten = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
+export const Ten = ({ topic, pageNum, wrapper, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
       wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
-      articleImgSrc={CImage10}
+      articleImgSrc={preloadedImageURL[9]}
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
           우리가 사랑을 할 때 분비되는 옥시토신은 식욕을 유발하는 ‘스트레스’와 ‘불안’을 사라지게 하고 심리적 허기를 채워줘.
@@ -232,14 +221,14 @@ export const Ten = ({ topic, pageNum, wrapper }: { topic: string; pageNum: strin
   );
 };
 
-export const Eleven = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
+export const Eleven = ({ topic, pageNum, wrapper, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
       wrapper={wrapper}
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
-      articleImgSrc={CImage11}
+      articleImgSrc={preloadedImageURL[10]}
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
           강아지도 좋고 취미생활, 업무도 좋아. 내가 진심으로 사랑하는 것들을 찾아가다보면 식욕을 감소시킬 수 있을거야.
@@ -253,7 +242,7 @@ export const Eleven = ({ topic, pageNum, wrapper }: { topic: string; pageNum: st
     />
   );
 };
-export const Twelve = ({ topic, pageNum, wrapper }: { topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
+export const Twelve = ({ topic, pageNum, wrapper, preloadedImageURL }: { preloadedImageURL: string[]; topic: string; pageNum: string; wrapper: (topic: string) => Promise<void> }) => {
   return (
     <ContentsScreen
       wrapper={wrapper}
@@ -261,7 +250,7 @@ export const Twelve = ({ topic, pageNum, wrapper }: { topic: string; pageNum: st
       topic={topic}
       pageNumber={pageNum}
       headerString="4. 음식에 집착하던 내가 아니야!"
-      articleImgSrc={CImage12}
+      articleImgSrc={preloadedImageURL[11]}
       articleString={
         <pre className="font-nanum text-[18px] leading-10 font-black1 whitespace-pre-wrap">
           정리하면, 식욕안정화의 속도를 높이기 위해서는 충분한 잠과 적당한 운동, 그리고 내가 사랑하는 것들로 내 일상을 채워야 해.

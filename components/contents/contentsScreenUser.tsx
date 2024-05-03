@@ -28,7 +28,7 @@ export default function ContentsScreen({
   articleHeaderString?: string;
   articleString?: JSX.Element;
   articleAfterString?: JSX.Element;
-  articleImgSrc?: StaticImageData | string;
+  articleImgSrc?: string;
   width?: number;
   height?: number;
   greyBlockHeader?: string;
