@@ -114,13 +114,7 @@ export default function MindFullEating({ eatingList }: { eatingList: EatingList 
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   return (
-    <div className="flex flex-col ">
-      <header className="flex w-full py-3 justify-between">
-        <div className="flex gap-2 content-center items-center">
-          <Image src="/info/mindFullEatingIcon.svg" width={16} height={16} className="w-[16px] h-[16px]" alt="fullEatingIcon" />
-          <span className="font-semibold">마인드풀이팅</span>
-        </div>
-      </header>
+    <div className="flex flex-col py-5">
       <section className="rounded-[10px] border border-[#e7e7e7] overflow-hidden">
         <ClosingHeader itemList={food} satisfiedString={satisfiedString} satisfiedExtent={satisfiedExtent} />
         <section className="flex px-2 flex-col gap-y-2 py-4">

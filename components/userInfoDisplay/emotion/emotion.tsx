@@ -43,13 +43,7 @@ export default function Emotion({ emotionList }: { emotionList: EmotionList }) {
   //피드백 노트
   const emotionNote = emotionList.note;
   return (
-    <div className="flex flex-col">
-      <header className="flex w-full py-3 justify-between">
-        <div className="flex gap-2">
-          <Image src="/info/fi-rr-laugh.svg" width={16} height={16} alt="fullEatingIcon" />
-          <span className="font-semibold">감정</span>
-        </div>
-      </header>
+    <div className="flex flex-col py-5">
       <section className="rounded-[10px] border border-[#e7e7e7] overflow-hidden">
         <header className="flex px-3 h-[62px] bg-green3 mx-0 my-0">
           <div className="flex   gap-2 justify-between w-full items-center">

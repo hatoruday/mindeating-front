@@ -58,13 +58,7 @@ export default function Activity({ activtiyList }: { activtiyList: ActivityList 
   //피드백 노트
   const feedbackContent = activtiyList.note;
   return (
-    <div className="flex flex-col">
-      <header className="flex w-full py-3 justify-between">
-        <div className="flex gap-2">
-          <Image src="/info/activityIcon.svg" width={16} height={16} alt="fullEatingIcon" />
-          <span className="font-semibold">활동</span>
-        </div>
-      </header>
+    <div className="flex flex-col py-5">
       <section className="rounded-[10px] border border-[#e7e7e7] overflow-hidden">
         <ClosingHeader itemList={activityNameList} satisfiedString={satisfiedString} satisfiedExtent={satisfiedExtent} />
         <section className="flex px-2 flex-col gap-y-7 py-4">

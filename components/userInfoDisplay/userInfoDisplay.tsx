@@ -27,6 +27,12 @@ export default function UserInfoDisplay({ userId, selectDate, infoData }: { user
           <Routine userId={userId} routineList={infoData.routines} />
           {infoData?.day_data?.eating ? (
             <>
+              <header className="flex w-full justify-between">
+                <div className="flex gap-2 content-center items-center">
+                  <Image src="/info/mindFullEatingIcon.svg" width={16} height={16} className="w-[16px] h-[16px]" alt="fullEatingIcon" />
+                  <span className="font-semibold">마인드풀이팅</span>
+                </div>
+              </header>
               {infoData.day_data.eating.map((eating: any, index: number) => {
                 return <MindFullEating key={index} eatingList={eating} />;
               })}
@@ -34,8 +40,14 @@ export default function UserInfoDisplay({ userId, selectDate, infoData }: { user
           ) : (
             <></>
           )}
-          {infoData?.day_data?.activity ? (
+          {infoData?.day_data?.activity.length != 0 ? (
             <>
+              <header className="flex w-full justify-between">
+                <div className="flex gap-2">
+                  <Image src="/info/activityIcon.svg" width={16} height={16} alt="fullEatingIcon" />
+                  <span className="font-semibold">활동</span>
+                </div>
+              </header>
               {infoData.day_data.activity.map((activity: any, index: number) => {
                 return <Activity key={index} activtiyList={activity} />;
               })}
@@ -43,8 +55,14 @@ export default function UserInfoDisplay({ userId, selectDate, infoData }: { user
           ) : (
             <></>
           )}
-          {infoData?.day_data?.sleep ? (
+          {infoData?.day_data?.sleep.length != 0 ? (
             <>
+              <header className="flex w-full justify-between">
+                <div className="flex gap-2">
+                  <Image src="/info/fi-rr-bed.svg" width={16} height={16} alt="fullEatingIcon" />
+                  <span className="font-semibold">수면</span>
+                </div>
+              </header>
               {infoData.day_data.sleep.map((sleep: any, index: number) => {
                 return <Sleep key={index} sleepList={sleep} />;
               })}
@@ -52,8 +70,14 @@ export default function UserInfoDisplay({ userId, selectDate, infoData }: { user
           ) : (
             <></>
           )}
-          {infoData?.day_data.emotion ? (
+          {infoData?.day_data.emotion.length != 0 ? (
             <>
+              <header className="flex w-full justify-between">
+                <div className="flex gap-2">
+                  <Image src="/info/fi-rr-laugh.svg" width={16} height={16} alt="fullEatingIcon" />
+                  <span className="font-semibold">감정</span>
+                </div>
+              </header>
               {infoData.day_data.emotion.map((emotion: any, index: number) => {
                 return <Emotion key={index} emotionList={emotion} />;
               })}

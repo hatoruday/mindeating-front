@@ -48,13 +48,7 @@ export default function Sleep({ sleepList }: { sleepList: SleepList }) {
   //피드백 노트
   const feedbackContent = sleepList.note;
   return (
-    <div className="flex flex-col">
-      <header className="flex w-full py-3 justify-between">
-        <div className="flex gap-2">
-          <Image src="/info/fi-rr-bed.svg" width={16} height={16} alt="fullEatingIcon" />
-          <span className="font-semibold">수면</span>
-        </div>
-      </header>
+    <div className="flex flex-col py-5">
       <section className="rounded-[10px] border border-[#e7e7e7] overflow-hidden">
         <header className="flex px-3 h-[62px] bg-green3 mx-0 my-0">
           <div className="flex  px-3 gap-2 justify-between w-full items-center">
