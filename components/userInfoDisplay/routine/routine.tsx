@@ -120,6 +120,21 @@ export default function Routine({ userId, routineList }: { userId: string; routi
     }
   };
 
+  const handleBlur = () => {
+    if (currentInput.trim() !== "") {
+      // 새로운 아이템을 menu 배열에 추가
+      const id: string = uuidv4();
+      const text = currentInput.trim();
+      const newRoutine: Routine = { text, routine_id: id };
+      setRoutines([...routines, newRoutine]);
+      createRoutine({ text, id });
+      // 입력 필드 초기화
+
+      setCurrentInput("");
+
+      setIsPrompting(false);
+    }
+  };
   //지우기 버튼을 눌렀을 때 활성화되는 상태변수.
 
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
@@ -225,6 +240,7 @@ export default function Routine({ userId, routineList }: { userId: string; routi
                 value={currentInput}
                 onChange={handleInputChange}
                 onKeyUp={handleKeyPress}
+                onBlur={() => handleBlur()}
                 className="font-medium text-[14px] w-full bg-white border-none outline-none placeholder-black4 text-black1"
               />
 
