@@ -23,7 +23,7 @@ export default function ContentsScreenQR({
   articleHeaderString?: string;
   articleString?: JSX.Element;
   articleAfterString?: JSX.Element;
-  articleImgSrc?: string | StaticImageData;
+  articleImgSrc?: string;
   width?: number;
   height?: number;
   greyBlockHeader?: string;
@@ -73,20 +73,11 @@ export default function ContentsScreenQR({
             <div className="h-full flex flex-col justify-center">
               {width && height ? (
                 <div className="flex justify-center content-center items-center h-full w-full">
-                  <Image src={articleImgSrc} width={width} height={height} alt="aritlcleImage" placeholder="blur" priority />
+                  <Image src={articleImgSrc} width={width} height={height} alt="aritlcleImage" priority />
                 </div>
               ) : (
                 <div className="relative content-center items-center h-full w-full">
-                  <Image
-                    src={articleImgSrc}
-                    placeholder="blur"
-                    width={0}
-                    height={0}
-                    sizes="(max-width: 380px) 30vw, (max-width: 768px) 40vw, 20vw"
-                    alt="aritlcleImage"
-                    className="w-full h-auto"
-                    priority
-                  />
+                  <Image src={articleImgSrc} width={0} height={0} sizes="(max-width: 380px) 30vw, (max-width: 768px) 40vw, 20vw" alt="aritlcleImage" className="w-full h-auto" priority />
                 </div>
               )}
             </div>

@@ -11,7 +11,7 @@ import PostSpecificFetch, { FetchResult } from "@/api/postFetch";
 import Link from "next/link";
 import { infoAction, InfoParams } from "@/app/info/[userId]/infoAction";
 import SubmitPopUpScreen from "../record/submitPopup";
-import { useRouter } from "next/navigation";
+
 export const revalidate = 0;
 export default function HomePage({ userId, userData, specificDay }: { userData: any; userId: string; specificDay?: string }) {
   const name = userData?.user_name;
@@ -113,19 +113,22 @@ export default function HomePage({ userId, userData, specificDay }: { userData: 
               ))}
           </div>
           {/* 식욕안정기 3월 14일 / 마음먹기 2주차 < > */}
-          <aside className="flex max-md justify-start gap-x-3 items-center font-normal pt-3">
-            <OutagePeriod nameIdentifier={state} />
-            <span className="text-[14px] text-center ">마음먹기 {week} 주차</span>
-            {/*< > 양쪽 꺽쇠 관련 컴포넌트*/}
-            <div className="flex items-center">
-              <button aria-label="calendar backward" className="focus:text-gray-400 hover:text-gray-400 text-gray-800 dark:text-gray-100">
-                {/* <LeftChevron /> */}
-              </button>
-              <button aria-label="calendar forward" className="focus:text-gray-400 hover:text-gray-400 ml-3 text-gray-800 dark:text-gray-100">
-                {/* {<RightChevron />} */}
-              </button>
-            </div>
-          </aside>
+          {!(isFadeOut && specificDay) && (
+            <aside className="flex max-md justify-start gap-x-3 items-center font-normal pt-3">
+              <OutagePeriod nameIdentifier={state} />
+              <span className="text-[14px] text-center ">마음먹기 {week} 주차</span>
+              {/*< > 양쪽 꺽쇠 관련 컴포넌트*/}
+              <div className="flex items-center">
+                <button aria-label="calendar backward" className="focus:text-gray-400 hover:text-gray-400 text-gray-800 dark:text-gray-100">
+                  {/* <LeftChevron /> */}
+                </button>
+                <button aria-label="calendar forward" className="focus:text-gray-400 hover:text-gray-400 ml-3 text-gray-800 dark:text-gray-100">
+                  {/* {<RightChevron />} */}
+                </button>
+              </div>
+            </aside>
+          )}
+
           <div className="w-full flex justify-center pt-7">
             <span>
               {currentDate.getFullYear()}년 {currentDate.getMonth() + 1}월

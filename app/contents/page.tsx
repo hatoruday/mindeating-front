@@ -16,7 +16,15 @@ import learn6 from "@/public/eating learning/curriculum/learn_6.png";
 import learn7 from "@/public/eating learning/curriculum/learn_7.png";
 import useImagePreloader from "@/utility/preloadImage";
 
-// const preloadSrcList = ["/contentsImages/1/1-1.png", "/contentsImages/1/1-2.png", "/contentsImages/1/1-3.png", "/contentsImages/1/1-4.png", "/contentsImages/1/1-5.png", "/contentsImages/1/1-6.png"];
+const preloadSrcList = [
+  "/contentsImages/1/1-1.png",
+  "/contentsImages/2/2-1.png",
+  "/contentsImages/3/3-2.png",
+  "/contentsImages/4/4-1.png",
+  "/contentsImages/5/5-1.png",
+  "/contentsImages/6/6-1.png",
+  "/contentsImages/7/7-1.png",
+];
 
 export default function Contents() {
   // const { imagesPreloaded } = useImagePreloader(preloadSrcList);
@@ -66,6 +74,7 @@ export default function Contents() {
       path: `/contents/learn_7?page=1`,
     },
   ];
+  const { imagesPreloaded, preloadedImageUrls } = useImagePreloader(preloadSrcList);
   return (
     <div className="flex bg-[#f3f4f8] px-3 flex-col content-center">
       <header className="flex w-full justify-start px-3 py-3 pt-7">
