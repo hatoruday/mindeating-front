@@ -33,6 +33,9 @@ export default function HomePage() {
         onClick={() => {
           location.href = "https://www.lifekeepsgettingbetter.com/?idx=1";
         }}
+        onTouchEnd={() => {
+          location.href = "https://www.lifekeepsgettingbetter.com/?idx=1";
+        }}
         className="flex w-full justify-center py-5 hover:text-green2"
       >
         <span>결제 페이지로 가기</span>
