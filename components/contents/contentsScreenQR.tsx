@@ -44,7 +44,7 @@ export default function ContentsScreenQR({
     router.push(`/contents`);
   };
   return (
-    <div className="flex w-full flex-col relative h-screen flex-grow justify-between content-center">
+    <div className="flex w-full flex-col relative min-h-[100dvh] overflow-y-auto flex-grow justify-between content-center">
       <header className="flex flex-col justify-start">
         <div className="flex items-center content-center absoulte top-0 left-0 justify-start py-5 gap-x-5">
           <Link href={pageNumber == "1" ? "/contents" : `${topic}?page=${parseInt(pageNumber!) - 1}`} className="flex-shrink-0">
@@ -56,7 +56,7 @@ export default function ContentsScreenQR({
         <div className="w-full mb-5 h-[1px] bg-black4" />
       </header>
 
-      <main className="flex flex-col justify-start overflow-y-auto h-full px-7">
+      <main className="flex flex-col justify-start overflow-y-auto min-h-[70dvh] px-7">
         {enablePopUp && (
           <ContentPopUpScreen
             fetchSubmit={fetchSubmit}
