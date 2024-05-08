@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import RecordSubmit from "@/components/record/recordSubmit";
 import { FetchResult } from "@/api/postFetch";
 import { mindAction, MindParams } from "./mindAction";
+import Link from "next/link";
 
 interface SuccessMealRoutine {
   [key: number]: boolean;
@@ -145,14 +146,19 @@ export default function MindFullEating({ params: { userId } }: IParams) {
     // setState(result)
   };
   return (
-    <div className="flex px-6 flex-col justify-center content-center">
-      <header className="flex relative w-full py-3 justify-center">
-        <Image src="/leftChevron.svg" width={8} height={17} alt="leftChevron" className="absolute top-1/2 left-4 transform -translate-y-1/2" />
-        <div className="flex gap-2">
-          <span className="font-semibold text-[16px]">마인드풀이팅</span>
+    <div className="flex px-6 overflow-y-auto max-h-dvh justify-start flex-col  content-center">
+      <header className="flex w-full sticky top-0 bg-white z-10 py-3 justify-center">
+        <div className="relative flex w-full justify-center">
+          <Link href={`/info/${userId}`}>
+            <Image src="/leftChevron.svg" width={8} height={17} alt="leftChevron" className="absolute top-1/2 left-4 transform -translate-y-1/2" />
+          </Link>
+          <div className="flex gap-2">
+            <span className="font-semibold text-[16px]">마인드풀이팅</span>
+          </div>
         </div>
       </header>
-      <section className="flex flex-col overflow-y-auto max-h-dvh gap-y-2 py-4">
+
+      <section className="flex flex-col gap-y-2 py-4">
         <header className="flex px-3 gap-x-3 pb-3">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
           <span className="font-[600] text-black2 text-[14px]">어떤 음식을 드셨나요</span>

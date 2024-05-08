@@ -13,6 +13,7 @@ import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { activityAction, ActivityParams } from "./activityAction";
 import { FetchResult } from "@/api/postFetch";
+import Link from "next/link";
 
 interface IParams {
   params: { userId: string };
@@ -118,12 +119,16 @@ export default function ActivityPage({ params: { userId } }: IParams) {
   };
 
   return (
-    <div className="flex flex-col px-6">
-      <header className="flex relative w-full py-3 justify-center">
-        <Image src="/leftChevron.svg" width={8} height={17} alt="leftChevron" className="absolute top-1/2 left-4 transform -translate-y-1/2" />
+    <div className="flex px-6 overflow-y-auto max-h-dvh justify-start flex-col  content-center">
+      <header className="flex w-full sticky top-0 bg-white z-10 py-3 justify-center">
+        <div className="relative flex w-full justify-center">
+          <Link href={`/info/${userId}`}>
+            <Image src="/leftChevron.svg" width={8} height={17} alt="leftChevron" className="absolute top-1/2 left-4 transform -translate-y-1/2" />
+          </Link>
 
-        <div className="flex gap-2">
-          <span className="font-semibold text-[16px]">활동</span>
+          <div className="flex gap-2">
+            <span className="font-semibold text-[16px]">활동</span>
+          </div>
         </div>
       </header>
 
