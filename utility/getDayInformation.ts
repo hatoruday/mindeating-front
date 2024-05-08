@@ -118,9 +118,13 @@ function GetWeeksOfCurrentMonth(month: number, year: number, date_info?: any): M
 }
 
 type MonthAll = [MonthData, MonthData, MonthData];
-export default function getMonthAll(offset: number, date_info?: any): MonthAll {
+export default function getMonthAll(offset: number, date_info?: any, specificDay?: any): MonthAll {
+  // console.log("specificDay", new Date(specificDay));
   let today = new Date();
-
+  if (specificDay !== undefined) {
+    today = new Date(specificDay);
+    console.log("specificday Today", today);
+  }
   // console.log("현재 달", today.getMonth() + 1, today.getFullYear());
   // if (offset < 0) {
   //   today = new Date(today.getTime() - Math.abs(offset) * 31 * 24 * 60 * 60 * 1000);

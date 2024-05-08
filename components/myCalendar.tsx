@@ -56,7 +56,7 @@ export default function MyCalendar({
     to: { transform: `translateY(${currentPageY}px)` },
   }));
   const date_info = userData ? userData.date_info : null;
-  const [recentMonth, setRecentMonth] = useState<MonthAll>(getMonthAll(0, date_info));
+  const [recentMonth, setRecentMonth] = useState<MonthAll>(getMonthAll(0, date_info, specificDay));
 
   const handleDragStart = (event: any) => {
     setIsDragging(true);
@@ -187,7 +187,7 @@ export default function MyCalendar({
    */
 
   useEffect(() => {
-    setRecentMonth(getMonthAll(offset, date_info));
+    setRecentMonth(getMonthAll(offset, date_info, specificDay));
   }, [offset]);
 
   return (

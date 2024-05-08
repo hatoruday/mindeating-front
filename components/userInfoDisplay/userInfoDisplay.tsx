@@ -23,7 +23,7 @@ export default function UserInfoDisplay({ userId, selectDate, infoData }: { user
           <span>오늘의 기록을 입력해주세요!</span>
         </div>
       ) : (
-        <div className="overflow-scroll py-10 gap-y-5">
+        <div className="overflow-scroll py-5 gap-y-5 ">
           <Routine userId={userId} routineList={infoData.routines} />
           {infoData?.day_data?.eating.length != 0 ? (
             <>

@@ -19,7 +19,8 @@ export default function HomePage({ userId, userData, specificDay }: { userData: 
   const week = userData?.week;
 
   const [offset, setOffset] = useState<number>(0);
-  const currentDate = new Date();
+  let currentDate = new Date();
+  if (specificDay) currentDate = new Date(specificDay);
   //nowOffset을 offset으로 하여 currentDate를 변경한다.
   currentDate.setTime(currentDate.getTime() + offset * 30 * 24 * 60 * 60 * 1000);
 
