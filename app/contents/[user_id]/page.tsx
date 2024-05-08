@@ -79,12 +79,12 @@ export default async function Contents({ params: { user_id } }: { params: { user
     },
   ];
   return (
-    <div className="flex bg-[#f3f4f8] px-3  flex-col content-center">
+    <div className="flex overflow-y-auto  h-[100dvh] bg-[#f3f4f8] px-3  flex-col content-center">
       <header className="flex w-full justify-start px-3 py-3 pt-7">
         <span className="font-bold  text-[18px] text-black1">마음먹기 학습하기</span>
       </header>
 
-      <div className="grid grid-flow-row-dense py-3 gap-x-1 gap-y-3 grid-cols-7 ">
+      <div className="grid grid-flow-row-dense overflow-y-auto py-3 gap-x-1 gap-y-3 grid-cols-7 ">
         <div></div>
         {contentsBlockList.map((contentsBlock, index) => {
           return (
