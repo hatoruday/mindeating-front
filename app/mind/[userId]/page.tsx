@@ -152,7 +152,7 @@ export default function MindFullEating({ params: { userId } }: IParams) {
           <span className="font-semibold text-[16px]">마인드풀이팅</span>
         </div>
       </header>
-      <section className="flex flex-col gap-y-2 py-4">
+      <section className="flex flex-col overflow-y-auto max-h-dvh gap-y-2 py-4">
         <header className="flex px-3 gap-x-3 pb-3">
           <Image src="/bookIcon.svg" width={18} height={16} alt="bookIcon" />
           <span className="font-[600] text-black2 text-[14px]">어떤 음식을 드셨나요</span>

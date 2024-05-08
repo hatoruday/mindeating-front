@@ -15,7 +15,7 @@ export default async function UserInfo({ params: { userId } }: IParams) {
   const userData = await getUserName(userId);
   // console.log(userData);
   return (
-    <div className="flex flex-col h-full px-6 ">
+    <div className="flex flex-col overflow-y-scroll max-h-[100dvh] px-6 ">
       <HomePage userId={userId} userData={userData} />
     </div>
   );
