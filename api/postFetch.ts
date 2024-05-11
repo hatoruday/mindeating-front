@@ -17,7 +17,7 @@ export default async function PostSpecificFetch(data: string, speficEndPoint: st
       },
       body: data,
     };
-    console.log(options.body);
+    // console.log(options.body);
     const response = await fetch(endpoint, options);
     // console.log(response);
     if (response.ok) {

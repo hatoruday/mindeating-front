@@ -11,13 +11,14 @@ interface AccordianItemsProps {
   openIndexList: number[];
   setOpenIndexList: any;
   setSelectDate: any;
+  higherHandleToggle: any;
 }
-const AccordianItems = ({ open, weekindex, week, colorStatusWeeks, setSelectDate }: AccordianItemsProps) => {
+const AccordianItems = ({ open, higherHandleToggle, weekindex, week, colorStatusWeeks, setSelectDate }: AccordianItemsProps) => {
   return (
     <div className="pt-[2px] z-20">
       <div>
         <Collapse isOpened={open}>
-          <MyWeek key={weekindex} week={week} weekindex={weekindex} colorStatusWeeks={colorStatusWeeks} setSelectDate={setSelectDate} />
+          <MyWeek key={weekindex} higherHandleToggle={higherHandleToggle} week={week} weekindex={weekindex} colorStatusWeeks={colorStatusWeeks} setSelectDate={setSelectDate} />
         </Collapse>
       </div>
     </div>

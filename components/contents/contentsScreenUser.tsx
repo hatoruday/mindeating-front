@@ -119,7 +119,7 @@ export default function ContentsScreen({
               if (topic.split("/")[3] == "learn_7") {
                 setEnableCompletionPopUp(true);
               } else {
-                console.log("topic", topic.split("/")[3]);
+                // console.log("topic", topic.split("/")[3]);
                 if (enablePopUp) return;
                 setEnablePopUp(true);
                 //2초간 기다린다.

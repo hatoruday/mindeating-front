@@ -42,7 +42,7 @@ export default function MyMonthList({
           specificWeekIndex = weekIndex;
         }
       });
-      console.log("specificDay 실행됨.");
+      // console.log("specificDay 실행됨.");
       toggle(specificWeekIndex);
       setHasToggled(true); // toggle이 실행되었음을 표시
 
@@ -122,8 +122,9 @@ export default function MyMonthList({
         return (
           <div key={monthindex}>
             {month.weeks.map((week, weekindex) => (
-              <div className="w-full" key={weekindex} onMouseDown={() => handleMouseDown(weekindex)} onTouchStart={() => handleTouchStart(weekindex)}>
+              <div className="w-full" key={weekindex}>
                 <AccordianItems
+                  higherHandleToggle={toggle}
                   key={weekindex}
                   openIndexList={openIndexList[1]}
                   setOpenIndexList={setOpenIndexList}

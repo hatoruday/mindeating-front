@@ -123,7 +123,7 @@ export default function getMonthAll(offset: number, date_info?: any, specificDay
   let today = new Date();
   if (specificDay !== undefined) {
     today = new Date(specificDay);
-    console.log("specificday Today", today);
+    // console.log("specificday Today", today);
   }
   // console.log("현재 달", today.getMonth() + 1, today.getFullYear());
   // if (offset < 0) {

@@ -5,7 +5,7 @@ export default function StatusBar({ statusList, specificWidth }: { statusList: n
   if (specificWidth) {
     sWidth = specificWidth;
   }
-  console.log("status" + sWidth);
+  // console.log("status" + sWidth);
 
   return (
     <>
