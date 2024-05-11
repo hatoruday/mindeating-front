@@ -10,12 +10,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaArrowCircleUp } from "react-icons/fa";
 
-export default function UserInfoDisplay({ userId, selectDate, infoData }: { userId: string; selectDate: Date; infoData: any }) {
-  const scrollToTop = () => {
-    console.log("scrollToTop");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
+export default function UserInfoDisplay({ userId, selectDate, infoData, scrollToTop }: { scrollToTop: any; userId: string; selectDate: Date; infoData: any }) {
   return (
     <div className="flex flex-col h-full justify-center">
       {infoData?.day_data?.eating == undefined ? (

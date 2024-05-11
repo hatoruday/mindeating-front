@@ -16,7 +16,7 @@ export default async function UserInfo({ params: { userId, specificDay } }: IPar
   const userData = await getUserName(userId);
   // console.log(userData);
   return (
-    <div className="flex flex-col overflow-y-scroll max-h-[100dvh] px-6 ">
+    <div className="flex flex-col px-6 ">
       <HomePage userId={userId} userData={userData} specificDay={specificDay} />
     </div>
   );

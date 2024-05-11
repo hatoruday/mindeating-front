@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { use, useEffect, useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import OutagePeriod from "../outagePeriod";
 import MyCalendar from "../myCalendar";
 import RightChevron from "../rightChevron";
@@ -14,6 +14,14 @@ import SubmitPopUpScreen from "../record/submitPopup";
 
 export const revalidate = 0;
 export default function HomePage({ userId, userData, specificDay }: { userData: any; userId: string; specificDay?: string }) {
+  const divRef = useRef<HTMLDivElement | null>(null);
+
+  // 스크롤 조정 함수 예시
+  const scrollToTop = () => {
+    if (divRef.current) {
+      divRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
   const name = userData?.user_name;
   const state = userData?.state;
   const week = userData?.week;
@@ -86,7 +94,7 @@ export default function HomePage({ userId, userData, specificDay }: { userData: 
   }, [infodata]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div ref={divRef} className="overflow-y-scroll max-h-[100dvh] flex flex-col">
       <div className="flex h-full flex-col">
         <header className="flex flex-col px-3 justify-start">
           <div className="flex w-full justify-between content-center items-center sm:mx-auto sm:w-full sm:max-w-sm pt-5">
@@ -163,7 +171,7 @@ export default function HomePage({ userId, userData, specificDay }: { userData: 
         {isFadeOut && !isLoading ? (
           <>
             <div className="w-full h-5" />
-            <UserInfoDisplay infoData={infoData} userId={userId} selectDate={selectDate} />
+            <UserInfoDisplay scrollToTop={scrollToTop} infoData={infoData} userId={userId} selectDate={selectDate} />
           </>
         ) : (
           <footer className="flex justify-center">
